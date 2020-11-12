@@ -13,7 +13,7 @@ class TrainingsPage extends StatelessWidget {
             child: Center(
                 child: RaisedButton(
                     child: Text('Sign Out'),
-                    onPressed: context.bloc<AuthCubit>().signOut)),
+                    onPressed: context.read<AuthCubit>().signOut)),
           );
         },
       )),
