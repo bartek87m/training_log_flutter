@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:training_log/domain/auth/i_auth_facade.dart';
@@ -20,6 +21,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signOut() async {
     await _authFacade.signOut();
-    emit(AuthState.unauthentificate());
+    await checkAuthentification();
   }
 }

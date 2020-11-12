@@ -34,21 +34,21 @@ class SignInForm extends StatelessWidget {
       },
       builder: (context, state) {
         return Form(
-          autovalidate: state.showErrorMessage,
+          autovalidateMode: state.showErrorMessage
+              ? AutovalidateMode.always
+              : AutovalidateMode.disabled,
           child: ListView(
             padding: const EdgeInsets.all(8),
             children: [
-              // const Text(
-              //   '📓',
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(fontSize: 130),
-              // ),
               const SizedBox(height: 8),
               TextFormField(
                 onChanged: (value) =>
-                    context.bloc<SignInCubit>().changeEmail(value),
-                validator: (_) =>
-                    context.bloc<SignInCubit>().state.emailAdress.value.fold(
+                    BlocProvider.of<SignInCubit>(context).changeEmail(value),
+                validator: (_) => BlocProvider.of<SignInCubit>(context)
+                    .state
+                    .emailAdress
+                    .value
+                    .fold(
                         //beirzemy context bezpośrednio z Bloc a nie z builder
                         (f) => f.maybeMap(
                               invalidEmail: (_) => 'Invalid Email',
@@ -62,9 +62,12 @@ class SignInForm extends StatelessWidget {
               const SizedBox(height: 8),
               TextFormField(
                 onChanged: (value) =>
-                    context.bloc<SignInCubit>().changePassword(value),
-                validator: (_) =>
-                    context.bloc<SignInCubit>().state.password.value.fold(
+                    BlocProvider.of<SignInCubit>(context).changePassword(value),
+                validator: (_) => BlocProvider.of<SignInCubit>(context)
+                    .state
+                    .password
+                    .value
+                    .fold(
                         //beirzemy context bezpośrednio z Bloc a nie z builder
                         (f) => f.maybeMap(
                               shortPassword: (_) => 'Invalid Password',
@@ -79,7 +82,8 @@ class SignInForm extends StatelessWidget {
               const SizedBox(height: 8),
               FlatButton(
                 onPressed: () {
-                  context.bloc<SignInCubit>().signInWithEmailAndPassword();
+                  BlocProvider.of<SignInCubit>(context)
+                      .signInWithEmailAndPassword();
                 },
                 child: const Text('SIGN IN'),
                 color: Colors.white24,
@@ -101,7 +105,6 @@ class SignInForm extends StatelessWidget {
                   side: BorderSide(color: Colors.black45),
                 ),
               ),
-
               const SizedBox(height: 8),
               if (state.isSubmitting) ...[
                 const SizedBox(

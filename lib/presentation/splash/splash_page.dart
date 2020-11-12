@@ -8,7 +8,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
-      cubit: context.bloc<AuthCubit>(),
+      cubit: BlocProvider.of<AuthCubit>(context),
       listener: (context, state) {
         state.map(
           initial: (_) {
@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget {
             ExtendedNavigator.of(context).push(Routes.trainingsPage);
           },
           unauthentificate: (_) {
-            ExtendedNavigator.of(context).push(Routes.signInPage);
+            ExtendedNavigator.of(context).replace(Routes.signInPage);
           },
         );
       },

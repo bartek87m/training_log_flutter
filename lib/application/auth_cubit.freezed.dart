@@ -95,12 +95,18 @@ class _$InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Initial implements Initial {
+class _$Initial with DiagnosticableTreeMixin implements Initial {
   const _$Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthState.initial'));
   }
 
   @override
@@ -191,12 +197,18 @@ class _$AuthentificateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Authentificate implements Authentificate {
+class _$Authentificate with DiagnosticableTreeMixin implements Authentificate {
   const _$Authentificate();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.authentificate()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthState.authentificate'));
   }
 
   @override
@@ -287,12 +299,20 @@ class _$UnAuthentificateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$UnAuthentificate implements UnAuthentificate {
+class _$UnAuthentificate
+    with DiagnosticableTreeMixin
+    implements UnAuthentificate {
   const _$UnAuthentificate();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.unauthentificate()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthState.unauthentificate'));
   }
 
   @override

@@ -85,7 +85,6 @@ class SignInCubit extends Cubit<SignInFromState> {
     final isPasswordsIdentical = state.passwordConfirmed.isValid();
     Either<AuthFailure, Unit> failureOrSuccess;
 
-    print(state.passwordConfirmed.isValid());
     emit(
       state.copyWith(
         passwordConfirmed:

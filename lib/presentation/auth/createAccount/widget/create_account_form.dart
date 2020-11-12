@@ -60,16 +60,21 @@ class CreateAccount extends StatelessWidget {
       },
       builder: (context, state) {
         return Form(
-          autovalidate: state.showErrorMessage,
+          autovalidateMode: state.showErrorMessage
+              ? AutovalidateMode.always
+              : AutovalidateMode.disabled,
           child: ListView(
             padding: const EdgeInsets.all(8),
             children: [
               const SizedBox(height: 8),
               TextFormField(
                 onChanged: (value) =>
-                    context.bloc<SignInCubit>().changeEmail(value),
-                validator: (_) =>
-                    context.bloc<SignInCubit>().state.emailAdress.value.fold(
+                    BlocProvider.of<SignInCubit>(context).changeEmail(value),
+                validator: (_) => BlocProvider.of<SignInCubit>(context)
+                    .state
+                    .emailAdress
+                    .value
+                    .fold(
                         //beirzemy context bezpośrednio z Bloc a nie z builder
                         (f) => f.maybeMap(
                               invalidEmail: (_) => 'Invalid Email',
@@ -83,9 +88,9 @@ class CreateAccount extends StatelessWidget {
               const SizedBox(height: 8),
               TextFormField(
                 onChanged: (value) =>
-                    context.bloc<SignInCubit>().changePassword(value),
+                    BlocProvider.of<SignInCubit>(context).changePassword(value),
                 validator: (_) {
-                  final state = context.bloc<SignInCubit>().state;
+                  final state = BlocProvider.of<SignInCubit>(context).state;
 
                   if (state.password.value.isLeft()) {
                     return state.password.value.fold(
@@ -113,10 +118,10 @@ class CreateAccount extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               TextFormField(
-                onChanged: (value) =>
-                    context.bloc<SignInCubit>().changePasswordToCompare(value),
+                onChanged: (value) => BlocProvider.of<SignInCubit>(context)
+                    .changePasswordToCompare(value),
                 validator: (_) {
-                  final state = context.bloc<SignInCubit>().state;
+                  final state = BlocProvider.of<SignInCubit>(context).state;
 
                   if (state.passwordToCompare.value.isLeft()) {
                     return state.passwordToCompare.value.fold(
@@ -146,7 +151,8 @@ class CreateAccount extends StatelessWidget {
               const SizedBox(height: 8),
               FlatButton(
                 onPressed: () {
-                  context.bloc<SignInCubit>().registerWithEmailAndPassword();
+                  BlocProvider.of<SignInCubit>(context)
+                      .registerWithEmailAndPassword();
                 },
                 child: const Text('CREATE ACCOUNT'),
                 color: Colors.white24,
