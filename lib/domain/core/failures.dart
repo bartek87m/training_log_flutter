@@ -14,4 +14,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.passwordsNotIdentical({
     @required List<Password> failedValue,
   }) = PasswordsNotIdentical<T>;
+  const factory ValueFailure.workoutTitleTolong({
+    @required String failedValue,
+  }) = WorkoutTItleToLong<T>;
 }

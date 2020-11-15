@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:training_log/application/auth/cubit/sign_in_cubit.dart';
+import 'package:training_log/application/auth/signIn/sign_in_cubit.dart';
 import 'package:training_log/presentation/auth/createAccount/widget/create_account_form.dart';
 
 import '../../../injection.dart';
