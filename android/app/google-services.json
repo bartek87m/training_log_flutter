@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "825562405675",
+    "firebase_url": "https://noteyour-passion-1553088973135.firebaseio.com",
+    "project_id": "noteyour-passion-1553088973135",
+    "storage_bucket": "noteyour-passion-1553088973135.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825562405675:android:07cf14e188ec7866dec36e",
+        "android_client_info": {
+          "package_name": "com.example.training_log"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825562405675-dnnvtuqmk2vpb9f22q6l80f1vvlp7i11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCipJrTtnvV4tRiCMnWlMTtrjPpvNzQuIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825562405675-dnnvtuqmk2vpb9f22q6l80f1vvlp7i11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
