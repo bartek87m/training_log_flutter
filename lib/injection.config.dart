@@ -13,6 +13,7 @@ import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_auth_injection.dart';
 import 'domain/auth/i_auth_facade.dart';
 import 'application/auth/signIn/sign_in_cubit.dart';
+import 'application/workoutForm/bloc/bloc/workout_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -27,6 +28,7 @@ GetIt $initGetIt(
   gh.lazySingleton<FirebaseAuth>(() => firebaseAuthInjection.firebaseAuth);
   gh.lazySingleton<IAuthFacade>(() => FirebaseAuthFacade(get<FirebaseAuth>()));
   gh.factory<SignInCubit>(() => SignInCubit(get<IAuthFacade>()));
+  gh.factory<WorkoutBloc>(() => WorkoutBloc());
   gh.factory<AuthCubit>(() => AuthCubit(get<IAuthFacade>()));
   return get;
 }
