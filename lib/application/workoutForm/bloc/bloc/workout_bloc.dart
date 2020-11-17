@@ -23,7 +23,9 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   ) async* {
     yield* event.map(
       createNewWorkout: (_) async* {
-        print('create workout');
+        yield state.copyWith(
+          isEditing: true,
+        );
       },
       addExerciseToWorkout: (_) async* {},
       workoutCompleted: (_) async* {},

@@ -17,4 +17,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.workoutTitleTolong({
     @required String failedValue,
   }) = WorkoutTItleToLong<T>;
+  const factory ValueFailure.workoutTitleEmpty({
+    @required String failedValue,
+  }) = WorkoutTItleEmpty<T>;
 }

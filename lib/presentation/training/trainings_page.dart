@@ -10,15 +10,26 @@ import 'package:training_log/presentation/training/widgets/create_new_workout.da
 class TrainingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
-      listener: (context, state) {
-        state.map(
-            initial: (_) {},
-            authentificate: (_) {},
-            unauthentificate: (_) {
-              ExtendedNavigator.of(context).replace(Routes.signInPage);
-            });
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            state.map(
+                initial: (_) {},
+                authentificate: (_) {},
+                unauthentificate: (_) {
+                  ExtendedNavigator.of(context).replace(Routes.signInPage);
+                });
+          },
+        ),
+        BlocListener<WorkoutBloc, WorkoutState>(
+          listener: (context, state) {
+            if (state.isEditing == true) {
+              print(state);
+            }
+          },
+        )
+      ],
       child: BlocBuilder<WorkoutBloc, WorkoutState>(
         builder: (context, state) {
           return Scaffold(
@@ -28,7 +39,7 @@ class TrainingsPage extends StatelessWidget {
                     padding: EdgeInsets.all(2),
                     child: GestureDetector(
                       child: Icon(Icons.logout),
-                      onTap: () => context.read<AuthCubit>(),
+                      onTap: () => context.read<AuthCubit>().signOut(),
                     ),
                   )
                 ],

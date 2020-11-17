@@ -377,8 +377,6 @@ class _$WorkoutStateTearOff {
 // ignore: unused_element
   _WorkoutState call(
       {@required
-          Workout workout,
-      @required
           bool showErrorMessages,
       @required
           bool isEditing,
@@ -387,7 +385,6 @@ class _$WorkoutStateTearOff {
       @required
           Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption}) {
     return _WorkoutState(
-      workout: workout,
       showErrorMessages: showErrorMessages,
       isEditing: isEditing,
       isSaving: isSaving,
@@ -402,7 +399,7 @@ const $WorkoutState = _$WorkoutStateTearOff();
 
 /// @nodoc
 mixin _$WorkoutState {
-  Workout get workout;
+// @required Workout workout,
   bool get showErrorMessages;
   bool get isEditing;
   bool get isSaving;
@@ -417,13 +414,10 @@ abstract class $WorkoutStateCopyWith<$Res> {
           WorkoutState value, $Res Function(WorkoutState) then) =
       _$WorkoutStateCopyWithImpl<$Res>;
   $Res call(
-      {Workout workout,
-      bool showErrorMessages,
+      {bool showErrorMessages,
       bool isEditing,
       bool isSaving,
       Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption});
-
-  $WorkoutCopyWith<$Res> get workout;
 }
 
 /// @nodoc
@@ -436,14 +430,12 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object workout = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
-      workout: workout == freezed ? _value.workout : workout as Workout,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -453,16 +445,6 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption as Option<Either<WorkoutFailure, Unit>>,
     ));
-  }
-
-  @override
-  $WorkoutCopyWith<$Res> get workout {
-    if (_value.workout == null) {
-      return null;
-    }
-    return $WorkoutCopyWith<$Res>(_value.workout, (value) {
-      return _then(_value.copyWith(workout: value));
-    });
   }
 }
 
@@ -474,14 +456,10 @@ abstract class _$WorkoutStateCopyWith<$Res>
       __$WorkoutStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Workout workout,
-      bool showErrorMessages,
+      {bool showErrorMessages,
       bool isEditing,
       bool isSaving,
       Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption});
-
-  @override
-  $WorkoutCopyWith<$Res> get workout;
 }
 
 /// @nodoc
@@ -496,14 +474,12 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object workout = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_WorkoutState(
-      workout: workout == freezed ? _value.workout : workout as Workout,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -519,20 +495,16 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_WorkoutState implements _WorkoutState {
   const _$_WorkoutState(
-      {@required this.workout,
-      @required this.showErrorMessages,
+      {@required this.showErrorMessages,
       @required this.isEditing,
       @required this.isSaving,
       @required this.saveFailureOrSuccessOption})
-      : assert(workout != null),
-        assert(showErrorMessages != null),
+      : assert(showErrorMessages != null),
         assert(isEditing != null),
         assert(isSaving != null),
         assert(saveFailureOrSuccessOption != null);
 
-  @override
-  final Workout workout;
-  @override
+  @override // @required Workout workout,
   final bool showErrorMessages;
   @override
   final bool isEditing;
@@ -543,16 +515,13 @@ class _$_WorkoutState implements _WorkoutState {
 
   @override
   String toString() {
-    return 'WorkoutState(workout: $workout, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'WorkoutState(showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _WorkoutState &&
-            (identical(other.workout, workout) ||
-                const DeepCollectionEquality()
-                    .equals(other.workout, workout)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
@@ -572,7 +541,6 @@ class _$_WorkoutState implements _WorkoutState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(workout) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSaving) ^
@@ -586,8 +554,6 @@ class _$_WorkoutState implements _WorkoutState {
 abstract class _WorkoutState implements WorkoutState {
   const factory _WorkoutState(
       {@required
-          Workout workout,
-      @required
           bool showErrorMessages,
       @required
           bool isEditing,
@@ -597,9 +563,7 @@ abstract class _WorkoutState implements WorkoutState {
           Option<Either<WorkoutFailure, Unit>>
               saveFailureOrSuccessOption}) = _$_WorkoutState;
 
-  @override
-  Workout get workout;
-  @override
+  @override // @required Workout workout,
   bool get showErrorMessages;
   @override
   bool get isEditing;

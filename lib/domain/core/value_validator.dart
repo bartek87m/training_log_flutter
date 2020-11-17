@@ -28,3 +28,11 @@ Either<ValueFailure<List<Password>>, List<Password>>
     return left(ValueFailure.passwordsNotIdentical(failedValue: input));
   }
 }
+
+Either<ValueFailure<String>, String> validateWorkoutTitleLength(String input) {
+  if (input.length < 30) {
+    return right(input);
+  } else {
+    return left(ValueFailure.workoutTitleTolong(failedValue: input));
+  }
+}
