@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:training_log/domain/auth/value_objects.dart';
 import 'package:training_log/domain/core/failures.dart';
+import 'package:intl/intl.dart';
 
 Either<ValueFailure<String>, String> validateEmail(String input) {
   const emailRegex =
@@ -30,8 +31,12 @@ Either<ValueFailure<List<Password>>, List<Password>>
 }
 
 Either<ValueFailure<String>, String> validateWorkoutTitleLength(String input) {
-  if (input.length < 30) {
+  if (input.length < 50) {
     return right(input);
+  } else if (input.length == null) {
+    // final DateFormat formatter = DateFormat('yyyy-MM-dd');
+    // return right(formatter.format(DateTime.now()));
+    return right('Workout title');
   } else {
     return left(ValueFailure.workoutTitleTolong(failedValue: input));
   }

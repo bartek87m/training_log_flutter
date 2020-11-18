@@ -35,6 +35,7 @@ dependencies:
   auto_route: ^0.6.9
   flushbar: ^1.10.4
   uuid: ^2.2.2
+  intl: ^0.16.1
   
 
 dev_dependencies:

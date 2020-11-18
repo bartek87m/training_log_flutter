@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:dartz/dartz.dart';
+import 'package:training_log/domain/core/failures.dart';
 import 'package:training_log/domain/core/value_object.dart';
-import 'package:training_log/domain/exercise/exercise.dart';
+import 'package:training_log/domain/core/value_validator.dart';
 
-abstract class Workout extends ValueObject<String> {
-  UniqueId id;
-  String title;
-  DateTime workoutDate;
-  List<Exercise> exercieList;
-  DateTime updateDate;
+class Title extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
 
-  factory Workout(input) {
-    // return Workout._(
-    //   exercieList: [], id, title, updateDate, workoutDate);
+  factory Title(input) {
+    assert(input != null);
+
+    return Title._(validateWorkoutTitleLength(input));
   }
 
-  Workout._(
-      this.exercieList, this.id, this.title, this.updateDate, this.workoutDate);
+  const Title._(this.value);
 }
