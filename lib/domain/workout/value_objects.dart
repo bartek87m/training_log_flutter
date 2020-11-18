@@ -13,5 +13,10 @@ class Title extends ValueObject<String> {
     return Title._(validateWorkoutTitleLength(input));
   }
 
+  @override
+  String toString() {
+    return value.fold((l) => null, (r) => r);
+  }
+
   const Title._(this.value);
 }

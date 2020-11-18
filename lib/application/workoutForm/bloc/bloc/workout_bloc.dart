@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
+import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
 
 part 'workout_event.dart';
@@ -23,11 +24,24 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     yield* event.map(
       createNewWorkout: (_) async* {
         yield state.copyWith(
+          workout: Workout.newWorkout(),
           isEditing: true,
         );
+        print(state.workout);
       },
       addExerciseToWorkout: (_) async* {},
       workoutCompleted: (_) async* {},
+      cancelWorkout: (_) async* {
+        yield state.copyWith(
+          workout: Workout.empty(),
+          isEditing: false,
+        );
+      },
+      finishWorkout: (_) async* {
+        yield state.copyWith(
+          isSaving: true,
+        );
+      },
     );
   }
 }

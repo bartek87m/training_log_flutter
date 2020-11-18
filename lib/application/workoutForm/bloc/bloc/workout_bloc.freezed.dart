@@ -27,6 +27,16 @@ class _$WorkoutEventTearOff {
   _WorkoutCompleted workoutCompleted() {
     return const _WorkoutCompleted();
   }
+
+// ignore: unused_element
+  _CancelWorkout cancelWorkout() {
+    return const _CancelWorkout();
+  }
+
+// ignore: unused_element
+  _FinishWorkout finishWorkout() {
+    return const _FinishWorkout();
+  }
 }
 
 /// @nodoc
@@ -40,12 +50,16 @@ mixin _$WorkoutEvent {
     @required Result createNewWorkout(),
     @required Result addExerciseToWorkout(),
     @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result createNewWorkout(),
     Result addExerciseToWorkout(),
     Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -53,12 +67,16 @@ mixin _$WorkoutEvent {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     @required Result orElse(),
   });
 }
@@ -121,10 +139,14 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     @required Result createNewWorkout(),
     @required Result addExerciseToWorkout(),
     @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     return createNewWorkout();
   }
 
@@ -134,6 +156,8 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     Result createNewWorkout(),
     Result addExerciseToWorkout(),
     Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -149,10 +173,14 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     return createNewWorkout(this);
   }
 
@@ -162,6 +190,8 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -218,10 +248,14 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     @required Result createNewWorkout(),
     @required Result addExerciseToWorkout(),
     @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     return addExerciseToWorkout();
   }
 
@@ -231,6 +265,8 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     Result createNewWorkout(),
     Result addExerciseToWorkout(),
     Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -246,10 +282,14 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     return addExerciseToWorkout(this);
   }
 
@@ -259,6 +299,8 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -315,10 +357,14 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     @required Result createNewWorkout(),
     @required Result addExerciseToWorkout(),
     @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     return workoutCompleted();
   }
 
@@ -328,6 +374,8 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     Result createNewWorkout(),
     Result addExerciseToWorkout(),
     Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -343,10 +391,14 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     return workoutCompleted(this);
   }
 
@@ -356,6 +408,8 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -371,12 +425,232 @@ abstract class _WorkoutCompleted implements WorkoutEvent {
 }
 
 /// @nodoc
+abstract class _$CancelWorkoutCopyWith<$Res> {
+  factory _$CancelWorkoutCopyWith(
+          _CancelWorkout value, $Res Function(_CancelWorkout) then) =
+      __$CancelWorkoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CancelWorkoutCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$CancelWorkoutCopyWith<$Res> {
+  __$CancelWorkoutCopyWithImpl(
+      _CancelWorkout _value, $Res Function(_CancelWorkout) _then)
+      : super(_value, (v) => _then(v as _CancelWorkout));
+
+  @override
+  _CancelWorkout get _value => super._value as _CancelWorkout;
+}
+
+/// @nodoc
+class _$_CancelWorkout implements _CancelWorkout {
+  const _$_CancelWorkout();
+
+  @override
+  String toString() {
+    return 'WorkoutEvent.cancelWorkout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _CancelWorkout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    return cancelWorkout();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (cancelWorkout != null) {
+      return cancelWorkout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    return cancelWorkout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (cancelWorkout != null) {
+      return cancelWorkout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CancelWorkout implements WorkoutEvent {
+  const factory _CancelWorkout() = _$_CancelWorkout;
+}
+
+/// @nodoc
+abstract class _$FinishWorkoutCopyWith<$Res> {
+  factory _$FinishWorkoutCopyWith(
+          _FinishWorkout value, $Res Function(_FinishWorkout) then) =
+      __$FinishWorkoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FinishWorkoutCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$FinishWorkoutCopyWith<$Res> {
+  __$FinishWorkoutCopyWithImpl(
+      _FinishWorkout _value, $Res Function(_FinishWorkout) _then)
+      : super(_value, (v) => _then(v as _FinishWorkout));
+
+  @override
+  _FinishWorkout get _value => super._value as _FinishWorkout;
+}
+
+/// @nodoc
+class _$_FinishWorkout implements _FinishWorkout {
+  const _$_FinishWorkout();
+
+  @override
+  String toString() {
+    return 'WorkoutEvent.finishWorkout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _FinishWorkout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    return finishWorkout();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (finishWorkout != null) {
+      return finishWorkout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    return finishWorkout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (finishWorkout != null) {
+      return finishWorkout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FinishWorkout implements WorkoutEvent {
+  const factory _FinishWorkout() = _$_FinishWorkout;
+}
+
+/// @nodoc
 class _$WorkoutStateTearOff {
   const _$WorkoutStateTearOff();
 
 // ignore: unused_element
   _WorkoutState call(
       {@required
+          Workout workout,
+      @required
           bool showErrorMessages,
       @required
           bool isEditing,
@@ -385,6 +659,7 @@ class _$WorkoutStateTearOff {
       @required
           Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption}) {
     return _WorkoutState(
+      workout: workout,
       showErrorMessages: showErrorMessages,
       isEditing: isEditing,
       isSaving: isSaving,
@@ -399,7 +674,7 @@ const $WorkoutState = _$WorkoutStateTearOff();
 
 /// @nodoc
 mixin _$WorkoutState {
-// @required Workout workout,
+  Workout get workout;
   bool get showErrorMessages;
   bool get isEditing;
   bool get isSaving;
@@ -414,10 +689,13 @@ abstract class $WorkoutStateCopyWith<$Res> {
           WorkoutState value, $Res Function(WorkoutState) then) =
       _$WorkoutStateCopyWithImpl<$Res>;
   $Res call(
-      {bool showErrorMessages,
+      {Workout workout,
+      bool showErrorMessages,
       bool isEditing,
       bool isSaving,
       Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption});
+
+  $WorkoutCopyWith<$Res> get workout;
 }
 
 /// @nodoc
@@ -430,12 +708,14 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object workout = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
+      workout: workout == freezed ? _value.workout : workout as Workout,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -445,6 +725,16 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption as Option<Either<WorkoutFailure, Unit>>,
     ));
+  }
+
+  @override
+  $WorkoutCopyWith<$Res> get workout {
+    if (_value.workout == null) {
+      return null;
+    }
+    return $WorkoutCopyWith<$Res>(_value.workout, (value) {
+      return _then(_value.copyWith(workout: value));
+    });
   }
 }
 
@@ -456,10 +746,14 @@ abstract class _$WorkoutStateCopyWith<$Res>
       __$WorkoutStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool showErrorMessages,
+      {Workout workout,
+      bool showErrorMessages,
       bool isEditing,
       bool isSaving,
       Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption});
+
+  @override
+  $WorkoutCopyWith<$Res> get workout;
 }
 
 /// @nodoc
@@ -474,12 +768,14 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object workout = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_WorkoutState(
+      workout: workout == freezed ? _value.workout : workout as Workout,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -495,16 +791,20 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_WorkoutState implements _WorkoutState {
   const _$_WorkoutState(
-      {@required this.showErrorMessages,
+      {@required this.workout,
+      @required this.showErrorMessages,
       @required this.isEditing,
       @required this.isSaving,
       @required this.saveFailureOrSuccessOption})
-      : assert(showErrorMessages != null),
+      : assert(workout != null),
+        assert(showErrorMessages != null),
         assert(isEditing != null),
         assert(isSaving != null),
         assert(saveFailureOrSuccessOption != null);
 
-  @override // @required Workout workout,
+  @override
+  final Workout workout;
+  @override
   final bool showErrorMessages;
   @override
   final bool isEditing;
@@ -515,13 +815,16 @@ class _$_WorkoutState implements _WorkoutState {
 
   @override
   String toString() {
-    return 'WorkoutState(showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'WorkoutState(workout: $workout, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _WorkoutState &&
+            (identical(other.workout, workout) ||
+                const DeepCollectionEquality()
+                    .equals(other.workout, workout)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
@@ -541,6 +844,7 @@ class _$_WorkoutState implements _WorkoutState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(workout) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSaving) ^
@@ -554,6 +858,8 @@ class _$_WorkoutState implements _WorkoutState {
 abstract class _WorkoutState implements WorkoutState {
   const factory _WorkoutState(
       {@required
+          Workout workout,
+      @required
           bool showErrorMessages,
       @required
           bool isEditing,
@@ -563,7 +869,9 @@ abstract class _WorkoutState implements WorkoutState {
           Option<Either<WorkoutFailure, Unit>>
               saveFailureOrSuccessOption}) = _$_WorkoutState;
 
-  @override // @required Workout workout,
+  @override
+  Workout get workout;
+  @override
   bool get showErrorMessages;
   @override
   bool get isEditing;

@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
@@ -25,7 +24,7 @@ class TrainingsPage extends StatelessWidget {
         BlocListener<WorkoutBloc, WorkoutState>(
           listener: (context, state) {
             if (state.isEditing == true) {
-              print(state);
+              ExtendedNavigator.of(context).replace(Routes.activeTrainingPage);
             }
           },
         )

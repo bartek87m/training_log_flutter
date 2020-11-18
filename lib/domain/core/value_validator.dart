@@ -33,10 +33,6 @@ Either<ValueFailure<List<Password>>, List<Password>>
 Either<ValueFailure<String>, String> validateWorkoutTitleLength(String input) {
   if (input.length < 50) {
     return right(input);
-  } else if (input.length == null) {
-    // final DateFormat formatter = DateFormat('yyyy-MM-dd');
-    // return right(formatter.format(DateTime.now()));
-    return right('Workout title');
   } else {
     return left(ValueFailure.workoutTitleTolong(failedValue: input));
   }
