@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
+import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
 
@@ -27,7 +29,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           workout: Workout.newWorkout(),
           isEditing: true,
         );
-        print(state.workout);
       },
       addExerciseToWorkout: (_) async* {},
       workoutCompleted: (_) async* {},
@@ -38,9 +39,18 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       finishWorkout: (_) async* {
+        final isTitleValid = state.workout.title.isValid();
+
         yield state.copyWith(
           isSaving: true,
+          isEditing: false,
         );
+      },
+      changeTitle: (e) async* {
+        yield state.copyWith(
+          workout: state.workout.copyWith(title: Title(e.inputStr)),
+        );
+        print(state.workout.title);
       },
     );
   }

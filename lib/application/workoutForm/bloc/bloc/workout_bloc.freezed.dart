@@ -37,6 +37,13 @@ class _$WorkoutEventTearOff {
   _FinishWorkout finishWorkout() {
     return const _FinishWorkout();
   }
+
+// ignore: unused_element
+  _ChangeTitle changeTitle(String inputStr) {
+    return _ChangeTitle(
+      inputStr,
+    );
+  }
 }
 
 /// @nodoc
@@ -52,6 +59,7 @@ mixin _$WorkoutEvent {
     @required Result workoutCompleted(),
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -60,6 +68,7 @@ mixin _$WorkoutEvent {
     Result workoutCompleted(),
     Result cancelWorkout(),
     Result finishWorkout(),
+    Result changeTitle(String inputStr),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -69,6 +78,7 @@ mixin _$WorkoutEvent {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -77,6 +87,7 @@ mixin _$WorkoutEvent {
     Result workoutCompleted(_WorkoutCompleted value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
     @required Result orElse(),
   });
 }
@@ -117,12 +128,21 @@ class __$WorkoutCreatedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_WorkoutCreated implements _WorkoutCreated {
+class _$_WorkoutCreated
+    with DiagnosticableTreeMixin
+    implements _WorkoutCreated {
   const _$_WorkoutCreated();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WorkoutEvent.createNewWorkout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutEvent.createNewWorkout'));
   }
 
   @override
@@ -141,12 +161,14 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     @required Result workoutCompleted(),
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return createNewWorkout();
   }
 
@@ -158,6 +180,7 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     Result workoutCompleted(),
     Result cancelWorkout(),
     Result finishWorkout(),
+    Result changeTitle(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -175,12 +198,14 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return createNewWorkout(this);
   }
 
@@ -192,6 +217,7 @@ class _$_WorkoutCreated implements _WorkoutCreated {
     Result workoutCompleted(_WorkoutCompleted value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -226,12 +252,21 @@ class __$AddExerciseToWorkoutCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
+class _$_AddExerciseToWorkout
+    with DiagnosticableTreeMixin
+    implements _AddExerciseToWorkout {
   const _$_AddExerciseToWorkout();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WorkoutEvent.addExerciseToWorkout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutEvent.addExerciseToWorkout'));
   }
 
   @override
@@ -250,12 +285,14 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     @required Result workoutCompleted(),
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return addExerciseToWorkout();
   }
 
@@ -267,6 +304,7 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     Result workoutCompleted(),
     Result cancelWorkout(),
     Result finishWorkout(),
+    Result changeTitle(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -284,12 +322,14 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return addExerciseToWorkout(this);
   }
 
@@ -301,6 +341,7 @@ class _$_AddExerciseToWorkout implements _AddExerciseToWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -335,12 +376,21 @@ class __$WorkoutCompletedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_WorkoutCompleted implements _WorkoutCompleted {
+class _$_WorkoutCompleted
+    with DiagnosticableTreeMixin
+    implements _WorkoutCompleted {
   const _$_WorkoutCompleted();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WorkoutEvent.workoutCompleted()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutEvent.workoutCompleted'));
   }
 
   @override
@@ -359,12 +409,14 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     @required Result workoutCompleted(),
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return workoutCompleted();
   }
 
@@ -376,6 +428,7 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     Result workoutCompleted(),
     Result cancelWorkout(),
     Result finishWorkout(),
+    Result changeTitle(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -393,12 +446,14 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return workoutCompleted(this);
   }
 
@@ -410,6 +465,7 @@ class _$_WorkoutCompleted implements _WorkoutCompleted {
     Result workoutCompleted(_WorkoutCompleted value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -444,12 +500,18 @@ class __$CancelWorkoutCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_CancelWorkout implements _CancelWorkout {
+class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
   const _$_CancelWorkout();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WorkoutEvent.cancelWorkout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.cancelWorkout'));
   }
 
   @override
@@ -468,12 +530,14 @@ class _$_CancelWorkout implements _CancelWorkout {
     @required Result workoutCompleted(),
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return cancelWorkout();
   }
 
@@ -485,6 +549,7 @@ class _$_CancelWorkout implements _CancelWorkout {
     Result workoutCompleted(),
     Result cancelWorkout(),
     Result finishWorkout(),
+    Result changeTitle(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -502,12 +567,14 @@ class _$_CancelWorkout implements _CancelWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return cancelWorkout(this);
   }
 
@@ -519,6 +586,7 @@ class _$_CancelWorkout implements _CancelWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -553,12 +621,18 @@ class __$FinishWorkoutCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_FinishWorkout implements _FinishWorkout {
+class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
   const _$_FinishWorkout();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WorkoutEvent.finishWorkout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.finishWorkout'));
   }
 
   @override
@@ -577,12 +651,14 @@ class _$_FinishWorkout implements _FinishWorkout {
     @required Result workoutCompleted(),
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return finishWorkout();
   }
 
@@ -594,6 +670,7 @@ class _$_FinishWorkout implements _FinishWorkout {
     Result workoutCompleted(),
     Result cancelWorkout(),
     Result finishWorkout(),
+    Result changeTitle(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -611,12 +688,14 @@ class _$_FinishWorkout implements _FinishWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
+    assert(changeTitle != null);
     return finishWorkout(this);
   }
 
@@ -628,6 +707,7 @@ class _$_FinishWorkout implements _FinishWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -640,6 +720,153 @@ class _$_FinishWorkout implements _FinishWorkout {
 
 abstract class _FinishWorkout implements WorkoutEvent {
   const factory _FinishWorkout() = _$_FinishWorkout;
+}
+
+/// @nodoc
+abstract class _$ChangeTitleCopyWith<$Res> {
+  factory _$ChangeTitleCopyWith(
+          _ChangeTitle value, $Res Function(_ChangeTitle) then) =
+      __$ChangeTitleCopyWithImpl<$Res>;
+  $Res call({String inputStr});
+}
+
+/// @nodoc
+class __$ChangeTitleCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$ChangeTitleCopyWith<$Res> {
+  __$ChangeTitleCopyWithImpl(
+      _ChangeTitle _value, $Res Function(_ChangeTitle) _then)
+      : super(_value, (v) => _then(v as _ChangeTitle));
+
+  @override
+  _ChangeTitle get _value => super._value as _ChangeTitle;
+
+  @override
+  $Res call({
+    Object inputStr = freezed,
+  }) {
+    return _then(_ChangeTitle(
+      inputStr == freezed ? _value.inputStr : inputStr as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
+  const _$_ChangeTitle(this.inputStr) : assert(inputStr != null);
+
+  @override
+  final String inputStr;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.changeTitle(inputStr: $inputStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutEvent.changeTitle'))
+      ..add(DiagnosticsProperty('inputStr', inputStr));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangeTitle &&
+            (identical(other.inputStr, inputStr) ||
+                const DeepCollectionEquality()
+                    .equals(other.inputStr, inputStr)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(inputStr);
+
+  @override
+  _$ChangeTitleCopyWith<_ChangeTitle> get copyWith =>
+      __$ChangeTitleCopyWithImpl<_ChangeTitle>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    assert(changeTitle != null);
+    return changeTitle(inputStr);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
+    Result changeTitle(String inputStr),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeTitle != null) {
+      return changeTitle(inputStr);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    assert(changeTitle != null);
+    return changeTitle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeTitle != null) {
+      return changeTitle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeTitle implements WorkoutEvent {
+  const factory _ChangeTitle(String inputStr) = _$_ChangeTitle;
+
+  String get inputStr;
+  _$ChangeTitleCopyWith<_ChangeTitle> get copyWith;
 }
 
 /// @nodoc
@@ -789,7 +1016,7 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_WorkoutState implements _WorkoutState {
+class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   const _$_WorkoutState(
       {@required this.workout,
       @required this.showErrorMessages,
@@ -814,8 +1041,21 @@ class _$_WorkoutState implements _WorkoutState {
   final Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WorkoutState(workout: $workout, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutState'))
+      ..add(DiagnosticsProperty('workout', workout))
+      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
+      ..add(DiagnosticsProperty('isEditing', isEditing))
+      ..add(DiagnosticsProperty('isSaving', isSaving))
+      ..add(DiagnosticsProperty(
+          'saveFailureOrSuccessOption', saveFailureOrSuccessOption));
   }
 
   @override

@@ -7,4 +7,5 @@ abstract class WorkoutEvent with _$WorkoutEvent {
   const factory WorkoutEvent.workoutCompleted() = _WorkoutCompleted;
   const factory WorkoutEvent.cancelWorkout() = _CancelWorkout;
   const factory WorkoutEvent.finishWorkout() = _FinishWorkout;
+  const factory WorkoutEvent.changeTitle(String inputStr) = _ChangeTitle;
 }

@@ -14,9 +14,7 @@ class Title extends ValueObject<String> {
   }
 
   @override
-  String toString() {
-    return value.fold((l) => null, (r) => r);
-  }
+  String toString() => 'Value($value)';
 
   const Title._(this.value);
 }

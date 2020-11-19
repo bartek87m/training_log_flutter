@@ -24,8 +24,13 @@ class ActiveTrainingPage extends HookWidget {
                 margin: const EdgeInsets.only(top: 10),
                 padding: const EdgeInsets.all(12.0),
                 child: TextFormField(
-                  initialValue: state.workout.title.toString(),
+                  onChanged: (value) => context
+                      .read<WorkoutBloc>()
+                      .add(WorkoutEvent.changeTitle(value)),
+                  initialValue:
+                      state.workout.title.value.fold((l) => null, (r) => r),
                   maxLines: 1,
+                  maxLength: 50,
                 ),
               ),
               Column(
