@@ -13,8 +13,5 @@ class Title extends ValueObject<String> {
     return Title._(validateWorkoutTitleLength(input));
   }
 
-  @override
-  String toString() => 'Value($value)';
-
   const Title._(this.value);
 }

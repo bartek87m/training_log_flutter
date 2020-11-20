@@ -44,6 +44,13 @@ class _$WorkoutEventTearOff {
       inputStr,
     );
   }
+
+// ignore: unused_element
+  _AddSeriesToExercise addSeriesToExercise(String inputStr) {
+    return _AddSeriesToExercise(
+      inputStr,
+    );
+  }
 }
 
 /// @nodoc
@@ -60,6 +67,7 @@ mixin _$WorkoutEvent {
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
     @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -69,6 +77,7 @@ mixin _$WorkoutEvent {
     Result cancelWorkout(),
     Result finishWorkout(),
     Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -79,6 +88,7 @@ mixin _$WorkoutEvent {
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -88,6 +98,7 @@ mixin _$WorkoutEvent {
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
     @required Result orElse(),
   });
 }
@@ -162,6 +173,7 @@ class _$_WorkoutCreated
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
     @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -169,6 +181,7 @@ class _$_WorkoutCreated
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return createNewWorkout();
   }
 
@@ -181,6 +194,7 @@ class _$_WorkoutCreated
     Result cancelWorkout(),
     Result finishWorkout(),
     Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -199,6 +213,7 @@ class _$_WorkoutCreated
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -206,6 +221,7 @@ class _$_WorkoutCreated
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return createNewWorkout(this);
   }
 
@@ -218,6 +234,7 @@ class _$_WorkoutCreated
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -286,6 +303,7 @@ class _$_AddExerciseToWorkout
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
     @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -293,6 +311,7 @@ class _$_AddExerciseToWorkout
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return addExerciseToWorkout();
   }
 
@@ -305,6 +324,7 @@ class _$_AddExerciseToWorkout
     Result cancelWorkout(),
     Result finishWorkout(),
     Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -323,6 +343,7 @@ class _$_AddExerciseToWorkout
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -330,6 +351,7 @@ class _$_AddExerciseToWorkout
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return addExerciseToWorkout(this);
   }
 
@@ -342,6 +364,7 @@ class _$_AddExerciseToWorkout
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -410,6 +433,7 @@ class _$_WorkoutCompleted
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
     @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -417,6 +441,7 @@ class _$_WorkoutCompleted
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return workoutCompleted();
   }
 
@@ -429,6 +454,7 @@ class _$_WorkoutCompleted
     Result cancelWorkout(),
     Result finishWorkout(),
     Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -447,6 +473,7 @@ class _$_WorkoutCompleted
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -454,6 +481,7 @@ class _$_WorkoutCompleted
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return workoutCompleted(this);
   }
 
@@ -466,6 +494,7 @@ class _$_WorkoutCompleted
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -531,6 +560,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
     @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -538,6 +568,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return cancelWorkout();
   }
 
@@ -550,6 +581,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result cancelWorkout(),
     Result finishWorkout(),
     Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -568,6 +600,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -575,6 +608,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return cancelWorkout(this);
   }
 
@@ -587,6 +621,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -652,6 +687,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
     @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -659,6 +695,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return finishWorkout();
   }
 
@@ -671,6 +708,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     Result cancelWorkout(),
     Result finishWorkout(),
     Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -689,6 +727,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -696,6 +735,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return finishWorkout(this);
   }
 
@@ -708,6 +748,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -796,6 +837,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result cancelWorkout(),
     @required Result finishWorkout(),
     @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -803,6 +845,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return changeTitle(inputStr);
   }
 
@@ -815,6 +858,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result cancelWorkout(),
     Result finishWorkout(),
     Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -833,6 +877,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -840,6 +885,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(cancelWorkout != null);
     assert(finishWorkout != null);
     assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
     return changeTitle(this);
   }
 
@@ -852,6 +898,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -867,6 +914,163 @@ abstract class _ChangeTitle implements WorkoutEvent {
 
   String get inputStr;
   _$ChangeTitleCopyWith<_ChangeTitle> get copyWith;
+}
+
+/// @nodoc
+abstract class _$AddSeriesToExerciseCopyWith<$Res> {
+  factory _$AddSeriesToExerciseCopyWith(_AddSeriesToExercise value,
+          $Res Function(_AddSeriesToExercise) then) =
+      __$AddSeriesToExerciseCopyWithImpl<$Res>;
+  $Res call({String inputStr});
+}
+
+/// @nodoc
+class __$AddSeriesToExerciseCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$AddSeriesToExerciseCopyWith<$Res> {
+  __$AddSeriesToExerciseCopyWithImpl(
+      _AddSeriesToExercise _value, $Res Function(_AddSeriesToExercise) _then)
+      : super(_value, (v) => _then(v as _AddSeriesToExercise));
+
+  @override
+  _AddSeriesToExercise get _value => super._value as _AddSeriesToExercise;
+
+  @override
+  $Res call({
+    Object inputStr = freezed,
+  }) {
+    return _then(_AddSeriesToExercise(
+      inputStr == freezed ? _value.inputStr : inputStr as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_AddSeriesToExercise
+    with DiagnosticableTreeMixin
+    implements _AddSeriesToExercise {
+  const _$_AddSeriesToExercise(this.inputStr) : assert(inputStr != null);
+
+  @override
+  final String inputStr;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.addSeriesToExercise(inputStr: $inputStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutEvent.addSeriesToExercise'))
+      ..add(DiagnosticsProperty('inputStr', inputStr));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AddSeriesToExercise &&
+            (identical(other.inputStr, inputStr) ||
+                const DeepCollectionEquality()
+                    .equals(other.inputStr, inputStr)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(inputStr);
+
+  @override
+  _$AddSeriesToExerciseCopyWith<_AddSeriesToExercise> get copyWith =>
+      __$AddSeriesToExerciseCopyWithImpl<_AddSeriesToExercise>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
+    @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(String inputStr),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
+    return addSeriesToExercise(inputStr);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result cancelWorkout(),
+    Result finishWorkout(),
+    Result changeTitle(String inputStr),
+    Result addSeriesToExercise(String inputStr),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (addSeriesToExercise != null) {
+      return addSeriesToExercise(inputStr);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
+    return addSeriesToExercise(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
+    Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (addSeriesToExercise != null) {
+      return addSeriesToExercise(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddSeriesToExercise implements WorkoutEvent {
+  const factory _AddSeriesToExercise(String inputStr) = _$_AddSeriesToExercise;
+
+  String get inputStr;
+  _$AddSeriesToExerciseCopyWith<_AddSeriesToExercise> get copyWith;
 }
 
 /// @nodoc

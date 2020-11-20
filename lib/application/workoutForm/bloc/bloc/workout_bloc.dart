@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
+import 'package:training_log/domain/exercise/exercise.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
@@ -30,7 +31,15 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           isEditing: true,
         );
       },
-      addExerciseToWorkout: (_) async* {},
+      addExerciseToWorkout: (_) async* {
+        List<Exercise> exerciseList = state.workout.exercieList;
+        exerciseList.add(Exercise(exerciseName: 'Exercise', setsList: []));
+
+        yield state.copyWith(
+          workout: state.workout.copyWith(exercieList: exerciseList),
+        );
+        print(state.workout);
+      },
       workoutCompleted: (_) async* {},
       cancelWorkout: (_) async* {
         yield state.copyWith(
@@ -39,8 +48,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       finishWorkout: (_) async* {
-        final isTitleValid = state.workout.title.isValid();
-
         yield state.copyWith(
           isSaving: true,
           isEditing: false,
@@ -50,8 +57,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         yield state.copyWith(
           workout: state.workout.copyWith(title: Title(e.inputStr)),
         );
-        print(state.workout.title);
       },
+      addSeriesToExercise: (_) async* {},
     );
   }
 }
