@@ -34,11 +34,9 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       addExerciseToWorkout: (_) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
         exerciseList.add(Exercise(exerciseName: 'Exercise', setsList: []));
-
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
         );
-        print(state.workout);
       },
       workoutCompleted: (_) async* {},
       cancelWorkout: (_) async* {

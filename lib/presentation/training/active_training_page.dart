@@ -2,12 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
+import 'package:training_log/domain/exercise/exercise.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
+import 'package:training_log/presentation/training/widgets/exerciseWidget.dart';
 
 class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final list = useState(List<Exercise>.empty());
+
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
       if (state.isEditing == false) {
@@ -35,12 +40,20 @@ class ActiveTrainingPage extends HookWidget {
                       maxLengthEnforced: true,
                     ),
                   ),
-                  Column(), //column do exercises
+                  Column(
+                    children: list.value.isNotEmpty
+                        ? <Widget>[
+                            for (var exercise in list.value) ExerciseWidget()
+                          ]
+                        : <Widget>[],
+                  ), //column do exercises
                   FlatButton(
                     onPressed: () => {
+                      list.value = List<Exercise>.empty(),
                       context
                           .read<WorkoutBloc>()
                           .add(WorkoutEvent.addExerciseToWorkout()),
+                      list.value = state.workout.exercieList,
                     },
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
