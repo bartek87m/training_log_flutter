@@ -20,6 +20,7 @@ class ActiveTrainingPage extends HookWidget {
       }
     }, builder: (context, state) {
       return Scaffold(
+        resizeToAvoidBottomPadding: false,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,13 +41,17 @@ class ActiveTrainingPage extends HookWidget {
                       maxLengthEnforced: true,
                     ),
                   ),
-                  Column(
-                    children: list.value.isNotEmpty
-                        ? <Widget>[
-                            for (var exercise in list.value) ExerciseWidget()
-                          ]
-                        : <Widget>[],
-                  ), //column do exercises
+                  SingleChildScrollView(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: list.value.isNotEmpty
+                          ? <Widget>[
+                              for (var _ in list.value)
+                                Container(child: ExerciseWidget())
+                            ]
+                          : <Widget>[Container()],
+                    ),
+                  ),
                   FlatButton(
                     onPressed: () => {
                       list.value = List<Exercise>.empty(),
