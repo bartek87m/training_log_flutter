@@ -21,80 +21,68 @@ class ActiveTrainingPage extends HookWidget {
     }, builder: (context, state) {
       return Scaffold(
         resizeToAvoidBottomPadding: false,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    padding: const EdgeInsets.all(12.0),
-                    child: TextFormField(
-                      onChanged: (value) => context
-                          .read<WorkoutBloc>()
-                          .add(WorkoutEvent.changeTitle(value)),
-                      initialValue:
-                          state.workout.title.value.fold((l) => null, (r) => r),
-                      maxLines: 1,
-                      maxLength: 50,
-                      maxLengthEnforced: true,
-                    ),
-                  ),
-                  SingleChildScrollView(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: list.value.isNotEmpty
-                          ? <Widget>[
-                              for (var _ in list.value)
-                                Container(child: ExerciseWidget())
-                            ]
-                          : <Widget>[Container()],
-                    ),
-                  ),
-                  FlatButton(
-                    onPressed: () => {
-                      list.value = List<Exercise>.empty(),
-                      context
-                          .read<WorkoutBloc>()
-                          .add(WorkoutEvent.addExerciseToWorkout()),
-                      list.value = state.workout.exercieList,
-                    },
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    child: const Text('Add Exercise'),
-                  ),
-                ],
+        body: SingleChildScrollView(
+            child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(
+                  top: 10, left: 10, right: 10, bottom: 10),
+              child: TextFormField(
+                onChanged: (value) => context
+                    .read<WorkoutBloc>()
+                    .add(WorkoutEvent.changeTitle(value)),
+                initialValue:
+                    state.workout.title.value.fold((l) => null, (r) => r),
+                maxLines: 1,
+                maxLength: 50,
+                maxLengthEnforced: true,
               ),
-              Column(
-                children: [
-                  FlatButton(
-                    onPressed: () => context
-                        .read<WorkoutBloc>()
-                        .add(WorkoutEvent.finishWorkout()),
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    child: const Text(
-                      'Finish Workout',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                  FlatButton(
-                    onPressed: () => context
-                        .read<WorkoutBloc>()
-                        .add(WorkoutEvent.cancelWorkout()),
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    child: const Text(
-                      'Cancel Workout',
-                      style: TextStyle(color: Colors.redAccent),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
+            ),
+            Container(
+              child: Column(
+                children: list.value.isNotEmpty
+                    ? <Widget>[
+                        for (var _ in list.value)
+                          Container(child: ExerciseWidget())
+                      ]
+                    : <Widget>[Container()],
+              ),
+            ),
+            FlatButton(
+              onPressed: () => {
+                list.value = List<Exercise>.empty(),
+                context
+                    .read<WorkoutBloc>()
+                    .add(WorkoutEvent.addExerciseToWorkout()),
+                list.value = state.workout.exercieList,
+              },
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              child: const Text('Add Exercise'),
+            ),
+            FlatButton(
+              onPressed: () =>
+                  context.read<WorkoutBloc>().add(WorkoutEvent.finishWorkout()),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              child: const Text(
+                'Finish Workout',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+            FlatButton(
+              onPressed: () =>
+                  context.read<WorkoutBloc>().add(WorkoutEvent.cancelWorkout()),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              child: const Text(
+                'Cancel Workout',
+                style: TextStyle(color: Colors.redAccent),
+              ),
+            ),
+          ],
+        )),
       );
     });
   }

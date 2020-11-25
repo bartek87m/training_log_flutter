@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:training_log/presentation/training/widgets/setWidges.dart';
 
 class ExerciseWidget extends HookWidget {
   @override
@@ -9,8 +10,9 @@ class ExerciseWidget extends HookWidget {
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-            border: Border.all(width: 0.5, color: Colors.grey),
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+          border: Border.all(width: 0.5, color: Colors.grey),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
         padding: const EdgeInsets.only(top: 15, left: 20, right: 20),
         child: Column(
           children: [
@@ -25,12 +27,13 @@ class ExerciseWidget extends HookWidget {
                 labelStyle: TextStyle(color: Colors.grey),
               ),
             ),
+            SetWidget(),
             SizedBox(
               height: 10,
             ),
             FlatButton(
               onPressed: () {},
-              child: Text("Add Exercise"),
+              child: Text("Add Set"),
               // padding: EdgeInsets.all(0),
             )
           ],
