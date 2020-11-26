@@ -46,15 +46,20 @@ class ActiveTrainingPage extends HookWidget {
             ),
             Container(
               child: Column(
-                children: list.value.isNotEmpty
+                children: state.workout.exercieList.isNotEmpty
                     ? <Widget>[
                         for (var exerciseNumber = 0;
                             exerciseNumber < list.value.length;
                             exerciseNumber++)
                           Container(
-                              child: ExerciseWidget(
-                                  exerciseNumber, context, state, rebuildWidget,
-                                  key: UniqueKey()))
+                            child: ExerciseWidget(
+                              exerciseNumber,
+                              context,
+                              state,
+                              rebuildWidget,
+                              key: UniqueKey(),
+                            ),
+                          )
                       ]
                     : <Widget>[Container()],
               ),

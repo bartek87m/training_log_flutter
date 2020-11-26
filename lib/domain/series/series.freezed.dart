@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'set.dart';
+part of 'series.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,17 +10,17 @@ part of 'set.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$SetTearOff {
-  const _$SetTearOff();
+class _$SeriesTearOff {
+  const _$SeriesTearOff();
 
 // ignore: unused_element
-  _Set call(
+  _Series call(
       {String reps,
       String weight,
       String time,
       String resultFromlastTraining,
       bool completed}) {
-    return _Set(
+    return _Series(
       reps: reps,
       weight: weight,
       time: time,
@@ -32,10 +32,10 @@ class _$SetTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $Set = _$SetTearOff();
+const $Series = _$SeriesTearOff();
 
 /// @nodoc
-mixin _$Set {
+mixin _$Series {
   String get reps;
   String get weight;
   String get time;
@@ -43,13 +43,13 @@ mixin _$Set {
       get resultFromlastTraining; //rezultat z poprzedniego treningu z tym ćwiczeniem
   bool get completed;
 
-  $SetCopyWith<Set> get copyWith;
+  $SeriesCopyWith<Series> get copyWith;
 }
 
 /// @nodoc
-abstract class $SetCopyWith<$Res> {
-  factory $SetCopyWith(Set value, $Res Function(Set) then) =
-      _$SetCopyWithImpl<$Res>;
+abstract class $SeriesCopyWith<$Res> {
+  factory $SeriesCopyWith(Series value, $Res Function(Series) then) =
+      _$SeriesCopyWithImpl<$Res>;
   $Res call(
       {String reps,
       String weight,
@@ -59,12 +59,12 @@ abstract class $SetCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SetCopyWithImpl<$Res> implements $SetCopyWith<$Res> {
-  _$SetCopyWithImpl(this._value, this._then);
+class _$SeriesCopyWithImpl<$Res> implements $SeriesCopyWith<$Res> {
+  _$SeriesCopyWithImpl(this._value, this._then);
 
-  final Set _value;
+  final Series _value;
   // ignore: unused_field
-  final $Res Function(Set) _then;
+  final $Res Function(Series) _then;
 
   @override
   $Res call({
@@ -87,9 +87,9 @@ class _$SetCopyWithImpl<$Res> implements $SetCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SetCopyWith<$Res> implements $SetCopyWith<$Res> {
-  factory _$SetCopyWith(_Set value, $Res Function(_Set) then) =
-      __$SetCopyWithImpl<$Res>;
+abstract class _$SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
+  factory _$SeriesCopyWith(_Series value, $Res Function(_Series) then) =
+      __$SeriesCopyWithImpl<$Res>;
   @override
   $Res call(
       {String reps,
@@ -100,13 +100,13 @@ abstract class _$SetCopyWith<$Res> implements $SetCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SetCopyWithImpl<$Res> extends _$SetCopyWithImpl<$Res>
-    implements _$SetCopyWith<$Res> {
-  __$SetCopyWithImpl(_Set _value, $Res Function(_Set) _then)
-      : super(_value, (v) => _then(v as _Set));
+class __$SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
+    implements _$SeriesCopyWith<$Res> {
+  __$SeriesCopyWithImpl(_Series _value, $Res Function(_Series) _then)
+      : super(_value, (v) => _then(v as _Series));
 
   @override
-  _Set get _value => super._value as _Set;
+  _Series get _value => super._value as _Series;
 
   @override
   $Res call({
@@ -116,7 +116,7 @@ class __$SetCopyWithImpl<$Res> extends _$SetCopyWithImpl<$Res>
     Object resultFromlastTraining = freezed,
     Object completed = freezed,
   }) {
-    return _then(_Set(
+    return _then(_Series(
       reps: reps == freezed ? _value.reps : reps as String,
       weight: weight == freezed ? _value.weight : weight as String,
       time: time == freezed ? _value.time : time as String,
@@ -129,8 +129,8 @@ class __$SetCopyWithImpl<$Res> extends _$SetCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_Set implements _Set {
-  const _$_Set(
+class _$_Series implements _Series {
+  const _$_Series(
       {this.reps,
       this.weight,
       this.time,
@@ -150,13 +150,13 @@ class _$_Set implements _Set {
 
   @override
   String toString() {
-    return 'Set(reps: $reps, weight: $weight, time: $time, resultFromlastTraining: $resultFromlastTraining, completed: $completed)';
+    return 'Series(reps: $reps, weight: $weight, time: $time, resultFromlastTraining: $resultFromlastTraining, completed: $completed)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Set &&
+        (other is _Series &&
             (identical(other.reps, reps) ||
                 const DeepCollectionEquality().equals(other.reps, reps)) &&
             (identical(other.weight, weight) ||
@@ -181,17 +181,17 @@ class _$_Set implements _Set {
       const DeepCollectionEquality().hash(completed);
 
   @override
-  _$SetCopyWith<_Set> get copyWith =>
-      __$SetCopyWithImpl<_Set>(this, _$identity);
+  _$SeriesCopyWith<_Series> get copyWith =>
+      __$SeriesCopyWithImpl<_Series>(this, _$identity);
 }
 
-abstract class _Set implements Set {
-  const factory _Set(
+abstract class _Series implements Series {
+  const factory _Series(
       {String reps,
       String weight,
       String time,
       String resultFromlastTraining,
-      bool completed}) = _$_Set;
+      bool completed}) = _$_Series;
 
   @override
   String get reps;
@@ -204,5 +204,5 @@ abstract class _Set implements Set {
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem
   bool get completed;
   @override
-  _$SetCopyWith<_Set> get copyWith;
+  _$SeriesCopyWith<_Series> get copyWith;
 }

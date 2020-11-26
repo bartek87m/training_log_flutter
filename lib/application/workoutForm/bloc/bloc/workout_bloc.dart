@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:training_log/domain/exercise/exercise.dart';
+import 'package:training_log/domain/series/series.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
@@ -33,8 +34,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       },
       addExerciseToWorkout: (_) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList
-            .add(Exercise(exerciseName: ExerciseName(''), setsList: []));
+        exerciseList.add(
+            Exercise(exerciseName: ExerciseName(''), setsList: List<Series>()));
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
         );
@@ -59,7 +60,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       },
       addSeriesToExercise: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList[e.exerciseNumber].setsList.add(Set());
+        exerciseList[e.exerciseNumber].setsList.add(Series());
 
         yield state.copyWith(
             workout: state.workout.copyWith(exercieList: exerciseList));

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
-import 'package:training_log/domain/series/set.dart' as series;
+import 'package:training_log/domain/series/series.dart' as series;
+import 'package:training_log/domain/series/series.dart';
 import 'package:training_log/presentation/training/widgets/setWidget.dart';
 
 class ExerciseWidget extends HookWidget {
@@ -18,7 +19,7 @@ class ExerciseWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var setList = useState(List<series.Set>.empty());
+    var setList = useState(List<Series>.empty());
 
     return Form(
       child: Container(
@@ -47,11 +48,19 @@ class ExerciseWidget extends HookWidget {
                 labelStyle: TextStyle(color: Colors.grey),
               ),
             ),
+            state.workout.exercieList[numberOfExercise].setsList.length > 0
+                ? Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text('Tu dodać nagłówki'))
+                : Container(),
             Container(
               child: Column(
-                children: setList.value.isNotEmpty
+                children: state.workout.exercieList[numberOfExercise].setsList
+                            .length >
+                        0
                     ? <Widget>[
-                        for (var _ in setList.value)
+                        for (var _ in state
+                            .workout.exercieList[numberOfExercise].setsList)
                           Container(child: SetWidget())
                       ]
                     : <Widget>[Container()],
@@ -60,15 +69,14 @@ class ExerciseWidget extends HookWidget {
             SizedBox(
               height: 10,
             ),
-            setList.value.length > 0 ? Text('Tu dodać nagłówki') : Container(),
             FlatButton(
               onPressed: () {
                 context
                     .read<WorkoutBloc>()
                     .add(WorkoutEvent.addSeriesToExercise(numberOfExercise));
-                setList.value = List<series.Set>.empty();
-                // setList.value = state.workout.exercieList.setList;
-                print(state.workout.exercieList.setsLis);
+                setList.value = List<Series>.empty();
+                setList.value =
+                    state.workout.exercieList[numberOfExercise].setsList;
               },
               child: Text("Add Set"),
             ),
