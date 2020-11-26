@@ -19,7 +19,7 @@ class ExerciseWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var setList = useState(List<Series>.empty());
+    var setList = useState();
 
     return Form(
       child: Container(
