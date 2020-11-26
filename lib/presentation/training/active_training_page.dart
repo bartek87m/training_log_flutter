@@ -10,7 +10,7 @@ import 'package:training_log/presentation/training/widgets/exerciseWidget.dart';
 class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final list = useState(List<Exercise>.empty());
+    final list = useState();
 
     void rebuildWidget(state) {
       list.value = List<Exercise>.empty();
