@@ -33,7 +33,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       },
       addExerciseToWorkout: (_) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList.add(Exercise(exerciseName: 'Exercise', setsList: []));
+        exerciseList
+            .add(Exercise(exerciseName: ExerciseName(''), setsList: []));
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
         );
@@ -56,7 +57,30 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           workout: state.workout.copyWith(title: Title(e.inputStr)),
         );
       },
-      addSeriesToExercise: (_) async* {},
+      addSeriesToExercise: (e) async* {
+        List<Exercise> exerciseList = state.workout.exercieList;
+        exerciseList[e.exerciseNumber].setsList.add(Set());
+
+        yield state.copyWith(
+            workout: state.workout.copyWith(exercieList: exerciseList));
+
+        print(state.workout.exercieList);
+      },
+      removeExerciseFromWorkout: (e) async* {
+        List<Exercise> exerciseList = state.workout.exercieList;
+        exerciseList.removeAt(e.numberOfExercsie);
+        yield state.copyWith(
+          workout: state.workout.copyWith(exercieList: exerciseList),
+        );
+      },
+      addExerciseName: (e) async* {
+        List<Exercise> exerciseList = state.workout.exercieList;
+        exerciseList[e.numberOfExercise] =
+            Exercise(exerciseName: ExerciseName(e.name), setsList: []);
+        yield state.copyWith(
+          workout: state.workout.copyWith(exercieList: exerciseList),
+        );
+      },
     );
   }
 }

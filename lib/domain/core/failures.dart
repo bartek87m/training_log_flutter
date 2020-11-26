@@ -20,4 +20,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.workoutTitleEmpty({
     @required String failedValue,
   }) = WorkoutTItleEmpty<T>;
+  const factory ValueFailure.exerciseNameEmpty({
+    @required String failedValue,
+  }) = ExerciseNameEmpty<T>;
 }

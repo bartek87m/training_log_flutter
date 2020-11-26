@@ -19,13 +19,13 @@ abstract class Workout with _$Workout {
         id: UniqueId(),
         title: Title('Workout title'),
         workoutDate: DateTime.now(),
-        exercieList: [],
+        exercieList: List<Exercise>(),
       );
 
   factory Workout.empty() => Workout(
         id: UniqueId.fromUniqueString(''),
         title: Title(''),
         workoutDate: DateTime.now(),
-        exercieList: [],
+        exercieList: List<Exercise>(),
       );
 }

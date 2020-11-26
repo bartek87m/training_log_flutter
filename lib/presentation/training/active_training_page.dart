@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:kt_dart/kt.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/exercise/exercise.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
@@ -12,6 +11,11 @@ class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final list = useState(List<Exercise>.empty());
+
+    void rebuildWidget(state) {
+      list.value = List<Exercise>.empty();
+      list.value = state.workout.exercieList;
+    }
 
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
@@ -34,6 +38,7 @@ class ActiveTrainingPage extends HookWidget {
                     .add(WorkoutEvent.changeTitle(value)),
                 initialValue:
                     state.workout.title.value.fold((l) => null, (r) => r),
+                decoration: InputDecoration(counter: Offstage()),
                 maxLines: 1,
                 maxLength: 50,
                 maxLengthEnforced: true,
@@ -43,19 +48,23 @@ class ActiveTrainingPage extends HookWidget {
               child: Column(
                 children: list.value.isNotEmpty
                     ? <Widget>[
-                        for (var _ in list.value)
-                          Container(child: ExerciseWidget())
+                        for (var exerciseNumber = 0;
+                            exerciseNumber < list.value.length;
+                            exerciseNumber++)
+                          Container(
+                              child: ExerciseWidget(
+                                  exerciseNumber, context, state, rebuildWidget,
+                                  key: UniqueKey()))
                       ]
                     : <Widget>[Container()],
               ),
             ),
             FlatButton(
               onPressed: () => {
-                list.value = List<Exercise>.empty(),
                 context
                     .read<WorkoutBloc>()
                     .add(WorkoutEvent.addExerciseToWorkout()),
-                list.value = state.workout.exercieList,
+                rebuildWidget(state),
               },
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,

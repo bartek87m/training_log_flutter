@@ -15,3 +15,15 @@ class Title extends ValueObject<String> {
 
   const Title._(this.value);
 }
+
+class ExerciseName extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory ExerciseName(input) {
+    assert(input != null);
+    return ExerciseName._(validateExerciseIsNotEmpty(input));
+  }
+
+  const ExerciseName._(this.value);
+}

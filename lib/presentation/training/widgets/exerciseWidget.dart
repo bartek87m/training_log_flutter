@@ -1,11 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:training_log/presentation/training/widgets/setWidges.dart';
+import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
+import 'package:training_log/domain/series/set.dart' as series;
+import 'package:training_log/presentation/training/widgets/setWidget.dart';
 
 class ExerciseWidget extends HookWidget {
+  final numberOfExercise;
+  final context;
+  final state;
+  final Function rebuildWidget;
+  ExerciseWidget(
+      this.numberOfExercise, this.context, this.state, this.rebuildWidget,
+      {Key key})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    var setList = useState(List<series.Set>.empty());
+
     return Form(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -17,7 +31,13 @@ class ExerciseWidget extends HookWidget {
         child: Column(
           children: [
             TextFormField(
+              initialValue: state
+                  .workout.exercieList[numberOfExercise].exerciseName.value
+                  .fold((f) => null, (r) => r),
+              onChanged: (value) => context.read<WorkoutBloc>().add(
+                  WorkoutEvent.addExerciseName(value.trim(), numberOfExercise)),
               style: TextStyle(fontSize: 14),
+              // validator: () => state.workout.,
               minLines: 1,
               maxLines: 1,
               decoration: InputDecoration(
@@ -27,14 +47,38 @@ class ExerciseWidget extends HookWidget {
                 labelStyle: TextStyle(color: Colors.grey),
               ),
             ),
-            SetWidget(),
+            Container(
+              child: Column(
+                children: setList.value.isNotEmpty
+                    ? <Widget>[
+                        for (var _ in setList.value)
+                          Container(child: SetWidget())
+                      ]
+                    : <Widget>[Container()],
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
+            setList.value.length > 0 ? Text('Tu dodać nagłówki') : Container(),
             FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                context
+                    .read<WorkoutBloc>()
+                    .add(WorkoutEvent.addSeriesToExercise(numberOfExercise));
+                setList.value = List<series.Set>.empty();
+                // setList.value = state.workout.exercieList.setList;
+                print(state.workout.exercieList.setsLis);
+              },
               child: Text("Add Set"),
-              // padding: EdgeInsets.all(0),
+            ),
+            FlatButton(
+              onPressed: () {
+                context.read<WorkoutBloc>().add(
+                    WorkoutEvent.removeExerciseFromWorkout(numberOfExercise));
+                this.rebuildWidget(state);
+              },
+              child: Text("Remove Exercise"),
             )
           ],
         ),

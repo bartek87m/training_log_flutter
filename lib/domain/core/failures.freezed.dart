@@ -48,6 +48,13 @@ class _$ValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+// ignore: unused_element
+  ExerciseNameEmpty<T> exerciseNameEmpty<T>({@required String failedValue}) {
+    return ExerciseNameEmpty<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -63,6 +70,7 @@ mixin _$ValueFailure<T> {
     @required Result passwordsNotIdentical(List<Password> failedValue),
     @required Result workoutTitleTolong(String failedValue),
     @required Result workoutTitleEmpty(String failedValue),
+    @required Result exerciseNameEmpty(String failedValue),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -71,6 +79,7 @@ mixin _$ValueFailure<T> {
     Result passwordsNotIdentical(List<Password> failedValue),
     Result workoutTitleTolong(String failedValue),
     Result workoutTitleEmpty(String failedValue),
+    Result exerciseNameEmpty(String failedValue),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -80,6 +89,7 @@ mixin _$ValueFailure<T> {
     @required Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     @required Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     @required Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    @required Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -88,6 +98,7 @@ mixin _$ValueFailure<T> {
     Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
     @required Result orElse(),
   });
 }
@@ -177,12 +188,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     @required Result passwordsNotIdentical(List<Password> failedValue),
     @required Result workoutTitleTolong(String failedValue),
     @required Result workoutTitleEmpty(String failedValue),
+    @required Result exerciseNameEmpty(String failedValue),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return invalidEmail(failedValue);
   }
 
@@ -194,6 +207,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     Result passwordsNotIdentical(List<Password> failedValue),
     Result workoutTitleTolong(String failedValue),
     Result workoutTitleEmpty(String failedValue),
+    Result exerciseNameEmpty(String failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -211,12 +225,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     @required Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     @required Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     @required Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    @required Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return invalidEmail(this);
   }
 
@@ -228,6 +244,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -314,12 +331,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     @required Result passwordsNotIdentical(List<Password> failedValue),
     @required Result workoutTitleTolong(String failedValue),
     @required Result workoutTitleEmpty(String failedValue),
+    @required Result exerciseNameEmpty(String failedValue),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return shortPassword(failedValue);
   }
 
@@ -331,6 +350,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     Result passwordsNotIdentical(List<Password> failedValue),
     Result workoutTitleTolong(String failedValue),
     Result workoutTitleEmpty(String failedValue),
+    Result exerciseNameEmpty(String failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -348,12 +368,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     @required Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     @required Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     @required Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    @required Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return shortPassword(this);
   }
 
@@ -365,6 +387,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -454,12 +477,14 @@ class _$PasswordsNotIdentical<T> implements PasswordsNotIdentical<T> {
     @required Result passwordsNotIdentical(List<Password> failedValue),
     @required Result workoutTitleTolong(String failedValue),
     @required Result workoutTitleEmpty(String failedValue),
+    @required Result exerciseNameEmpty(String failedValue),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return passwordsNotIdentical(failedValue);
   }
 
@@ -471,6 +496,7 @@ class _$PasswordsNotIdentical<T> implements PasswordsNotIdentical<T> {
     Result passwordsNotIdentical(List<Password> failedValue),
     Result workoutTitleTolong(String failedValue),
     Result workoutTitleEmpty(String failedValue),
+    Result exerciseNameEmpty(String failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -488,12 +514,14 @@ class _$PasswordsNotIdentical<T> implements PasswordsNotIdentical<T> {
     @required Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     @required Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     @required Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    @required Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return passwordsNotIdentical(this);
   }
 
@@ -505,6 +533,7 @@ class _$PasswordsNotIdentical<T> implements PasswordsNotIdentical<T> {
     Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -592,12 +621,14 @@ class _$WorkoutTItleToLong<T> implements WorkoutTItleToLong<T> {
     @required Result passwordsNotIdentical(List<Password> failedValue),
     @required Result workoutTitleTolong(String failedValue),
     @required Result workoutTitleEmpty(String failedValue),
+    @required Result exerciseNameEmpty(String failedValue),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return workoutTitleTolong(failedValue);
   }
 
@@ -609,6 +640,7 @@ class _$WorkoutTItleToLong<T> implements WorkoutTItleToLong<T> {
     Result passwordsNotIdentical(List<Password> failedValue),
     Result workoutTitleTolong(String failedValue),
     Result workoutTitleEmpty(String failedValue),
+    Result exerciseNameEmpty(String failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -626,12 +658,14 @@ class _$WorkoutTItleToLong<T> implements WorkoutTItleToLong<T> {
     @required Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     @required Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     @required Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    @required Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return workoutTitleTolong(this);
   }
 
@@ -643,6 +677,7 @@ class _$WorkoutTItleToLong<T> implements WorkoutTItleToLong<T> {
     Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -730,12 +765,14 @@ class _$WorkoutTItleEmpty<T> implements WorkoutTItleEmpty<T> {
     @required Result passwordsNotIdentical(List<Password> failedValue),
     @required Result workoutTitleTolong(String failedValue),
     @required Result workoutTitleEmpty(String failedValue),
+    @required Result exerciseNameEmpty(String failedValue),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return workoutTitleEmpty(failedValue);
   }
 
@@ -747,6 +784,7 @@ class _$WorkoutTItleEmpty<T> implements WorkoutTItleEmpty<T> {
     Result passwordsNotIdentical(List<Password> failedValue),
     Result workoutTitleTolong(String failedValue),
     Result workoutTitleEmpty(String failedValue),
+    Result exerciseNameEmpty(String failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -764,12 +802,14 @@ class _$WorkoutTItleEmpty<T> implements WorkoutTItleEmpty<T> {
     @required Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     @required Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     @required Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    @required Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(passwordsNotIdentical != null);
     assert(workoutTitleTolong != null);
     assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
     return workoutTitleEmpty(this);
   }
 
@@ -781,6 +821,7 @@ class _$WorkoutTItleEmpty<T> implements WorkoutTItleEmpty<T> {
     Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
     Result workoutTitleTolong(WorkoutTItleToLong<T> value),
     Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -797,4 +838,148 @@ abstract class WorkoutTItleEmpty<T> implements ValueFailure<T> {
 
   String get failedValue;
   $WorkoutTItleEmptyCopyWith<T, WorkoutTItleEmpty<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $ExerciseNameEmptyCopyWith<T, $Res> {
+  factory $ExerciseNameEmptyCopyWith(ExerciseNameEmpty<T> value,
+          $Res Function(ExerciseNameEmpty<T>) then) =
+      _$ExerciseNameEmptyCopyWithImpl<T, $Res>;
+  $Res call({String failedValue});
+}
+
+/// @nodoc
+class _$ExerciseNameEmptyCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ExerciseNameEmptyCopyWith<T, $Res> {
+  _$ExerciseNameEmptyCopyWithImpl(
+      ExerciseNameEmpty<T> _value, $Res Function(ExerciseNameEmpty<T>) _then)
+      : super(_value, (v) => _then(v as ExerciseNameEmpty<T>));
+
+  @override
+  ExerciseNameEmpty<T> get _value => super._value as ExerciseNameEmpty<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(ExerciseNameEmpty<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$ExerciseNameEmpty<T> implements ExerciseNameEmpty<T> {
+  const _$ExerciseNameEmpty({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final String failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.exerciseNameEmpty(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ExerciseNameEmpty<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $ExerciseNameEmptyCopyWith<T, ExerciseNameEmpty<T>> get copyWith =>
+      _$ExerciseNameEmptyCopyWithImpl<T, ExerciseNameEmpty<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result invalidEmail(String failedValue),
+    @required Result shortPassword(String failedValue),
+    @required Result passwordsNotIdentical(List<Password> failedValue),
+    @required Result workoutTitleTolong(String failedValue),
+    @required Result workoutTitleEmpty(String failedValue),
+    @required Result exerciseNameEmpty(String failedValue),
+  }) {
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(passwordsNotIdentical != null);
+    assert(workoutTitleTolong != null);
+    assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
+    return exerciseNameEmpty(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result invalidEmail(String failedValue),
+    Result shortPassword(String failedValue),
+    Result passwordsNotIdentical(List<Password> failedValue),
+    Result workoutTitleTolong(String failedValue),
+    Result workoutTitleEmpty(String failedValue),
+    Result exerciseNameEmpty(String failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (exerciseNameEmpty != null) {
+      return exerciseNameEmpty(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result invalidEmail(InvalidEmail<T> value),
+    @required Result shortPassword(ShortPassword<T> value),
+    @required Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
+    @required Result workoutTitleTolong(WorkoutTItleToLong<T> value),
+    @required Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    @required Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
+  }) {
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(passwordsNotIdentical != null);
+    assert(workoutTitleTolong != null);
+    assert(workoutTitleEmpty != null);
+    assert(exerciseNameEmpty != null);
+    return exerciseNameEmpty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result invalidEmail(InvalidEmail<T> value),
+    Result shortPassword(ShortPassword<T> value),
+    Result passwordsNotIdentical(PasswordsNotIdentical<T> value),
+    Result workoutTitleTolong(WorkoutTItleToLong<T> value),
+    Result workoutTitleEmpty(WorkoutTItleEmpty<T> value),
+    Result exerciseNameEmpty(ExerciseNameEmpty<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (exerciseNameEmpty != null) {
+      return exerciseNameEmpty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ExerciseNameEmpty<T> implements ValueFailure<T> {
+  const factory ExerciseNameEmpty({@required String failedValue}) =
+      _$ExerciseNameEmpty<T>;
+
+  String get failedValue;
+  $ExerciseNameEmptyCopyWith<T, ExerciseNameEmpty<T>> get copyWith;
 }

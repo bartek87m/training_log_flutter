@@ -15,7 +15,7 @@ class _$ExerciseTearOff {
 
 // ignore: unused_element
   _Exercise call(
-      {@required String exerciseName,
+      {@required ExerciseName exerciseName,
       @required List<Set> setsList,
       String note}) {
     return _Exercise(
@@ -32,7 +32,7 @@ const $Exercise = _$ExerciseTearOff();
 
 /// @nodoc
 mixin _$Exercise {
-  String get exerciseName;
+  ExerciseName get exerciseName;
   List<Set> get setsList;
   String get note;
 
@@ -43,7 +43,7 @@ mixin _$Exercise {
 abstract class $ExerciseCopyWith<$Res> {
   factory $ExerciseCopyWith(Exercise value, $Res Function(Exercise) then) =
       _$ExerciseCopyWithImpl<$Res>;
-  $Res call({String exerciseName, List<Set> setsList, String note});
+  $Res call({ExerciseName exerciseName, List<Set> setsList, String note});
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$ExerciseCopyWithImpl<$Res> implements $ExerciseCopyWith<$Res> {
     return _then(_value.copyWith(
       exerciseName: exerciseName == freezed
           ? _value.exerciseName
-          : exerciseName as String,
+          : exerciseName as ExerciseName,
       setsList: setsList == freezed ? _value.setsList : setsList as List<Set>,
       note: note == freezed ? _value.note : note as String,
     ));
@@ -75,7 +75,7 @@ abstract class _$ExerciseCopyWith<$Res> implements $ExerciseCopyWith<$Res> {
   factory _$ExerciseCopyWith(_Exercise value, $Res Function(_Exercise) then) =
       __$ExerciseCopyWithImpl<$Res>;
   @override
-  $Res call({String exerciseName, List<Set> setsList, String note});
+  $Res call({ExerciseName exerciseName, List<Set> setsList, String note});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class __$ExerciseCopyWithImpl<$Res> extends _$ExerciseCopyWithImpl<$Res>
     return _then(_Exercise(
       exerciseName: exerciseName == freezed
           ? _value.exerciseName
-          : exerciseName as String,
+          : exerciseName as ExerciseName,
       setsList: setsList == freezed ? _value.setsList : setsList as List<Set>,
       note: note == freezed ? _value.note : note as String,
     ));
@@ -111,7 +111,7 @@ class _$_Exercise implements _Exercise {
         assert(setsList != null);
 
   @override
-  final String exerciseName;
+  final ExerciseName exerciseName;
   @override
   final List<Set> setsList;
   @override
@@ -150,12 +150,12 @@ class _$_Exercise implements _Exercise {
 
 abstract class _Exercise implements Exercise {
   const factory _Exercise(
-      {@required String exerciseName,
+      {@required ExerciseName exerciseName,
       @required List<Set> setsList,
       String note}) = _$_Exercise;
 
   @override
-  String get exerciseName;
+  ExerciseName get exerciseName;
   @override
   List<Set> get setsList;
   @override
