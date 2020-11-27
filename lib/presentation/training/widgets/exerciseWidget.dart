@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/series/series.dart' as series;
 import 'package:training_log/domain/series/series.dart';
+import 'package:training_log/presentation/training/widgets/sereiesHeadWIdget.dart';
 import 'package:training_log/presentation/training/widgets/setWidget.dart';
 
 class ExerciseWidget extends HookWidget {
@@ -51,7 +52,8 @@ class ExerciseWidget extends HookWidget {
             state.workout.exercieList[numberOfExercise].setsList.length > 0
                 ? Container(
                     margin: EdgeInsets.only(top: 10),
-                    child: Text('Tu dodać nagłówki'))
+                    child: SeriesHeadWidget(),
+                  )
                 : Container(),
             Container(
               child: Column(
