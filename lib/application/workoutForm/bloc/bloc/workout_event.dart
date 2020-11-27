@@ -12,6 +12,8 @@ abstract class WorkoutEvent with _$WorkoutEvent {
       _AddSeriesToExercise;
   const factory WorkoutEvent.removeExerciseFromWorkout(int numberOfExercsie) =
       _RemoveExerciseFromWorkout;
+  const factory WorkoutEvent.removeSeriesFromExercise(
+      int numberOfExercsie, int numberOfSeries) = _RemoveSeriesFromExercise;
   const factory WorkoutEvent.addExerciseName(
       String name, int numberOfExercise) = _AddExerciseName;
 }

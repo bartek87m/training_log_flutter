@@ -82,6 +82,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           workout: state.workout.copyWith(exercieList: exerciseList),
         );
       },
+      removeSeriesFromExercise: (_) {},
     );
   }
 }
