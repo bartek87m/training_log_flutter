@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 
-class SeriesWidget extends StatelessWidget {
+class SeriesWidget extends HookWidget {
   @required
   final seriesNumber;
+  final exerciseNumber;
+  final state;
+  final context;
+  final rebuildExerciseWidget;
 
-  SeriesWidget(this.seriesNumber);
+  SeriesWidget(this.seriesNumber, this.exerciseNumber, this.state, this.context,
+      this.rebuildExerciseWidget,
+      {Key key})
+      : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final mediaQuery = MediaQuery.of(context).size;
     final textFieldHeight = (mediaQuery.height * 0.04);
     final textFieldWidth = (mediaQuery.width * 0.2);
@@ -25,9 +35,8 @@ class SeriesWidget extends StatelessWidget {
             width: textFieldWidth,
             height: textFieldHeight,
             child: TextFormField(
-              cursorHeight: textFieldHeight * 0.7,
-              textAlign: TextAlign.center,
               cursorColor: Colors.grey,
+              cursorHeight: textFieldHeight * 0.7,
               decoration: InputDecoration(
                 fillColor: Colors.grey[600],
                 filled: true,
@@ -41,6 +50,13 @@ class SeriesWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              initialValue: state.workout.exercieList[exerciseNumber]
+                  .setsList[seriesNumber].reps,
+              onChanged: (value) => context.read<WorkoutBloc>().add(
+                    WorkoutEvent.addRepsToSeries(
+                        exerciseNumber, seriesNumber, value.trim()),
+                  ),
+              textAlign: TextAlign.center,
             ),
           ),
           Container(
@@ -64,10 +80,23 @@ class SeriesWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              initialValue: state.workout.exercieList[exerciseNumber]
+                  .setsList[seriesNumber].weight,
+              onChanged: (value) => context.read<WorkoutBloc>().add(
+                    WorkoutEvent.addWeightToSeries(
+                        exerciseNumber, seriesNumber, value.trim()),
+                  ),
             ),
           ),
           Container(
-            child: GestureDetector(onTap: () {}, child: Icon(Icons.delete)),
+            child: GestureDetector(
+                onTap: () {
+                  context.read<WorkoutBloc>().add(
+                      WorkoutEvent.removeSeriesFromExercise(
+                          exerciseNumber, seriesNumber));
+                  this.rebuildExerciseWidget(state);
+                },
+                child: Icon(Icons.delete)),
           ),
         ],
       ),

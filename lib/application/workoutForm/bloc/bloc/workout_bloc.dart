@@ -64,8 +64,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
             workout: state.workout.copyWith(exercieList: exerciseList));
-
-        print(state.workout.exercieList);
       },
       removeExerciseFromWorkout: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
@@ -76,13 +74,42 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       },
       addExerciseName: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList[e.numberOfExercise] =
-            Exercise(exerciseName: ExerciseName(e.name), setsList: []);
+        exerciseList[e.numberOfExercise] = exerciseList[e.numberOfExercise]
+            .copyWith(exerciseName: ExerciseName(e.name));
+
+        yield state.copyWith(
+            workout: state.workout.copyWith(exercieList: exerciseList));
+      },
+      removeSeriesFromExercise: (e) async* {
+        List<Exercise> exerciseList = state.workout.exercieList;
+        exerciseList[e.exerciseNumber].setsList.removeAt(e.numberOfSeries);
+
+        yield state.copyWith(
+            workout: state.workout.copyWith(exercieList: exerciseList));
+      },
+      addRepsToSeries: (e) async* {
+        List<Exercise> exerciseList = state.workout.exercieList;
+        exerciseList[e.exerciseNumber].setsList[e.seriesNumber] =
+            exerciseList[e.exerciseNumber]
+                .setsList[e.seriesNumber]
+                .copyWith(reps: e.reps);
+
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
         );
       },
-      removeSeriesFromExercise: (_) {},
+      addWeightToSeries: (e) async* {
+        List<Exercise> exerciseList = state.workout.exercieList;
+        exerciseList[e.exerciseNumber].setsList[e.seriesNumber] =
+            exerciseList[e.exerciseNumber]
+                .setsList[e.seriesNumber]
+                .copyWith(weight: e.weight);
+
+        yield state.copyWith(
+          workout: state.workout.copyWith(exercieList: exerciseList),
+        );
+        print(state.workout);
+      },
     );
   }
 }

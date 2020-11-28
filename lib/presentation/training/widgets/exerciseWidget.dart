@@ -8,35 +8,36 @@ import 'package:training_log/presentation/training/widgets/sereiesHeadWidget.dar
 import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
 class ExerciseWidget extends HookWidget {
-  final numberOfExercise;
+  final exerciseNumber;
   final context;
   final state;
   final Function rebuildWidget;
   ExerciseWidget(
-      this.numberOfExercise, this.context, this.state, this.rebuildWidget,
+      this.exerciseNumber, this.context, this.state, this.rebuildWidget,
       {Key key})
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     var setList = useState();
+
+    void rebuildExerciseWidget(state) {
+      setList.value = [];
+      setList.value = state.workout.exercieList[exerciseNumber].setsList;
+    }
 
     return Form(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        decoration: BoxDecoration(
-            // border: Border.all(width: 0.5, color: Colors.grey),
-            // borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
         padding: const EdgeInsets.only(top: 5, left: 20, right: 20),
         child: Column(
           children: [
             TextFormField(
               initialValue: state
-                  .workout.exercieList[numberOfExercise].exerciseName.value
+                  .workout.exercieList[exerciseNumber].exerciseName.value
                   .fold((f) => null, (r) => r),
               onChanged: (value) => context.read<WorkoutBloc>().add(
-                  WorkoutEvent.addExerciseName(value.trim(), numberOfExercise)),
+                  WorkoutEvent.addExerciseName(value.trim(), exerciseNumber)),
               style: TextStyle(fontSize: 14),
               // validator: () => state.workout.,
               minLines: 1,
@@ -53,7 +54,7 @@ class ExerciseWidget extends HookWidget {
                 ),
               ),
             ),
-            state.workout.exercieList[numberOfExercise].setsList.length > 0
+            state.workout.exercieList[exerciseNumber].setsList.length > 0
                 ? Container(
                     margin: EdgeInsets.only(top: 10),
                     child: SeriesHeadWidget(),
@@ -61,18 +62,27 @@ class ExerciseWidget extends HookWidget {
                 : Container(),
             Container(
               child: Column(
-                children: state.workout.exercieList[numberOfExercise].setsList
-                            .length >
-                        0
-                    ? <Widget>[
-                        for (var numberOfSerie = 0;
-                            numberOfSerie <
-                                state.workout.exercieList[numberOfExercise]
-                                    .setsList.length;
-                            numberOfSerie++)
-                          Container(child: SeriesWidget(numberOfSerie))
-                      ]
-                    : <Widget>[Container()],
+                children:
+                    state.workout.exercieList[exerciseNumber].setsList.length >
+                            0
+                        ? <Widget>[
+                            for (var numberOfSerie = 0;
+                                numberOfSerie <
+                                    state.workout.exercieList[exerciseNumber]
+                                        .setsList.length;
+                                numberOfSerie++)
+                              Container(
+                                child: SeriesWidget(
+                                  numberOfSerie,
+                                  exerciseNumber,
+                                  state,
+                                  context,
+                                  rebuildExerciseWidget,
+                                  key: UniqueKey(),
+                                ),
+                              )
+                          ]
+                        : <Widget>[Container()],
               ),
             ),
             SizedBox(
@@ -82,17 +92,17 @@ class ExerciseWidget extends HookWidget {
               onPressed: () {
                 context
                     .read<WorkoutBloc>()
-                    .add(WorkoutEvent.addSeriesToExercise(numberOfExercise));
+                    .add(WorkoutEvent.addSeriesToExercise(exerciseNumber));
                 setList.value = List<Series>.empty();
                 setList.value =
-                    state.workout.exercieList[numberOfExercise].setsList;
+                    state.workout.exercieList[exerciseNumber].setsList;
               },
               child: Text("Add Set"),
             ),
             FlatButton(
               onPressed: () {
                 context.read<WorkoutBloc>().add(
-                    WorkoutEvent.removeExerciseFromWorkout(numberOfExercise));
+                    WorkoutEvent.removeExerciseFromWorkout(exerciseNumber));
                 this.rebuildWidget(state);
               },
               child: Text("Remove Exercise"),
