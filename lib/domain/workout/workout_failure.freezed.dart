@@ -17,6 +17,16 @@ class _$WorkoutFailureTearOff {
   ServerError serverError() {
     return const ServerError();
   }
+
+// ignore: unused_element
+  PermissionDenied permissionDenied() {
+    return const PermissionDenied();
+  }
+
+// ignore: unused_element
+  Unexpected unexpected() {
+    return const Unexpected();
+  }
 }
 
 /// @nodoc
@@ -28,19 +38,27 @@ mixin _$WorkoutFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result serverError(),
+    @required Result permissionDenied(),
+    @required Result unexpected(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result serverError(),
+    Result permissionDenied(),
+    Result unexpected(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result serverError(ServerError value),
+    @required Result permissionDenied(PermissionDenied value),
+    @required Result unexpected(Unexpected value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result serverError(ServerError value),
+    Result permissionDenied(PermissionDenied value),
+    Result unexpected(Unexpected value),
     @required Result orElse(),
   });
 }
@@ -101,8 +119,12 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result serverError(),
+    @required Result permissionDenied(),
+    @required Result unexpected(),
   }) {
     assert(serverError != null);
+    assert(permissionDenied != null);
+    assert(unexpected != null);
     return serverError();
   }
 
@@ -110,6 +132,8 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result serverError(),
+    Result permissionDenied(),
+    Result unexpected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -123,8 +147,12 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result serverError(ServerError value),
+    @required Result permissionDenied(PermissionDenied value),
+    @required Result unexpected(Unexpected value),
   }) {
     assert(serverError != null);
+    assert(permissionDenied != null);
+    assert(unexpected != null);
     return serverError(this);
   }
 
@@ -132,6 +160,8 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result serverError(ServerError value),
+    Result permissionDenied(PermissionDenied value),
+    Result unexpected(Unexpected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -144,4 +174,196 @@ class _$ServerError implements ServerError {
 
 abstract class ServerError implements WorkoutFailure {
   const factory ServerError() = _$ServerError;
+}
+
+/// @nodoc
+abstract class $PermissionDeniedCopyWith<$Res> {
+  factory $PermissionDeniedCopyWith(
+          PermissionDenied value, $Res Function(PermissionDenied) then) =
+      _$PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PermissionDeniedCopyWithImpl<$Res>
+    extends _$WorkoutFailureCopyWithImpl<$Res>
+    implements $PermissionDeniedCopyWith<$Res> {
+  _$PermissionDeniedCopyWithImpl(
+      PermissionDenied _value, $Res Function(PermissionDenied) _then)
+      : super(_value, (v) => _then(v as PermissionDenied));
+
+  @override
+  PermissionDenied get _value => super._value as PermissionDenied;
+}
+
+/// @nodoc
+class _$PermissionDenied implements PermissionDenied {
+  const _$PermissionDenied();
+
+  @override
+  String toString() {
+    return 'WorkoutFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result serverError(),
+    @required Result permissionDenied(),
+    @required Result unexpected(),
+  }) {
+    assert(serverError != null);
+    assert(permissionDenied != null);
+    assert(unexpected != null);
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result serverError(),
+    Result permissionDenied(),
+    Result unexpected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result serverError(ServerError value),
+    @required Result permissionDenied(PermissionDenied value),
+    @required Result unexpected(Unexpected value),
+  }) {
+    assert(serverError != null);
+    assert(permissionDenied != null);
+    assert(unexpected != null);
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result serverError(ServerError value),
+    Result permissionDenied(PermissionDenied value),
+    Result unexpected(Unexpected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PermissionDenied implements WorkoutFailure {
+  const factory PermissionDenied() = _$PermissionDenied;
+}
+
+/// @nodoc
+abstract class $UnexpectedCopyWith<$Res> {
+  factory $UnexpectedCopyWith(
+          Unexpected value, $Res Function(Unexpected) then) =
+      _$UnexpectedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UnexpectedCopyWithImpl<$Res> extends _$WorkoutFailureCopyWithImpl<$Res>
+    implements $UnexpectedCopyWith<$Res> {
+  _$UnexpectedCopyWithImpl(Unexpected _value, $Res Function(Unexpected) _then)
+      : super(_value, (v) => _then(v as Unexpected));
+
+  @override
+  Unexpected get _value => super._value as Unexpected;
+}
+
+/// @nodoc
+class _$Unexpected implements Unexpected {
+  const _$Unexpected();
+
+  @override
+  String toString() {
+    return 'WorkoutFailure.unexpected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Unexpected);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result serverError(),
+    @required Result permissionDenied(),
+    @required Result unexpected(),
+  }) {
+    assert(serverError != null);
+    assert(permissionDenied != null);
+    assert(unexpected != null);
+    return unexpected();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result serverError(),
+    Result permissionDenied(),
+    Result unexpected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpected != null) {
+      return unexpected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result serverError(ServerError value),
+    @required Result permissionDenied(PermissionDenied value),
+    @required Result unexpected(Unexpected value),
+  }) {
+    assert(serverError != null);
+    assert(permissionDenied != null);
+    assert(unexpected != null);
+    return unexpected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result serverError(ServerError value),
+    Result permissionDenied(PermissionDenied value),
+    Result unexpected(Unexpected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpected != null) {
+      return unexpected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Unexpected implements WorkoutFailure {
+  const factory Unexpected() = _$Unexpected;
 }
