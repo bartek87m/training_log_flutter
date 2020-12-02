@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:training_log/domain/exercise/exercise.dart';
 import 'package:training_log/domain/series/series.dart';
+import 'package:training_log/domain/workout/i_workout_facade.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
@@ -17,9 +18,9 @@ part 'workout_bloc.freezed.dart';
 
 @injectable
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
-  // final IWorkoutFacade iTrainingFacade;
+  final IWorkoutFacade iWorkoutFacade;
 
-  WorkoutBloc() : super(WorkoutState.initial());
+  WorkoutBloc(this.iWorkoutFacade) : super(WorkoutState.initial());
 
   @override
   Stream<WorkoutState> mapEventToState(
@@ -48,6 +49,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       finishWorkout: (_) async* {
+        iWorkoutFacade.createWorkout(workout: state.workout);
+
         yield state.copyWith(
           isSaving: true,
           isEditing: false,

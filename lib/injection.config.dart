@@ -34,7 +34,7 @@ GetIt $initGetIt(
   gh.lazySingleton<IWorkoutFacade>(
       () => FirebaseWorkoutFacade(get<FirebaseFirestore>()));
   gh.factory<SignInCubit>(() => SignInCubit(get<IAuthFacade>()));
-  gh.factory<WorkoutBloc>(() => WorkoutBloc());
+  gh.factory<WorkoutBloc>(() => WorkoutBloc(get<IWorkoutFacade>()));
   gh.factory<AuthCubit>(() => AuthCubit(get<IAuthFacade>()));
   return get;
 }
