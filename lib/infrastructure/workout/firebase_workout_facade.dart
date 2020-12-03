@@ -15,15 +15,17 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   @override
   Future<Either<WorkoutFailure, Unit>> createWorkout({Workout workout}) async {
     final aaa = {'wod': 'workout'};
-    try {
-      final userDoc = await _firestore.userDocument();
-      print(workout);
-      await userDoc.workoutCollection.doc(workout.id.toString()).set(aaa);
+    print(workout);
 
-      return right(unit);
-    } catch (e) {
-      print(e);
-    }
+    // try {
+    //   final userDoc = await _firestore.userDocument();
+    //   print(workout);
+    //   await userDoc.workoutCollection.doc(workout.id.toString()).set(aaa);
+
+    //   return right(unit);
+    // } catch (e) {
+    //   print(e);
+    // }
   }
 
   @override
