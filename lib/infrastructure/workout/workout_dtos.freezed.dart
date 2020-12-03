@@ -8,6 +8,9 @@ part of 'workout_dtos.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+WorkoutDto _$WorkoutDtoFromJson(Map<String, dynamic> json) {
+  return _WorkoutDto.fromJson(json);
+}
 
 /// @nodoc
 class _$WorkoutDtoTearOff {
@@ -28,6 +31,11 @@ class _$WorkoutDtoTearOff {
       updateDate: updateDate,
     );
   }
+
+// ignore: unused_element
+  WorkoutDto fromJson(Map<String, Object> json) {
+    return WorkoutDto.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -43,6 +51,7 @@ mixin _$WorkoutDto {
   List<ExerciseDto> get exercieList;
   DateTime get updateDate;
 
+  Map<String, dynamic> toJson();
   $WorkoutDtoCopyWith<WorkoutDto> get copyWith;
 }
 
@@ -135,6 +144,8 @@ class __$WorkoutDtoCopyWithImpl<$Res> extends _$WorkoutDtoCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
   const _$_WorkoutDto(
@@ -147,6 +158,9 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
         assert(workoutDate != null),
         assert(exercieList != null),
         super._();
+
+  factory _$_WorkoutDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_WorkoutDtoFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -208,6 +222,11 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
   @override
   _$WorkoutDtoCopyWith<_WorkoutDto> get copyWith =>
       __$WorkoutDtoCopyWithImpl<_WorkoutDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_WorkoutDtoToJson(this);
+  }
 }
 
 abstract class _WorkoutDto extends WorkoutDto {
@@ -218,6 +237,9 @@ abstract class _WorkoutDto extends WorkoutDto {
       @required DateTime workoutDate,
       @required List<ExerciseDto> exercieList,
       DateTime updateDate}) = _$_WorkoutDto;
+
+  factory _WorkoutDto.fromJson(Map<String, dynamic> json) =
+      _$_WorkoutDto.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -234,6 +256,10 @@ abstract class _WorkoutDto extends WorkoutDto {
   _$WorkoutDtoCopyWith<_WorkoutDto> get copyWith;
 }
 
+ExerciseDto _$ExerciseDtoFromJson(Map<String, dynamic> json) {
+  return _ExerciseDto.fromJson(json);
+}
+
 /// @nodoc
 class _$ExerciseDtoTearOff {
   const _$ExerciseDtoTearOff();
@@ -245,6 +271,11 @@ class _$ExerciseDtoTearOff {
       exerciseName: exerciseName,
       setsList: setsList,
     );
+  }
+
+// ignore: unused_element
+  ExerciseDto fromJson(Map<String, Object> json) {
+    return ExerciseDto.fromJson(json);
   }
 }
 
@@ -258,6 +289,7 @@ mixin _$ExerciseDto {
   String get exerciseName;
   List<SeriesDto> get setsList;
 
+  Map<String, dynamic> toJson();
   $ExerciseDtoCopyWith<ExerciseDto> get copyWith;
 }
 
@@ -327,12 +359,17 @@ class __$ExerciseDtoCopyWithImpl<$Res> extends _$ExerciseDtoCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_ExerciseDto extends _ExerciseDto with DiagnosticableTreeMixin {
   const _$_ExerciseDto({@required this.exerciseName, @required this.setsList})
       : assert(exerciseName != null),
         assert(setsList != null),
         super._();
+
+  factory _$_ExerciseDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_ExerciseDtoFromJson(json);
 
   @override // @required String exerciseNumber,
   final String exerciseName;
@@ -374,6 +411,11 @@ class _$_ExerciseDto extends _ExerciseDto with DiagnosticableTreeMixin {
   @override
   _$ExerciseDtoCopyWith<_ExerciseDto> get copyWith =>
       __$ExerciseDtoCopyWithImpl<_ExerciseDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ExerciseDtoToJson(this);
+  }
 }
 
 abstract class _ExerciseDto extends ExerciseDto {
@@ -382,12 +424,19 @@ abstract class _ExerciseDto extends ExerciseDto {
       {@required String exerciseName,
       @required List<SeriesDto> setsList}) = _$_ExerciseDto;
 
+  factory _ExerciseDto.fromJson(Map<String, dynamic> json) =
+      _$_ExerciseDto.fromJson;
+
   @override // @required String exerciseNumber,
   String get exerciseName;
   @override
   List<SeriesDto> get setsList;
   @override
   _$ExerciseDtoCopyWith<_ExerciseDto> get copyWith;
+}
+
+SeriesDto _$SeriesDtoFromJson(Map<String, dynamic> json) {
+  return _SeriesDto.fromJson(json);
 }
 
 /// @nodoc
@@ -407,6 +456,11 @@ class _$SeriesDtoTearOff {
       completed: completed,
     );
   }
+
+// ignore: unused_element
+  SeriesDto fromJson(Map<String, Object> json) {
+    return SeriesDto.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -421,6 +475,7 @@ mixin _$SeriesDto {
   String get resultFromLastTraining;
   bool get completed;
 
+  Map<String, dynamic> toJson();
   $SeriesDtoCopyWith<SeriesDto> get copyWith;
 }
 
@@ -501,6 +556,8 @@ class __$SeriesDtoCopyWithImpl<$Res> extends _$SeriesDtoCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_SeriesDto extends _SeriesDto with DiagnosticableTreeMixin {
   const _$_SeriesDto(
@@ -511,6 +568,9 @@ class _$_SeriesDto extends _SeriesDto with DiagnosticableTreeMixin {
       : assert(reps != null),
         assert(result != null),
         super._();
+
+  factory _$_SeriesDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_SeriesDtoFromJson(json);
 
   @override // @required String seriesNumber,
   final String reps;
@@ -565,6 +625,11 @@ class _$_SeriesDto extends _SeriesDto with DiagnosticableTreeMixin {
   @override
   _$SeriesDtoCopyWith<_SeriesDto> get copyWith =>
       __$SeriesDtoCopyWithImpl<_SeriesDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SeriesDtoToJson(this);
+  }
 }
 
 abstract class _SeriesDto extends SeriesDto {
@@ -574,6 +639,9 @@ abstract class _SeriesDto extends SeriesDto {
       @required String result,
       String resultFromLastTraining,
       bool completed}) = _$_SeriesDto;
+
+  factory _SeriesDto.fromJson(Map<String, dynamic> json) =
+      _$_SeriesDto.fromJson;
 
   @override // @required String seriesNumber,
   String get reps;

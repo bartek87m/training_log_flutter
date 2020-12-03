@@ -49,8 +49,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       finishWorkout: (_) async* {
-        print(state.workout.title);
-        //iWorkoutFacade.createWorkout(workout: state.workout);
+        iWorkoutFacade.createWorkout(workout: state.workout);
 
         // yield state.copyWith(
         //   isSaving: true,

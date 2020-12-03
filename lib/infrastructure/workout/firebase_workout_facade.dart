@@ -5,6 +5,7 @@ import 'package:training_log/domain/workout/i_workout_facade.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/infrastructure/core/firestore_helpers.dart';
+import 'package:training_log/infrastructure/workout/workout_dtos.dart';
 
 @LazySingleton(as: IWorkoutFacade)
 class FirebaseWorkoutFacade implements IWorkoutFacade {
@@ -14,18 +15,18 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
 
   @override
   Future<Either<WorkoutFailure, Unit>> createWorkout({Workout workout}) async {
-    final aaa = {'wod': 'workout'};
-    print(workout);
+    final workoutDto = WorkoutDto.fromDomain(workout);
+    print(workoutDto.toJson());
+    try {
+      final userDoc = await _firestore.userDocument();
+      await userDoc.workoutCollection
+          .doc(workout.id.toString())
+          .set(workoutDto.toJson());
 
-    // try {
-    //   final userDoc = await _firestore.userDocument();
-    //   print(workout);
-    //   await userDoc.workoutCollection.doc(workout.id.toString()).set(aaa);
-
-    //   return right(unit);
-    // } catch (e) {
-    //   print(e);
-    // }
+      return right(unit);
+    } catch (e) {
+      print("qqq $e");
+    }
   }
 
   @override
