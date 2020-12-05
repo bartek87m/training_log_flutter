@@ -16,9 +16,8 @@ _$_WorkoutDto _$_$_WorkoutDtoFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : ExerciseDto.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    updateDate: json['updateDate'] == null
-        ? null
-        : DateTime.parse(json['updateDate'] as String),
+    serverTimeStamp:
+        const ServerTimestampConverter().fromJson(json['serverTimeStamp']),
   );
 }
 
@@ -27,7 +26,8 @@ Map<String, dynamic> _$_$_WorkoutDtoToJson(_$_WorkoutDto instance) =>
       'title': instance.title,
       'workoutDate': instance.workoutDate?.toIso8601String(),
       'exercieList': instance.exercieList?.map((e) => e?.toJson())?.toList(),
-      'updateDate': instance.updateDate?.toIso8601String(),
+      'serverTimeStamp':
+          const ServerTimestampConverter().toJson(instance.serverTimeStamp),
     };
 
 _$_ExerciseDto _$_$_ExerciseDtoFromJson(Map<String, dynamic> json) {

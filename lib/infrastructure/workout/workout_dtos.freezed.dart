@@ -22,13 +22,13 @@ class _$WorkoutDtoTearOff {
       @required String title,
       @required DateTime workoutDate,
       @required List<ExerciseDto> exercieList,
-      DateTime updateDate}) {
+      @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
     return _WorkoutDto(
       id: id,
       title: title,
       workoutDate: workoutDate,
       exercieList: exercieList,
-      updateDate: updateDate,
+      serverTimeStamp: serverTimeStamp,
     );
   }
 
@@ -49,7 +49,8 @@ mixin _$WorkoutDto {
   String get title;
   DateTime get workoutDate;
   List<ExerciseDto> get exercieList;
-  DateTime get updateDate;
+  @ServerTimestampConverter()
+  FieldValue get serverTimeStamp;
 
   Map<String, dynamic> toJson();
   $WorkoutDtoCopyWith<WorkoutDto> get copyWith;
@@ -65,7 +66,7 @@ abstract class $WorkoutDtoCopyWith<$Res> {
       String title,
       DateTime workoutDate,
       List<ExerciseDto> exercieList,
-      DateTime updateDate});
+      @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
 /// @nodoc
@@ -82,7 +83,7 @@ class _$WorkoutDtoCopyWithImpl<$Res> implements $WorkoutDtoCopyWith<$Res> {
     Object title = freezed,
     Object workoutDate = freezed,
     Object exercieList = freezed,
-    Object updateDate = freezed,
+    Object serverTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -92,8 +93,9 @@ class _$WorkoutDtoCopyWithImpl<$Res> implements $WorkoutDtoCopyWith<$Res> {
       exercieList: exercieList == freezed
           ? _value.exercieList
           : exercieList as List<ExerciseDto>,
-      updateDate:
-          updateDate == freezed ? _value.updateDate : updateDate as DateTime,
+      serverTimeStamp: serverTimeStamp == freezed
+          ? _value.serverTimeStamp
+          : serverTimeStamp as FieldValue,
     ));
   }
 }
@@ -109,7 +111,7 @@ abstract class _$WorkoutDtoCopyWith<$Res> implements $WorkoutDtoCopyWith<$Res> {
       String title,
       DateTime workoutDate,
       List<ExerciseDto> exercieList,
-      DateTime updateDate});
+      @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
 /// @nodoc
@@ -128,7 +130,7 @@ class __$WorkoutDtoCopyWithImpl<$Res> extends _$WorkoutDtoCopyWithImpl<$Res>
     Object title = freezed,
     Object workoutDate = freezed,
     Object exercieList = freezed,
-    Object updateDate = freezed,
+    Object serverTimeStamp = freezed,
   }) {
     return _then(_WorkoutDto(
       id: id == freezed ? _value.id : id as String,
@@ -138,8 +140,9 @@ class __$WorkoutDtoCopyWithImpl<$Res> extends _$WorkoutDtoCopyWithImpl<$Res>
       exercieList: exercieList == freezed
           ? _value.exercieList
           : exercieList as List<ExerciseDto>,
-      updateDate:
-          updateDate == freezed ? _value.updateDate : updateDate as DateTime,
+      serverTimeStamp: serverTimeStamp == freezed
+          ? _value.serverTimeStamp
+          : serverTimeStamp as FieldValue,
     ));
   }
 }
@@ -153,10 +156,11 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
       @required this.title,
       @required this.workoutDate,
       @required this.exercieList,
-      this.updateDate})
+      @required @ServerTimestampConverter() this.serverTimeStamp})
       : assert(title != null),
         assert(workoutDate != null),
         assert(exercieList != null),
+        assert(serverTimeStamp != null),
         super._();
 
   factory _$_WorkoutDto.fromJson(Map<String, dynamic> json) =>
@@ -172,11 +176,12 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
   @override
   final List<ExerciseDto> exercieList;
   @override
-  final DateTime updateDate;
+  @ServerTimestampConverter()
+  final FieldValue serverTimeStamp;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutDto(id: $id, title: $title, workoutDate: $workoutDate, exercieList: $exercieList, updateDate: $updateDate)';
+    return 'WorkoutDto(id: $id, title: $title, workoutDate: $workoutDate, exercieList: $exercieList, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -188,7 +193,7 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('workoutDate', workoutDate))
       ..add(DiagnosticsProperty('exercieList', exercieList))
-      ..add(DiagnosticsProperty('updateDate', updateDate));
+      ..add(DiagnosticsProperty('serverTimeStamp', serverTimeStamp));
   }
 
   @override
@@ -205,9 +210,9 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
             (identical(other.exercieList, exercieList) ||
                 const DeepCollectionEquality()
                     .equals(other.exercieList, exercieList)) &&
-            (identical(other.updateDate, updateDate) ||
+            (identical(other.serverTimeStamp, serverTimeStamp) ||
                 const DeepCollectionEquality()
-                    .equals(other.updateDate, updateDate)));
+                    .equals(other.serverTimeStamp, serverTimeStamp)));
   }
 
   @override
@@ -217,7 +222,7 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(workoutDate) ^
       const DeepCollectionEquality().hash(exercieList) ^
-      const DeepCollectionEquality().hash(updateDate);
+      const DeepCollectionEquality().hash(serverTimeStamp);
 
   @override
   _$WorkoutDtoCopyWith<_WorkoutDto> get copyWith =>
@@ -232,11 +237,12 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
 abstract class _WorkoutDto extends WorkoutDto {
   const _WorkoutDto._() : super._();
   const factory _WorkoutDto(
-      {@JsonKey(ignore: true) String id,
-      @required String title,
-      @required DateTime workoutDate,
-      @required List<ExerciseDto> exercieList,
-      DateTime updateDate}) = _$_WorkoutDto;
+          {@JsonKey(ignore: true) String id,
+          @required String title,
+          @required DateTime workoutDate,
+          @required List<ExerciseDto> exercieList,
+          @required @ServerTimestampConverter() FieldValue serverTimeStamp}) =
+      _$_WorkoutDto;
 
   factory _WorkoutDto.fromJson(Map<String, dynamic> json) =
       _$_WorkoutDto.fromJson;
@@ -251,7 +257,8 @@ abstract class _WorkoutDto extends WorkoutDto {
   @override
   List<ExerciseDto> get exercieList;
   @override
-  DateTime get updateDate;
+  @ServerTimestampConverter()
+  FieldValue get serverTimeStamp;
   @override
   _$WorkoutDtoCopyWith<_WorkoutDto> get copyWith;
 }

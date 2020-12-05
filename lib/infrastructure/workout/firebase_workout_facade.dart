@@ -20,12 +20,15 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
     try {
       final userDoc = await _firestore.userDocument();
       await userDoc.workoutCollection
-          .doc(workout.id.toString())
+          .doc(workoutDto.id)
           .set(workoutDto.toJson());
 
       return right(unit);
-    } catch (e) {
-      print("qqq $e");
+    } on FirebaseException catch (e) {
+      if (e.message.contains('PERMISSION_DENIED')) {
+        return left(const WorkoutFailure.permissionDenied());
+      }
+      return left(const WorkoutFailure.unexpected());
     }
   }
 
