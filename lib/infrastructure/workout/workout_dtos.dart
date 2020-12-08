@@ -31,6 +31,11 @@ abstract class WorkoutDto implements _$WorkoutDto {
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
+
+  // Workout toDomain() {
+  //   return Workout(id: )
+  // }
+
   factory WorkoutDto.fromJson(Map<String, dynamic> json) =>
       _$WorkoutDtoFromJson(json);
 }

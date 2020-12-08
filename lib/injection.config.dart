@@ -17,6 +17,7 @@ import 'domain/auth/i_auth_facade.dart';
 import 'domain/workout/i_workout_facade.dart';
 import 'application/auth/signIn/sign_in_cubit.dart';
 import 'application/workoutForm/bloc/bloc/workout_bloc.dart';
+import 'application/workoutWatcher/workoutwatcher_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -35,6 +36,8 @@ GetIt $initGetIt(
       () => FirebaseWorkoutFacade(get<FirebaseFirestore>()));
   gh.factory<SignInCubit>(() => SignInCubit(get<IAuthFacade>()));
   gh.factory<WorkoutBloc>(() => WorkoutBloc(get<IWorkoutFacade>()));
+  gh.factory<WorkoutwatcherBloc>(
+      () => WorkoutwatcherBloc(get<IWorkoutFacade>()));
   gh.factory<AuthCubit>(() => AuthCubit(get<IAuthFacade>()));
   return get;
 }

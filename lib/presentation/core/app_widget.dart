@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/auth/signIn/sign_in_cubit.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
+import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
 import 'package:training_log/injection.dart';
 import 'package:training_log/presentation/routes/router.gr.dart' as router;
 
@@ -20,7 +21,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<WorkoutBloc>(),
-        )
+        ),
+        BlocProvider(
+          create: (context) => getIt<WorkoutwatcherBloc>(),
+        ),
       ],
       child: MaterialApp(
         title: 'Training Log',

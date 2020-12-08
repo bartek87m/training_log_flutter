@@ -6,4 +6,5 @@ abstract class IWorkoutFacade {
   Future<Either<WorkoutFailure, Unit>> createWorkout({Workout workout});
   Future<Either<WorkoutFailure, Unit>> update({Workout workout});
   Future<Either<WorkoutFailure, Unit>> removeWorkout({String workoutId});
+  Stream<Either<WorkoutFailure, List<Workout>>> watchAll();
 }

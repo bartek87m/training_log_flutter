@@ -5,6 +5,7 @@ import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/create_new_workout.dart';
+import 'package:training_log/presentation/training/widgets/workoutsViewsWidget.dart';
 
 class TrainingsPage extends StatelessWidget {
   @override
@@ -29,7 +30,7 @@ class TrainingsPage extends StatelessWidget {
           },
         )
       ],
-      child: BlocBuilder<WorkoutBloc, WorkoutState>(
+      child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
           return Scaffold(
               appBar: AppBar(
@@ -43,7 +44,12 @@ class TrainingsPage extends StatelessWidget {
                   )
                 ],
               ),
-              body: CreateNewWorkout());
+              body: Column(
+                children: [
+                  CreateNewWorkout(),
+                  WorkoutsViewsWidget(),
+                ],
+              ));
         },
       ),
     );
