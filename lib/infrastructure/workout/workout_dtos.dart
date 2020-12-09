@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:training_log/domain/core/value_object.dart';
 import 'package:training_log/domain/exercise/exercise.dart';
 import 'package:training_log/domain/series/series.dart';
+import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
 
 part 'workout_dtos.freezed.dart';
@@ -32,9 +34,15 @@ abstract class WorkoutDto implements _$WorkoutDto {
     );
   }
 
-  // Workout toDomain() {
-  //   return Workout(id: )
-  // }
+  Workout toDomain() {
+    return Workout(
+      id: UniqueId.fromUniqueString(id),
+      title: Title(title),
+      workoutDate: workoutDate,
+      updateDate: null,
+      exercieList: exercieList.map((workout) => workout.toDomain()).toList(),
+    );
+  }
 
   factory WorkoutDto.fromJson(Map<String, dynamic> json) =>
       _$WorkoutDtoFromJson(json);
@@ -72,6 +80,14 @@ abstract class ExerciseDto implements _$ExerciseDto {
           .toList(),
     );
   }
+
+  Exercise toDomain() {
+    return Exercise(
+      exerciseName: ExerciseName(exerciseName),
+      setsList: setsList.map((series) => series.toDomain()).toList(),
+    );
+  }
+
   factory ExerciseDto.fromJson(Map<String, dynamic> json) =>
       _$ExerciseDtoFromJson(json);
 }
@@ -80,16 +96,24 @@ abstract class ExerciseDto implements _$ExerciseDto {
 abstract class SeriesDto implements _$SeriesDto {
   const SeriesDto._();
 
-  const factory SeriesDto(
-      {
-      // @required String seriesNumber,
-      @required String reps,
-      @required String result, //reps or time,
-      String resultFromLastTraining,
-      bool completed}) = _SeriesDto;
+  const factory SeriesDto({
+    // @required String seriesNumber,
+    @required String reps,
+    @required String result, //reps or time,
+    String resultFromLastTraining,
+    bool completed,
+  }) = _SeriesDto;
 
   factory SeriesDto.fromDomain(Series series) {
     return SeriesDto(reps: series.reps, result: series.weight);
+  }
+
+  Series toDomain() {
+    return Series(
+        completed: completed,
+        resultFromlastTraining: resultFromLastTraining,
+        reps: reps,
+        weight: result);
   }
 
   factory SeriesDto.fromJson(Map<String, dynamic> json) =>

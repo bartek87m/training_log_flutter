@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<WorkoutBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<WorkoutwatcherBloc>(),
+          create: (context) => getIt<WorkoutwatcherBloc>()
+            ..add(WorkoutwatcherEvent.downloadWorkouts()),
         ),
       ],
       child: MaterialApp(
