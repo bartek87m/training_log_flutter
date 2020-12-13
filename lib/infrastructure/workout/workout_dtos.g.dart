@@ -8,6 +8,7 @@ part of 'workout_dtos.dart';
 
 _$_WorkoutDto _$_$_WorkoutDtoFromJson(Map<String, dynamic> json) {
   return _$_WorkoutDto(
+    id: json['id'] as String,
     title: json['title'] as String,
     workoutDate: json['workoutDate'] == null
         ? null
@@ -23,6 +24,7 @@ _$_WorkoutDto _$_$_WorkoutDtoFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_WorkoutDtoToJson(_$_WorkoutDto instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'title': instance.title,
       'workoutDate': instance.workoutDate?.toIso8601String(),
       'exercieList': instance.exercieList?.map((e) => e?.toJson())?.toList(),

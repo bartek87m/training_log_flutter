@@ -15,7 +15,7 @@ abstract class WorkoutDto implements _$WorkoutDto {
   const WorkoutDto._();
 
   const factory WorkoutDto({
-    @JsonKey(ignore: true) String id,
+    @required String id,
     @required String title,
     @required DateTime workoutDate,
     @required List<ExerciseDto> exercieList,

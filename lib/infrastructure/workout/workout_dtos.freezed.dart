@@ -18,7 +18,7 @@ class _$WorkoutDtoTearOff {
 
 // ignore: unused_element
   _WorkoutDto call(
-      {@JsonKey(ignore: true) String id,
+      {@required String id,
       @required String title,
       @required DateTime workoutDate,
       @required List<ExerciseDto> exercieList,
@@ -44,7 +44,6 @@ const $WorkoutDto = _$WorkoutDtoTearOff();
 
 /// @nodoc
 mixin _$WorkoutDto {
-  @JsonKey(ignore: true)
   String get id;
   String get title;
   DateTime get workoutDate;
@@ -62,7 +61,7 @@ abstract class $WorkoutDtoCopyWith<$Res> {
           WorkoutDto value, $Res Function(WorkoutDto) then) =
       _$WorkoutDtoCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {String id,
       String title,
       DateTime workoutDate,
       List<ExerciseDto> exercieList,
@@ -107,7 +106,7 @@ abstract class _$WorkoutDtoCopyWith<$Res> implements $WorkoutDtoCopyWith<$Res> {
       __$WorkoutDtoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {String id,
       String title,
       DateTime workoutDate,
       List<ExerciseDto> exercieList,
@@ -152,12 +151,13 @@ class __$WorkoutDtoCopyWithImpl<$Res> extends _$WorkoutDtoCopyWithImpl<$Res>
 /// @nodoc
 class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
   const _$_WorkoutDto(
-      {@JsonKey(ignore: true) this.id,
+      {@required this.id,
       @required this.title,
       @required this.workoutDate,
       @required this.exercieList,
       @required @ServerTimestampConverter() this.serverTimeStamp})
-      : assert(title != null),
+      : assert(id != null),
+        assert(title != null),
         assert(workoutDate != null),
         assert(exercieList != null),
         assert(serverTimeStamp != null),
@@ -167,7 +167,6 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
       _$_$_WorkoutDtoFromJson(json);
 
   @override
-  @JsonKey(ignore: true)
   final String id;
   @override
   final String title;
@@ -237,7 +236,7 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
 abstract class _WorkoutDto extends WorkoutDto {
   const _WorkoutDto._() : super._();
   const factory _WorkoutDto(
-          {@JsonKey(ignore: true) String id,
+          {@required String id,
           @required String title,
           @required DateTime workoutDate,
           @required List<ExerciseDto> exercieList,
@@ -248,7 +247,6 @@ abstract class _WorkoutDto extends WorkoutDto {
       _$_WorkoutDto.fromJson;
 
   @override
-  @JsonKey(ignore: true)
   String get id;
   @override
   String get title;
