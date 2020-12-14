@@ -9,10 +9,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/workout/workout.dart';
 import '../auth/createAccount/create_account_page.dart';
 import '../auth/signIn/sign_in_page.dart';
 import '../splash/splash_page.dart';
 import '../training/active_training_page.dart';
+import '../training/overview_workoutPage.dart';
 import '../training/trainings_page.dart';
 
 class Routes {
@@ -21,12 +23,14 @@ class Routes {
   static const String signInPage = '/sign-in-page';
   static const String trainingsPage = '/trainings-page';
   static const String activeTrainingPage = '/active-training-page';
+  static const String overviewWorkoutPage = '/overview-workout-page';
   static const all = <String>{
     splashPage,
     createAccountPage,
     signInPage,
     trainingsPage,
     activeTrainingPage,
+    overviewWorkoutPage,
   };
 }
 
@@ -39,6 +43,7 @@ class Router extends RouterBase {
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.trainingsPage, page: TrainingsPage),
     RouteDef(Routes.activeTrainingPage, page: ActiveTrainingPage),
+    RouteDef(Routes.overviewWorkoutPage, page: OverviewWorkoutPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -73,6 +78,13 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    OverviewWorkoutPage: (data) {
+      final args = data.getArgs<OverviewWorkoutPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => OverviewWorkoutPage(args.workout),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -92,4 +104,22 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushActiveTrainingPage() =>
       push<dynamic>(Routes.activeTrainingPage);
+
+  Future<dynamic> pushOverviewWorkoutPage({
+    @required Workout workout,
+  }) =>
+      push<dynamic>(
+        Routes.overviewWorkoutPage,
+        arguments: OverviewWorkoutPageArguments(workout: workout),
+      );
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// OverviewWorkoutPage arguments holder class
+class OverviewWorkoutPageArguments {
+  final Workout workout;
+  OverviewWorkoutPageArguments({@required this.workout});
 }

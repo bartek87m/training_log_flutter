@@ -8,8 +8,6 @@ class WorkoutShortViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context).size;
-    print(workout.exercieList);
     return Container(
       decoration: BoxDecoration(
           color: Colors.black26,
