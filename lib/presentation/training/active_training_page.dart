@@ -64,36 +64,43 @@ class ActiveTrainingPage extends HookWidget {
                     : <Widget>[Container()],
               ),
             ),
-            FlatButton(
-              onPressed: () => {
-                context
-                    .read<WorkoutBloc>()
-                    .add(WorkoutEvent.addExerciseToWorkout()),
-                rebuildWidget(state),
-              },
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: const Text('Add Exercise'),
-            ),
-            FlatButton(
-              onPressed: () =>
-                  context.read<WorkoutBloc>().add(WorkoutEvent.finishWorkout()),
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: const Text(
-                'Finish Workout',
-                style: TextStyle(color: Colors.blue),
-              ),
-            ),
-            FlatButton(
-              onPressed: () =>
-                  context.read<WorkoutBloc>().add(WorkoutEvent.cancelWorkout()),
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: const Text(
-                'Cancel Workout',
-                style: TextStyle(color: Colors.redAccent),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FlatButton(
+                  onPressed: () => context
+                      .read<WorkoutBloc>()
+                      .add(WorkoutEvent.finishWorkout()),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: const Text(
+                    'Finish Workout',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ),
+                FlatButton(
+                  onPressed: () => {
+                    context
+                        .read<WorkoutBloc>()
+                        .add(WorkoutEvent.addExerciseToWorkout()),
+                    rebuildWidget(state),
+                  },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: const Text('Add Exercise'),
+                ),
+                FlatButton(
+                  onPressed: () => context
+                      .read<WorkoutBloc>()
+                      .add(WorkoutEvent.cancelWorkout()),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: const Text(
+                    'Cancel Workout',
+                    style: TextStyle(color: Colors.redAccent),
+                  ),
+                ),
+              ],
             ),
           ],
         )),

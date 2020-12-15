@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 class CustomTExtFormField extends StatelessWidget {
   final String value;
-  CustomTExtFormField(this.value);
+  final double coursorHeight;
+  CustomTExtFormField(this.value, this.coursorHeight);
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context).size;
-    final textFieldHeight = (mediaQuery.height * 0.04);
-    final textFieldWidth = (mediaQuery.width * 0.2);
     return Container(
       child: TextFormField(
         cursorColor: Colors.grey,
-        cursorHeight: textFieldHeight * 0.7,
+        cursorHeight: coursorHeight,
         decoration: InputDecoration(
           fillColor: Colors.grey[600],
           filled: true,

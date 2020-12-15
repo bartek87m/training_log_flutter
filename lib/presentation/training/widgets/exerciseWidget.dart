@@ -27,87 +27,91 @@ class ExerciseWidget extends HookWidget {
     }
 
     return Form(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        padding: const EdgeInsets.only(top: 5, left: 20, right: 20),
-        child: Column(
-          children: [
-            TextFormField(
-              initialValue: state
-                  .workout.exercieList[exerciseNumber].exerciseName.value
-                  .fold((f) => null, (r) => r),
-              onChanged: (value) => context.read<WorkoutBloc>().add(
-                  WorkoutEvent.addExerciseName(value.trim(), exerciseNumber)),
-              style: TextStyle(fontSize: 14),
-              // validator: () => state.workout.,
-              minLines: 1,
-              maxLines: 1,
-              decoration: InputDecoration(
-                hintText: 'Exercise Name',
-                contentPadding: EdgeInsets.only(bottom: 5),
-                isDense: true,
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
+      child: Dismissible(
+        key: Key(exerciseNumber.toString()),
+        onDismissed: (_) => {
+          context
+              .read<WorkoutBloc>()
+              .add(WorkoutEvent.removeExerciseFromWorkout(exerciseNumber)),
+          this.rebuildWidget(state),
+        },
+        background: Container(
+          color: Colors.green,
+          child: Icon(Icons.cancel, size: 32),
+        ),
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          padding: const EdgeInsets.only(top: 5, left: 20, right: 20),
+          child: Column(
+            children: [
+              TextFormField(
+                initialValue: state
+                    .workout.exercieList[exerciseNumber].exerciseName.value
+                    .fold((f) => null, (r) => r),
+                onChanged: (value) => context.read<WorkoutBloc>().add(
+                    WorkoutEvent.addExerciseName(value.trim(), exerciseNumber)),
+                style: TextStyle(fontSize: 14),
+                minLines: 1,
+                maxLines: 1,
+                decoration: InputDecoration(
+                  hintText: 'Exercise Name',
+                  contentPadding: EdgeInsets.only(bottom: 5),
+                  isDense: true,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
                 ),
               ),
-            ),
-            state.workout.exercieList[exerciseNumber].setsList.length > 0
-                ? Container(
-                    margin: EdgeInsets.only(top: 10),
-                    child: SeriesHeadWidget(),
-                  )
-                : Container(),
-            Container(
-              child: Column(
-                children:
-                    state.workout.exercieList[exerciseNumber].setsList.length >
-                            0
-                        ? <Widget>[
-                            for (var numberOfSerie = 0;
-                                numberOfSerie <
-                                    state.workout.exercieList[exerciseNumber]
-                                        .setsList.length;
-                                numberOfSerie++)
-                              Container(
-                                child: SeriesWidget(
-                                  numberOfSerie,
-                                  exerciseNumber,
-                                  state,
-                                  context,
-                                  rebuildExerciseWidget,
-                                  key: UniqueKey(),
-                                ),
-                              )
-                          ]
-                        : <Widget>[Container()],
+              state.workout.exercieList[exerciseNumber].setsList.length > 0
+                  ? Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: SeriesHeadWidget(),
+                    )
+                  : Container(),
+              Container(
+                child: Column(
+                  children: state.workout.exercieList[exerciseNumber].setsList
+                              .length >
+                          0
+                      ? <Widget>[
+                          for (var numberOfSerie = 0;
+                              numberOfSerie <
+                                  state.workout.exercieList[exerciseNumber]
+                                      .setsList.length;
+                              numberOfSerie++)
+                            Container(
+                              child: SeriesWidget(
+                                numberOfSerie,
+                                exerciseNumber,
+                                state,
+                                context,
+                                rebuildExerciseWidget,
+                                key: UniqueKey(),
+                              ),
+                            )
+                        ]
+                      : <Widget>[Container()],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            FlatButton(
-              onPressed: () {
-                context
-                    .read<WorkoutBloc>()
-                    .add(WorkoutEvent.addSeriesToExercise(exerciseNumber));
-                setList.value = List<Series>.empty();
-                setList.value =
-                    state.workout.exercieList[exerciseNumber].setsList;
-              },
-              child: Text("Add Set"),
-            ),
-            FlatButton(
-              onPressed: () {
-                context.read<WorkoutBloc>().add(
-                    WorkoutEvent.removeExerciseFromWorkout(exerciseNumber));
-                this.rebuildWidget(state);
-              },
-              child: Text("Remove Exercise"),
-            )
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              FlatButton(
+                onPressed: () {
+                  context
+                      .read<WorkoutBloc>()
+                      .add(WorkoutEvent.addSeriesToExercise(exerciseNumber));
+                  setList.value = List<Series>.empty();
+                  setList.value =
+                      state.workout.exercieList[exerciseNumber].setsList;
+                },
+                child: Text("Add Set"),
+              ),
+            ],
+          ),
         ),
       ),
     );

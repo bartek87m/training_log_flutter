@@ -35,31 +35,32 @@ class OverviewWorkoutPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: workout.exercieList[index].setsList.length > 0
                         ? <Widget>[
-                            for (var series
-                                in workout.exercieList[index].setsList)
+                            for (var _ in workout.exercieList[index].setsList)
                               Row(
                                 children: [
                                   Container(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 30, vertical: 5),
                                     child: Container(
-                                        width: textFieldWidth,
-                                        height: textFieldHeight,
-                                        child: CustomTExtFormField(workout
-                                            .exercieList[index]
-                                            .setsList[index]
-                                            .reps)),
+                                      width: textFieldWidth,
+                                      height: textFieldHeight,
+                                      child: CustomTExtFormField(
+                                          workout.exercieList[index]
+                                              .setsList[index].reps,
+                                          textFieldHeight * 0.7),
+                                    ),
                                   ),
                                   Container(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 30, vertical: 5),
                                     child: Container(
-                                        width: textFieldWidth,
-                                        height: textFieldHeight,
-                                        child: CustomTExtFormField(workout
-                                            .exercieList[index]
-                                            .setsList[index]
-                                            .weight)),
+                                      width: textFieldWidth,
+                                      height: textFieldHeight,
+                                      child: CustomTExtFormField(
+                                          workout.exercieList[index]
+                                              .setsList[index].weight,
+                                          textFieldHeight * 0.7),
+                                    ),
                                   ),
                                 ],
                               )

@@ -14,7 +14,7 @@ import '../auth/createAccount/create_account_page.dart';
 import '../auth/signIn/sign_in_page.dart';
 import '../splash/splash_page.dart';
 import '../training/active_training_page.dart';
-import '../training/overview_workoutPage.dart';
+import '../training/historicalWorkoutView.dart';
 import '../training/trainings_page.dart';
 
 class Routes {

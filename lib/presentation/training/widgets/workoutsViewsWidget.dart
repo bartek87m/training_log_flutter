@@ -20,7 +20,7 @@ class WorkoutsViewsWidget extends StatelessWidget {
                 return ListView.builder(
                     itemCount: state.workouts.length,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
+                      return InkWell(
                           onTap: () => ExtendedNavigator.of(context).push(
                               Routes.overviewWorkoutPage,
                               arguments: OverviewWorkoutPageArguments(
