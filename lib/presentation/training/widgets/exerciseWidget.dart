@@ -26,6 +26,8 @@ class ExerciseWidget extends HookWidget {
       setList.value = state.workout.exercieList[exerciseNumber].setsList;
     }
 
+    final focus = FocusNode();
+
     return Form(
       child: Dismissible(
         key: Key(exerciseNumber.toString()),
@@ -64,6 +66,9 @@ class ExerciseWidget extends HookWidget {
                     borderSide: BorderSide(color: Colors.grey),
                   ),
                 ),
+                textInputAction: TextInputAction.next,
+                onFieldSubmitted: (_) =>
+                    FocusScope.of(context).requestFocus(focus),
               ),
               state.workout.exercieList[exerciseNumber].setsList.length > 0
                   ? Container(
@@ -89,6 +94,7 @@ class ExerciseWidget extends HookWidget {
                                 state,
                                 context,
                                 rebuildExerciseWidget,
+                                focus,
                                 key: UniqueKey(),
                               ),
                             )

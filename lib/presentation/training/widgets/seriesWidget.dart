@@ -10,9 +10,10 @@ class SeriesWidget extends HookWidget {
   final state;
   final context;
   final rebuildExerciseWidget;
+  final focus;
 
   SeriesWidget(this.seriesNumber, this.exerciseNumber, this.state, this.context,
-      this.rebuildExerciseWidget,
+      this.rebuildExerciseWidget, this.focus,
       {Key key})
       : super(key: key);
 

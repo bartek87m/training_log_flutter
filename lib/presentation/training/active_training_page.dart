@@ -24,7 +24,7 @@ class ActiveTrainingPage extends HookWidget {
       }
     }, builder: (context, state) {
       return Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomPadding: true,
         body: SingleChildScrollView(
             child: Column(
           children: [
