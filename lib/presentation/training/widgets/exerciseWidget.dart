@@ -70,12 +70,6 @@ class ExerciseWidget extends HookWidget {
                 onFieldSubmitted: (_) =>
                     FocusScope.of(context).requestFocus(focus),
               ),
-              state.workout.exercieList[exerciseNumber].setsList.length > 0
-                  ? Container(
-                      margin: EdgeInsets.only(top: 10),
-                      child: SeriesHeadWidget(),
-                    )
-                  : Container(),
               Container(
                 child: Column(
                   children: state.workout.exercieList[exerciseNumber].setsList
