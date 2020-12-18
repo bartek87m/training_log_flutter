@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/series/series.dart';
-import 'package:training_log/presentation/training/widgets/sereiesHeadWidget.dart';
 import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
 class ExerciseWidget extends HookWidget {
@@ -20,6 +19,9 @@ class ExerciseWidget extends HookWidget {
   @override
   Widget build(context) {
     var setList = useState();
+    final mediaQuery = MediaQuery.of(context).size;
+    final textFieldHeight = (mediaQuery.height * 0.04);
+    final textFieldWidth = (mediaQuery.width * 0.2);
 
     void rebuildExerciseWidget(state) {
       setList.value = [];
@@ -71,47 +73,223 @@ class ExerciseWidget extends HookWidget {
                     FocusScope.of(context).requestFocus(focus),
               ),
               Container(
-                child: Column(
-                  children: state.workout.exercieList[exerciseNumber].setsList
-                              .length >
-                          0
-                      ? <Widget>[
-                          for (var numberOfSerie = 0;
-                              numberOfSerie <
-                                  state.workout.exercieList[exerciseNumber]
-                                      .setsList.length;
-                              numberOfSerie++)
-                            Container(
-                              child: SeriesWidget(
-                                numberOfSerie,
-                                exerciseNumber,
-                                state,
-                                context,
-                                rebuildExerciseWidget,
-                                focus,
-                                key: UniqueKey(),
-                              ),
-                            )
-                        ]
-                      : <Widget>[Container()],
+                margin: const EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: <Widget>[
+                        for (var i = 0;
+                            i <
+                                state.workout.exercieList[exerciseNumber]
+                                    .setsList.length;
+                            i++)
+                          Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              padding: const EdgeInsets.only(top: 5),
+                              height: textFieldHeight,
+                              child: Text('${i + 1}')),
+                      ],
+                    ),
+                    Column(
+                      children: state.workout.exercieList[exerciseNumber]
+                                  .setsList.length >
+                              0
+                          ? <Widget>[
+                              for (var seriesNumber = 0;
+                                  seriesNumber <
+                                      state.workout.exercieList[exerciseNumber]
+                                          .setsList.length;
+                                  seriesNumber++)
+                                Container(
+                                  margin: const EdgeInsets.only(top: 10),
+                                  width: textFieldWidth,
+                                  height: textFieldHeight,
+                                  child: TextFormField(
+                                    cursorColor: Colors.grey,
+                                    cursorHeight: textFieldHeight * 0.7,
+                                    decoration: InputDecoration(
+                                      fillColor: Colors.grey[600],
+                                      filled: true,
+                                      contentPadding: const EdgeInsets.all(3),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(5),
+                                        ),
+                                      ),
+                                    ),
+                                    initialValue: state
+                                        .workout
+                                        .exercieList[exerciseNumber]
+                                        .setsList[seriesNumber]
+                                        .reps,
+                                    onChanged: (value) =>
+                                        context.read<WorkoutBloc>().add(
+                                              WorkoutEvent.addRepsToSeries(
+                                                  exerciseNumber,
+                                                  seriesNumber,
+                                                  value.trim()),
+                                            ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                            ]
+                          : <Widget>[Container()],
+                    ),
+                    Column(
+                      children: state.workout.exercieList[exerciseNumber]
+                                  .setsList.length >
+                              0
+                          ? <Widget>[
+                              for (var seriesNumber = 0;
+                                  seriesNumber <
+                                      state.workout.exercieList[exerciseNumber]
+                                          .setsList.length;
+                                  seriesNumber++)
+                                Container(
+                                  margin: const EdgeInsets.only(top: 10),
+                                  width: textFieldWidth,
+                                  height: textFieldHeight,
+                                  child: TextFormField(
+                                    cursorHeight: textFieldHeight * 0.7,
+                                    textAlign: TextAlign.center,
+                                    cursorColor: Colors.grey,
+                                    decoration: InputDecoration(
+                                      counterStyle:
+                                          TextStyle(color: Colors.red),
+                                      fillColor: Colors.grey[600],
+                                      filled: true,
+                                      contentPadding: const EdgeInsets.all(3),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(5),
+                                        ),
+                                      ),
+                                    ),
+                                    initialValue: state
+                                        .workout
+                                        .exercieList[exerciseNumber]
+                                        .setsList[seriesNumber]
+                                        .weight,
+                                    onChanged: (value) =>
+                                        context.read<WorkoutBloc>().add(
+                                              WorkoutEvent.addWeightToSeries(
+                                                  exerciseNumber,
+                                                  seriesNumber,
+                                                  value.trim()),
+                                            ),
+                                  ),
+                                ),
+                            ]
+                          : <Widget>[Container()],
+                    ),
+                    Column(
+                      children: state.workout.exercieList[exerciseNumber]
+                                  .setsList.length >
+                              0
+                          ? <Widget>[
+                              for (var seriesNumber = 0;
+                                  seriesNumber <
+                                      state.workout.exercieList[exerciseNumber]
+                                          .setsList.length;
+                                  seriesNumber++)
+                                Container(
+                                  padding: const EdgeInsets.only(top: 2.5),
+                                  height: textFieldHeight,
+                                  margin: const EdgeInsets.only(top: 10),
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        context.read<WorkoutBloc>().add(
+                                            WorkoutEvent
+                                                .removeSeriesFromExercise(
+                                                    exerciseNumber,
+                                                    seriesNumber));
+                                        rebuildExerciseWidget(state);
+                                      },
+                                      child: Icon(Icons.delete)),
+                                ),
+                            ]
+                          : <Widget>[
+                              Container(),
+                            ],
+                    )
+                  ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              FlatButton(
-                onPressed: () {
-                  context
-                      .read<WorkoutBloc>()
-                      .add(WorkoutEvent.addSeriesToExercise(exerciseNumber));
-                  setList.value = List<Series>.empty();
-                  setList.value =
-                      state.workout.exercieList[exerciseNumber].setsList;
-                },
-                child: Text("Add Set"),
+              Container(
+                child: FlatButton(
+                  onPressed: () {
+                    context
+                        .read<WorkoutBloc>()
+                        .add(WorkoutEvent.addSeriesToExercise(exerciseNumber));
+                    setList.value = List<Series>.empty();
+                    setList.value =
+                        state.workout.exercieList[exerciseNumber].setsList;
+                  },
+                  child: Text("Add Set"),
+                ),
               ),
             ],
           ),
+          // children: [
+          //   TextFormField(
+          //     initialValue: state
+          //         .workout.exercieList[exerciseNumber].exerciseName.value
+          //         .fold((f) => null, (r) => r),
+          //     onChanged: (value) => context.read<WorkoutBloc>().add(
+          //         WorkoutEvent.addExerciseName(value.trim(), exerciseNumber)),
+          //     style: TextStyle(fontSize: 14),
+          //     minLines: 1,
+          //     maxLines: 1,
+          //     decoration: InputDecoration(
+          //       hintText: 'Exercise Name',
+          //       contentPadding: EdgeInsets.only(bottom: 5),
+          //       isDense: true,
+          //       enabledBorder: UnderlineInputBorder(
+          //         borderSide: BorderSide(color: Colors.grey),
+          //       ),
+          //       focusedBorder: UnderlineInputBorder(
+          //         borderSide: BorderSide(color: Colors.grey),
+          //       ),
+          //     ),
+          //     textInputAction: TextInputAction.next,
+          //     onFieldSubmitted: (_) =>
+          //         FocusScope.of(context).requestFocus(focus),
+          //   ),
+          // Container(
+          //   child: Column(
+          //     children: state.workout.exercieList[exerciseNumber].setsList
+          //                 .length >
+          //             0
+          //         ? <Widget>[
+          //             for (var numberOfSerie = 0;
+          //                 numberOfSerie <
+          //                     state.workout.exercieList[exerciseNumber]
+          //                         .setsList.length;
+          //                 numberOfSerie++)
+          //               Container(
+          //                 child: SeriesWidget(
+          //                   numberOfSerie,
+          //                   exerciseNumber,
+          //                   state,
+          //                   context,
+          //                   rebuildExerciseWidget,
+          //                   focus,
+          //                   key: UniqueKey(),
+          //                 ),
+          //               )
+          //           ]
+          //         : <Widget>[Container()],
+          //   ),
+          // ),
         ),
       ),
     );
