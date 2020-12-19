@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomTExtFormField extends StatelessWidget {
+class HistoricalWorkoutViewTextFormField extends StatelessWidget {
   final String value;
   final double coursorHeight;
-  CustomTExtFormField(this.value, this.coursorHeight);
+  HistoricalWorkoutViewTextFormField(this.value, this.coursorHeight);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,6 +23,7 @@ class CustomTExtFormField extends StatelessWidget {
             ),
           ),
         ),
+        enabled: false,
         initialValue: value,
         textAlign: TextAlign.center,
       ),

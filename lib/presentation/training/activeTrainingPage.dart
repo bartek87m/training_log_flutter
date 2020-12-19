@@ -54,7 +54,6 @@ class ActiveTrainingPage extends HookWidget {
                           Container(
                             child: ExerciseWidget(
                               exerciseNumber,
-                              context,
                               state,
                               rebuildWidget,
                               key: UniqueKey(),

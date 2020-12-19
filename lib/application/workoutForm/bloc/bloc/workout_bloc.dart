@@ -113,6 +113,10 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
         print(state.workout);
       },
+      deleteWorkout: (e) async* {
+        print("deleted workout");
+        iWorkoutFacade.removeWorkout(workoutId: e.workoutId);
+      },
     );
   }
 }

@@ -4,16 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/series/series.dart';
-import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
 class ExerciseWidget extends HookWidget {
   final exerciseNumber;
-  final context;
   final state;
   final Function rebuildWidget;
-  ExerciseWidget(
-      this.exerciseNumber, this.context, this.state, this.rebuildWidget,
-      {Key key})
+  ExerciseWidget(this.exerciseNumber, this.state, this.rebuildWidget, {Key key})
       : super(key: key);
 
   @override
@@ -68,7 +64,6 @@ class ExerciseWidget extends HookWidget {
                     borderSide: BorderSide(color: Colors.grey),
                   ),
                 ),
-                textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) =>
                     FocusScope.of(context).requestFocus(focus),
               ),
@@ -86,7 +81,7 @@ class ExerciseWidget extends HookWidget {
                             i++)
                           Container(
                               margin: const EdgeInsets.only(top: 10),
-                              padding: const EdgeInsets.only(top: 5),
+                              padding: const EdgeInsets.only(top: 15),
                               height: textFieldHeight,
                               child: Text('${i + 1}')),
                       ],
@@ -96,6 +91,7 @@ class ExerciseWidget extends HookWidget {
                                   .setsList.length >
                               0
                           ? <Widget>[
+                              Text("Reps"),
                               for (var seriesNumber = 0;
                                   seriesNumber <
                                       state.workout.exercieList[exerciseNumber]
@@ -122,6 +118,7 @@ class ExerciseWidget extends HookWidget {
                                         ),
                                       ),
                                     ),
+                                    textInputAction: TextInputAction.next,
                                     initialValue: state
                                         .workout
                                         .exercieList[exerciseNumber]
@@ -145,6 +142,7 @@ class ExerciseWidget extends HookWidget {
                                   .setsList.length >
                               0
                           ? <Widget>[
+                              Text("Series"),
                               for (var seriesNumber = 0;
                                   seriesNumber <
                                       state.workout.exercieList[exerciseNumber]
@@ -202,7 +200,7 @@ class ExerciseWidget extends HookWidget {
                                           .setsList.length;
                                   seriesNumber++)
                                 Container(
-                                  padding: const EdgeInsets.only(top: 2.5),
+                                  padding: const EdgeInsets.only(top: 12.5),
                                   height: textFieldHeight,
                                   margin: const EdgeInsets.only(top: 10),
                                   child: GestureDetector(
@@ -239,57 +237,6 @@ class ExerciseWidget extends HookWidget {
               ),
             ],
           ),
-          // children: [
-          //   TextFormField(
-          //     initialValue: state
-          //         .workout.exercieList[exerciseNumber].exerciseName.value
-          //         .fold((f) => null, (r) => r),
-          //     onChanged: (value) => context.read<WorkoutBloc>().add(
-          //         WorkoutEvent.addExerciseName(value.trim(), exerciseNumber)),
-          //     style: TextStyle(fontSize: 14),
-          //     minLines: 1,
-          //     maxLines: 1,
-          //     decoration: InputDecoration(
-          //       hintText: 'Exercise Name',
-          //       contentPadding: EdgeInsets.only(bottom: 5),
-          //       isDense: true,
-          //       enabledBorder: UnderlineInputBorder(
-          //         borderSide: BorderSide(color: Colors.grey),
-          //       ),
-          //       focusedBorder: UnderlineInputBorder(
-          //         borderSide: BorderSide(color: Colors.grey),
-          //       ),
-          //     ),
-          //     textInputAction: TextInputAction.next,
-          //     onFieldSubmitted: (_) =>
-          //         FocusScope.of(context).requestFocus(focus),
-          //   ),
-          // Container(
-          //   child: Column(
-          //     children: state.workout.exercieList[exerciseNumber].setsList
-          //                 .length >
-          //             0
-          //         ? <Widget>[
-          //             for (var numberOfSerie = 0;
-          //                 numberOfSerie <
-          //                     state.workout.exercieList[exerciseNumber]
-          //                         .setsList.length;
-          //                 numberOfSerie++)
-          //               Container(
-          //                 child: SeriesWidget(
-          //                   numberOfSerie,
-          //                   exerciseNumber,
-          //                   state,
-          //                   context,
-          //                   rebuildExerciseWidget,
-          //                   focus,
-          //                   key: UniqueKey(),
-          //                 ),
-          //               )
-          //           ]
-          //         : <Widget>[Container()],
-          //   ),
-          // ),
         ),
       ),
     );

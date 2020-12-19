@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/workout/workout.dart';
-import 'package:training_log/presentation/training/widgets/customTextFormField.dart';
+import 'package:training_log/presentation/training/widgets/historicalWorkoutViewTextFormField.dart';
 
 class OverviewWorkoutPage extends StatelessWidget {
   final Workout workout;
@@ -16,6 +18,16 @@ class OverviewWorkoutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("${workout.title.getOrCrash()}"),
+        actions: [
+          GestureDetector(
+            child: Container(
+              margin: const EdgeInsets.only(right: 10),
+              child: Icon(Icons.delete),
+            ),
+            onTap: () => BlocProvider.of<WorkoutBloc>(context)
+                .add(WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
+          )
+        ],
       ),
       body: Container(
         child: ListView.builder(
@@ -65,7 +77,7 @@ class OverviewWorkoutPage extends StatelessWidget {
                           margin: EdgeInsets.only(top: 5),
                           width: textFieldWidth,
                           height: textFieldHeight,
-                          child: CustomTExtFormField(
+                          child: HistoricalWorkoutViewTextFormField(
                               workout.exercieList[index].setsList[seriesNumber]
                                   .reps,
                               textFieldHeight * 0.7),
@@ -88,7 +100,7 @@ class OverviewWorkoutPage extends StatelessWidget {
                           margin: EdgeInsets.only(top: 5, right: 30),
                           width: textFieldWidth,
                           height: textFieldHeight,
-                          child: CustomTExtFormField(
+                          child: HistoricalWorkoutViewTextFormField(
                               workout.exercieList[index].setsList[seriesNumber]
                                   .weight,
                               textFieldHeight * 0.7),
@@ -97,63 +109,6 @@ class OverviewWorkoutPage extends StatelessWidget {
                   ),
                 ],
               ),
-
-              // Column(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: workout.exercieList[index].setsList.length > 0
-              //       ? <Widget>[
-              //           for (var seriesNumber = 0;
-              //               seriesNumber <
-              //                   workout.exercieList[index].setsList.length;
-              //               seriesNumber++)
-              //             Row(
-              //               mainAxisAlignment:
-              //                   MainAxisAlignment.spaceEvenly,
-              //               children: [
-              //                 Row(
-              //                   children: [
-              //                     Container(
-              //                       padding: EdgeInsets.only(
-              //                           top: 5, left: leftPadding),
-              //                       height: textFieldHeight,
-              //                       child: Text('${seriesNumber + 1}'),
-              //                     ),
-              //                     Container(
-              //                       padding: EdgeInsets.symmetric(
-              //                           horizontal: leftPadding,
-              //                           vertical: 5),
-              //                       child: Container(
-              //                         width: textFieldWidth,
-              //                         height: textFieldHeight,
-              //                         child: CustomTExtFormField(
-              //                             workout.exercieList[index]
-              //                                 .setsList[seriesNumber].reps,
-              //                             textFieldHeight * 0.7),
-              //                       ),
-              //                     ),
-              //                   ],
-              //                 ),
-              //                 Container(
-              //                   padding: EdgeInsets.symmetric(
-              //                       horizontal: 30, vertical: 5),
-              //                   child: Container(
-              //                     width: textFieldWidth,
-              //                     height: textFieldHeight,
-              //                     child: CustomTExtFormField(
-              //                         workout.exercieList[index]
-              //                             .setsList[seriesNumber].weight,
-              //                         textFieldHeight * 0.7),
-              //                   ),
-              //                 ),
-              //               ],
-              //             )
-              //         ]
-              //       : <Widget>[
-              //           Container(
-              //             child: Text("No sets for this exercise"),
-              //           ),
-              //         ],
-              // ),
             );
           },
         ),

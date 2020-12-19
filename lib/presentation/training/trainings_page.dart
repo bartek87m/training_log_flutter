@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
-import 'package:training_log/presentation/training/widgets/create_new_workout.dart';
+import 'package:training_log/presentation/training/widgets/createNewWorkout.dart';
 import 'package:training_log/presentation/training/widgets/workoutsViewsWidget.dart';
 
 class TrainingsPage extends StatelessWidget {

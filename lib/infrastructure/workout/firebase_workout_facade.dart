@@ -59,9 +59,18 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   }
 
   @override
-  Future<Either<WorkoutFailure, Unit>> removeWorkout({String workoutId}) {
-    // TODO: implement removeWorkout
-    throw UnimplementedError();
+  Future<Either<WorkoutFailure, Unit>> removeWorkout({String workoutId}) async {
+    try {
+      print(workoutId);
+      final userDoc = await _firestore.userDocument();
+      await userDoc.workoutCollection.doc(workoutId).delete();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message.contains('PERMISSION_DENIED')) {
+        return left(const WorkoutFailure.permissionDenied());
+      }
+      return left(const WorkoutFailure.unexpected());
+    }
   }
 
   @override
