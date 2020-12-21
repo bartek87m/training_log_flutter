@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/workout/workout.dart';
+import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/historicalWorkoutViewTextFormField.dart';
 
 class OverviewWorkoutPage extends StatelessWidget {
@@ -24,9 +26,12 @@ class OverviewWorkoutPage extends StatelessWidget {
               margin: const EdgeInsets.only(right: 10),
               child: Icon(Icons.delete),
             ),
-            onTap: () => BlocProvider.of<WorkoutBloc>(context)
-                .add(WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
-          )
+            onTap: () => {
+              BlocProvider.of<WorkoutBloc>(context).add(
+                  WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
+              ExtendedNavigator.of(context).replace(Routes.trainingsPage),
+            },
+          ),
         ],
       ),
       body: Container(

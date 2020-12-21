@@ -6,7 +6,7 @@ abstract class WorkoutState with _$WorkoutState {
     @required Workout workout,
     @required bool showErrorMessages,
     @required bool isEditing,
-    @required bool isSaving,
+    @required bool isSaved,
     @required Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption,
   }) = _WorkoutState;
 
@@ -14,7 +14,7 @@ abstract class WorkoutState with _$WorkoutState {
         workout: Workout.empty(),
         showErrorMessages: false,
         isEditing: false,
-        isSaving: false,
+        isSaved: false,
         saveFailureOrSuccessOption: none(),
       );
 }

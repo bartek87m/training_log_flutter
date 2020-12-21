@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -20,7 +21,14 @@ class ActiveTrainingPage extends HookWidget {
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
       if (state.isEditing == false) {
-        ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+        // ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+      }
+      if (state.isSaved == true && state.isEditing == false) {
+        FlushbarHelper.createSuccess(
+          message: "Workout saved",
+        ).show(context).then((value) => {
+              ExtendedNavigator.of(context).replace(Routes.trainingsPage),
+            });
       }
     }, builder: (context, state) {
       return Scaffold(
@@ -67,8 +75,7 @@ class ActiveTrainingPage extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FlatButton(
-                  onPressed: () => context
-                      .read<WorkoutBloc>()
+                  onPressed: () => BlocProvider.of<WorkoutBloc>(context)
                       .add(WorkoutEvent.finishWorkout()),
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,

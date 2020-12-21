@@ -29,8 +29,8 @@ class _$WorkoutEventTearOff {
   }
 
 // ignore: unused_element
-  _Deleteorkout deleteWorkout(String workoutId) {
-    return _Deleteorkout(
+  _DeleteWorkout deleteWorkout(String workoutId) {
+    return _DeleteWorkout(
       workoutId,
     );
   }
@@ -154,7 +154,7 @@ mixin _$WorkoutEvent {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -171,7 +171,7 @@ mixin _$WorkoutEvent {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -316,7 +316,7 @@ class _$_WorkoutCreated
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -350,7 +350,7 @@ class _$_WorkoutCreated
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -489,7 +489,7 @@ class _$_AddExerciseToWorkout
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -523,7 +523,7 @@ class _$_AddExerciseToWorkout
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -662,7 +662,7 @@ class _$_WorkoutCompleted
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -696,7 +696,7 @@ class _$_WorkoutCompleted
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -721,36 +721,37 @@ abstract class _WorkoutCompleted implements WorkoutEvent {
 }
 
 /// @nodoc
-abstract class _$DeleteorkoutCopyWith<$Res> {
-  factory _$DeleteorkoutCopyWith(
-          _Deleteorkout value, $Res Function(_Deleteorkout) then) =
-      __$DeleteorkoutCopyWithImpl<$Res>;
+abstract class _$DeleteWorkoutCopyWith<$Res> {
+  factory _$DeleteWorkoutCopyWith(
+          _DeleteWorkout value, $Res Function(_DeleteWorkout) then) =
+      __$DeleteWorkoutCopyWithImpl<$Res>;
   $Res call({String workoutId});
 }
 
 /// @nodoc
-class __$DeleteorkoutCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
-    implements _$DeleteorkoutCopyWith<$Res> {
-  __$DeleteorkoutCopyWithImpl(
-      _Deleteorkout _value, $Res Function(_Deleteorkout) _then)
-      : super(_value, (v) => _then(v as _Deleteorkout));
+class __$DeleteWorkoutCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$DeleteWorkoutCopyWith<$Res> {
+  __$DeleteWorkoutCopyWithImpl(
+      _DeleteWorkout _value, $Res Function(_DeleteWorkout) _then)
+      : super(_value, (v) => _then(v as _DeleteWorkout));
 
   @override
-  _Deleteorkout get _value => super._value as _Deleteorkout;
+  _DeleteWorkout get _value => super._value as _DeleteWorkout;
 
   @override
   $Res call({
     Object workoutId = freezed,
   }) {
-    return _then(_Deleteorkout(
+    return _then(_DeleteWorkout(
       workoutId == freezed ? _value.workoutId : workoutId as String,
     ));
   }
 }
 
 /// @nodoc
-class _$_Deleteorkout with DiagnosticableTreeMixin implements _Deleteorkout {
-  const _$_Deleteorkout(this.workoutId) : assert(workoutId != null);
+class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
+  const _$_DeleteWorkout(this.workoutId) : assert(workoutId != null);
 
   @override
   final String workoutId;
@@ -771,7 +772,7 @@ class _$_Deleteorkout with DiagnosticableTreeMixin implements _Deleteorkout {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Deleteorkout &&
+        (other is _DeleteWorkout &&
             (identical(other.workoutId, workoutId) ||
                 const DeepCollectionEquality()
                     .equals(other.workoutId, workoutId)));
@@ -782,8 +783,8 @@ class _$_Deleteorkout with DiagnosticableTreeMixin implements _Deleteorkout {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(workoutId);
 
   @override
-  _$DeleteorkoutCopyWith<_Deleteorkout> get copyWith =>
-      __$DeleteorkoutCopyWithImpl<_Deleteorkout>(this, _$identity);
+  _$DeleteWorkoutCopyWith<_DeleteWorkout> get copyWith =>
+      __$DeleteWorkoutCopyWithImpl<_DeleteWorkout>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -855,7 +856,7 @@ class _$_Deleteorkout with DiagnosticableTreeMixin implements _Deleteorkout {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -889,7 +890,7 @@ class _$_Deleteorkout with DiagnosticableTreeMixin implements _Deleteorkout {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -909,11 +910,11 @@ class _$_Deleteorkout with DiagnosticableTreeMixin implements _Deleteorkout {
   }
 }
 
-abstract class _Deleteorkout implements WorkoutEvent {
-  const factory _Deleteorkout(String workoutId) = _$_Deleteorkout;
+abstract class _DeleteWorkout implements WorkoutEvent {
+  const factory _DeleteWorkout(String workoutId) = _$_DeleteWorkout;
 
   String get workoutId;
-  _$DeleteorkoutCopyWith<_Deleteorkout> get copyWith;
+  _$DeleteWorkoutCopyWith<_DeleteWorkout> get copyWith;
 }
 
 /// @nodoc
@@ -1028,7 +1029,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -1062,7 +1063,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -1198,7 +1199,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -1232,7 +1233,7 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -1391,7 +1392,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -1425,7 +1426,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -1593,7 +1594,7 @@ class _$_AddSeriesToExercise
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -1627,7 +1628,7 @@ class _$_AddSeriesToExercise
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -1801,7 +1802,7 @@ class _$_RemoveExerciseFromWorkout
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -1835,7 +1836,7 @@ class _$_RemoveExerciseFromWorkout
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -2016,7 +2017,7 @@ class _$_RemoveSeriesFromExercise
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -2050,7 +2051,7 @@ class _$_RemoveSeriesFromExercise
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -2239,7 +2240,7 @@ class _$_AddWeightToSeries
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -2273,7 +2274,7 @@ class _$_AddWeightToSeries
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -2463,7 +2464,7 @@ class _$_AddRepsToSeries
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -2497,7 +2498,7 @@ class _$_AddRepsToSeries
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -2678,7 +2679,7 @@ class _$_AddExerciseName
     @required Result createNewWorkout(_WorkoutCreated value),
     @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
     @required Result workoutCompleted(_WorkoutCompleted value),
-    @required Result deleteWorkout(_Deleteorkout value),
+    @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
     @required Result finishWorkout(_FinishWorkout value),
     @required Result changeTitle(_ChangeTitle value),
@@ -2712,7 +2713,7 @@ class _$_AddExerciseName
     Result createNewWorkout(_WorkoutCreated value),
     Result addExerciseToWorkout(_AddExerciseToWorkout value),
     Result workoutCompleted(_WorkoutCompleted value),
-    Result deleteWorkout(_Deleteorkout value),
+    Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
     Result finishWorkout(_FinishWorkout value),
     Result changeTitle(_ChangeTitle value),
@@ -2754,14 +2755,14 @@ class _$WorkoutStateTearOff {
       @required
           bool isEditing,
       @required
-          bool isSaving,
+          bool isSaved,
       @required
           Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption}) {
     return _WorkoutState(
       workout: workout,
       showErrorMessages: showErrorMessages,
       isEditing: isEditing,
-      isSaving: isSaving,
+      isSaved: isSaved,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption,
     );
   }
@@ -2776,7 +2777,7 @@ mixin _$WorkoutState {
   Workout get workout;
   bool get showErrorMessages;
   bool get isEditing;
-  bool get isSaving;
+  bool get isSaved;
   Option<Either<WorkoutFailure, Unit>> get saveFailureOrSuccessOption;
 
   $WorkoutStateCopyWith<WorkoutState> get copyWith;
@@ -2791,7 +2792,7 @@ abstract class $WorkoutStateCopyWith<$Res> {
       {Workout workout,
       bool showErrorMessages,
       bool isEditing,
-      bool isSaving,
+      bool isSaved,
       Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption});
 
   $WorkoutCopyWith<$Res> get workout;
@@ -2810,7 +2811,7 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
     Object workout = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
-    Object isSaving = freezed,
+    Object isSaved = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2819,7 +2820,7 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
           ? _value.showErrorMessages
           : showErrorMessages as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
-      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
+      isSaved: isSaved == freezed ? _value.isSaved : isSaved as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption as Option<Either<WorkoutFailure, Unit>>,
@@ -2848,7 +2849,7 @@ abstract class _$WorkoutStateCopyWith<$Res>
       {Workout workout,
       bool showErrorMessages,
       bool isEditing,
-      bool isSaving,
+      bool isSaved,
       Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption});
 
   @override
@@ -2870,7 +2871,7 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
     Object workout = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
-    Object isSaving = freezed,
+    Object isSaved = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_WorkoutState(
@@ -2879,7 +2880,7 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
           ? _value.showErrorMessages
           : showErrorMessages as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
-      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
+      isSaved: isSaved == freezed ? _value.isSaved : isSaved as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption as Option<Either<WorkoutFailure, Unit>>,
@@ -2893,12 +2894,12 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       {@required this.workout,
       @required this.showErrorMessages,
       @required this.isEditing,
-      @required this.isSaving,
+      @required this.isSaved,
       @required this.saveFailureOrSuccessOption})
       : assert(workout != null),
         assert(showErrorMessages != null),
         assert(isEditing != null),
-        assert(isSaving != null),
+        assert(isSaved != null),
         assert(saveFailureOrSuccessOption != null);
 
   @override
@@ -2908,13 +2909,13 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   @override
   final bool isEditing;
   @override
-  final bool isSaving;
+  final bool isSaved;
   @override
   final Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutState(workout: $workout, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'WorkoutState(workout: $workout, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaved: $isSaved, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2925,7 +2926,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       ..add(DiagnosticsProperty('workout', workout))
       ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
       ..add(DiagnosticsProperty('isEditing', isEditing))
-      ..add(DiagnosticsProperty('isSaving', isSaving))
+      ..add(DiagnosticsProperty('isSaved', isSaved))
       ..add(DiagnosticsProperty(
           'saveFailureOrSuccessOption', saveFailureOrSuccessOption));
   }
@@ -2943,9 +2944,9 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditing, isEditing)) &&
-            (identical(other.isSaving, isSaving) ||
+            (identical(other.isSaved, isSaved) ||
                 const DeepCollectionEquality()
-                    .equals(other.isSaving, isSaving)) &&
+                    .equals(other.isSaved, isSaved)) &&
             (identical(other.saveFailureOrSuccessOption,
                     saveFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -2959,7 +2960,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       const DeepCollectionEquality().hash(workout) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isEditing) ^
-      const DeepCollectionEquality().hash(isSaving) ^
+      const DeepCollectionEquality().hash(isSaved) ^
       const DeepCollectionEquality().hash(saveFailureOrSuccessOption);
 
   @override
@@ -2976,7 +2977,7 @@ abstract class _WorkoutState implements WorkoutState {
       @required
           bool isEditing,
       @required
-          bool isSaving,
+          bool isSaved,
       @required
           Option<Either<WorkoutFailure, Unit>>
               saveFailureOrSuccessOption}) = _$_WorkoutState;
@@ -2988,7 +2989,7 @@ abstract class _WorkoutState implements WorkoutState {
   @override
   bool get isEditing;
   @override
-  bool get isSaving;
+  bool get isSaved;
   @override
   Option<Either<WorkoutFailure, Unit>> get saveFailureOrSuccessOption;
   @override

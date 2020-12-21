@@ -51,10 +51,10 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       finishWorkout: (_) async* {
         iWorkoutFacade.createWorkout(workout: state.workout);
 
-        // yield state.copyWith(
-        //   isSaving: true,
-        //   isEditing: false,
-        // );
+        yield state.copyWith(
+          isSaved: true,
+          isEditing: false,
+        );
       },
       changeTitle: (e) async* {
         yield state.copyWith(
