@@ -11,7 +11,6 @@ class WorkoutsViewsWidget extends StatelessWidget {
     return Flexible(
       child: BlocBuilder<WorkoutwatcherBloc, WorkoutwatcherState>(
         builder: (context, state) {
-          print(state);
           return state.map(
               initial: (_) => Container(),
               loading: (_) => const Center(child: CircularProgressIndicator()),

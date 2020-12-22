@@ -11,9 +11,7 @@ class SplashPage extends StatelessWidget {
       cubit: BlocProvider.of<AuthCubit>(context),
       listener: (context, state) {
         state.map(
-          initial: (_) {
-            print(state);
-          },
+          initial: (_) {},
           authentificate: (_) {
             ExtendedNavigator.of(context).replace(Routes.trainingsPage);
           },

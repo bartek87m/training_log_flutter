@@ -39,7 +39,7 @@ mixin _$Workout {
   UniqueId get id;
   Title get title;
   DateTime get workoutDate;
-  List<Exercise> get exercieList;
+  List<Exercise> get exercieList; // @required List<Wod> wodList,
   DateTime get updateDate;
 
   $WorkoutCopyWith<Workout> get copyWith;
@@ -152,7 +152,7 @@ class _$_Workout implements _Workout {
   final DateTime workoutDate;
   @override
   final List<Exercise> exercieList;
-  @override
+  @override // @required List<Wod> wodList,
   final DateTime updateDate;
 
   @override
@@ -209,7 +209,7 @@ abstract class _Workout implements Workout {
   DateTime get workoutDate;
   @override
   List<Exercise> get exercieList;
-  @override
+  @override // @required List<Wod> wodList,
   DateTime get updateDate;
   @override
   _$WorkoutCopyWith<_Workout> get copyWith;

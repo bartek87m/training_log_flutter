@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:training_log/domain/core/value_object.dart';
 import 'package:training_log/domain/exercise/exercise.dart';
+import 'package:training_log/domain/wod/wod.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
 
 part 'workout.freezed.dart';
@@ -12,6 +13,7 @@ abstract class Workout with _$Workout {
     @required Title title,
     @required DateTime workoutDate,
     @required List<Exercise> exercieList,
+    // @required List<Wod> wodList,
     DateTime updateDate,
   }) = _Workout;
 
@@ -20,6 +22,7 @@ abstract class Workout with _$Workout {
         title: Title('Workout title'),
         workoutDate: DateTime.now(),
         exercieList: List<Exercise>(),
+        // wodList: List<Wod>(),
       );
 
   factory Workout.empty() => Workout(
@@ -27,5 +30,6 @@ abstract class Workout with _$Workout {
         title: Title(''),
         workoutDate: DateTime.now(),
         exercieList: List<Exercise>(),
+        // wodList: List<Wod>(),
       );
 }

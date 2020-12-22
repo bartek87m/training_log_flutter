@@ -27,3 +27,15 @@ class ExerciseName extends ValueObject<String> {
 
   const ExerciseName._(this.value);
 }
+
+class WodBody extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory WodBody(input) {
+    assert(input != null);
+    return WodBody._(validateExerciseIsNotEmpty(input));
+  }
+
+  const WodBody._(this.value);
+}
