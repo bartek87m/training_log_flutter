@@ -45,7 +45,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       cancelWorkout: (_) async* {
         yield state.copyWith(
           workout: Workout.empty(),
-          isEditing: false,
+          isCanceled: true,
         );
       },
       finishWorkout: (_) async* {
@@ -111,11 +111,10 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
         );
-        print(state.workout);
       },
       deleteWorkout: (e) async* {
-        print("deleted workout");
         iWorkoutFacade.removeWorkout(workoutId: e.workoutId);
+        yield state.copyWith(isDeleted: true);
       },
     );
   }

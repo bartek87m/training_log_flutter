@@ -39,7 +39,7 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   @override
   Future<Either<WorkoutFailure, Unit>> createWorkout({Workout workout}) async {
     final workoutDto = WorkoutDto.fromDomain(workout);
-    print(workoutDto.toJson());
+
     try {
       final userDoc = await _firestore.userDocument();
       await userDoc.workoutCollection
@@ -58,7 +58,6 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   @override
   Future<Either<WorkoutFailure, Unit>> removeWorkout({String workoutId}) async {
     try {
-      print(workoutId);
       final userDoc = await _firestore.userDocument();
       await userDoc.workoutCollection.doc(workoutId).delete();
       return right(unit);

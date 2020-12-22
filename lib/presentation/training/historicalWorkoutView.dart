@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
@@ -21,15 +22,28 @@ class OverviewWorkoutPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("${workout.title.getOrCrash()}"),
         actions: [
-          GestureDetector(
-            child: Container(
-              margin: const EdgeInsets.only(right: 10),
-              child: Icon(Icons.delete),
-            ),
-            onTap: () => {
-              BlocProvider.of<WorkoutBloc>(context).add(
-                  WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
-              ExtendedNavigator.of(context).replace(Routes.trainingsPage),
+          BlocConsumer<WorkoutBloc, WorkoutState>(
+            builder: (BuildContext context, state) {
+              return GestureDetector(
+                child: Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  child: Icon(Icons.delete),
+                ),
+                onTap: () => {
+                  context.read<WorkoutBloc>().add(
+                      WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
+                },
+              );
+            },
+            listener: (BuildContext context, state) {
+              if (state.isDeleted) {
+                FlushbarHelper.createInformation(
+                  message: "Workout deleted",
+                ).show(context).then((value) => {
+                      ExtendedNavigator.of(context)
+                          .replace(Routes.trainingsPage)
+                    });
+              }
             },
           ),
         ],

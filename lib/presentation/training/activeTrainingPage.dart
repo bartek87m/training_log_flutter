@@ -20,8 +20,8 @@ class ActiveTrainingPage extends HookWidget {
 
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
-      if (state.isEditing == false) {
-        // ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+      if (state.isCanceled == true && state.isSaved == false) {
+        ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
       if (state.isSaved == true && state.isEditing == false) {
         FlushbarHelper.createSuccess(

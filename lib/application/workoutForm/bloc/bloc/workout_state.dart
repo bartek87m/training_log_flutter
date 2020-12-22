@@ -6,7 +6,9 @@ abstract class WorkoutState with _$WorkoutState {
     @required Workout workout,
     @required bool showErrorMessages,
     @required bool isEditing,
+    @required bool isCanceled,
     @required bool isSaved,
+    @required bool isDeleted,
     @required Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption,
   }) = _WorkoutState;
 
@@ -15,6 +17,8 @@ abstract class WorkoutState with _$WorkoutState {
         showErrorMessages: false,
         isEditing: false,
         isSaved: false,
+        isCanceled: false,
+        isDeleted: false,
         saveFailureOrSuccessOption: none(),
       );
 }
