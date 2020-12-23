@@ -11,4 +11,9 @@ abstract class Exercise with _$Exercise {
     @required List<Series> setsList,
     String note,
   }) = _Exercise;
+
+  factory Exercise.newExercise() => Exercise(
+        exerciseName: ExerciseName(''),
+        setsList: List<Series>(),
+      );
 }

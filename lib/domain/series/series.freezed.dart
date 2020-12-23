@@ -15,15 +15,13 @@ class _$SeriesTearOff {
 
 // ignore: unused_element
   _Series call(
-      {String reps,
-      String weight,
-      String time,
+      {Reps reps,
+      Result result,
       String resultFromlastTraining,
       bool completed}) {
     return _Series(
       reps: reps,
-      weight: weight,
-      time: time,
+      result: result,
       resultFromlastTraining: resultFromlastTraining,
       completed: completed,
     );
@@ -36,9 +34,8 @@ const $Series = _$SeriesTearOff();
 
 /// @nodoc
 mixin _$Series {
-  String get reps;
-  String get weight;
-  String get time;
+  Reps get reps;
+  Result get result;
   String
       get resultFromlastTraining; //rezultat z poprzedniego treningu z tym ćwiczeniem
   bool get completed;
@@ -51,9 +48,8 @@ abstract class $SeriesCopyWith<$Res> {
   factory $SeriesCopyWith(Series value, $Res Function(Series) then) =
       _$SeriesCopyWithImpl<$Res>;
   $Res call(
-      {String reps,
-      String weight,
-      String time,
+      {Reps reps,
+      Result result,
       String resultFromlastTraining,
       bool completed});
 }
@@ -69,15 +65,13 @@ class _$SeriesCopyWithImpl<$Res> implements $SeriesCopyWith<$Res> {
   @override
   $Res call({
     Object reps = freezed,
-    Object weight = freezed,
-    Object time = freezed,
+    Object result = freezed,
     Object resultFromlastTraining = freezed,
     Object completed = freezed,
   }) {
     return _then(_value.copyWith(
-      reps: reps == freezed ? _value.reps : reps as String,
-      weight: weight == freezed ? _value.weight : weight as String,
-      time: time == freezed ? _value.time : time as String,
+      reps: reps == freezed ? _value.reps : reps as Reps,
+      result: result == freezed ? _value.result : result as Result,
       resultFromlastTraining: resultFromlastTraining == freezed
           ? _value.resultFromlastTraining
           : resultFromlastTraining as String,
@@ -92,9 +86,8 @@ abstract class _$SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
       __$SeriesCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String reps,
-      String weight,
-      String time,
+      {Reps reps,
+      Result result,
       String resultFromlastTraining,
       bool completed});
 }
@@ -111,15 +104,13 @@ class __$SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
   @override
   $Res call({
     Object reps = freezed,
-    Object weight = freezed,
-    Object time = freezed,
+    Object result = freezed,
     Object resultFromlastTraining = freezed,
     Object completed = freezed,
   }) {
     return _then(_Series(
-      reps: reps == freezed ? _value.reps : reps as String,
-      weight: weight == freezed ? _value.weight : weight as String,
-      time: time == freezed ? _value.time : time as String,
+      reps: reps == freezed ? _value.reps : reps as Reps,
+      result: result == freezed ? _value.result : result as Result,
       resultFromlastTraining: resultFromlastTraining == freezed
           ? _value.resultFromlastTraining
           : resultFromlastTraining as String,
@@ -131,18 +122,12 @@ class __$SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
 /// @nodoc
 class _$_Series implements _Series {
   const _$_Series(
-      {this.reps,
-      this.weight,
-      this.time,
-      this.resultFromlastTraining,
-      this.completed});
+      {this.reps, this.result, this.resultFromlastTraining, this.completed});
 
   @override
-  final String reps;
+  final Reps reps;
   @override
-  final String weight;
-  @override
-  final String time;
+  final Result result;
   @override
   final String resultFromlastTraining;
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem
@@ -150,7 +135,7 @@ class _$_Series implements _Series {
 
   @override
   String toString() {
-    return 'Series(reps: $reps, weight: $weight, time: $time, resultFromlastTraining: $resultFromlastTraining, completed: $completed)';
+    return 'Series(reps: $reps, result: $result, resultFromlastTraining: $resultFromlastTraining, completed: $completed)';
   }
 
   @override
@@ -159,10 +144,8 @@ class _$_Series implements _Series {
         (other is _Series &&
             (identical(other.reps, reps) ||
                 const DeepCollectionEquality().equals(other.reps, reps)) &&
-            (identical(other.weight, weight) ||
-                const DeepCollectionEquality().equals(other.weight, weight)) &&
-            (identical(other.time, time) ||
-                const DeepCollectionEquality().equals(other.time, time)) &&
+            (identical(other.result, result) ||
+                const DeepCollectionEquality().equals(other.result, result)) &&
             (identical(other.resultFromlastTraining, resultFromlastTraining) ||
                 const DeepCollectionEquality().equals(
                     other.resultFromlastTraining, resultFromlastTraining)) &&
@@ -175,8 +158,7 @@ class _$_Series implements _Series {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(reps) ^
-      const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(time) ^
+      const DeepCollectionEquality().hash(result) ^
       const DeepCollectionEquality().hash(resultFromlastTraining) ^
       const DeepCollectionEquality().hash(completed);
 
@@ -187,18 +169,15 @@ class _$_Series implements _Series {
 
 abstract class _Series implements Series {
   const factory _Series(
-      {String reps,
-      String weight,
-      String time,
+      {Reps reps,
+      Result result,
       String resultFromlastTraining,
       bool completed}) = _$_Series;
 
   @override
-  String get reps;
+  Reps get reps;
   @override
-  String get weight;
-  @override
-  String get time;
+  Result get result;
   @override
   String get resultFromlastTraining;
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem

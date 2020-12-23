@@ -2751,7 +2751,11 @@ class _$WorkoutStateTearOff {
       {@required
           Workout workout,
       @required
-          bool showErrorMessages,
+          List<bool> showErrorMessagesForExerciseName,
+      @required
+          List<bool> showErrorMessagesForSeries,
+      @required
+          List<bool> showErrorMessagesForResults,
       @required
           bool isEditing,
       @required
@@ -2764,7 +2768,9 @@ class _$WorkoutStateTearOff {
           Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption}) {
     return _WorkoutState(
       workout: workout,
-      showErrorMessages: showErrorMessages,
+      showErrorMessagesForExerciseName: showErrorMessagesForExerciseName,
+      showErrorMessagesForSeries: showErrorMessagesForSeries,
+      showErrorMessagesForResults: showErrorMessagesForResults,
       isEditing: isEditing,
       isCanceled: isCanceled,
       isSaved: isSaved,
@@ -2781,7 +2787,9 @@ const $WorkoutState = _$WorkoutStateTearOff();
 /// @nodoc
 mixin _$WorkoutState {
   Workout get workout;
-  bool get showErrorMessages;
+  List<bool> get showErrorMessagesForExerciseName;
+  List<bool> get showErrorMessagesForSeries;
+  List<bool> get showErrorMessagesForResults;
   bool get isEditing;
   bool get isCanceled;
   bool get isSaved;
@@ -2798,7 +2806,9 @@ abstract class $WorkoutStateCopyWith<$Res> {
       _$WorkoutStateCopyWithImpl<$Res>;
   $Res call(
       {Workout workout,
-      bool showErrorMessages,
+      List<bool> showErrorMessagesForExerciseName,
+      List<bool> showErrorMessagesForSeries,
+      List<bool> showErrorMessagesForResults,
       bool isEditing,
       bool isCanceled,
       bool isSaved,
@@ -2819,7 +2829,9 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
   @override
   $Res call({
     Object workout = freezed,
-    Object showErrorMessages = freezed,
+    Object showErrorMessagesForExerciseName = freezed,
+    Object showErrorMessagesForSeries = freezed,
+    Object showErrorMessagesForResults = freezed,
     Object isEditing = freezed,
     Object isCanceled = freezed,
     Object isSaved = freezed,
@@ -2828,9 +2840,16 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       workout: workout == freezed ? _value.workout : workout as Workout,
-      showErrorMessages: showErrorMessages == freezed
-          ? _value.showErrorMessages
-          : showErrorMessages as bool,
+      showErrorMessagesForExerciseName:
+          showErrorMessagesForExerciseName == freezed
+              ? _value.showErrorMessagesForExerciseName
+              : showErrorMessagesForExerciseName as List<bool>,
+      showErrorMessagesForSeries: showErrorMessagesForSeries == freezed
+          ? _value.showErrorMessagesForSeries
+          : showErrorMessagesForSeries as List<bool>,
+      showErrorMessagesForResults: showErrorMessagesForResults == freezed
+          ? _value.showErrorMessagesForResults
+          : showErrorMessagesForResults as List<bool>,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
       isCanceled:
           isCanceled == freezed ? _value.isCanceled : isCanceled as bool,
@@ -2862,7 +2881,9 @@ abstract class _$WorkoutStateCopyWith<$Res>
   @override
   $Res call(
       {Workout workout,
-      bool showErrorMessages,
+      List<bool> showErrorMessagesForExerciseName,
+      List<bool> showErrorMessagesForSeries,
+      List<bool> showErrorMessagesForResults,
       bool isEditing,
       bool isCanceled,
       bool isSaved,
@@ -2886,7 +2907,9 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object workout = freezed,
-    Object showErrorMessages = freezed,
+    Object showErrorMessagesForExerciseName = freezed,
+    Object showErrorMessagesForSeries = freezed,
+    Object showErrorMessagesForResults = freezed,
     Object isEditing = freezed,
     Object isCanceled = freezed,
     Object isSaved = freezed,
@@ -2895,9 +2918,16 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
   }) {
     return _then(_WorkoutState(
       workout: workout == freezed ? _value.workout : workout as Workout,
-      showErrorMessages: showErrorMessages == freezed
-          ? _value.showErrorMessages
-          : showErrorMessages as bool,
+      showErrorMessagesForExerciseName:
+          showErrorMessagesForExerciseName == freezed
+              ? _value.showErrorMessagesForExerciseName
+              : showErrorMessagesForExerciseName as List<bool>,
+      showErrorMessagesForSeries: showErrorMessagesForSeries == freezed
+          ? _value.showErrorMessagesForSeries
+          : showErrorMessagesForSeries as List<bool>,
+      showErrorMessagesForResults: showErrorMessagesForResults == freezed
+          ? _value.showErrorMessagesForResults
+          : showErrorMessagesForResults as List<bool>,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
       isCanceled:
           isCanceled == freezed ? _value.isCanceled : isCanceled as bool,
@@ -2914,14 +2944,18 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
 class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   const _$_WorkoutState(
       {@required this.workout,
-      @required this.showErrorMessages,
+      @required this.showErrorMessagesForExerciseName,
+      @required this.showErrorMessagesForSeries,
+      @required this.showErrorMessagesForResults,
       @required this.isEditing,
       @required this.isCanceled,
       @required this.isSaved,
       @required this.isDeleted,
       @required this.saveFailureOrSuccessOption})
       : assert(workout != null),
-        assert(showErrorMessages != null),
+        assert(showErrorMessagesForExerciseName != null),
+        assert(showErrorMessagesForSeries != null),
+        assert(showErrorMessagesForResults != null),
         assert(isEditing != null),
         assert(isCanceled != null),
         assert(isSaved != null),
@@ -2931,7 +2965,11 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   @override
   final Workout workout;
   @override
-  final bool showErrorMessages;
+  final List<bool> showErrorMessagesForExerciseName;
+  @override
+  final List<bool> showErrorMessagesForSeries;
+  @override
+  final List<bool> showErrorMessagesForResults;
   @override
   final bool isEditing;
   @override
@@ -2945,7 +2983,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutState(workout: $workout, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isCanceled: $isCanceled, isSaved: $isSaved, isDeleted: $isDeleted, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'WorkoutState(workout: $workout, showErrorMessagesForExerciseName: $showErrorMessagesForExerciseName, showErrorMessagesForSeries: $showErrorMessagesForSeries, showErrorMessagesForResults: $showErrorMessagesForResults, isEditing: $isEditing, isCanceled: $isCanceled, isSaved: $isSaved, isDeleted: $isDeleted, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2954,7 +2992,12 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
     properties
       ..add(DiagnosticsProperty('type', 'WorkoutState'))
       ..add(DiagnosticsProperty('workout', workout))
-      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
+      ..add(DiagnosticsProperty(
+          'showErrorMessagesForExerciseName', showErrorMessagesForExerciseName))
+      ..add(DiagnosticsProperty(
+          'showErrorMessagesForSeries', showErrorMessagesForSeries))
+      ..add(DiagnosticsProperty(
+          'showErrorMessagesForResults', showErrorMessagesForResults))
       ..add(DiagnosticsProperty('isEditing', isEditing))
       ..add(DiagnosticsProperty('isCanceled', isCanceled))
       ..add(DiagnosticsProperty('isSaved', isSaved))
@@ -2970,9 +3013,19 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
             (identical(other.workout, workout) ||
                 const DeepCollectionEquality()
                     .equals(other.workout, workout)) &&
-            (identical(other.showErrorMessages, showErrorMessages) ||
-                const DeepCollectionEquality()
-                    .equals(other.showErrorMessages, showErrorMessages)) &&
+            (identical(other.showErrorMessagesForExerciseName,
+                    showErrorMessagesForExerciseName) ||
+                const DeepCollectionEquality().equals(
+                    other.showErrorMessagesForExerciseName,
+                    showErrorMessagesForExerciseName)) &&
+            (identical(other.showErrorMessagesForSeries, showErrorMessagesForSeries) ||
+                const DeepCollectionEquality().equals(
+                    other.showErrorMessagesForSeries,
+                    showErrorMessagesForSeries)) &&
+            (identical(other.showErrorMessagesForResults, showErrorMessagesForResults) ||
+                const DeepCollectionEquality().equals(
+                    other.showErrorMessagesForResults,
+                    showErrorMessagesForResults)) &&
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditing, isEditing)) &&
@@ -2985,8 +3038,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
             (identical(other.isDeleted, isDeleted) ||
                 const DeepCollectionEquality()
                     .equals(other.isDeleted, isDeleted)) &&
-            (identical(other.saveFailureOrSuccessOption,
-                    saveFailureOrSuccessOption) ||
+            (identical(other.saveFailureOrSuccessOption, saveFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
                     other.saveFailureOrSuccessOption,
                     saveFailureOrSuccessOption)));
@@ -2996,7 +3048,9 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(workout) ^
-      const DeepCollectionEquality().hash(showErrorMessages) ^
+      const DeepCollectionEquality().hash(showErrorMessagesForExerciseName) ^
+      const DeepCollectionEquality().hash(showErrorMessagesForSeries) ^
+      const DeepCollectionEquality().hash(showErrorMessagesForResults) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isCanceled) ^
       const DeepCollectionEquality().hash(isSaved) ^
@@ -3013,7 +3067,11 @@ abstract class _WorkoutState implements WorkoutState {
       {@required
           Workout workout,
       @required
-          bool showErrorMessages,
+          List<bool> showErrorMessagesForExerciseName,
+      @required
+          List<bool> showErrorMessagesForSeries,
+      @required
+          List<bool> showErrorMessagesForResults,
       @required
           bool isEditing,
       @required
@@ -3029,7 +3087,11 @@ abstract class _WorkoutState implements WorkoutState {
   @override
   Workout get workout;
   @override
-  bool get showErrorMessages;
+  List<bool> get showErrorMessagesForExerciseName;
+  @override
+  List<bool> get showErrorMessagesForSeries;
+  @override
+  List<bool> get showErrorMessagesForResults;
   @override
   bool get isEditing;
   @override

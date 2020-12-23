@@ -38,10 +38,10 @@ Either<ValueFailure<String>, String> validateWorkoutTitleLength(String input) {
   }
 }
 
-Either<ValueFailure<String>, String> validateExerciseIsNotEmpty(String input) {
+Either<ValueFailure<String>, String> validateStringIsNotEmpty(String input) {
   if (input.isNotEmpty) {
     return right(input);
   } else {
-    return left(ValueFailure.workoutTitleTolong(failedValue: input));
+    return left(ValueFailure.workoutStringEmpty(failedValue: input));
   }
 }

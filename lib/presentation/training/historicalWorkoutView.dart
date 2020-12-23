@@ -98,7 +98,8 @@ class OverviewWorkoutPage extends StatelessWidget {
                           height: textFieldHeight,
                           child: HistoricalWorkoutViewTextFormField(
                               workout.exercieList[index].setsList[seriesNumber]
-                                  .reps,
+                                  .reps
+                                  .getOrCrash(),
                               textFieldHeight * 0.7),
                         ),
                     ],
@@ -121,7 +122,8 @@ class OverviewWorkoutPage extends StatelessWidget {
                           height: textFieldHeight,
                           child: HistoricalWorkoutViewTextFormField(
                               workout.exercieList[index].setsList[seriesNumber]
-                                  .weight,
+                                  .result
+                                  .getOrCrash(),
                               textFieldHeight * 0.7),
                         ),
                     ],

@@ -31,6 +31,8 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
       if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
         return left(const WorkoutFailure.permissionDenied());
       } else {
+        print("!!!!");
+        print(e);
         return left(const WorkoutFailure.unexpected());
       }
     });

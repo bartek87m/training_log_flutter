@@ -5,6 +5,7 @@ import 'package:training_log/domain/core/value_object.dart';
 import 'package:training_log/domain/exercise/exercise.dart';
 import 'package:training_log/domain/series/series.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
+// import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
 
 part 'workout_dtos.freezed.dart';
@@ -105,15 +106,17 @@ abstract class SeriesDto implements _$SeriesDto {
   }) = _SeriesDto;
 
   factory SeriesDto.fromDomain(Series series) {
-    return SeriesDto(reps: series.reps, result: series.weight);
+    return SeriesDto(
+        reps: series.reps.getOrCrash(), result: series.result.getOrCrash());
   }
 
   Series toDomain() {
     return Series(
-        completed: completed,
-        resultFromlastTraining: resultFromLastTraining,
-        reps: reps,
-        weight: result);
+      completed: completed,
+      resultFromlastTraining: resultFromLastTraining,
+      reps: Reps(reps),
+      result: Result(result),
+    );
   }
 
   factory SeriesDto.fromJson(Map<String, dynamic> json) =>

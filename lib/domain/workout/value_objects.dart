@@ -22,20 +22,32 @@ class ExerciseName extends ValueObject<String> {
 
   factory ExerciseName(input) {
     assert(input != null);
-    return ExerciseName._(validateExerciseIsNotEmpty(input));
+    return ExerciseName._(validateStringIsNotEmpty(input));
   }
 
   const ExerciseName._(this.value);
 }
 
-class WodBody extends ValueObject<String> {
+class Reps extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory WodBody(input) {
+  factory Reps(input) {
     assert(input != null);
-    return WodBody._(validateExerciseIsNotEmpty(input));
+    return Reps._(validateStringIsNotEmpty(input));
   }
 
-  const WodBody._(this.value);
+  const Reps._(this.value);
+}
+
+class Result extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Result(input) {
+    assert(input != null);
+    return Result._(validateStringIsNotEmpty(input));
+  }
+
+  const Result._(this.value);
 }

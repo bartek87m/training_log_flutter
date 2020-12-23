@@ -28,15 +28,17 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   ) async* {
     yield* event.map(
       createNewWorkout: (_) async* {
+        print(state);
         yield state.copyWith(
           workout: Workout.newWorkout(),
           isEditing: true,
+          showErrorMessagesForExerciseName: List<bool>(),
         );
       },
       addExerciseToWorkout: (_) async* {
+        state.showErrorMessagesForExerciseName.add(false);
         List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList.add(
-            Exercise(exerciseName: ExerciseName(''), setsList: List<Series>()));
+        exerciseList.add(Exercise.newExercise());
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
         );
@@ -44,17 +46,40 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       workoutCompleted: (_) async* {},
       cancelWorkout: (_) async* {
         yield state.copyWith(
-          workout: Workout.empty(),
+          // workout: Workout.empty(),
           isCanceled: true,
+          isEditing: false,
+          // showErrorMessagesForExerciseName: List<bool>(),
         );
       },
       finishWorkout: (_) async* {
-        iWorkoutFacade.createWorkout(workout: state.workout);
+        // state.showErrorMessagesForExerciseName.clear();
+        final isExerciseNameValid = !state.workout.exercieList
+            .map((e) => e.exerciseName.isValid())
+            .any((element) => element == false);
 
-        yield state.copyWith(
-          isSaved: true,
-          isEditing: false,
-        );
+        print('$isExerciseNameValid');
+
+        if (!isExerciseNameValid) {
+          final showErrorMessagesForExerciseNameList = state.workout.exercieList
+              .map((e) => !e.exerciseName.isValid())
+              .toList();
+
+          yield state.copyWith(
+            showErrorMessagesForExerciseName:
+                showErrorMessagesForExerciseNameList,
+            isEditing: true,
+            isSaved: false,
+            isCanceled: false,
+          );
+        } else {
+          iWorkoutFacade.createWorkout(workout: state.workout);
+
+          yield state.copyWith(
+            isSaved: true,
+            isEditing: false,
+          );
+        }
       },
       changeTitle: (e) async* {
         yield state.copyWith(
@@ -63,7 +88,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       },
       addSeriesToExercise: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList[e.exerciseNumber].setsList.add(Series());
+        exerciseList[e.exerciseNumber].setsList.add(Series.newSeries());
 
         yield state.copyWith(
             workout: state.workout.copyWith(exercieList: exerciseList));
@@ -95,7 +120,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseList[e.exerciseNumber].setsList[e.seriesNumber] =
             exerciseList[e.exerciseNumber]
                 .setsList[e.seriesNumber]
-                .copyWith(reps: e.reps);
+                .copyWith(reps: Reps(e.reps));
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
@@ -106,7 +131,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseList[e.exerciseNumber].setsList[e.seriesNumber] =
             exerciseList[e.exerciseNumber]
                 .setsList[e.seriesNumber]
-                .copyWith(weight: e.weight);
+                .copyWith(result: Result(e.weight));
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),

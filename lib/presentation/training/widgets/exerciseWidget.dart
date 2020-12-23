@@ -43,12 +43,29 @@ class ExerciseWidget extends HookWidget {
           child: Column(
             children: [
               TextFormField(
+                autovalidateMode:
+                    state.showErrorMessagesForExerciseName[exerciseNumber]
+                        ? AutovalidateMode.always
+                        : AutovalidateMode.disabled,
                 initialValue: state
                     .workout.exercieList[exerciseNumber].exerciseName.value
                     .fold((f) => null, (r) => r),
-                onChanged: (value) => context.read<WorkoutBloc>().add(
-                    WorkoutEvent.addExerciseName(value.trim(), exerciseNumber)),
+                onChanged: (value) => {
+                  context.read<WorkoutBloc>().add(WorkoutEvent.addExerciseName(
+                      value.trim(), exerciseNumber)),
+                  print(state.showErrorMessagesForExerciseName[exerciseNumber])
+                },
                 style: TextStyle(fontSize: 14),
+                validator: (_) => state
+                    .workout.exercieList[exerciseNumber].exerciseName.value
+                    .fold(
+                        //beirzemy context bezpośrednio z Bloc a nie z builder
+                        (f) => f.maybeMap(
+                              workoutStringEmpty: (_) =>
+                                  "This field can\'t be empty",
+                              orElse: () => null,
+                            ),
+                        (r) => null),
                 minLines: 1,
                 maxLines: 1,
                 decoration: InputDecoration(

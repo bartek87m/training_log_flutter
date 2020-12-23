@@ -63,11 +63,12 @@ class SeriesWidget extends StatelessWidget {
                                 ),
                               ),
                               textInputAction: TextInputAction.next,
-                              initialValue: state
-                                  .workout
-                                  .exercieList[exerciseNumber]
-                                  .setsList[seriesNumber]
-                                  .reps,
+                              // initialValue: state
+                              //     .workout
+                              //     .exercieList[exerciseNumber]
+                              //     .setsList[seriesNumber]
+                              //     .reps
+                              //     .getOrCrash(),
                               onChanged: (value) =>
                                   BlocProvider.of<WorkoutBloc>(context).add(
                                 WorkoutEvent.addRepsToSeries(
@@ -111,11 +112,11 @@ class SeriesWidget extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              initialValue: state
-                                  .workout
-                                  .exercieList[exerciseNumber]
-                                  .setsList[seriesNumber]
-                                  .weight,
+                              // initialValue: state
+                              //     .workout
+                              //     .exercieList[exerciseNumber]
+                              //     .setsList[seriesNumber]
+                              //     .result.getOrCrash(),
                               onChanged: (value) =>
                                   BlocProvider.of<WorkoutBloc>(context).add(
                                 WorkoutEvent.addWeightToSeries(
