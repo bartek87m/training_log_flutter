@@ -15,8 +15,8 @@ class _$SeriesTearOff {
 
 // ignore: unused_element
   _Series call(
-      {Reps reps,
-      Result result,
+      {String reps,
+      String result,
       String resultFromlastTraining,
       bool completed}) {
     return _Series(
@@ -34,8 +34,8 @@ const $Series = _$SeriesTearOff();
 
 /// @nodoc
 mixin _$Series {
-  Reps get reps;
-  Result get result;
+  String get reps;
+  String get result;
   String
       get resultFromlastTraining; //rezultat z poprzedniego treningu z tym ćwiczeniem
   bool get completed;
@@ -48,8 +48,8 @@ abstract class $SeriesCopyWith<$Res> {
   factory $SeriesCopyWith(Series value, $Res Function(Series) then) =
       _$SeriesCopyWithImpl<$Res>;
   $Res call(
-      {Reps reps,
-      Result result,
+      {String reps,
+      String result,
       String resultFromlastTraining,
       bool completed});
 }
@@ -70,8 +70,8 @@ class _$SeriesCopyWithImpl<$Res> implements $SeriesCopyWith<$Res> {
     Object completed = freezed,
   }) {
     return _then(_value.copyWith(
-      reps: reps == freezed ? _value.reps : reps as Reps,
-      result: result == freezed ? _value.result : result as Result,
+      reps: reps == freezed ? _value.reps : reps as String,
+      result: result == freezed ? _value.result : result as String,
       resultFromlastTraining: resultFromlastTraining == freezed
           ? _value.resultFromlastTraining
           : resultFromlastTraining as String,
@@ -86,8 +86,8 @@ abstract class _$SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
       __$SeriesCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Reps reps,
-      Result result,
+      {String reps,
+      String result,
       String resultFromlastTraining,
       bool completed});
 }
@@ -109,8 +109,8 @@ class __$SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
     Object completed = freezed,
   }) {
     return _then(_Series(
-      reps: reps == freezed ? _value.reps : reps as Reps,
-      result: result == freezed ? _value.result : result as Result,
+      reps: reps == freezed ? _value.reps : reps as String,
+      result: result == freezed ? _value.result : result as String,
       resultFromlastTraining: resultFromlastTraining == freezed
           ? _value.resultFromlastTraining
           : resultFromlastTraining as String,
@@ -125,9 +125,9 @@ class _$_Series implements _Series {
       {this.reps, this.result, this.resultFromlastTraining, this.completed});
 
   @override
-  final Reps reps;
+  final String reps;
   @override
-  final Result result;
+  final String result;
   @override
   final String resultFromlastTraining;
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem
@@ -169,15 +169,15 @@ class _$_Series implements _Series {
 
 abstract class _Series implements Series {
   const factory _Series(
-      {Reps reps,
-      Result result,
+      {String reps,
+      String result,
       String resultFromlastTraining,
       bool completed}) = _$_Series;
 
   @override
-  Reps get reps;
+  String get reps;
   @override
-  Result get result;
+  String get result;
   @override
   String get resultFromlastTraining;
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem

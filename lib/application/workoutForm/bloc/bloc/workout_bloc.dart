@@ -120,7 +120,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseList[e.exerciseNumber].setsList[e.seriesNumber] =
             exerciseList[e.exerciseNumber]
                 .setsList[e.seriesNumber]
-                .copyWith(reps: Reps(e.reps));
+                .copyWith(reps: e.reps);
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
@@ -131,7 +131,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseList[e.exerciseNumber].setsList[e.seriesNumber] =
             exerciseList[e.exerciseNumber]
                 .setsList[e.seriesNumber]
-                .copyWith(result: Result(e.weight));
+                .copyWith(result: e.weight);
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),

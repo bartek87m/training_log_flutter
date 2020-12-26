@@ -11,6 +11,10 @@ abstract class ValueObject<T> {
   const ValueObject();
   Either<ValueFailure<T>, T> get value;
 
+  // T getValue() {
+  //   return value.getOrElse(() => null);
+  // }
+
   T getOrCrash() {
     return value.fold((f) => throw UnexpectedValueError(f), id);
   }
