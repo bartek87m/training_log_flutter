@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
-import 'package:training_log/domain/series/series.dart';
 import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
 class ExerciseWidget extends HookWidget {
   final exerciseNumber;
   final state;
   final Function rebuildWidget;
-  ExerciseWidget(this.exerciseNumber, this.state, this.rebuildWidget, {Key key})
+  final focusNode;
+  ExerciseWidget(
+      this.exerciseNumber, this.state, this.rebuildWidget, this.focusNode,
+      {Key key})
       : super(key: key);
 
   @override
@@ -43,6 +45,7 @@ class ExerciseWidget extends HookWidget {
           child: Column(
             children: [
               TextFormField(
+                focusNode: focusNode,
                 autovalidateMode:
                     state.showErrorMessagesForExerciseName[exerciseNumber]
                         ? AutovalidateMode.always
@@ -95,9 +98,7 @@ class ExerciseWidget extends HookWidget {
                       onPressed: () {
                         context.read<WorkoutBloc>().add(
                             WorkoutEvent.addSeriesToExercise(exerciseNumber));
-                        setList.value = List<Series>.empty();
-                        setList.value =
-                            state.workout.exercieList[exerciseNumber].setsList;
+                        this.rebuildWidget(state);
                       },
                       child: Text("Add Set"),
                     ),

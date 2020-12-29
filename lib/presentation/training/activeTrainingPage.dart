@@ -12,11 +12,19 @@ class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final list = useState();
+    List<FocusNode> _exerciseNameFocusNode = List<FocusNode>();
 
     void rebuildWidget(state) {
       list.value = List<Exercise>.empty();
       list.value = state.workout.exercieList;
     }
+
+    useEffect(() {
+      print(_exerciseNameFocusNode);
+      return () {
+        _exerciseNameFocusNode.clear();
+      };
+    });
 
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
@@ -31,6 +39,14 @@ class ActiveTrainingPage extends HookWidget {
             });
       }
     }, builder: (context, state) {
+      for (var i = 0; i < state.workout.exercieList.length; i++) {
+        _exerciseNameFocusNode.add(FocusNode());
+      }
+
+      if (state.workout.exercieList.length > 0)
+        _exerciseNameFocusNode[state.workout.exercieList.length - 1]
+            .requestFocus();
+
       return Scaffold(
         resizeToAvoidBottomPadding: true,
         body: SingleChildScrollView(
@@ -72,6 +88,7 @@ class ActiveTrainingPage extends HookWidget {
                               exerciseNumber,
                               state,
                               rebuildWidget,
+                              _exerciseNameFocusNode[exerciseNumber],
                               key: UniqueKey(),
                             ),
                           )

@@ -51,6 +51,7 @@ class SeriesWidget extends StatelessWidget {
                             width: textFieldWidth,
                             height: textFieldHeight * 1.2,
                             child: TextFormField(
+                              key: UniqueKey(),
                               maxLength: 8,
                               cursorColor: Colors.grey,
                               cursorHeight: textFieldHeight * 0.7,
@@ -103,6 +104,7 @@ class SeriesWidget extends StatelessWidget {
                             width: textFieldWidth,
                             height: textFieldHeight * 1.2,
                             child: TextFormField(
+                              key: UniqueKey(),
                               maxLength: 9,
                               cursorHeight: textFieldHeight * 0.7,
                               textAlign: TextAlign.center,

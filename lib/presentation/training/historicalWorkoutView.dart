@@ -99,7 +99,7 @@ class OverviewWorkoutPage extends StatelessWidget {
                                 Container(
                                   padding: EdgeInsets.only(bottom: 5),
                                   child: Text(
-                                    "Series",
+                                    "Reps",
                                   ),
                                 ),
                                 for (var seriesNumber = 0;
