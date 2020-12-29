@@ -83,9 +83,10 @@ class ExerciseWidget extends HookWidget {
                     FocusScope.of(context).requestFocus(focus),
               ),
               SeriesWidget(
-                  exerciseNumber: exerciseNumber,
-                  state: state,
-                  rebuildWidget: rebuildExerciseWidget),
+                exerciseNumber: exerciseNumber,
+                state: state,
+                rebuildWidget: rebuildExerciseWidget,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -101,14 +102,14 @@ class ExerciseWidget extends HookWidget {
                       child: Text("Add Set"),
                     ),
                   ),
-                  Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        print("Change to WOD");
-                      },
-                      child: Text("Change to WOD"),
-                    ),
-                  ),
+                  // Container(
+                  //   child: FlatButton(
+                  //     onPressed: () {
+                  //       print("Change to WOD");
+                  //     },
+                  //     child: Text("Change to WOD"),
+                  //   ),
+                  // ),
                 ],
               ),
             ],

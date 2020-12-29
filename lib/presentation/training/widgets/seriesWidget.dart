@@ -12,8 +12,8 @@ class SeriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    final textFieldHeight = (mediaQuery.height * 0.04);
-    final textFieldWidth = (mediaQuery.width * 0.2);
+    final textFieldHeight = (mediaQuery.height * 0.035);
+    final textFieldWidth = (mediaQuery.width * 0.25);
 
     return Container(
       margin: const EdgeInsets.only(top: 10),
@@ -26,10 +26,14 @@ class SeriesWidget extends StatelessWidget {
                   i < state.workout.exercieList[exerciseNumber].setsList.length;
                   i++)
                 Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    padding: const EdgeInsets.only(top: 15),
-                    height: textFieldHeight,
-                    child: Text('${i + 1}')),
+                  margin: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.only(top: 15),
+                  height: textFieldHeight * 1.2,
+                  child: Text(
+                    '${i + 1}',
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ),
             ],
           ),
           Column(
@@ -45,14 +49,18 @@ class SeriesWidget extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(top: 10),
                             width: textFieldWidth,
-                            height: textFieldHeight,
+                            height: textFieldHeight * 1.2,
                             child: TextFormField(
+                              maxLength: 8,
                               cursorColor: Colors.grey,
                               cursorHeight: textFieldHeight * 0.7,
                               decoration: InputDecoration(
+                                counter: Offstage(
+                                  offstage: true,
+                                ),
                                 fillColor: Colors.grey[600],
                                 filled: true,
-                                contentPadding: const EdgeInsets.all(3),
+                                // contentPadding: const EdgeInsets.only(top: 3),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.grey),
                                 ),
@@ -62,13 +70,13 @@ class SeriesWidget extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              style: const TextStyle(fontSize: 14),
                               textInputAction: TextInputAction.next,
-                              // initialValue: state
-                              //     .workout
-                              //     .exercieList[exerciseNumber]
-                              //     .setsList[seriesNumber]
-                              //     .reps
-                              //     .getOrCrash(),
+                              initialValue: state
+                                  .workout
+                                  .exercieList[exerciseNumber]
+                                  .setsList[seriesNumber]
+                                  .reps,
                               onChanged: (value) =>
                                   BlocProvider.of<WorkoutBloc>(context).add(
                                 WorkoutEvent.addRepsToSeries(
@@ -93,16 +101,20 @@ class SeriesWidget extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(top: 10),
                             width: textFieldWidth,
-                            height: textFieldHeight,
+                            height: textFieldHeight * 1.2,
                             child: TextFormField(
+                              maxLength: 9,
                               cursorHeight: textFieldHeight * 0.7,
                               textAlign: TextAlign.center,
                               cursorColor: Colors.grey,
                               decoration: InputDecoration(
+                                counter: Offstage(
+                                  offstage: true,
+                                ),
                                 counterStyle: TextStyle(color: Colors.red),
                                 fillColor: Colors.grey[600],
                                 filled: true,
-                                contentPadding: const EdgeInsets.all(3),
+                                // contentPadding: const EdgeInsets.all(3),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.grey),
                                 ),
@@ -112,11 +124,12 @@ class SeriesWidget extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              // initialValue: state
-                              //     .workout
-                              //     .exercieList[exerciseNumber]
-                              //     .setsList[seriesNumber]
-                              //     .result.getOrCrash(),
+                              style: const TextStyle(fontSize: 14),
+                              initialValue: state
+                                  .workout
+                                  .exercieList[exerciseNumber]
+                                  .setsList[seriesNumber]
+                                  .result,
                               onChanged: (value) =>
                                   BlocProvider.of<WorkoutBloc>(context).add(
                                 WorkoutEvent.addWeightToSeries(
@@ -137,8 +150,8 @@ class SeriesWidget extends StatelessWidget {
                                     .setsList.length;
                             seriesNumber++)
                           Container(
-                            padding: const EdgeInsets.only(top: 12.5),
-                            height: textFieldHeight,
+                            padding: const EdgeInsets.only(top: 8),
+                            height: textFieldHeight * 1.2,
                             margin: const EdgeInsets.only(top: 10),
                             child: GestureDetector(
                                 onTap: () {
