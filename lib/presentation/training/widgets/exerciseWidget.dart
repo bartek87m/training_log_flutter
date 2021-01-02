@@ -9,9 +9,11 @@ class ExerciseWidget extends HookWidget {
   final exerciseNumber;
   final state;
   final Function rebuildWidget;
-  final focusNode;
-  ExerciseWidget(
-      this.exerciseNumber, this.state, this.rebuildWidget, this.focusNode,
+  final FocusNode focusNode;
+  final FocusNode _workoutTitleFocusNode;
+
+  ExerciseWidget(this.exerciseNumber, this.state, this.rebuildWidget,
+      this.focusNode, this._workoutTitleFocusNode,
       {Key key})
       : super(key: key);
 
@@ -19,12 +21,39 @@ class ExerciseWidget extends HookWidget {
   Widget build(context) {
     var setList = useState();
 
+    List<FocusNode> _repsFocusNode = List<FocusNode>();
+
     void rebuildExerciseWidget(state) {
       setList.value = [];
       setList.value = state.workout.exercieList[exerciseNumber].setsList;
+      _workoutTitleFocusNode.unfocus();
     }
 
-    final focus = FocusNode();
+    // useEffect(() {
+    //   return () {
+    //     if (_repsFocusNode.length > 0)
+    //       for (var i = 0; i > _repsFocusNode.length - 1; i++) {
+    //         _repsFocusNode[i].dispose();
+    //       }
+    //     _repsFocusNode.clear();
+    //   };
+    // });
+
+    for (var i = 0;
+        i < state.workout.exercieList[exerciseNumber].setsList.length;
+        i++) {
+      _repsFocusNode.add(FocusNode());
+    }
+
+    if (state.workout.exercieList[exerciseNumber].setsList.length > 0 &&
+        state.isWotkoutTitleEditing == false)
+      _repsFocusNode[
+              state.workout.exercieList[exerciseNumber].setsList.length - 1]
+          .requestFocus();
+
+    if (state.isWotkoutTitleEditing == true) {
+      _workoutTitleFocusNode.requestFocus();
+    }
 
     return Form(
       child: Dismissible(
@@ -56,7 +85,6 @@ class ExerciseWidget extends HookWidget {
                 onChanged: (value) => {
                   context.read<WorkoutBloc>().add(WorkoutEvent.addExerciseName(
                       value.trim(), exerciseNumber)),
-                  print(state.showErrorMessagesForExerciseName[exerciseNumber])
                 },
                 style: TextStyle(fontSize: 14),
                 validator: (_) => state
@@ -82,13 +110,12 @@ class ExerciseWidget extends HookWidget {
                     borderSide: BorderSide(color: Colors.grey),
                   ),
                 ),
-                onFieldSubmitted: (_) =>
-                    FocusScope.of(context).requestFocus(focus),
               ),
               SeriesWidget(
                 exerciseNumber: exerciseNumber,
                 state: state,
                 rebuildWidget: rebuildExerciseWidget,
+                focusNode: _repsFocusNode,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

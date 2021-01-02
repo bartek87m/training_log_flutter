@@ -7,24 +7,31 @@ import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart
 import 'package:training_log/domain/exercise/exercise.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/exerciseWidget.dart';
+import 'package:training_log/presentation/training/widgets/workoutTitleWidget.dart';
 
 class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final list = useState();
+    FocusNode _workoutTitleFocusNode = FocusNode();
     List<FocusNode> _exerciseNameFocusNode = List<FocusNode>();
 
     void rebuildWidget(state) {
       list.value = List<Exercise>.empty();
       list.value = state.workout.exercieList;
+      _workoutTitleFocusNode.unfocus();
     }
 
-    useEffect(() {
-      print(_exerciseNameFocusNode);
-      return () {
-        _exerciseNameFocusNode.clear();
-      };
-    });
+    // useEffect(() {
+    //   return () {
+    //     if (_exerciseNameFocusNode.length > 0)
+    //       for (var i = 0; i > _exerciseNameFocusNode.length - 1; i++) {
+    //         _exerciseNameFocusNode[i].dispose();
+    //       }
+    //     // _workoutTitleFocusNode.dispose();
+    //     _exerciseNameFocusNode.clear();
+    //   };
+    // });
 
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
@@ -43,9 +50,14 @@ class ActiveTrainingPage extends HookWidget {
         _exerciseNameFocusNode.add(FocusNode());
       }
 
-      if (state.workout.exercieList.length > 0)
+      if (state.workout.exercieList.length > 0) {
         _exerciseNameFocusNode[state.workout.exercieList.length - 1]
             .requestFocus();
+      }
+
+      if (state.isWotkoutTitleEditing) {
+        _workoutTitleFocusNode.requestFocus();
+      }
 
       return Scaffold(
         resizeToAvoidBottomPadding: true,
@@ -56,25 +68,7 @@ class ActiveTrainingPage extends HookWidget {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.only(
                   top: 10, left: 10, right: 10, bottom: 1),
-              child: TextFormField(
-                onChanged: (value) => context
-                    .read<WorkoutBloc>()
-                    .add(WorkoutEvent.changeTitle(value)),
-                initialValue:
-                    state.workout.title.value.fold((l) => null, (r) => r),
-                decoration: InputDecoration(
-                  counter: Offstage(),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding: const EdgeInsets.only(bottom: 0),
-                ),
-                maxLines: 1,
-                maxLength: 50,
-                maxLengthEnforced: true,
-              ),
+              child: WorkoutTitleWidget(state, _workoutTitleFocusNode),
             ),
             Container(
               child: Column(
@@ -89,6 +83,7 @@ class ActiveTrainingPage extends HookWidget {
                               state,
                               rebuildWidget,
                               _exerciseNameFocusNode[exerciseNumber],
+                              _workoutTitleFocusNode,
                               key: UniqueKey(),
                             ),
                           )

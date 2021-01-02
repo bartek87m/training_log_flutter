@@ -2759,6 +2759,8 @@ class _$WorkoutStateTearOff {
       @required
           bool isEditing,
       @required
+          bool isWotkoutTitleEditing,
+      @required
           bool isCanceled,
       @required
           bool isSaved,
@@ -2772,6 +2774,7 @@ class _$WorkoutStateTearOff {
       showErrorMessagesForSeries: showErrorMessagesForSeries,
       showErrorMessagesForResults: showErrorMessagesForResults,
       isEditing: isEditing,
+      isWotkoutTitleEditing: isWotkoutTitleEditing,
       isCanceled: isCanceled,
       isSaved: isSaved,
       isDeleted: isDeleted,
@@ -2791,6 +2794,7 @@ mixin _$WorkoutState {
   List<bool> get showErrorMessagesForSeries;
   List<bool> get showErrorMessagesForResults;
   bool get isEditing;
+  bool get isWotkoutTitleEditing;
   bool get isCanceled;
   bool get isSaved;
   bool get isDeleted;
@@ -2810,6 +2814,7 @@ abstract class $WorkoutStateCopyWith<$Res> {
       List<bool> showErrorMessagesForSeries,
       List<bool> showErrorMessagesForResults,
       bool isEditing,
+      bool isWotkoutTitleEditing,
       bool isCanceled,
       bool isSaved,
       bool isDeleted,
@@ -2833,6 +2838,7 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
     Object showErrorMessagesForSeries = freezed,
     Object showErrorMessagesForResults = freezed,
     Object isEditing = freezed,
+    Object isWotkoutTitleEditing = freezed,
     Object isCanceled = freezed,
     Object isSaved = freezed,
     Object isDeleted = freezed,
@@ -2851,6 +2857,9 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
           ? _value.showErrorMessagesForResults
           : showErrorMessagesForResults as List<bool>,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
+      isWotkoutTitleEditing: isWotkoutTitleEditing == freezed
+          ? _value.isWotkoutTitleEditing
+          : isWotkoutTitleEditing as bool,
       isCanceled:
           isCanceled == freezed ? _value.isCanceled : isCanceled as bool,
       isSaved: isSaved == freezed ? _value.isSaved : isSaved as bool,
@@ -2885,6 +2894,7 @@ abstract class _$WorkoutStateCopyWith<$Res>
       List<bool> showErrorMessagesForSeries,
       List<bool> showErrorMessagesForResults,
       bool isEditing,
+      bool isWotkoutTitleEditing,
       bool isCanceled,
       bool isSaved,
       bool isDeleted,
@@ -2911,6 +2921,7 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
     Object showErrorMessagesForSeries = freezed,
     Object showErrorMessagesForResults = freezed,
     Object isEditing = freezed,
+    Object isWotkoutTitleEditing = freezed,
     Object isCanceled = freezed,
     Object isSaved = freezed,
     Object isDeleted = freezed,
@@ -2929,6 +2940,9 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
           ? _value.showErrorMessagesForResults
           : showErrorMessagesForResults as List<bool>,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
+      isWotkoutTitleEditing: isWotkoutTitleEditing == freezed
+          ? _value.isWotkoutTitleEditing
+          : isWotkoutTitleEditing as bool,
       isCanceled:
           isCanceled == freezed ? _value.isCanceled : isCanceled as bool,
       isSaved: isSaved == freezed ? _value.isSaved : isSaved as bool,
@@ -2948,6 +2962,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       @required this.showErrorMessagesForSeries,
       @required this.showErrorMessagesForResults,
       @required this.isEditing,
+      @required this.isWotkoutTitleEditing,
       @required this.isCanceled,
       @required this.isSaved,
       @required this.isDeleted,
@@ -2957,6 +2972,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
         assert(showErrorMessagesForSeries != null),
         assert(showErrorMessagesForResults != null),
         assert(isEditing != null),
+        assert(isWotkoutTitleEditing != null),
         assert(isCanceled != null),
         assert(isSaved != null),
         assert(isDeleted != null),
@@ -2973,6 +2989,8 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   @override
   final bool isEditing;
   @override
+  final bool isWotkoutTitleEditing;
+  @override
   final bool isCanceled;
   @override
   final bool isSaved;
@@ -2983,7 +3001,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutState(workout: $workout, showErrorMessagesForExerciseName: $showErrorMessagesForExerciseName, showErrorMessagesForSeries: $showErrorMessagesForSeries, showErrorMessagesForResults: $showErrorMessagesForResults, isEditing: $isEditing, isCanceled: $isCanceled, isSaved: $isSaved, isDeleted: $isDeleted, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'WorkoutState(workout: $workout, showErrorMessagesForExerciseName: $showErrorMessagesForExerciseName, showErrorMessagesForSeries: $showErrorMessagesForSeries, showErrorMessagesForResults: $showErrorMessagesForResults, isEditing: $isEditing, isWotkoutTitleEditing: $isWotkoutTitleEditing, isCanceled: $isCanceled, isSaved: $isSaved, isDeleted: $isDeleted, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2999,6 +3017,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       ..add(DiagnosticsProperty(
           'showErrorMessagesForResults', showErrorMessagesForResults))
       ..add(DiagnosticsProperty('isEditing', isEditing))
+      ..add(DiagnosticsProperty('isWotkoutTitleEditing', isWotkoutTitleEditing))
       ..add(DiagnosticsProperty('isCanceled', isCanceled))
       ..add(DiagnosticsProperty('isSaved', isSaved))
       ..add(DiagnosticsProperty('isDeleted', isDeleted))
@@ -3029,6 +3048,9 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditing, isEditing)) &&
+            (identical(other.isWotkoutTitleEditing, isWotkoutTitleEditing) ||
+                const DeepCollectionEquality().equals(
+                    other.isWotkoutTitleEditing, isWotkoutTitleEditing)) &&
             (identical(other.isCanceled, isCanceled) ||
                 const DeepCollectionEquality()
                     .equals(other.isCanceled, isCanceled)) &&
@@ -3039,9 +3061,8 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
                 const DeepCollectionEquality()
                     .equals(other.isDeleted, isDeleted)) &&
             (identical(other.saveFailureOrSuccessOption, saveFailureOrSuccessOption) ||
-                const DeepCollectionEquality().equals(
-                    other.saveFailureOrSuccessOption,
-                    saveFailureOrSuccessOption)));
+                const DeepCollectionEquality()
+                    .equals(other.saveFailureOrSuccessOption, saveFailureOrSuccessOption)));
   }
 
   @override
@@ -3052,6 +3073,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       const DeepCollectionEquality().hash(showErrorMessagesForSeries) ^
       const DeepCollectionEquality().hash(showErrorMessagesForResults) ^
       const DeepCollectionEquality().hash(isEditing) ^
+      const DeepCollectionEquality().hash(isWotkoutTitleEditing) ^
       const DeepCollectionEquality().hash(isCanceled) ^
       const DeepCollectionEquality().hash(isSaved) ^
       const DeepCollectionEquality().hash(isDeleted) ^
@@ -3075,6 +3097,8 @@ abstract class _WorkoutState implements WorkoutState {
       @required
           bool isEditing,
       @required
+          bool isWotkoutTitleEditing,
+      @required
           bool isCanceled,
       @required
           bool isSaved,
@@ -3094,6 +3118,8 @@ abstract class _WorkoutState implements WorkoutState {
   List<bool> get showErrorMessagesForResults;
   @override
   bool get isEditing;
+  @override
+  bool get isWotkoutTitleEditing;
   @override
   bool get isCanceled;
   @override

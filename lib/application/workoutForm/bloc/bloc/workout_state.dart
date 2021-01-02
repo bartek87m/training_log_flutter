@@ -8,6 +8,7 @@ abstract class WorkoutState with _$WorkoutState {
     @required List<bool> showErrorMessagesForSeries,
     @required List<bool> showErrorMessagesForResults,
     @required bool isEditing,
+    @required bool isWotkoutTitleEditing,
     @required bool isCanceled,
     @required bool isSaved,
     @required bool isDeleted,
@@ -23,6 +24,7 @@ abstract class WorkoutState with _$WorkoutState {
         isSaved: false,
         isCanceled: false,
         isDeleted: false,
+        isWotkoutTitleEditing: false,
         saveFailureOrSuccessOption: none(),
       );
 }
