@@ -4,15 +4,14 @@ import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart
 
 class WorkoutTitleWidget extends StatelessWidget {
   final state;
-  final FocusNode focusNode;
 
-  WorkoutTitleWidget(this.state, this.focusNode);
+  WorkoutTitleWidget(this.state);
 
   @override
   Widget build(BuildContext context) {
+    print('Build');
     return Container(
       child: TextFormField(
-        focusNode: focusNode,
         // onTap: () => print("Editing complete"),
         onChanged: (value) =>
             context.read<WorkoutBloc>().add(WorkoutEvent.changeTitle(value)),

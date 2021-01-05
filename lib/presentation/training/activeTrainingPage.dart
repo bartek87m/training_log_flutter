@@ -13,52 +13,55 @@ class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final list = useState();
-    FocusNode _workoutTitleFocusNode = FocusNode();
-    List<FocusNode> _exerciseNameFocusNode = List<FocusNode>();
+
+    List<FocusNode> _focusNodes = [];
+
+    int calculateNumberOfNeededFocusNodes(exerciseList) {
+      int numberOfTextFormFieldsNeedsFocusNode = 0;
+      if (exerciseList.value != null) {
+        exerciseList.value.forEach(
+          (exercise) => {
+            numberOfTextFormFieldsNeedsFocusNode++,
+            exercise.setsList
+                .forEach((sets) => {numberOfTextFormFieldsNeedsFocusNode += 2})
+          },
+        );
+        return numberOfTextFormFieldsNeedsFocusNode +
+            1; // + 1 because I add workoutTitle TextFormField
+      } else
+        return 1;
+    }
+
+    useEffect(() {
+      //dodanie FocusNodes w zależności od ilości TextFormFields
+      for (var i = 0; i < calculateNumberOfNeededFocusNodes(list); i++) {
+        _focusNodes.add(FocusNode());
+      }
+      print(_focusNodes);
+      return () {
+        _focusNodes.forEach((fn) => fn.dispose());
+      };
+    });
 
     void rebuildWidget(state) {
       list.value = List<Exercise>.empty();
       list.value = state.workout.exercieList;
-      _workoutTitleFocusNode.unfocus();
     }
-
-    // useEffect(() {
-    //   return () {
-    //     if (_exerciseNameFocusNode.length > 0)
-    //       for (var i = 0; i > _exerciseNameFocusNode.length - 1; i++) {
-    //         _exerciseNameFocusNode[i].dispose();
-    //       }
-    //     // _workoutTitleFocusNode.dispose();
-    //     _exerciseNameFocusNode.clear();
-    //   };
-    // });
 
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
-      if (state.isCanceled == true && state.isSaved == false) {
+      if (state.isCanceled == true) {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
-      if (state.isSaved == true && state.isEditing == false) {
+      if (state.isSaved == true) {
+        print('isSaving');
         FlushbarHelper.createSuccess(
           message: "Workout saved",
-        ).show(context).then((value) => {
-              ExtendedNavigator.of(context).replace(Routes.trainingsPage),
-            });
+          duration: Duration(seconds: 2),
+        ).show(context);
       }
     }, builder: (context, state) {
-      for (var i = 0; i < state.workout.exercieList.length; i++) {
-        _exerciseNameFocusNode.add(FocusNode());
-      }
-
-      if (state.workout.exercieList.length > 0) {
-        _exerciseNameFocusNode[state.workout.exercieList.length - 1]
-            .requestFocus();
-      }
-
-      if (state.isWotkoutTitleEditing) {
-        _workoutTitleFocusNode.requestFocus();
-      }
-
+      print(state);
       return Scaffold(
         resizeToAvoidBottomPadding: true,
         body: SingleChildScrollView(
@@ -68,11 +71,11 @@ class ActiveTrainingPage extends HookWidget {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.only(
                   top: 10, left: 10, right: 10, bottom: 1),
-              child: WorkoutTitleWidget(state, _workoutTitleFocusNode),
+              child: WorkoutTitleWidget(state),
             ),
             Container(
               child: Column(
-                children: state.workout.exercieList.isNotEmpty
+                children: list.value != null
                     ? <Widget>[
                         for (var exerciseNumber = 0;
                             exerciseNumber < list.value.length;
@@ -82,8 +85,6 @@ class ActiveTrainingPage extends HookWidget {
                               exerciseNumber,
                               state,
                               rebuildWidget,
-                              _exerciseNameFocusNode[exerciseNumber],
-                              _workoutTitleFocusNode,
                               key: UniqueKey(),
                             ),
                           )
@@ -95,12 +96,13 @@ class ActiveTrainingPage extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FlatButton(
-                  onPressed: () => BlocProvider.of<WorkoutBloc>(context)
-                      .add(WorkoutEvent.finishWorkout()),
+                  onPressed: () => context
+                      .read<WorkoutBloc>()
+                      .add(WorkoutEvent.saveWorkout()),
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   child: const Text(
-                    'Finish Workout',
+                    'Save Workout',
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),

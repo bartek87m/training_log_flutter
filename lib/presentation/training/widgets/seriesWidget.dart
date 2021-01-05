@@ -6,10 +6,8 @@ class SeriesWidget extends StatelessWidget {
   final state;
   final exerciseNumber;
   final Function rebuildWidget;
-  final List<FocusNode> focusNode;
 
-  SeriesWidget(
-      {this.state, this.exerciseNumber, this.rebuildWidget, this.focusNode});
+  SeriesWidget({this.state, this.exerciseNumber, this.rebuildWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +51,6 @@ class SeriesWidget extends StatelessWidget {
                             width: textFieldWidth,
                             height: textFieldHeight * 1.2,
                             child: TextFormField(
-                              focusNode: focusNode[seriesNumber],
                               key: UniqueKey(),
                               maxLength: 8,
                               cursorColor: Colors.grey,

@@ -41,8 +41,13 @@ class _$WorkoutEventTearOff {
   }
 
 // ignore: unused_element
-  _FinishWorkout finishWorkout() {
+  _FinishWorkout saveWorkout() {
     return const _FinishWorkout();
+  }
+
+// ignore: unused_element
+  _WorkoutNotSaved clearState() {
+    return const _WorkoutNotSaved();
   }
 
 // ignore: unused_element
@@ -102,6 +107,11 @@ class _$WorkoutEventTearOff {
       numberOfExercise,
     );
   }
+
+// ignore: unused_element
+  _ChangeWorkoutToUnsaved changeWorkoutToUnsaved() {
+    return const _ChangeWorkoutToUnsaved();
+  }
 }
 
 /// @nodoc
@@ -117,7 +127,8 @@ mixin _$WorkoutEvent {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -130,6 +141,7 @@ mixin _$WorkoutEvent {
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -138,7 +150,8 @@ mixin _$WorkoutEvent {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -147,6 +160,7 @@ mixin _$WorkoutEvent {
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -156,7 +170,8 @@ mixin _$WorkoutEvent {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -165,6 +180,7 @@ mixin _$WorkoutEvent {
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -173,7 +189,8 @@ mixin _$WorkoutEvent {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -181,6 +198,7 @@ mixin _$WorkoutEvent {
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   });
 }
@@ -254,7 +272,8 @@ class _$_WorkoutCreated
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -267,13 +286,15 @@ class _$_WorkoutCreated
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -281,6 +302,7 @@ class _$_WorkoutCreated
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return createNewWorkout();
   }
 
@@ -292,7 +314,8 @@ class _$_WorkoutCreated
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -301,6 +324,7 @@ class _$_WorkoutCreated
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -318,7 +342,8 @@ class _$_WorkoutCreated
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -327,13 +352,15 @@ class _$_WorkoutCreated
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -341,6 +368,7 @@ class _$_WorkoutCreated
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return createNewWorkout(this);
   }
 
@@ -352,7 +380,8 @@ class _$_WorkoutCreated
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -360,6 +389,7 @@ class _$_WorkoutCreated
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -427,7 +457,8 @@ class _$_AddExerciseToWorkout
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -440,13 +471,15 @@ class _$_AddExerciseToWorkout
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -454,6 +487,7 @@ class _$_AddExerciseToWorkout
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addExerciseToWorkout();
   }
 
@@ -465,7 +499,8 @@ class _$_AddExerciseToWorkout
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -474,6 +509,7 @@ class _$_AddExerciseToWorkout
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -491,7 +527,8 @@ class _$_AddExerciseToWorkout
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -500,13 +537,15 @@ class _$_AddExerciseToWorkout
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -514,6 +553,7 @@ class _$_AddExerciseToWorkout
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addExerciseToWorkout(this);
   }
 
@@ -525,7 +565,8 @@ class _$_AddExerciseToWorkout
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -533,6 +574,7 @@ class _$_AddExerciseToWorkout
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -600,7 +642,8 @@ class _$_WorkoutCompleted
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -613,13 +656,15 @@ class _$_WorkoutCompleted
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -627,6 +672,7 @@ class _$_WorkoutCompleted
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return workoutCompleted();
   }
 
@@ -638,7 +684,8 @@ class _$_WorkoutCompleted
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -647,6 +694,7 @@ class _$_WorkoutCompleted
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -664,7 +712,8 @@ class _$_WorkoutCompleted
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -673,13 +722,15 @@ class _$_WorkoutCompleted
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -687,6 +738,7 @@ class _$_WorkoutCompleted
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return workoutCompleted(this);
   }
 
@@ -698,7 +750,8 @@ class _$_WorkoutCompleted
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -706,6 +759,7 @@ class _$_WorkoutCompleted
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -794,7 +848,8 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -807,13 +862,15 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -821,6 +878,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return deleteWorkout(workoutId);
   }
 
@@ -832,7 +890,8 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -841,6 +900,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -858,7 +918,8 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -867,13 +928,15 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -881,6 +944,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return deleteWorkout(this);
   }
 
@@ -892,7 +956,8 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -900,6 +965,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -967,7 +1033,8 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -980,13 +1047,15 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -994,6 +1063,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return cancelWorkout();
   }
 
@@ -1005,7 +1075,8 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1014,6 +1085,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1031,7 +1103,8 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -1040,13 +1113,15 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1054,6 +1129,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return cancelWorkout(this);
   }
 
@@ -1065,7 +1141,8 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -1073,6 +1150,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1112,13 +1190,13 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutEvent.finishWorkout()';
+    return 'WorkoutEvent.saveWorkout()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.finishWorkout'));
+    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.saveWorkout'));
   }
 
   @override
@@ -1137,7 +1215,8 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1150,13 +1229,15 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1164,7 +1245,8 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
-    return finishWorkout();
+    assert(changeWorkoutToUnsaved != null);
+    return saveWorkout();
   }
 
   @override
@@ -1175,7 +1257,8 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1184,11 +1267,12 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (finishWorkout != null) {
-      return finishWorkout();
+    if (saveWorkout != null) {
+      return saveWorkout();
     }
     return orElse();
   }
@@ -1201,7 +1285,8 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -1210,13 +1295,15 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1224,7 +1311,8 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
-    return finishWorkout(this);
+    assert(changeWorkoutToUnsaved != null);
+    return saveWorkout(this);
   }
 
   @override
@@ -1235,7 +1323,8 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -1243,11 +1332,12 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (finishWorkout != null) {
-      return finishWorkout(this);
+    if (saveWorkout != null) {
+      return saveWorkout(this);
     }
     return orElse();
   }
@@ -1255,6 +1345,190 @@ class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
 
 abstract class _FinishWorkout implements WorkoutEvent {
   const factory _FinishWorkout() = _$_FinishWorkout;
+}
+
+/// @nodoc
+abstract class _$WorkoutNotSavedCopyWith<$Res> {
+  factory _$WorkoutNotSavedCopyWith(
+          _WorkoutNotSaved value, $Res Function(_WorkoutNotSaved) then) =
+      __$WorkoutNotSavedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$WorkoutNotSavedCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$WorkoutNotSavedCopyWith<$Res> {
+  __$WorkoutNotSavedCopyWithImpl(
+      _WorkoutNotSaved _value, $Res Function(_WorkoutNotSaved) _then)
+      : super(_value, (v) => _then(v as _WorkoutNotSaved));
+
+  @override
+  _WorkoutNotSaved get _value => super._value as _WorkoutNotSaved;
+}
+
+/// @nodoc
+class _$_WorkoutNotSaved
+    with DiagnosticableTreeMixin
+    implements _WorkoutNotSaved {
+  const _$_WorkoutNotSaved();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.clearState()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.clearState'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _WorkoutNotSaved);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result deleteWorkout(String workoutId),
+    @required Result cancelWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
+    @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(int exerciseNumber),
+    @required Result removeExerciseFromWorkout(int numberOfExercsie),
+    @required
+        Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    @required
+        Result addWeightToSeries(
+            int exerciseNumber, int seriesNumber, String weight),
+    @required
+        Result addRepsToSeries(
+            int exerciseNumber, int seriesNumber, String reps),
+    @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
+    assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    return clearState();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result deleteWorkout(String workoutId),
+    Result cancelWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
+    Result changeTitle(String inputStr),
+    Result addSeriesToExercise(int exerciseNumber),
+    Result removeExerciseFromWorkout(int numberOfExercsie),
+    Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    Result addWeightToSeries(
+        int exerciseNumber, int seriesNumber, String weight),
+    Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
+    Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (clearState != null) {
+      return clearState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result deleteWorkout(_DeleteWorkout value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
+    @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
+    @required
+        Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    @required Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    @required Result addWeightToSeries(_AddWeightToSeries value),
+    @required Result addRepsToSeries(_AddRepsToSeries value),
+    @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
+    assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    return clearState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result deleteWorkout(_DeleteWorkout value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
+    Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
+    Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    Result addWeightToSeries(_AddWeightToSeries value),
+    Result addRepsToSeries(_AddRepsToSeries value),
+    Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (clearState != null) {
+      return clearState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WorkoutNotSaved implements WorkoutEvent {
+  const factory _WorkoutNotSaved() = _$_WorkoutNotSaved;
 }
 
 /// @nodoc
@@ -1330,7 +1604,8 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1343,13 +1618,15 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1357,6 +1634,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return changeTitle(inputStr);
   }
 
@@ -1368,7 +1646,8 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1377,6 +1656,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1394,7 +1674,8 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -1403,13 +1684,15 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1417,6 +1700,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return changeTitle(this);
   }
 
@@ -1428,7 +1712,8 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -1436,6 +1721,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1532,7 +1818,8 @@ class _$_AddSeriesToExercise
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1545,13 +1832,15 @@ class _$_AddSeriesToExercise
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1559,6 +1848,7 @@ class _$_AddSeriesToExercise
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addSeriesToExercise(exerciseNumber);
   }
 
@@ -1570,7 +1860,8 @@ class _$_AddSeriesToExercise
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1579,6 +1870,7 @@ class _$_AddSeriesToExercise
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1596,7 +1888,8 @@ class _$_AddSeriesToExercise
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -1605,13 +1898,15 @@ class _$_AddSeriesToExercise
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1619,6 +1914,7 @@ class _$_AddSeriesToExercise
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addSeriesToExercise(this);
   }
 
@@ -1630,7 +1926,8 @@ class _$_AddSeriesToExercise
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -1638,6 +1935,7 @@ class _$_AddSeriesToExercise
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1740,7 +2038,8 @@ class _$_RemoveExerciseFromWorkout
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1753,13 +2052,15 @@ class _$_RemoveExerciseFromWorkout
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1767,6 +2068,7 @@ class _$_RemoveExerciseFromWorkout
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return removeExerciseFromWorkout(numberOfExercsie);
   }
 
@@ -1778,7 +2080,8 @@ class _$_RemoveExerciseFromWorkout
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1787,6 +2090,7 @@ class _$_RemoveExerciseFromWorkout
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1804,7 +2108,8 @@ class _$_RemoveExerciseFromWorkout
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -1813,13 +2118,15 @@ class _$_RemoveExerciseFromWorkout
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1827,6 +2134,7 @@ class _$_RemoveExerciseFromWorkout
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return removeExerciseFromWorkout(this);
   }
 
@@ -1838,7 +2146,8 @@ class _$_RemoveExerciseFromWorkout
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -1846,6 +2155,7 @@ class _$_RemoveExerciseFromWorkout
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1955,7 +2265,8 @@ class _$_RemoveSeriesFromExercise
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -1968,13 +2279,15 @@ class _$_RemoveSeriesFromExercise
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -1982,6 +2295,7 @@ class _$_RemoveSeriesFromExercise
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return removeSeriesFromExercise(exerciseNumber, numberOfSeries);
   }
 
@@ -1993,7 +2307,8 @@ class _$_RemoveSeriesFromExercise
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -2002,6 +2317,7 @@ class _$_RemoveSeriesFromExercise
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2019,7 +2335,8 @@ class _$_RemoveSeriesFromExercise
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -2028,13 +2345,15 @@ class _$_RemoveSeriesFromExercise
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -2042,6 +2361,7 @@ class _$_RemoveSeriesFromExercise
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return removeSeriesFromExercise(this);
   }
 
@@ -2053,7 +2373,8 @@ class _$_RemoveSeriesFromExercise
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -2061,6 +2382,7 @@ class _$_RemoveSeriesFromExercise
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2178,7 +2500,8 @@ class _$_AddWeightToSeries
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -2191,13 +2514,15 @@ class _$_AddWeightToSeries
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -2205,6 +2530,7 @@ class _$_AddWeightToSeries
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addWeightToSeries(exerciseNumber, seriesNumber, weight);
   }
 
@@ -2216,7 +2542,8 @@ class _$_AddWeightToSeries
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -2225,6 +2552,7 @@ class _$_AddWeightToSeries
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2242,7 +2570,8 @@ class _$_AddWeightToSeries
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -2251,13 +2580,15 @@ class _$_AddWeightToSeries
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -2265,6 +2596,7 @@ class _$_AddWeightToSeries
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addWeightToSeries(this);
   }
 
@@ -2276,7 +2608,8 @@ class _$_AddWeightToSeries
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -2284,6 +2617,7 @@ class _$_AddWeightToSeries
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2402,7 +2736,8 @@ class _$_AddRepsToSeries
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -2415,13 +2750,15 @@ class _$_AddRepsToSeries
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -2429,6 +2766,7 @@ class _$_AddRepsToSeries
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addRepsToSeries(exerciseNumber, seriesNumber, reps);
   }
 
@@ -2440,7 +2778,8 @@ class _$_AddRepsToSeries
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -2449,6 +2788,7 @@ class _$_AddRepsToSeries
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2466,7 +2806,8 @@ class _$_AddRepsToSeries
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -2475,13 +2816,15 @@ class _$_AddRepsToSeries
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -2489,6 +2832,7 @@ class _$_AddRepsToSeries
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addRepsToSeries(this);
   }
 
@@ -2500,7 +2844,8 @@ class _$_AddRepsToSeries
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -2508,6 +2853,7 @@ class _$_AddRepsToSeries
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2617,7 +2963,8 @@ class _$_AddExerciseName
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
-    @required Result finishWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
     @required Result changeTitle(String inputStr),
     @required Result addSeriesToExercise(int exerciseNumber),
     @required Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -2630,13 +2977,15 @@ class _$_AddExerciseName
         Result addRepsToSeries(
             int exerciseNumber, int seriesNumber, String reps),
     @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -2644,6 +2993,7 @@ class _$_AddExerciseName
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addExerciseName(name, numberOfExercise);
   }
 
@@ -2655,7 +3005,8 @@ class _$_AddExerciseName
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
-    Result finishWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
     Result changeTitle(String inputStr),
     Result addSeriesToExercise(int exerciseNumber),
     Result removeExerciseFromWorkout(int numberOfExercsie),
@@ -2664,6 +3015,7 @@ class _$_AddExerciseName
         int exerciseNumber, int seriesNumber, String weight),
     Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
     Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2681,7 +3033,8 @@ class _$_AddExerciseName
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
-    @required Result finishWorkout(_FinishWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result addSeriesToExercise(_AddSeriesToExercise value),
     @required
@@ -2690,13 +3043,15 @@ class _$_AddExerciseName
     @required Result addWeightToSeries(_AddWeightToSeries value),
     @required Result addRepsToSeries(_AddRepsToSeries value),
     @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
-    assert(finishWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
     assert(changeTitle != null);
     assert(addSeriesToExercise != null);
     assert(removeExerciseFromWorkout != null);
@@ -2704,6 +3059,7 @@ class _$_AddExerciseName
     assert(addWeightToSeries != null);
     assert(addRepsToSeries != null);
     assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
     return addExerciseName(this);
   }
 
@@ -2715,7 +3071,8 @@ class _$_AddExerciseName
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
-    Result finishWorkout(_FinishWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
     Result changeTitle(_ChangeTitle value),
     Result addSeriesToExercise(_AddSeriesToExercise value),
     Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
@@ -2723,6 +3080,7 @@ class _$_AddExerciseName
     Result addWeightToSeries(_AddWeightToSeries value),
     Result addRepsToSeries(_AddRepsToSeries value),
     Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2743,6 +3101,191 @@ abstract class _AddExerciseName implements WorkoutEvent {
 }
 
 /// @nodoc
+abstract class _$ChangeWorkoutToUnsavedCopyWith<$Res> {
+  factory _$ChangeWorkoutToUnsavedCopyWith(_ChangeWorkoutToUnsaved value,
+          $Res Function(_ChangeWorkoutToUnsaved) then) =
+      __$ChangeWorkoutToUnsavedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ChangeWorkoutToUnsavedCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$ChangeWorkoutToUnsavedCopyWith<$Res> {
+  __$ChangeWorkoutToUnsavedCopyWithImpl(_ChangeWorkoutToUnsaved _value,
+      $Res Function(_ChangeWorkoutToUnsaved) _then)
+      : super(_value, (v) => _then(v as _ChangeWorkoutToUnsaved));
+
+  @override
+  _ChangeWorkoutToUnsaved get _value => super._value as _ChangeWorkoutToUnsaved;
+}
+
+/// @nodoc
+class _$_ChangeWorkoutToUnsaved
+    with DiagnosticableTreeMixin
+    implements _ChangeWorkoutToUnsaved {
+  const _$_ChangeWorkoutToUnsaved();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.changeWorkoutToUnsaved()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutEvent.changeWorkoutToUnsaved'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _ChangeWorkoutToUnsaved);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result deleteWorkout(String workoutId),
+    @required Result cancelWorkout(),
+    @required Result saveWorkout(),
+    @required Result clearState(),
+    @required Result changeTitle(String inputStr),
+    @required Result addSeriesToExercise(int exerciseNumber),
+    @required Result removeExerciseFromWorkout(int numberOfExercsie),
+    @required
+        Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    @required
+        Result addWeightToSeries(
+            int exerciseNumber, int seriesNumber, String weight),
+    @required
+        Result addRepsToSeries(
+            int exerciseNumber, int seriesNumber, String reps),
+    @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
+    assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    return changeWorkoutToUnsaved();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result deleteWorkout(String workoutId),
+    Result cancelWorkout(),
+    Result saveWorkout(),
+    Result clearState(),
+    Result changeTitle(String inputStr),
+    Result addSeriesToExercise(int exerciseNumber),
+    Result removeExerciseFromWorkout(int numberOfExercsie),
+    Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    Result addWeightToSeries(
+        int exerciseNumber, int seriesNumber, String weight),
+    Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
+    Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeWorkoutToUnsaved != null) {
+      return changeWorkoutToUnsaved();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result deleteWorkout(_DeleteWorkout value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result saveWorkout(_FinishWorkout value),
+    @required Result clearState(_WorkoutNotSaved value),
+    @required Result changeTitle(_ChangeTitle value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
+    @required
+        Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    @required Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    @required Result addWeightToSeries(_AddWeightToSeries value),
+    @required Result addRepsToSeries(_AddRepsToSeries value),
+    @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(saveWorkout != null);
+    assert(clearState != null);
+    assert(changeTitle != null);
+    assert(addSeriesToExercise != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    return changeWorkoutToUnsaved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result deleteWorkout(_DeleteWorkout value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result saveWorkout(_FinishWorkout value),
+    Result clearState(_WorkoutNotSaved value),
+    Result changeTitle(_ChangeTitle value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
+    Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    Result addWeightToSeries(_AddWeightToSeries value),
+    Result addRepsToSeries(_AddRepsToSeries value),
+    Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeWorkoutToUnsaved != null) {
+      return changeWorkoutToUnsaved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeWorkoutToUnsaved implements WorkoutEvent {
+  const factory _ChangeWorkoutToUnsaved() = _$_ChangeWorkoutToUnsaved;
+}
+
+/// @nodoc
 class _$WorkoutStateTearOff {
   const _$WorkoutStateTearOff();
 
@@ -2753,13 +3296,7 @@ class _$WorkoutStateTearOff {
       @required
           List<bool> showErrorMessagesForExerciseName,
       @required
-          List<bool> showErrorMessagesForSeries,
-      @required
-          List<bool> showErrorMessagesForResults,
-      @required
           bool isEditing,
-      @required
-          bool isWotkoutTitleEditing,
       @required
           bool isCanceled,
       @required
@@ -2771,10 +3308,7 @@ class _$WorkoutStateTearOff {
     return _WorkoutState(
       workout: workout,
       showErrorMessagesForExerciseName: showErrorMessagesForExerciseName,
-      showErrorMessagesForSeries: showErrorMessagesForSeries,
-      showErrorMessagesForResults: showErrorMessagesForResults,
       isEditing: isEditing,
-      isWotkoutTitleEditing: isWotkoutTitleEditing,
       isCanceled: isCanceled,
       isSaved: isSaved,
       isDeleted: isDeleted,
@@ -2791,10 +3325,7 @@ const $WorkoutState = _$WorkoutStateTearOff();
 mixin _$WorkoutState {
   Workout get workout;
   List<bool> get showErrorMessagesForExerciseName;
-  List<bool> get showErrorMessagesForSeries;
-  List<bool> get showErrorMessagesForResults;
   bool get isEditing;
-  bool get isWotkoutTitleEditing;
   bool get isCanceled;
   bool get isSaved;
   bool get isDeleted;
@@ -2811,10 +3342,7 @@ abstract class $WorkoutStateCopyWith<$Res> {
   $Res call(
       {Workout workout,
       List<bool> showErrorMessagesForExerciseName,
-      List<bool> showErrorMessagesForSeries,
-      List<bool> showErrorMessagesForResults,
       bool isEditing,
-      bool isWotkoutTitleEditing,
       bool isCanceled,
       bool isSaved,
       bool isDeleted,
@@ -2835,10 +3363,7 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
   $Res call({
     Object workout = freezed,
     Object showErrorMessagesForExerciseName = freezed,
-    Object showErrorMessagesForSeries = freezed,
-    Object showErrorMessagesForResults = freezed,
     Object isEditing = freezed,
-    Object isWotkoutTitleEditing = freezed,
     Object isCanceled = freezed,
     Object isSaved = freezed,
     Object isDeleted = freezed,
@@ -2850,16 +3375,7 @@ class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
           showErrorMessagesForExerciseName == freezed
               ? _value.showErrorMessagesForExerciseName
               : showErrorMessagesForExerciseName as List<bool>,
-      showErrorMessagesForSeries: showErrorMessagesForSeries == freezed
-          ? _value.showErrorMessagesForSeries
-          : showErrorMessagesForSeries as List<bool>,
-      showErrorMessagesForResults: showErrorMessagesForResults == freezed
-          ? _value.showErrorMessagesForResults
-          : showErrorMessagesForResults as List<bool>,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
-      isWotkoutTitleEditing: isWotkoutTitleEditing == freezed
-          ? _value.isWotkoutTitleEditing
-          : isWotkoutTitleEditing as bool,
       isCanceled:
           isCanceled == freezed ? _value.isCanceled : isCanceled as bool,
       isSaved: isSaved == freezed ? _value.isSaved : isSaved as bool,
@@ -2891,10 +3407,7 @@ abstract class _$WorkoutStateCopyWith<$Res>
   $Res call(
       {Workout workout,
       List<bool> showErrorMessagesForExerciseName,
-      List<bool> showErrorMessagesForSeries,
-      List<bool> showErrorMessagesForResults,
       bool isEditing,
-      bool isWotkoutTitleEditing,
       bool isCanceled,
       bool isSaved,
       bool isDeleted,
@@ -2918,10 +3431,7 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
   $Res call({
     Object workout = freezed,
     Object showErrorMessagesForExerciseName = freezed,
-    Object showErrorMessagesForSeries = freezed,
-    Object showErrorMessagesForResults = freezed,
     Object isEditing = freezed,
-    Object isWotkoutTitleEditing = freezed,
     Object isCanceled = freezed,
     Object isSaved = freezed,
     Object isDeleted = freezed,
@@ -2933,16 +3443,7 @@ class __$WorkoutStateCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
           showErrorMessagesForExerciseName == freezed
               ? _value.showErrorMessagesForExerciseName
               : showErrorMessagesForExerciseName as List<bool>,
-      showErrorMessagesForSeries: showErrorMessagesForSeries == freezed
-          ? _value.showErrorMessagesForSeries
-          : showErrorMessagesForSeries as List<bool>,
-      showErrorMessagesForResults: showErrorMessagesForResults == freezed
-          ? _value.showErrorMessagesForResults
-          : showErrorMessagesForResults as List<bool>,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
-      isWotkoutTitleEditing: isWotkoutTitleEditing == freezed
-          ? _value.isWotkoutTitleEditing
-          : isWotkoutTitleEditing as bool,
       isCanceled:
           isCanceled == freezed ? _value.isCanceled : isCanceled as bool,
       isSaved: isSaved == freezed ? _value.isSaved : isSaved as bool,
@@ -2959,20 +3460,14 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   const _$_WorkoutState(
       {@required this.workout,
       @required this.showErrorMessagesForExerciseName,
-      @required this.showErrorMessagesForSeries,
-      @required this.showErrorMessagesForResults,
       @required this.isEditing,
-      @required this.isWotkoutTitleEditing,
       @required this.isCanceled,
       @required this.isSaved,
       @required this.isDeleted,
       @required this.saveFailureOrSuccessOption})
       : assert(workout != null),
         assert(showErrorMessagesForExerciseName != null),
-        assert(showErrorMessagesForSeries != null),
-        assert(showErrorMessagesForResults != null),
         assert(isEditing != null),
-        assert(isWotkoutTitleEditing != null),
         assert(isCanceled != null),
         assert(isSaved != null),
         assert(isDeleted != null),
@@ -2983,13 +3478,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
   @override
   final List<bool> showErrorMessagesForExerciseName;
   @override
-  final List<bool> showErrorMessagesForSeries;
-  @override
-  final List<bool> showErrorMessagesForResults;
-  @override
   final bool isEditing;
-  @override
-  final bool isWotkoutTitleEditing;
   @override
   final bool isCanceled;
   @override
@@ -3001,7 +3490,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutState(workout: $workout, showErrorMessagesForExerciseName: $showErrorMessagesForExerciseName, showErrorMessagesForSeries: $showErrorMessagesForSeries, showErrorMessagesForResults: $showErrorMessagesForResults, isEditing: $isEditing, isWotkoutTitleEditing: $isWotkoutTitleEditing, isCanceled: $isCanceled, isSaved: $isSaved, isDeleted: $isDeleted, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'WorkoutState(workout: $workout, showErrorMessagesForExerciseName: $showErrorMessagesForExerciseName, isEditing: $isEditing, isCanceled: $isCanceled, isSaved: $isSaved, isDeleted: $isDeleted, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -3012,12 +3501,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       ..add(DiagnosticsProperty('workout', workout))
       ..add(DiagnosticsProperty(
           'showErrorMessagesForExerciseName', showErrorMessagesForExerciseName))
-      ..add(DiagnosticsProperty(
-          'showErrorMessagesForSeries', showErrorMessagesForSeries))
-      ..add(DiagnosticsProperty(
-          'showErrorMessagesForResults', showErrorMessagesForResults))
       ..add(DiagnosticsProperty('isEditing', isEditing))
-      ..add(DiagnosticsProperty('isWotkoutTitleEditing', isWotkoutTitleEditing))
       ..add(DiagnosticsProperty('isCanceled', isCanceled))
       ..add(DiagnosticsProperty('isSaved', isSaved))
       ..add(DiagnosticsProperty('isDeleted', isDeleted))
@@ -3037,20 +3521,9 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
                 const DeepCollectionEquality().equals(
                     other.showErrorMessagesForExerciseName,
                     showErrorMessagesForExerciseName)) &&
-            (identical(other.showErrorMessagesForSeries, showErrorMessagesForSeries) ||
-                const DeepCollectionEquality().equals(
-                    other.showErrorMessagesForSeries,
-                    showErrorMessagesForSeries)) &&
-            (identical(other.showErrorMessagesForResults, showErrorMessagesForResults) ||
-                const DeepCollectionEquality().equals(
-                    other.showErrorMessagesForResults,
-                    showErrorMessagesForResults)) &&
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditing, isEditing)) &&
-            (identical(other.isWotkoutTitleEditing, isWotkoutTitleEditing) ||
-                const DeepCollectionEquality().equals(
-                    other.isWotkoutTitleEditing, isWotkoutTitleEditing)) &&
             (identical(other.isCanceled, isCanceled) ||
                 const DeepCollectionEquality()
                     .equals(other.isCanceled, isCanceled)) &&
@@ -3060,9 +3533,11 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
             (identical(other.isDeleted, isDeleted) ||
                 const DeepCollectionEquality()
                     .equals(other.isDeleted, isDeleted)) &&
-            (identical(other.saveFailureOrSuccessOption, saveFailureOrSuccessOption) ||
-                const DeepCollectionEquality()
-                    .equals(other.saveFailureOrSuccessOption, saveFailureOrSuccessOption)));
+            (identical(other.saveFailureOrSuccessOption,
+                    saveFailureOrSuccessOption) ||
+                const DeepCollectionEquality().equals(
+                    other.saveFailureOrSuccessOption,
+                    saveFailureOrSuccessOption)));
   }
 
   @override
@@ -3070,10 +3545,7 @@ class _$_WorkoutState with DiagnosticableTreeMixin implements _WorkoutState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(workout) ^
       const DeepCollectionEquality().hash(showErrorMessagesForExerciseName) ^
-      const DeepCollectionEquality().hash(showErrorMessagesForSeries) ^
-      const DeepCollectionEquality().hash(showErrorMessagesForResults) ^
       const DeepCollectionEquality().hash(isEditing) ^
-      const DeepCollectionEquality().hash(isWotkoutTitleEditing) ^
       const DeepCollectionEquality().hash(isCanceled) ^
       const DeepCollectionEquality().hash(isSaved) ^
       const DeepCollectionEquality().hash(isDeleted) ^
@@ -3091,13 +3563,7 @@ abstract class _WorkoutState implements WorkoutState {
       @required
           List<bool> showErrorMessagesForExerciseName,
       @required
-          List<bool> showErrorMessagesForSeries,
-      @required
-          List<bool> showErrorMessagesForResults,
-      @required
           bool isEditing,
-      @required
-          bool isWotkoutTitleEditing,
       @required
           bool isCanceled,
       @required
@@ -3113,13 +3579,7 @@ abstract class _WorkoutState implements WorkoutState {
   @override
   List<bool> get showErrorMessagesForExerciseName;
   @override
-  List<bool> get showErrorMessagesForSeries;
-  @override
-  List<bool> get showErrorMessagesForResults;
-  @override
   bool get isEditing;
-  @override
-  bool get isWotkoutTitleEditing;
   @override
   bool get isCanceled;
   @override

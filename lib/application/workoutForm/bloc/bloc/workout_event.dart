@@ -7,7 +7,8 @@ abstract class WorkoutEvent with _$WorkoutEvent {
   const factory WorkoutEvent.workoutCompleted() = _WorkoutCompleted;
   const factory WorkoutEvent.deleteWorkout(String workoutId) = _DeleteWorkout;
   const factory WorkoutEvent.cancelWorkout() = _CancelWorkout;
-  const factory WorkoutEvent.finishWorkout() = _FinishWorkout;
+  const factory WorkoutEvent.saveWorkout() = _FinishWorkout;
+  const factory WorkoutEvent.clearState() = _WorkoutNotSaved;
   const factory WorkoutEvent.changeTitle(String inputStr) = _ChangeTitle;
   const factory WorkoutEvent.addSeriesToExercise(int exerciseNumber) =
       _AddSeriesToExercise;
@@ -21,4 +22,5 @@ abstract class WorkoutEvent with _$WorkoutEvent {
       int exerciseNumber, int seriesNumber, String reps) = _AddRepsToSeries;
   const factory WorkoutEvent.addExerciseName(
       String name, int numberOfExercise) = _AddExerciseName;
+  const factory WorkoutEvent.changeWorkoutToUnsaved() = _ChangeWorkoutToUnsaved;
 }

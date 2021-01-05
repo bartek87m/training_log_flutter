@@ -3,7 +3,7 @@ import 'package:training_log/presentation/auth/createAccount/create_account_page
 import 'package:training_log/presentation/auth/signIn/sign_in_page.dart';
 import 'package:training_log/presentation/splash/splash_page.dart';
 import 'package:training_log/presentation/training/activeTrainingPage.dart';
-import 'package:training_log/presentation/training/historicalWorkoutView.dart';
+import 'package:training_log/presentation/training/historicalWorkoutPage.dart';
 import 'package:training_log/presentation/training/trainings_page.dart';
 
 @MaterialAutoRouter(
@@ -14,7 +14,7 @@ import 'package:training_log/presentation/training/trainings_page.dart';
     MaterialRoute(page: SignInPage),
     MaterialRoute(page: TrainingsPage),
     MaterialRoute(page: ActiveTrainingPage),
-    MaterialRoute(page: OverviewWorkoutPage),
+    MaterialRoute(page: HistoricalWorkoutPage),
   ],
 )
 class $Router {}

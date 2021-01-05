@@ -7,17 +7,13 @@ class CreateNewWorkout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topCenter,
-      child: BlocBuilder<WorkoutBloc, WorkoutState>(
-        builder: (context, state) {
-          return FlatButton(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onPressed: () => {
-              context.read<WorkoutBloc>().add(WorkoutEvent.createNewWorkout())
-            },
-            child: Text('CREATE NEW WORKOUT'),
-          );
+      child: FlatButton(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onPressed: () => {
+          context.read<WorkoutBloc>().add(WorkoutEvent.createNewWorkout()),
         },
+        child: Text('CREATE NEW WORKOUT'),
       ),
     );
   }

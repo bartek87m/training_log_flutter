@@ -14,7 +14,7 @@ import '../auth/createAccount/create_account_page.dart';
 import '../auth/signIn/sign_in_page.dart';
 import '../splash/splash_page.dart';
 import '../training/activeTrainingPage.dart';
-import '../training/historicalWorkoutView.dart';
+import '../training/historicalWorkoutPage.dart';
 import '../training/trainings_page.dart';
 
 class Routes {
@@ -23,14 +23,14 @@ class Routes {
   static const String signInPage = '/sign-in-page';
   static const String trainingsPage = '/trainings-page';
   static const String activeTrainingPage = '/active-training-page';
-  static const String overviewWorkoutPage = '/overview-workout-page';
+  static const String historicalWorkoutPage = '/historical-workout-page';
   static const all = <String>{
     splashPage,
     createAccountPage,
     signInPage,
     trainingsPage,
     activeTrainingPage,
-    overviewWorkoutPage,
+    historicalWorkoutPage,
   };
 }
 
@@ -43,7 +43,7 @@ class Router extends RouterBase {
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.trainingsPage, page: TrainingsPage),
     RouteDef(Routes.activeTrainingPage, page: ActiveTrainingPage),
-    RouteDef(Routes.overviewWorkoutPage, page: OverviewWorkoutPage),
+    RouteDef(Routes.historicalWorkoutPage, page: HistoricalWorkoutPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -78,10 +78,10 @@ class Router extends RouterBase {
         settings: data,
       );
     },
-    OverviewWorkoutPage: (data) {
-      final args = data.getArgs<OverviewWorkoutPageArguments>(nullOk: false);
+    HistoricalWorkoutPage: (data) {
+      final args = data.getArgs<HistoricalWorkoutPageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => OverviewWorkoutPage(args.workout),
+        builder: (context) => HistoricalWorkoutPage(args.workout),
         settings: data,
       );
     },
@@ -105,12 +105,12 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushActiveTrainingPage() =>
       push<dynamic>(Routes.activeTrainingPage);
 
-  Future<dynamic> pushOverviewWorkoutPage({
+  Future<dynamic> pushHistoricalWorkoutPage({
     @required Workout workout,
   }) =>
       push<dynamic>(
-        Routes.overviewWorkoutPage,
-        arguments: OverviewWorkoutPageArguments(workout: workout),
+        Routes.historicalWorkoutPage,
+        arguments: HistoricalWorkoutPageArguments(workout: workout),
       );
 }
 
@@ -118,8 +118,8 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 /// Arguments holder classes
 /// *************************************************************************
 
-/// OverviewWorkoutPage arguments holder class
-class OverviewWorkoutPageArguments {
+/// HistoricalWorkoutPage arguments holder class
+class HistoricalWorkoutPageArguments {
   final Workout workout;
-  OverviewWorkoutPageArguments({@required this.workout});
+  HistoricalWorkoutPageArguments({@required this.workout});
 }

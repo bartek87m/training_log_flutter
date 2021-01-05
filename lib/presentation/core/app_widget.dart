@@ -26,10 +26,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<WorkoutBloc>(),
         ),
-        BlocProvider(
-          create: (context) => getIt<WorkoutwatcherBloc>()
-            ..add(WorkoutwatcherEvent.downloadWorkouts()),
-        ),
       ],
       child: MaterialApp(
         title: 'Training Log',

@@ -9,50 +9,17 @@ class ExerciseWidget extends HookWidget {
   final exerciseNumber;
   final state;
   final Function rebuildWidget;
-  final FocusNode focusNode;
-  final FocusNode _workoutTitleFocusNode;
 
-  ExerciseWidget(this.exerciseNumber, this.state, this.rebuildWidget,
-      this.focusNode, this._workoutTitleFocusNode,
-      {Key key})
+  ExerciseWidget(this.exerciseNumber, this.state, this.rebuildWidget, {Key key})
       : super(key: key);
 
   @override
   Widget build(context) {
     var setList = useState();
 
-    List<FocusNode> _repsFocusNode = List<FocusNode>();
-
     void rebuildExerciseWidget(state) {
       setList.value = [];
       setList.value = state.workout.exercieList[exerciseNumber].setsList;
-      _workoutTitleFocusNode.unfocus();
-    }
-
-    // useEffect(() {
-    //   return () {
-    //     if (_repsFocusNode.length > 0)
-    //       for (var i = 0; i > _repsFocusNode.length - 1; i++) {
-    //         _repsFocusNode[i].dispose();
-    //       }
-    //     _repsFocusNode.clear();
-    //   };
-    // });
-
-    for (var i = 0;
-        i < state.workout.exercieList[exerciseNumber].setsList.length;
-        i++) {
-      _repsFocusNode.add(FocusNode());
-    }
-
-    if (state.workout.exercieList[exerciseNumber].setsList.length > 0 &&
-        state.isWotkoutTitleEditing == false)
-      _repsFocusNode[
-              state.workout.exercieList[exerciseNumber].setsList.length - 1]
-          .requestFocus();
-
-    if (state.isWotkoutTitleEditing == true) {
-      _workoutTitleFocusNode.requestFocus();
     }
 
     return Form(
@@ -74,7 +41,6 @@ class ExerciseWidget extends HookWidget {
           child: Column(
             children: [
               TextFormField(
-                focusNode: focusNode,
                 autovalidateMode:
                     state.showErrorMessagesForExerciseName[exerciseNumber]
                         ? AutovalidateMode.always
@@ -115,7 +81,6 @@ class ExerciseWidget extends HookWidget {
                 exerciseNumber: exerciseNumber,
                 state: state,
                 rebuildWidget: rebuildExerciseWidget,
-                focusNode: _repsFocusNode,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

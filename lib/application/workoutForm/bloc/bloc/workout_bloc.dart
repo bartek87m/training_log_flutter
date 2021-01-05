@@ -28,10 +28,12 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   ) async* {
     yield* event.map(
       createNewWorkout: (_) async* {
-        print(state);
         yield state.copyWith(
           workout: Workout.newWorkout(),
           isEditing: true,
+          isSaved: false,
+          isCanceled: false,
+          isDeleted: false,
           showErrorMessagesForExerciseName: List<bool>(),
         );
       },
@@ -41,7 +43,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseList.add(Exercise.newExercise());
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          isWotkoutTitleEditing: false,
         );
       },
       workoutCompleted: (_) async* {},
@@ -50,10 +51,11 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           // workout: Workout.empty(),
           isCanceled: true,
           isEditing: false,
+          isSaved: false,
           // showErrorMessagesForExerciseName: List<bool>(),
         );
       },
-      finishWorkout: (_) async* {
+      saveWorkout: (e) async* {
         // state.showErrorMessagesForExerciseName.clear();
         final isExerciseNameValid = !state.workout.exercieList
             .map((e) => e.exerciseName.isValid())
@@ -72,20 +74,17 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
             isCanceled: false,
           );
         } else {
-          iWorkoutFacade.createWorkout(workout: state.workout);
-
           yield state.copyWith(
             isSaved: true,
-            isEditing: false,
-            isWotkoutTitleEditing: false,
           );
+          iWorkoutFacade.createWorkout(workout: state.workout);
         }
       },
       changeTitle: (e) async* {
-        yield state.copyWith(
-          workout: state.workout.copyWith(title: Title(e.inputStr)),
-          isWotkoutTitleEditing: true,
-        );
+        // yield state.copyWith(
+        //   workout: state.workout.copyWith(title: Title(e.inputStr)),
+        // );
+        // print(state);
       },
       addSeriesToExercise: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
@@ -93,7 +92,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          isWotkoutTitleEditing: false,
         );
       },
       removeExerciseFromWorkout: (e) async* {
@@ -110,7 +108,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          isWotkoutTitleEditing: false,
         );
       },
       removeSeriesFromExercise: (e) async* {
@@ -130,7 +127,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          isWotkoutTitleEditing: false,
         );
       },
       addWeightToSeries: (e) async* {
@@ -146,7 +142,18 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       },
       deleteWorkout: (e) async* {
         iWorkoutFacade.removeWorkout(workoutId: e.workoutId);
-        yield state.copyWith(isDeleted: true);
+        yield state.copyWith(
+            isDeleted: true, isCanceled: false, isSaved: false);
+      },
+      clearState: (_) async* {
+        yield state.copyWith(
+            workout: Workout.empty(),
+            showErrorMessagesForExerciseName: List<bool>(),
+            isEditing: false,
+            isSaved: false,
+            isCanceled: false,
+            isDeleted: false,
+            saveFailureOrSuccessOption: none());
       },
     );
   }

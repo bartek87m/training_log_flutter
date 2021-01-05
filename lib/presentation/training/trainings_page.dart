@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
@@ -18,7 +19,7 @@ class TrainingsPage extends StatelessWidget {
         BlocProvider<WorkoutwatcherBloc>(
           create: (context) => getIt<WorkoutwatcherBloc>()
             ..add(WorkoutwatcherEvent.downloadWorkouts()),
-        )
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -34,34 +35,42 @@ class TrainingsPage extends StatelessWidget {
           ),
           BlocListener<WorkoutBloc, WorkoutState>(
             listener: (context, state) {
+              print(state);
               if (state.isEditing == true) {
+                print("isEditing");
                 ExtendedNavigator.of(context)
                     .replace(Routes.activeTrainingPage);
+              }
+              if (state.isCanceled == true) {
+                ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+              }
+              if (state.isSaved == true) {
+                FlushbarHelper.createSuccess(
+                  message: "Workout saved",
+                  duration: Duration(seconds: 2),
+                ).show(context);
               }
             },
           ),
         ],
-        child: BlocBuilder<AuthCubit, AuthState>(
-          builder: (context, state) {
-            return Scaffold(
-                appBar: AppBar(
-                  actions: [
-                    Padding(
-                      padding: EdgeInsets.all(2),
-                      child: GestureDetector(
-                        child: Icon(Icons.logout),
-                        onTap: () => context.read<AuthCubit>().signOut(),
-                      ),
-                    )
-                  ],
+        child: Scaffold(
+          appBar: AppBar(
+            actions: [
+              Padding(
+                padding: EdgeInsets.all(2),
+                child: GestureDetector(
+                  child: Icon(Icons.logout),
+                  onTap: () => context.read<AuthCubit>().signOut(),
                 ),
-                body: Column(
-                  children: [
-                    CreateNewWorkout(),
-                    WorkoutsViewsWidget(),
-                  ],
-                ));
-          },
+              )
+            ],
+          ),
+          body: Column(
+            children: [
+              CreateNewWorkout(),
+              WorkoutsViewsWidget(),
+            ],
+          ),
         ),
       ),
     );
