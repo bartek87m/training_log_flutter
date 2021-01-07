@@ -7,11 +7,12 @@ abstract class WorkoutEvent with _$WorkoutEvent {
   const factory WorkoutEvent.workoutCompleted() = _WorkoutCompleted;
   const factory WorkoutEvent.deleteWorkout(String workoutId) = _DeleteWorkout;
   const factory WorkoutEvent.cancelWorkout() = _CancelWorkout;
-  const factory WorkoutEvent.saveWorkout() = _FinishWorkout;
-  const factory WorkoutEvent.clearState() = _WorkoutNotSaved;
-  const factory WorkoutEvent.changeTitle(String inputStr) = _ChangeTitle;
+  const factory WorkoutEvent.createWorkout() = _CreateWorkout;
+  const factory WorkoutEvent.changeTitle(String workoutTitle) = _ChangeTitle;
+  const factory WorkoutEvent.updateWorkout() = _UpdateWorkout;
   const factory WorkoutEvent.addSeriesToExercise(int exerciseNumber) =
       _AddSeriesToExercise;
+  const factory WorkoutEvent.clearState() = _ClearState;
   const factory WorkoutEvent.removeExerciseFromWorkout(int numberOfExercsie) =
       _RemoveExerciseFromWorkout;
   const factory WorkoutEvent.removeSeriesFromExercise(

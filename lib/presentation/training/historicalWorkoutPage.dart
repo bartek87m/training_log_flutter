@@ -37,7 +37,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
       body: BlocListener<WorkoutBloc, WorkoutState>(
         listener: (context, state) {
           if (state.isDeleted == true)
-            ExtendedNavigator.of(context).pushTrainingsPage();
+            ExtendedNavigator.of(context).replace(Routes.trainingsPage);
         },
         child: Container(
           alignment: Alignment.center,

@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 
 class WorkoutTitleWidget extends StatelessWidget {
-  final state;
-
-  WorkoutTitleWidget(this.state);
+  WorkoutTitleWidget();
 
   @override
   Widget build(BuildContext context) {
-    print('Build');
     return Container(
       child: TextFormField(
         // onTap: () => print("Editing complete"),
-        onChanged: (value) =>
-            context.read<WorkoutBloc>().add(WorkoutEvent.changeTitle(value)),
-        initialValue: state.workout.title.value.fold((l) => null, (r) => r),
+        onChanged: (value) => context
+            .read<WorkoutBloc>()
+            .add(WorkoutEvent.changeTitle(value.trim())),
+        initialValue: context
+            .watch<WorkoutBloc>()
+            .state
+            .workout
+            .title
+            .value
+            .fold((l) => null, (r) => r),
         decoration: InputDecoration(
           counter: Offstage(),
           border: InputBorder.none,

@@ -7,8 +7,10 @@ abstract class WorkoutState with _$WorkoutState {
     @required List<bool> showErrorMessagesForExerciseName,
     @required bool isEditing,
     @required bool isCanceled,
-    @required bool isSaved,
+    @required bool isCreated,
+    @required bool isUpdated,
     @required bool isDeleted,
+    @required bool refreshState,
     @required Option<Either<WorkoutFailure, Unit>> saveFailureOrSuccessOption,
   }) = _WorkoutState;
 
@@ -16,9 +18,11 @@ abstract class WorkoutState with _$WorkoutState {
         workout: Workout.empty(),
         showErrorMessagesForExerciseName: List<bool>(),
         isEditing: false,
-        isSaved: false,
+        isCreated: false,
         isCanceled: false,
         isDeleted: false,
+        isUpdated: false,
+        refreshState: false,
         saveFailureOrSuccessOption: none(),
       );
 }

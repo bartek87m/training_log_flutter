@@ -31,18 +31,22 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         yield state.copyWith(
           workout: Workout.newWorkout(),
           isEditing: true,
-          isSaved: false,
+          isCreated: false,
           isCanceled: false,
           isDeleted: false,
           showErrorMessagesForExerciseName: List<bool>(),
         );
       },
       addExerciseToWorkout: (_) async* {
-        state.showErrorMessagesForExerciseName.add(false);
-        List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList.add(Exercise.newExercise());
+        List<bool> showErrorMessagesForExerciseName =
+            state.showErrorMessagesForExerciseName;
+        showErrorMessagesForExerciseName.add(false);
+        List<Exercise> exercieList = state.workout.exercieList;
+        exercieList.add(Exercise.newExercise());
+
         yield state.copyWith(
-          workout: state.workout.copyWith(exercieList: exerciseList),
+          workout: state.workout.copyWith(exercieList: exercieList),
+          refreshState: !state.refreshState,
         );
       },
       workoutCompleted: (_) async* {},
@@ -51,12 +55,11 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           // workout: Workout.empty(),
           isCanceled: true,
           isEditing: false,
-          isSaved: false,
+          isCreated: false,
           // showErrorMessagesForExerciseName: List<bool>(),
         );
       },
-      saveWorkout: (e) async* {
-        // state.showErrorMessagesForExerciseName.clear();
+      createWorkout: (e) async* {
         final isExerciseNameValid = !state.workout.exercieList
             .map((e) => e.exerciseName.isValid())
             .any((element) => element == false);
@@ -70,21 +73,17 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
             showErrorMessagesForExerciseName:
                 showErrorMessagesForExerciseNameList,
             isEditing: true,
-            isSaved: false,
+            isCreated: false,
             isCanceled: false,
           );
         } else {
+          print("Active isSaved");
           yield state.copyWith(
-            isSaved: true,
+            isCreated: true,
+            isUpdated: true,
           );
-          iWorkoutFacade.createWorkout(workout: state.workout);
+          await iWorkoutFacade.createWorkout(workout: state.workout);
         }
-      },
-      changeTitle: (e) async* {
-        // yield state.copyWith(
-        //   workout: state.workout.copyWith(title: Title(e.inputStr)),
-        // );
-        // print(state);
       },
       addSeriesToExercise: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
@@ -92,6 +91,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
+          refreshState: !state.refreshState,
         );
       },
       removeExerciseFromWorkout: (e) async* {
@@ -116,6 +116,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
+          refreshState: !state.refreshState,
         );
       },
       addRepsToSeries: (e) async* {
@@ -143,17 +144,35 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       deleteWorkout: (e) async* {
         iWorkoutFacade.removeWorkout(workoutId: e.workoutId);
         yield state.copyWith(
-            isDeleted: true, isCanceled: false, isSaved: false);
+            isDeleted: true, isCanceled: false, isCreated: false);
+      },
+      changeWorkoutToUnsaved: (_) async* {
+        yield state.copyWith(
+          isUpdated: false,
+        );
+      },
+      updateWorkout: (e) async* {
+        if (state.isUpdated == false) {
+          yield state.copyWith(
+            isUpdated: true,
+          );
+          await iWorkoutFacade.update(workout: state.workout);
+        }
+      },
+      changeTitle: (e) async* {
+        yield state.copyWith(
+          workout: state.workout.copyWith(title: Title(e.workoutTitle)),
+        );
       },
       clearState: (_) async* {
         yield state.copyWith(
-            workout: Workout.empty(),
-            showErrorMessagesForExerciseName: List<bool>(),
-            isEditing: false,
-            isSaved: false,
-            isCanceled: false,
-            isDeleted: false,
-            saveFailureOrSuccessOption: none());
+          isEditing: false,
+          isCreated: false,
+          isCanceled: false,
+          isDeleted: false,
+          isUpdated: false,
+          refreshState: false,
+        );
       },
     );
   }

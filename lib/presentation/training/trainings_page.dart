@@ -33,25 +33,19 @@ class TrainingsPage extends StatelessWidget {
                   });
             },
           ),
-          BlocListener<WorkoutBloc, WorkoutState>(
-            listener: (context, state) {
-              print(state);
-              if (state.isEditing == true) {
-                print("isEditing");
-                ExtendedNavigator.of(context)
-                    .replace(Routes.activeTrainingPage);
-              }
-              if (state.isCanceled == true) {
-                ExtendedNavigator.of(context).replace(Routes.trainingsPage);
-              }
-              if (state.isSaved == true) {
-                FlushbarHelper.createSuccess(
-                  message: "Workout saved",
-                  duration: Duration(seconds: 2),
-                ).show(context);
-              }
-            },
-          ),
+          // BlocListener<WorkoutBloc, WorkoutState>(
+          //   listener: (context, state) {
+          //     print(state);
+          //     if (state.isEditing == true) {
+          //       print("isEditing");
+          //       ExtendedNavigator.of(context)
+          //           .replace(Routes.activeTrainingPage);
+          //     }
+          //     if (state.isCanceled == true) {
+          //       ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+          //     }
+          //   },
+          // ),
         ],
         child: Scaffold(
           appBar: AppBar(

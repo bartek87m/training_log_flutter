@@ -7,21 +7,11 @@ import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
 class ExerciseWidget extends HookWidget {
   final exerciseNumber;
-  final state;
-  final Function rebuildWidget;
 
-  ExerciseWidget(this.exerciseNumber, this.state, this.rebuildWidget, {Key key})
-      : super(key: key);
+  ExerciseWidget(this.exerciseNumber, {Key key}) : super(key: key);
 
   @override
   Widget build(context) {
-    var setList = useState();
-
-    void rebuildExerciseWidget(state) {
-      setList.value = [];
-      setList.value = state.workout.exercieList[exerciseNumber].setsList;
-    }
-
     return Form(
       child: Dismissible(
         key: Key(exerciseNumber.toString()),
@@ -29,7 +19,6 @@ class ExerciseWidget extends HookWidget {
           context
               .read<WorkoutBloc>()
               .add(WorkoutEvent.removeExerciseFromWorkout(exerciseNumber)),
-          this.rebuildWidget(state),
         },
         background: Container(
           color: Colors.green,
@@ -41,20 +30,32 @@ class ExerciseWidget extends HookWidget {
           child: Column(
             children: [
               TextFormField(
-                autovalidateMode:
-                    state.showErrorMessagesForExerciseName[exerciseNumber]
-                        ? AutovalidateMode.always
-                        : AutovalidateMode.disabled,
-                initialValue: state
-                    .workout.exercieList[exerciseNumber].exerciseName.value
+                autovalidateMode: context
+                        .watch<WorkoutBloc>()
+                        .state
+                        .showErrorMessagesForExerciseName[exerciseNumber]
+                    ? AutovalidateMode.always
+                    : AutovalidateMode.disabled,
+                initialValue: context
+                    .watch<WorkoutBloc>()
+                    .state
+                    .workout
+                    .exercieList[exerciseNumber]
+                    .exerciseName
+                    .value
                     .fold((f) => null, (r) => r),
                 onChanged: (value) => {
                   context.read<WorkoutBloc>().add(WorkoutEvent.addExerciseName(
                       value.trim(), exerciseNumber)),
                 },
                 style: TextStyle(fontSize: 14),
-                validator: (_) => state
-                    .workout.exercieList[exerciseNumber].exerciseName.value
+                validator: (_) => context
+                    .read<WorkoutBloc>()
+                    .state
+                    .workout
+                    .exercieList[exerciseNumber]
+                    .exerciseName
+                    .value
                     .fold(
                         //beirzemy context bezpośrednio z Bloc a nie z builder
                         (f) => f.maybeMap(
@@ -79,8 +80,6 @@ class ExerciseWidget extends HookWidget {
               ),
               SeriesWidget(
                 exerciseNumber: exerciseNumber,
-                state: state,
-                rebuildWidget: rebuildExerciseWidget,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,7 +89,6 @@ class ExerciseWidget extends HookWidget {
                       onPressed: () {
                         context.read<WorkoutBloc>().add(
                             WorkoutEvent.addSeriesToExercise(exerciseNumber));
-                        this.rebuildWidget(state);
                       },
                       child: Text("Add Set"),
                     ),

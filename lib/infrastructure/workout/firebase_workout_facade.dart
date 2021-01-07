@@ -41,7 +41,7 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   @override
   Future<Either<WorkoutFailure, Unit>> createWorkout({Workout workout}) async {
     final workoutDto = WorkoutDto.fromDomain(workout);
-
+    print(workoutDto);
     try {
       final userDoc = await _firestore.userDocument();
       await userDoc.workoutCollection
@@ -72,8 +72,21 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   }
 
   @override
-  Future<Either<WorkoutFailure, Unit>> update({Workout workout}) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Either<WorkoutFailure, Unit>> update({Workout workout}) async {
+    final workoutDto = WorkoutDto.fromDomain(workout);
+
+    try {
+      final userDoc = await _firestore.userDocument();
+      await userDoc.workoutCollection
+          .doc(workoutDto.id)
+          .update(workoutDto.toJson());
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message.contains('PERMISSION_DENIED')) {
+        return left(const WorkoutFailure.permissionDenied());
+      }
+      return left(const WorkoutFailure.unexpected());
+    }
   }
 }
