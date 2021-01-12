@@ -96,11 +96,15 @@ class SeriesWidget extends StatelessWidget {
                               .exercieList[exerciseNumber]
                               .setsList[seriesNumber]
                               .reps,
-                          onChanged: (value) =>
-                              BlocProvider.of<WorkoutBloc>(context).add(
-                            WorkoutEvent.addRepsToSeries(
-                                exerciseNumber, seriesNumber, value.trim()),
-                          ),
+                          onChanged: (value) {
+                            BlocProvider.of<WorkoutBloc>(context).add(
+                              WorkoutEvent.addRepsToSeries(
+                                  exerciseNumber, seriesNumber, value.trim()),
+                            );
+                            context
+                                .read<WorkoutBloc>()
+                                .add(WorkoutEvent.updateWorkout());
+                          },
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -163,11 +167,15 @@ class SeriesWidget extends StatelessWidget {
                               .exercieList[exerciseNumber]
                               .setsList[seriesNumber]
                               .result,
-                          onChanged: (value) =>
-                              BlocProvider.of<WorkoutBloc>(context).add(
-                            WorkoutEvent.addWeightToSeries(
-                                exerciseNumber, seriesNumber, value.trim()),
-                          ),
+                          onChanged: (value) {
+                            BlocProvider.of<WorkoutBloc>(context).add(
+                              WorkoutEvent.addWeightToSeries(
+                                  exerciseNumber, seriesNumber, value.trim()),
+                            );
+                            context
+                                .read<WorkoutBloc>()
+                                .add(WorkoutEvent.updateWorkout());
+                          },
                         ),
                       ),
                   ]

@@ -152,12 +152,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       updateWorkout: (e) async* {
-        if (state.isUpdated == false) {
-          yield state.copyWith(
-            isUpdated: true,
-          );
-          await iWorkoutFacade.update(workout: state.workout);
-        }
+        await iWorkoutFacade.update(workout: state.workout);
       },
       changeTitle: (e) async* {
         yield state.copyWith(

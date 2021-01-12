@@ -15,10 +15,11 @@ class ExerciseWidget extends HookWidget {
     return Form(
       child: Dismissible(
         key: Key(exerciseNumber.toString()),
-        onDismissed: (_) => {
+        onDismissed: (_) {
           context
               .read<WorkoutBloc>()
-              .add(WorkoutEvent.removeExerciseFromWorkout(exerciseNumber)),
+              .add(WorkoutEvent.removeExerciseFromWorkout(exerciseNumber));
+          context.read<WorkoutBloc>().add(WorkoutEvent.updateWorkout());
         },
         background: Container(
           color: Colors.green,
@@ -44,9 +45,10 @@ class ExerciseWidget extends HookWidget {
                     .exerciseName
                     .value
                     .fold((f) => null, (r) => r),
-                onChanged: (value) => {
+                onChanged: (value) {
                   context.read<WorkoutBloc>().add(WorkoutEvent.addExerciseName(
-                      value.trim(), exerciseNumber)),
+                      value.trim(), exerciseNumber));
+                  context.read<WorkoutBloc>().add(WorkoutEvent.updateWorkout());
                 },
                 style: TextStyle(fontSize: 14),
                 validator: (_) => context

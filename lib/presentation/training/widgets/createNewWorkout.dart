@@ -14,6 +14,8 @@ class CreateNewWorkout extends StatelessWidget {
         highlightColor: Colors.transparent,
         onPressed: () {
           context.read<WorkoutBloc>().add(WorkoutEvent.createNewWorkout());
+          context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
+
           ExtendedNavigator.of(context).replace(Routes.activeTrainingPage);
         },
         child: Text('CREATE NEW WORKOUT'),

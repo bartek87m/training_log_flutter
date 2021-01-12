@@ -11,38 +11,6 @@ import 'package:training_log/presentation/training/widgets/workoutTitleWidget.da
 class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    print('Build');
-    final list = useState();
-
-    List<FocusNode> _focusNodes = [];
-
-    int calculateNumberOfNeededFocusNodes(exerciseList) {
-      int numberOfTextFormFieldsNeedsFocusNode = 0;
-      if (exerciseList.value != null) {
-        exerciseList.value.forEach(
-          (exercise) => {
-            numberOfTextFormFieldsNeedsFocusNode++,
-            exercise.setsList
-                .forEach((sets) => {numberOfTextFormFieldsNeedsFocusNode += 2})
-          },
-        );
-        return numberOfTextFormFieldsNeedsFocusNode +
-            1; // + 1 because I add workoutTitle TextFormField
-      } else
-        return 1;
-    }
-
-    useEffect(() {
-      //dodanie FocusNodes w zależności od ilości TextFormFields
-      for (var i = 0; i < calculateNumberOfNeededFocusNodes(list); i++) {
-        _focusNodes.add(FocusNode());
-      }
-      print(_focusNodes);
-      return () {
-        _focusNodes.forEach((fn) => fn.dispose());
-      };
-    });
-
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
           if (state.isCanceled == true) {
@@ -124,9 +92,18 @@ class ActiveTrainingPage extends HookWidget {
                       child: const Text('Add Exercise'),
                     ),
                     FlatButton(
-                      onPressed: () => context
-                          .read<WorkoutBloc>()
-                          .add(WorkoutEvent.cancelWorkout()),
+                      onPressed: () {
+                        context
+                            .read<WorkoutBloc>()
+                            .add(WorkoutEvent.cancelWorkout());
+                        // context.read<WorkoutBloc>().add(
+                        //     WorkoutEvent.deleteWorkout(context
+                        //         .watch<WorkoutBloc>()
+                        //         .state
+                        //         .workout
+                        //         .id
+                        //         .getOrCrash()));
+                      },
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       child: const Text(

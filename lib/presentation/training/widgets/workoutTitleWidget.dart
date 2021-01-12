@@ -11,9 +11,12 @@ class WorkoutTitleWidget extends StatelessWidget {
     return Container(
       child: TextFormField(
         // onTap: () => print("Editing complete"),
-        onChanged: (value) => context
-            .read<WorkoutBloc>()
-            .add(WorkoutEvent.changeTitle(value.trim())),
+        onChanged: (value) {
+          context
+              .read<WorkoutBloc>()
+              .add(WorkoutEvent.changeTitle(value.trim()));
+          context.read<WorkoutBloc>().add(WorkoutEvent.updateWorkout());
+        },
         initialValue: context
             .watch<WorkoutBloc>()
             .state
@@ -30,6 +33,7 @@ class WorkoutTitleWidget extends StatelessWidget {
           disabledBorder: InputBorder.none,
           contentPadding: const EdgeInsets.only(bottom: 0),
         ),
+        autofocus: false,
         maxLines: 1,
         maxLength: 50,
         maxLengthEnforced: true,
