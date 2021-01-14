@@ -8,7 +8,7 @@ import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/exerciseWidget.dart';
 import 'package:training_log/presentation/training/widgets/workoutTitleWidget.dart';
 
-class ActiveTrainingPage extends HookWidget {
+class EditHistoricalWorkoutPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     List<List<FocusNode>> fnList;
@@ -48,7 +48,6 @@ class ActiveTrainingPage extends HookWidget {
         // fnList.last.last.requestFocus();
         print(fnList.last.last);
       }
-      print(fnList);
 
       return Scaffold(
         resizeToAvoidBottomPadding: true,

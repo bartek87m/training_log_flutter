@@ -21,17 +21,18 @@ class WorkoutsViewsWidget extends StatelessWidget {
                     itemCount: state.workouts.length,
                     itemBuilder: (context, index) {
                       return InkWell(
-                          onTap: () {
-                            ExtendedNavigator.of(context).push(
-                              Routes.historicalWorkoutPage,
-                              arguments: HistoricalWorkoutPageArguments(
-                                  workout: state.workouts[index]),
-                            );
-                            context
-                                .read<WorkoutBloc>()
-                                .add(WorkoutEvent.clearState());
-                          },
-                          child: WorkoutShortViewWidget(state.workouts[index]));
+                        onTap: () {
+                          ExtendedNavigator.of(context).push(
+                            Routes.historicalWorkoutPage,
+                            arguments: HistoricalWorkoutPageArguments(
+                                workout: state.workouts[index]),
+                          );
+                          context
+                              .read<WorkoutBloc>()
+                              .add(WorkoutEvent.clearState());
+                        },
+                        child: WorkoutShortViewWidget(state.workouts[index]),
+                      );
                     });
               });
         },

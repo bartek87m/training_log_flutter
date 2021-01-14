@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
+import 'package:training_log/presentation/training/editHistoricalWorkoutPage.dart';
 import 'package:training_log/presentation/training/widgets/historicalWorkoutViewTextFormField.dart';
 
 class HistoricalWorkoutPage extends StatelessWidget {
@@ -20,8 +21,37 @@ class HistoricalWorkoutPage extends StatelessWidget {
     const leftPadding = 10.0;
     return Scaffold(
       appBar: AppBar(
-        title: Text("${workout.title.getOrCrash()}"),
+        title: Text(
+          "${workout.title.getOrCrash()}",
+          style: TextStyle(fontSize: 16),
+        ),
         actions: [
+          GestureDetector(
+            child: Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.only(right: 20),
+              child: Text(
+                "New Workout",
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            onTap: () => {
+              print("Atart as new Workout"),
+            },
+          ),
+          GestureDetector(
+            child: Container(
+              margin: const EdgeInsets.only(right: 20),
+              child: Icon(Icons.edit),
+            ),
+            onTap: () {
+              context
+                  .read<WorkoutBloc>()
+                  .add(WorkoutEvent.editWorkout(this.workout));
+              ExtendedNavigator.of(context)
+                  .push(Routes.editHistoricalWorkoutPage);
+            },
+          ),
           GestureDetector(
             child: Container(
               margin: const EdgeInsets.only(right: 10),

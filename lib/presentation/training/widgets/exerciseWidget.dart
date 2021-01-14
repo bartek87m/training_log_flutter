@@ -7,8 +7,10 @@ import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
 class ExerciseWidget extends HookWidget {
   final exerciseNumber;
+  final List<FocusNode> _fnList;
 
-  ExerciseWidget(this.exerciseNumber, {Key key}) : super(key: key);
+  ExerciseWidget(this.exerciseNumber, this._fnList, {Key key})
+      : super(key: key);
 
   @override
   Widget build(context) {
@@ -19,7 +21,15 @@ class ExerciseWidget extends HookWidget {
           context
               .read<WorkoutBloc>()
               .add(WorkoutEvent.removeExerciseFromWorkout(exerciseNumber));
-          context.read<WorkoutBloc>().add(WorkoutEvent.updateWorkout());
+          if (context
+              .read<WorkoutBloc>()
+              .state
+              .workout
+              .exercieList[exerciseNumber]
+              .exerciseName
+              .isValid()) {
+            context.read<WorkoutBloc>().add(WorkoutEvent.updateWorkout());
+          }
         },
         background: Container(
           color: Colors.green,
@@ -31,11 +41,19 @@ class ExerciseWidget extends HookWidget {
           child: Column(
             children: [
               TextFormField(
+                focusNode: _fnList[0],
                 autovalidateMode: context
-                        .watch<WorkoutBloc>()
-                        .state
-                        .showErrorMessagesForExerciseName[exerciseNumber]
-                    ? AutovalidateMode.always
+                            .watch<WorkoutBloc>()
+                            .state
+                            .showErrorMessagesForExerciseName
+                            .length >
+                        0
+                    ? context
+                            .watch<WorkoutBloc>()
+                            .state
+                            .showErrorMessagesForExerciseName[exerciseNumber]
+                        ? AutovalidateMode.always
+                        : AutovalidateMode.disabled
                     : AutovalidateMode.disabled,
                 initialValue: context
                     .watch<WorkoutBloc>()
@@ -82,6 +100,7 @@ class ExerciseWidget extends HookWidget {
               ),
               SeriesWidget(
                 exerciseNumber: exerciseNumber,
+                fnList: this._fnList,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

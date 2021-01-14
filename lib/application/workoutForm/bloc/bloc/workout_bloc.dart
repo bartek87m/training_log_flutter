@@ -37,6 +37,20 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           showErrorMessagesForExerciseName: List<bool>(),
         );
       },
+      editWorkout: (e) async* {
+        final showErrorMessagesForExerciseNameList = state.workout.exercieList
+            .map((e) => !e.exerciseName.isValid())
+            .toList();
+        yield state.copyWith(
+          workout: e.workout,
+          isEditing: true,
+          isCreated: false,
+          isCanceled: false,
+          isDeleted: false,
+          showErrorMessagesForExerciseName:
+              showErrorMessagesForExerciseNameList,
+        );
+      },
       addExerciseToWorkout: (_) async* {
         List<bool> showErrorMessagesForExerciseName =
             state.showErrorMessagesForExerciseName;
@@ -99,6 +113,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseList.removeAt(e.numberOfExercsie);
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
+          refreshState: !state.refreshState,
         );
       },
       addExerciseName: (e) async* {

@@ -10,20 +10,17 @@ class WorkoutTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: TextFormField(
-        // onTap: () => print("Editing complete"),
         onChanged: (value) {
           context
               .read<WorkoutBloc>()
               .add(WorkoutEvent.changeTitle(value.trim()));
           context.read<WorkoutBloc>().add(WorkoutEvent.updateWorkout());
         },
-        initialValue: context
-            .watch<WorkoutBloc>()
-            .state
-            .workout
-            .title
-            .value
-            .fold((l) => null, (r) => r),
+        initialValue:
+            context.watch<WorkoutBloc>().state.workout.title.value.fold(
+                  (l) => null,
+                  (r) => r,
+                ),
         decoration: InputDecoration(
           counter: Offstage(),
           border: InputBorder.none,
