@@ -25,4 +25,6 @@ abstract class WorkoutEvent with _$WorkoutEvent {
       String name, int numberOfExercise) = _AddExerciseName;
   const factory WorkoutEvent.changeWorkoutToUnsaved() = _ChangeWorkoutToUnsaved;
   const factory WorkoutEvent.editWorkout(Workout workout) = _EditWorkout;
+  const factory WorkoutEvent.createNewWorkoutFromExistingOne(Workout workout) =
+      _CreateNewWorkoutFromExistingOne;
 }

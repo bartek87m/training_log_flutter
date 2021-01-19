@@ -124,6 +124,14 @@ class _$WorkoutEventTearOff {
       workout,
     );
   }
+
+// ignore: unused_element
+  _CreateNewWorkoutFromExistingOne createNewWorkoutFromExistingOne(
+      Workout workout) {
+    return _CreateNewWorkoutFromExistingOne(
+      workout,
+    );
+  }
 }
 
 /// @nodoc
@@ -156,6 +164,7 @@ mixin _$WorkoutEvent {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -177,6 +186,7 @@ mixin _$WorkoutEvent {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -199,6 +209,9 @@ mixin _$WorkoutEvent {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -219,6 +232,8 @@ mixin _$WorkoutEvent {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   });
 }
@@ -309,6 +324,7 @@ class _$_WorkoutCreated
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -327,6 +343,7 @@ class _$_WorkoutCreated
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return createNewWorkout();
   }
 
@@ -351,6 +368,7 @@ class _$_WorkoutCreated
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -381,6 +399,9 @@ class _$_WorkoutCreated
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -399,6 +420,7 @@ class _$_WorkoutCreated
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return createNewWorkout(this);
   }
 
@@ -422,6 +444,8 @@ class _$_WorkoutCreated
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -506,6 +530,7 @@ class _$_AddExerciseToWorkout
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -524,6 +549,7 @@ class _$_AddExerciseToWorkout
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addExerciseToWorkout();
   }
 
@@ -548,6 +574,7 @@ class _$_AddExerciseToWorkout
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -578,6 +605,9 @@ class _$_AddExerciseToWorkout
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -596,6 +626,7 @@ class _$_AddExerciseToWorkout
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addExerciseToWorkout(this);
   }
 
@@ -619,6 +650,8 @@ class _$_AddExerciseToWorkout
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -703,6 +736,7 @@ class _$_WorkoutCompleted
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -721,6 +755,7 @@ class _$_WorkoutCompleted
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return workoutCompleted();
   }
 
@@ -745,6 +780,7 @@ class _$_WorkoutCompleted
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -775,6 +811,9 @@ class _$_WorkoutCompleted
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -793,6 +832,7 @@ class _$_WorkoutCompleted
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return workoutCompleted(this);
   }
 
@@ -816,6 +856,8 @@ class _$_WorkoutCompleted
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -921,6 +963,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -939,6 +982,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return deleteWorkout(workoutId);
   }
 
@@ -963,6 +1007,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -993,6 +1038,9 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1011,6 +1059,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return deleteWorkout(this);
   }
 
@@ -1034,6 +1083,8 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1118,6 +1169,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1136,6 +1188,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return cancelWorkout();
   }
 
@@ -1160,6 +1213,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1190,6 +1244,9 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1208,6 +1265,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return cancelWorkout(this);
   }
 
@@ -1231,6 +1289,8 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1312,6 +1372,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1330,6 +1391,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return createWorkout();
   }
 
@@ -1354,6 +1416,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1384,6 +1447,9 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1402,6 +1468,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return createWorkout(this);
   }
 
@@ -1425,6 +1492,8 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1529,6 +1598,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1547,6 +1617,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return changeTitle(workoutTitle);
   }
 
@@ -1571,6 +1642,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1601,6 +1673,9 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1619,6 +1694,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return changeTitle(this);
   }
 
@@ -1642,6 +1718,8 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1726,6 +1804,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1744,6 +1823,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return updateWorkout();
   }
 
@@ -1768,6 +1848,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1798,6 +1879,9 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1816,6 +1900,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return updateWorkout(this);
   }
 
@@ -1839,6 +1924,8 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1949,6 +2036,7 @@ class _$_AddSeriesToExercise
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -1967,6 +2055,7 @@ class _$_AddSeriesToExercise
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addSeriesToExercise(exerciseNumber);
   }
 
@@ -1991,6 +2080,7 @@ class _$_AddSeriesToExercise
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2021,6 +2111,9 @@ class _$_AddSeriesToExercise
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2039,6 +2132,7 @@ class _$_AddSeriesToExercise
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addSeriesToExercise(this);
   }
 
@@ -2062,6 +2156,8 @@ class _$_AddSeriesToExercise
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2146,6 +2242,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2164,6 +2261,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return clearState();
   }
 
@@ -2188,6 +2286,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2218,6 +2317,9 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2236,6 +2338,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return clearState(this);
   }
 
@@ -2259,6 +2362,8 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2374,6 +2479,7 @@ class _$_RemoveExerciseFromWorkout
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2392,6 +2498,7 @@ class _$_RemoveExerciseFromWorkout
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return removeExerciseFromWorkout(numberOfExercsie);
   }
 
@@ -2416,6 +2523,7 @@ class _$_RemoveExerciseFromWorkout
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2446,6 +2554,9 @@ class _$_RemoveExerciseFromWorkout
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2464,6 +2575,7 @@ class _$_RemoveExerciseFromWorkout
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return removeExerciseFromWorkout(this);
   }
 
@@ -2487,6 +2599,8 @@ class _$_RemoveExerciseFromWorkout
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2613,6 +2727,7 @@ class _$_RemoveSeriesFromExercise
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2631,6 +2746,7 @@ class _$_RemoveSeriesFromExercise
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return removeSeriesFromExercise(exerciseNumber, numberOfSeries);
   }
 
@@ -2655,6 +2771,7 @@ class _$_RemoveSeriesFromExercise
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2685,6 +2802,9 @@ class _$_RemoveSeriesFromExercise
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2703,6 +2823,7 @@ class _$_RemoveSeriesFromExercise
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return removeSeriesFromExercise(this);
   }
 
@@ -2726,6 +2847,8 @@ class _$_RemoveSeriesFromExercise
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2860,6 +2983,7 @@ class _$_AddWeightToSeries
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2878,6 +3002,7 @@ class _$_AddWeightToSeries
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addWeightToSeries(exerciseNumber, seriesNumber, weight);
   }
 
@@ -2902,6 +3027,7 @@ class _$_AddWeightToSeries
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2932,6 +3058,9 @@ class _$_AddWeightToSeries
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -2950,6 +3079,7 @@ class _$_AddWeightToSeries
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addWeightToSeries(this);
   }
 
@@ -2973,6 +3103,8 @@ class _$_AddWeightToSeries
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3108,6 +3240,7 @@ class _$_AddRepsToSeries
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3126,6 +3259,7 @@ class _$_AddRepsToSeries
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addRepsToSeries(exerciseNumber, seriesNumber, reps);
   }
 
@@ -3150,6 +3284,7 @@ class _$_AddRepsToSeries
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3180,6 +3315,9 @@ class _$_AddRepsToSeries
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3198,6 +3336,7 @@ class _$_AddRepsToSeries
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addRepsToSeries(this);
   }
 
@@ -3221,6 +3360,8 @@ class _$_AddRepsToSeries
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3347,6 +3488,7 @@ class _$_AddExerciseName
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3365,6 +3507,7 @@ class _$_AddExerciseName
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addExerciseName(name, numberOfExercise);
   }
 
@@ -3389,6 +3532,7 @@ class _$_AddExerciseName
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3419,6 +3563,9 @@ class _$_AddExerciseName
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3437,6 +3584,7 @@ class _$_AddExerciseName
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return addExerciseName(this);
   }
 
@@ -3460,6 +3608,8 @@ class _$_AddExerciseName
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3549,6 +3699,7 @@ class _$_ChangeWorkoutToUnsaved
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3567,6 +3718,7 @@ class _$_ChangeWorkoutToUnsaved
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return changeWorkoutToUnsaved();
   }
 
@@ -3591,6 +3743,7 @@ class _$_ChangeWorkoutToUnsaved
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3621,6 +3774,9 @@ class _$_ChangeWorkoutToUnsaved
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3639,6 +3795,7 @@ class _$_ChangeWorkoutToUnsaved
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return changeWorkoutToUnsaved(this);
   }
 
@@ -3662,6 +3819,8 @@ class _$_ChangeWorkoutToUnsaved
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3777,6 +3936,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     @required Result addExerciseName(String name, int numberOfExercise),
     @required Result changeWorkoutToUnsaved(),
     @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3795,6 +3955,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return editWorkout(workout);
   }
 
@@ -3819,6 +3980,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     Result addExerciseName(String name, int numberOfExercise),
     Result changeWorkoutToUnsaved(),
     Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3849,6 +4011,9 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     @required Result addExerciseName(_AddExerciseName value),
     @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
   }) {
     assert(createNewWorkout != null);
     assert(addExerciseToWorkout != null);
@@ -3867,6 +4032,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     assert(addExerciseName != null);
     assert(changeWorkoutToUnsaved != null);
     assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
     return editWorkout(this);
   }
 
@@ -3890,6 +4056,8 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     Result addExerciseName(_AddExerciseName value),
     Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
     Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3905,6 +4073,257 @@ abstract class _EditWorkout implements WorkoutEvent {
 
   Workout get workout;
   _$EditWorkoutCopyWith<_EditWorkout> get copyWith;
+}
+
+/// @nodoc
+abstract class _$CreateNewWorkoutFromExistingOneCopyWith<$Res> {
+  factory _$CreateNewWorkoutFromExistingOneCopyWith(
+          _CreateNewWorkoutFromExistingOne value,
+          $Res Function(_CreateNewWorkoutFromExistingOne) then) =
+      __$CreateNewWorkoutFromExistingOneCopyWithImpl<$Res>;
+  $Res call({Workout workout});
+
+  $WorkoutCopyWith<$Res> get workout;
+}
+
+/// @nodoc
+class __$CreateNewWorkoutFromExistingOneCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$CreateNewWorkoutFromExistingOneCopyWith<$Res> {
+  __$CreateNewWorkoutFromExistingOneCopyWithImpl(
+      _CreateNewWorkoutFromExistingOne _value,
+      $Res Function(_CreateNewWorkoutFromExistingOne) _then)
+      : super(_value, (v) => _then(v as _CreateNewWorkoutFromExistingOne));
+
+  @override
+  _CreateNewWorkoutFromExistingOne get _value =>
+      super._value as _CreateNewWorkoutFromExistingOne;
+
+  @override
+  $Res call({
+    Object workout = freezed,
+  }) {
+    return _then(_CreateNewWorkoutFromExistingOne(
+      workout == freezed ? _value.workout : workout as Workout,
+    ));
+  }
+
+  @override
+  $WorkoutCopyWith<$Res> get workout {
+    if (_value.workout == null) {
+      return null;
+    }
+    return $WorkoutCopyWith<$Res>(_value.workout, (value) {
+      return _then(_value.copyWith(workout: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_CreateNewWorkoutFromExistingOne
+    with DiagnosticableTreeMixin
+    implements _CreateNewWorkoutFromExistingOne {
+  const _$_CreateNewWorkoutFromExistingOne(this.workout)
+      : assert(workout != null);
+
+  @override
+  final Workout workout;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.createNewWorkoutFromExistingOne(workout: $workout)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'WorkoutEvent.createNewWorkoutFromExistingOne'))
+      ..add(DiagnosticsProperty('workout', workout));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CreateNewWorkoutFromExistingOne &&
+            (identical(other.workout, workout) ||
+                const DeepCollectionEquality().equals(other.workout, workout)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(workout);
+
+  @override
+  _$CreateNewWorkoutFromExistingOneCopyWith<_CreateNewWorkoutFromExistingOne>
+      get copyWith => __$CreateNewWorkoutFromExistingOneCopyWithImpl<
+          _CreateNewWorkoutFromExistingOne>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result deleteWorkout(String workoutId),
+    @required Result cancelWorkout(),
+    @required Result createWorkout(),
+    @required Result changeTitle(String workoutTitle),
+    @required Result updateWorkout(),
+    @required Result addSeriesToExercise(int exerciseNumber),
+    @required Result clearState(),
+    @required Result removeExerciseFromWorkout(int numberOfExercsie),
+    @required
+        Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    @required
+        Result addWeightToSeries(
+            int exerciseNumber, int seriesNumber, String weight),
+    @required
+        Result addRepsToSeries(
+            int exerciseNumber, int seriesNumber, String reps),
+    @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
+    @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(createWorkout != null);
+    assert(changeTitle != null);
+    assert(updateWorkout != null);
+    assert(addSeriesToExercise != null);
+    assert(clearState != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
+    return createNewWorkoutFromExistingOne(workout);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result deleteWorkout(String workoutId),
+    Result cancelWorkout(),
+    Result createWorkout(),
+    Result changeTitle(String workoutTitle),
+    Result updateWorkout(),
+    Result addSeriesToExercise(int exerciseNumber),
+    Result clearState(),
+    Result removeExerciseFromWorkout(int numberOfExercsie),
+    Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    Result addWeightToSeries(
+        int exerciseNumber, int seriesNumber, String weight),
+    Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
+    Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
+    Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (createNewWorkoutFromExistingOne != null) {
+      return createNewWorkoutFromExistingOne(workout);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result deleteWorkout(_DeleteWorkout value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result createWorkout(_CreateWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
+    @required Result updateWorkout(_UpdateWorkout value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
+    @required Result clearState(_ClearState value),
+    @required
+        Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    @required Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    @required Result addWeightToSeries(_AddWeightToSeries value),
+    @required Result addRepsToSeries(_AddRepsToSeries value),
+    @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+    @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(createWorkout != null);
+    assert(changeTitle != null);
+    assert(updateWorkout != null);
+    assert(addSeriesToExercise != null);
+    assert(clearState != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
+    return createNewWorkoutFromExistingOne(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result deleteWorkout(_DeleteWorkout value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result createWorkout(_CreateWorkout value),
+    Result changeTitle(_ChangeTitle value),
+    Result updateWorkout(_UpdateWorkout value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
+    Result clearState(_ClearState value),
+    Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    Result addWeightToSeries(_AddWeightToSeries value),
+    Result addRepsToSeries(_AddRepsToSeries value),
+    Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+    Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (createNewWorkoutFromExistingOne != null) {
+      return createNewWorkoutFromExistingOne(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateNewWorkoutFromExistingOne implements WorkoutEvent {
+  const factory _CreateNewWorkoutFromExistingOne(Workout workout) =
+      _$_CreateNewWorkoutFromExistingOne;
+
+  Workout get workout;
+  _$CreateNewWorkoutFromExistingOneCopyWith<_CreateNewWorkoutFromExistingOne>
+      get copyWith;
 }
 
 /// @nodoc

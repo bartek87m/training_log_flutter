@@ -35,8 +35,12 @@ class HistoricalWorkoutPage extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
             ),
-            onTap: () => {
-              print("Atart as new Workout"),
+            onTap: () {
+              context.read<WorkoutBloc>().add(
+                  WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
+              context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
+              ExtendedNavigator.of(context)
+                  .push(Routes.editHistoricalWorkoutPage);
             },
           ),
           GestureDetector(

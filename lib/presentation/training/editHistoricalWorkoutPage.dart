@@ -83,20 +83,9 @@ class EditHistoricalWorkoutPage extends HookWidget {
               children: [
                 FlatButton(
                   onPressed: () {
-                    if (state.isCreated == false) {
-                      print("Workout Created");
-
-                      context
-                          .read<WorkoutBloc>()
-                          .add(WorkoutEvent.createWorkout());
-                    }
-                    if (state.isCreated == true) {
-                      print("Workout Updated");
-
-                      context
-                          .read<WorkoutBloc>()
-                          .add(WorkoutEvent.updateWorkout());
-                    }
+                    context
+                        .read<WorkoutBloc>()
+                        .add(WorkoutEvent.updateWorkout());
                   },
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,

@@ -25,6 +25,13 @@ abstract class Workout with _$Workout {
         // wodList: List<Wod>(),
       );
 
+  factory Workout.fromExistingOne(Workout workout) => Workout(
+        id: UniqueId(),
+        title: workout.title,
+        workoutDate: DateTime.now(),
+        exercieList: workout.exercieList,
+      );
+
   factory Workout.empty() => Workout(
         id: UniqueId.fromUniqueString(''),
         title: Title(''),

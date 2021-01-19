@@ -51,6 +51,20 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
               showErrorMessagesForExerciseNameList,
         );
       },
+      createNewWorkoutFromExistingOne: (e) async* {
+        final showErrorMessagesForExerciseNameList = state.workout.exercieList
+            .map((e) => !e.exerciseName.isValid())
+            .toList();
+        yield state.copyWith(
+          workout: Workout.fromExistingOne(e.workout),
+          isEditing: true,
+          isCreated: false,
+          isCanceled: false,
+          isDeleted: false,
+          showErrorMessagesForExerciseName:
+              showErrorMessagesForExerciseNameList,
+        );
+      },
       addExerciseToWorkout: (_) async* {
         List<bool> showErrorMessagesForExerciseName =
             state.showErrorMessagesForExerciseName;
@@ -167,6 +181,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       updateWorkout: (e) async* {
+        print('update workout');
+        print(state.workout);
         await iWorkoutFacade.update(workout: state.workout);
       },
       changeTitle: (e) async* {
