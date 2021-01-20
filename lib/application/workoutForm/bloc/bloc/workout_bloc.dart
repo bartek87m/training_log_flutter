@@ -200,6 +200,16 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           refreshState: false,
         );
       },
+      finishWorkout: (_) async* {
+        yield state.copyWith(
+          isEditing: false,
+          isCreated: false,
+          isCanceled: false,
+          isDeleted: false,
+          isUpdated: false,
+          // refreshState: !state.refreshState,
+        );
+      },
     );
   }
 }

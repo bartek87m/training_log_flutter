@@ -17,7 +17,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
     });
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
-      if (state.isCanceled == true) {
+      if (state.isCanceled == true || state.isEditing == false) {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
       if (state.isCreated == true) {
@@ -86,6 +86,9 @@ class EditHistoricalWorkoutPage extends HookWidget {
                     context
                         .read<WorkoutBloc>()
                         .add(WorkoutEvent.updateWorkout());
+                    context
+                        .read<WorkoutBloc>()
+                        .add(WorkoutEvent.finishWorkout());
                   },
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
@@ -109,13 +112,13 @@ class EditHistoricalWorkoutPage extends HookWidget {
                     context
                         .read<WorkoutBloc>()
                         .add(WorkoutEvent.cancelWorkout());
-                    // context.read<WorkoutBloc>().add(
-                    //     WorkoutEvent.deleteWorkout(context
-                    //         .watch<WorkoutBloc>()
-                    //         .state
-                    //         .workout
-                    //         .id
-                    //         .getOrCrash()));
+                    context.read<WorkoutBloc>().add(WorkoutEvent.deleteWorkout(
+                        context
+                            .read<WorkoutBloc>()
+                            .state
+                            .workout
+                            .id
+                            .getOrCrash()));
                   },
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,

@@ -17,7 +17,7 @@ class ActiveTrainingPage extends HookWidget {
     });
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
-      if (state.isCanceled == true) {
+      if (state.isCanceled == true || state.isEditing == false) {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
       if (state.isCreated == true) {
@@ -84,25 +84,17 @@ class ActiveTrainingPage extends HookWidget {
               children: [
                 FlatButton(
                   onPressed: () {
-                    if (state.isCreated == false) {
-                      print("Workout Created");
-
-                      context
-                          .read<WorkoutBloc>()
-                          .add(WorkoutEvent.createWorkout());
-                    }
-                    if (state.isCreated == true) {
-                      print("Workout Updated");
-
-                      context
-                          .read<WorkoutBloc>()
-                          .add(WorkoutEvent.updateWorkout());
-                    }
+                    context
+                        .read<WorkoutBloc>()
+                        .add(WorkoutEvent.updateWorkout());
+                    context
+                        .read<WorkoutBloc>()
+                        .add(WorkoutEvent.finishWorkout());
                   },
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   child: const Text(
-                    'Save Workout',
+                    'Finish Workout',
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
@@ -121,13 +113,13 @@ class ActiveTrainingPage extends HookWidget {
                     context
                         .read<WorkoutBloc>()
                         .add(WorkoutEvent.cancelWorkout());
-                    // context.read<WorkoutBloc>().add(
-                    //     WorkoutEvent.deleteWorkout(context
-                    //         .watch<WorkoutBloc>()
-                    //         .state
-                    //         .workout
-                    //         .id
-                    //         .getOrCrash()));
+                    context.read<WorkoutBloc>().add(WorkoutEvent.deleteWorkout(
+                        context
+                            .read<WorkoutBloc>()
+                            .state
+                            .workout
+                            .id
+                            .getOrCrash()));
                   },
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,

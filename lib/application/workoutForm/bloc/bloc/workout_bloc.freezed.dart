@@ -41,6 +41,11 @@ class _$WorkoutEventTearOff {
   }
 
 // ignore: unused_element
+  _FinishWorkout finishWorkout() {
+    return const _FinishWorkout();
+  }
+
+// ignore: unused_element
   _CreateWorkout createWorkout() {
     return const _CreateWorkout();
   }
@@ -147,6 +152,7 @@ mixin _$WorkoutEvent {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -173,6 +179,7 @@ mixin _$WorkoutEvent {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -196,6 +203,7 @@ mixin _$WorkoutEvent {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -220,6 +228,7 @@ mixin _$WorkoutEvent {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -307,6 +316,7 @@ class _$_WorkoutCreated
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -331,6 +341,7 @@ class _$_WorkoutCreated
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -355,6 +366,7 @@ class _$_WorkoutCreated
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -386,6 +398,7 @@ class _$_WorkoutCreated
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -408,6 +421,7 @@ class _$_WorkoutCreated
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -432,6 +446,7 @@ class _$_WorkoutCreated
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -513,6 +528,7 @@ class _$_AddExerciseToWorkout
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -537,6 +553,7 @@ class _$_AddExerciseToWorkout
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -561,6 +578,7 @@ class _$_AddExerciseToWorkout
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -592,6 +610,7 @@ class _$_AddExerciseToWorkout
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -614,6 +633,7 @@ class _$_AddExerciseToWorkout
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -638,6 +658,7 @@ class _$_AddExerciseToWorkout
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -719,6 +740,7 @@ class _$_WorkoutCompleted
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -743,6 +765,7 @@ class _$_WorkoutCompleted
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -767,6 +790,7 @@ class _$_WorkoutCompleted
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -798,6 +822,7 @@ class _$_WorkoutCompleted
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -820,6 +845,7 @@ class _$_WorkoutCompleted
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -844,6 +870,7 @@ class _$_WorkoutCompleted
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -946,6 +973,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -970,6 +998,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -994,6 +1023,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -1025,6 +1055,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -1047,6 +1078,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1071,6 +1103,7 @@ class _$_DeleteWorkout with DiagnosticableTreeMixin implements _DeleteWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -1152,6 +1185,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -1176,6 +1210,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1200,6 +1235,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -1231,6 +1267,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -1253,6 +1290,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1277,6 +1315,7 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -1303,6 +1342,215 @@ class _$_CancelWorkout with DiagnosticableTreeMixin implements _CancelWorkout {
 
 abstract class _CancelWorkout implements WorkoutEvent {
   const factory _CancelWorkout() = _$_CancelWorkout;
+}
+
+/// @nodoc
+abstract class _$FinishWorkoutCopyWith<$Res> {
+  factory _$FinishWorkoutCopyWith(
+          _FinishWorkout value, $Res Function(_FinishWorkout) then) =
+      __$FinishWorkoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FinishWorkoutCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res>
+    implements _$FinishWorkoutCopyWith<$Res> {
+  __$FinishWorkoutCopyWithImpl(
+      _FinishWorkout _value, $Res Function(_FinishWorkout) _then)
+      : super(_value, (v) => _then(v as _FinishWorkout));
+
+  @override
+  _FinishWorkout get _value => super._value as _FinishWorkout;
+}
+
+/// @nodoc
+class _$_FinishWorkout with DiagnosticableTreeMixin implements _FinishWorkout {
+  const _$_FinishWorkout();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.finishWorkout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.finishWorkout'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _FinishWorkout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result createNewWorkout(),
+    @required Result addExerciseToWorkout(),
+    @required Result workoutCompleted(),
+    @required Result deleteWorkout(String workoutId),
+    @required Result cancelWorkout(),
+    @required Result finishWorkout(),
+    @required Result createWorkout(),
+    @required Result changeTitle(String workoutTitle),
+    @required Result updateWorkout(),
+    @required Result addSeriesToExercise(int exerciseNumber),
+    @required Result clearState(),
+    @required Result removeExerciseFromWorkout(int numberOfExercsie),
+    @required
+        Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    @required
+        Result addWeightToSeries(
+            int exerciseNumber, int seriesNumber, String weight),
+    @required
+        Result addRepsToSeries(
+            int exerciseNumber, int seriesNumber, String reps),
+    @required Result addExerciseName(String name, int numberOfExercise),
+    @required Result changeWorkoutToUnsaved(),
+    @required Result editWorkout(Workout workout),
+    @required Result createNewWorkoutFromExistingOne(Workout workout),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    assert(createWorkout != null);
+    assert(changeTitle != null);
+    assert(updateWorkout != null);
+    assert(addSeriesToExercise != null);
+    assert(clearState != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
+    return finishWorkout();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result createNewWorkout(),
+    Result addExerciseToWorkout(),
+    Result workoutCompleted(),
+    Result deleteWorkout(String workoutId),
+    Result cancelWorkout(),
+    Result finishWorkout(),
+    Result createWorkout(),
+    Result changeTitle(String workoutTitle),
+    Result updateWorkout(),
+    Result addSeriesToExercise(int exerciseNumber),
+    Result clearState(),
+    Result removeExerciseFromWorkout(int numberOfExercsie),
+    Result removeSeriesFromExercise(int exerciseNumber, int numberOfSeries),
+    Result addWeightToSeries(
+        int exerciseNumber, int seriesNumber, String weight),
+    Result addRepsToSeries(int exerciseNumber, int seriesNumber, String reps),
+    Result addExerciseName(String name, int numberOfExercise),
+    Result changeWorkoutToUnsaved(),
+    Result editWorkout(Workout workout),
+    Result createNewWorkoutFromExistingOne(Workout workout),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (finishWorkout != null) {
+      return finishWorkout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result createNewWorkout(_WorkoutCreated value),
+    @required Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    @required Result workoutCompleted(_WorkoutCompleted value),
+    @required Result deleteWorkout(_DeleteWorkout value),
+    @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
+    @required Result createWorkout(_CreateWorkout value),
+    @required Result changeTitle(_ChangeTitle value),
+    @required Result updateWorkout(_UpdateWorkout value),
+    @required Result addSeriesToExercise(_AddSeriesToExercise value),
+    @required Result clearState(_ClearState value),
+    @required
+        Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    @required Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    @required Result addWeightToSeries(_AddWeightToSeries value),
+    @required Result addRepsToSeries(_AddRepsToSeries value),
+    @required Result addExerciseName(_AddExerciseName value),
+    @required Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+    @required Result editWorkout(_EditWorkout value),
+    @required
+        Result createNewWorkoutFromExistingOne(
+            _CreateNewWorkoutFromExistingOne value),
+  }) {
+    assert(createNewWorkout != null);
+    assert(addExerciseToWorkout != null);
+    assert(workoutCompleted != null);
+    assert(deleteWorkout != null);
+    assert(cancelWorkout != null);
+    assert(finishWorkout != null);
+    assert(createWorkout != null);
+    assert(changeTitle != null);
+    assert(updateWorkout != null);
+    assert(addSeriesToExercise != null);
+    assert(clearState != null);
+    assert(removeExerciseFromWorkout != null);
+    assert(removeSeriesFromExercise != null);
+    assert(addWeightToSeries != null);
+    assert(addRepsToSeries != null);
+    assert(addExerciseName != null);
+    assert(changeWorkoutToUnsaved != null);
+    assert(editWorkout != null);
+    assert(createNewWorkoutFromExistingOne != null);
+    return finishWorkout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result createNewWorkout(_WorkoutCreated value),
+    Result addExerciseToWorkout(_AddExerciseToWorkout value),
+    Result workoutCompleted(_WorkoutCompleted value),
+    Result deleteWorkout(_DeleteWorkout value),
+    Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
+    Result createWorkout(_CreateWorkout value),
+    Result changeTitle(_ChangeTitle value),
+    Result updateWorkout(_UpdateWorkout value),
+    Result addSeriesToExercise(_AddSeriesToExercise value),
+    Result clearState(_ClearState value),
+    Result removeExerciseFromWorkout(_RemoveExerciseFromWorkout value),
+    Result removeSeriesFromExercise(_RemoveSeriesFromExercise value),
+    Result addWeightToSeries(_AddWeightToSeries value),
+    Result addRepsToSeries(_AddRepsToSeries value),
+    Result addExerciseName(_AddExerciseName value),
+    Result changeWorkoutToUnsaved(_ChangeWorkoutToUnsaved value),
+    Result editWorkout(_EditWorkout value),
+    Result createNewWorkoutFromExistingOne(
+        _CreateNewWorkoutFromExistingOne value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (finishWorkout != null) {
+      return finishWorkout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FinishWorkout implements WorkoutEvent {
+  const factory _FinishWorkout() = _$_FinishWorkout;
 }
 
 /// @nodoc
@@ -1355,6 +1603,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -1379,6 +1628,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1403,6 +1653,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -1434,6 +1685,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -1456,6 +1708,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1480,6 +1733,7 @@ class _$_CreateWorkout with DiagnosticableTreeMixin implements _CreateWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -1581,6 +1835,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -1605,6 +1860,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1629,6 +1885,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -1660,6 +1917,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -1682,6 +1940,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1706,6 +1965,7 @@ class _$_ChangeTitle with DiagnosticableTreeMixin implements _ChangeTitle {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -1787,6 +2047,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -1811,6 +2072,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1835,6 +2097,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -1866,6 +2129,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -1888,6 +2152,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -1912,6 +2177,7 @@ class _$_UpdateWorkout with DiagnosticableTreeMixin implements _UpdateWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -2019,6 +2285,7 @@ class _$_AddSeriesToExercise
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -2043,6 +2310,7 @@ class _$_AddSeriesToExercise
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2067,6 +2335,7 @@ class _$_AddSeriesToExercise
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -2098,6 +2367,7 @@ class _$_AddSeriesToExercise
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -2120,6 +2390,7 @@ class _$_AddSeriesToExercise
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2144,6 +2415,7 @@ class _$_AddSeriesToExercise
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -2225,6 +2497,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -2249,6 +2522,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2273,6 +2547,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -2304,6 +2579,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -2326,6 +2602,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2350,6 +2627,7 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -2462,6 +2740,7 @@ class _$_RemoveExerciseFromWorkout
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -2486,6 +2765,7 @@ class _$_RemoveExerciseFromWorkout
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2510,6 +2790,7 @@ class _$_RemoveExerciseFromWorkout
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -2541,6 +2822,7 @@ class _$_RemoveExerciseFromWorkout
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -2563,6 +2845,7 @@ class _$_RemoveExerciseFromWorkout
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2587,6 +2870,7 @@ class _$_RemoveExerciseFromWorkout
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -2710,6 +2994,7 @@ class _$_RemoveSeriesFromExercise
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -2734,6 +3019,7 @@ class _$_RemoveSeriesFromExercise
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2758,6 +3044,7 @@ class _$_RemoveSeriesFromExercise
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -2789,6 +3076,7 @@ class _$_RemoveSeriesFromExercise
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -2811,6 +3099,7 @@ class _$_RemoveSeriesFromExercise
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -2835,6 +3124,7 @@ class _$_RemoveSeriesFromExercise
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -2966,6 +3256,7 @@ class _$_AddWeightToSeries
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -2990,6 +3281,7 @@ class _$_AddWeightToSeries
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3014,6 +3306,7 @@ class _$_AddWeightToSeries
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -3045,6 +3338,7 @@ class _$_AddWeightToSeries
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -3067,6 +3361,7 @@ class _$_AddWeightToSeries
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3091,6 +3386,7 @@ class _$_AddWeightToSeries
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -3223,6 +3519,7 @@ class _$_AddRepsToSeries
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -3247,6 +3544,7 @@ class _$_AddRepsToSeries
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3271,6 +3569,7 @@ class _$_AddRepsToSeries
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -3302,6 +3601,7 @@ class _$_AddRepsToSeries
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -3324,6 +3624,7 @@ class _$_AddRepsToSeries
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3348,6 +3649,7 @@ class _$_AddRepsToSeries
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -3471,6 +3773,7 @@ class _$_AddExerciseName
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -3495,6 +3798,7 @@ class _$_AddExerciseName
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3519,6 +3823,7 @@ class _$_AddExerciseName
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -3550,6 +3855,7 @@ class _$_AddExerciseName
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -3572,6 +3878,7 @@ class _$_AddExerciseName
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3596,6 +3903,7 @@ class _$_AddExerciseName
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -3682,6 +3990,7 @@ class _$_ChangeWorkoutToUnsaved
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -3706,6 +4015,7 @@ class _$_ChangeWorkoutToUnsaved
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3730,6 +4040,7 @@ class _$_ChangeWorkoutToUnsaved
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -3761,6 +4072,7 @@ class _$_ChangeWorkoutToUnsaved
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -3783,6 +4095,7 @@ class _$_ChangeWorkoutToUnsaved
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3807,6 +4120,7 @@ class _$_ChangeWorkoutToUnsaved
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -3919,6 +4233,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -3943,6 +4258,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -3967,6 +4283,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -3998,6 +4315,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -4020,6 +4338,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -4044,6 +4363,7 @@ class _$_EditWorkout with DiagnosticableTreeMixin implements _EditWorkout {
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
@@ -4168,6 +4488,7 @@ class _$_CreateNewWorkoutFromExistingOne
     @required Result workoutCompleted(),
     @required Result deleteWorkout(String workoutId),
     @required Result cancelWorkout(),
+    @required Result finishWorkout(),
     @required Result createWorkout(),
     @required Result changeTitle(String workoutTitle),
     @required Result updateWorkout(),
@@ -4192,6 +4513,7 @@ class _$_CreateNewWorkoutFromExistingOne
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -4216,6 +4538,7 @@ class _$_CreateNewWorkoutFromExistingOne
     Result workoutCompleted(),
     Result deleteWorkout(String workoutId),
     Result cancelWorkout(),
+    Result finishWorkout(),
     Result createWorkout(),
     Result changeTitle(String workoutTitle),
     Result updateWorkout(),
@@ -4247,6 +4570,7 @@ class _$_CreateNewWorkoutFromExistingOne
     @required Result workoutCompleted(_WorkoutCompleted value),
     @required Result deleteWorkout(_DeleteWorkout value),
     @required Result cancelWorkout(_CancelWorkout value),
+    @required Result finishWorkout(_FinishWorkout value),
     @required Result createWorkout(_CreateWorkout value),
     @required Result changeTitle(_ChangeTitle value),
     @required Result updateWorkout(_UpdateWorkout value),
@@ -4269,6 +4593,7 @@ class _$_CreateNewWorkoutFromExistingOne
     assert(workoutCompleted != null);
     assert(deleteWorkout != null);
     assert(cancelWorkout != null);
+    assert(finishWorkout != null);
     assert(createWorkout != null);
     assert(changeTitle != null);
     assert(updateWorkout != null);
@@ -4293,6 +4618,7 @@ class _$_CreateNewWorkoutFromExistingOne
     Result workoutCompleted(_WorkoutCompleted value),
     Result deleteWorkout(_DeleteWorkout value),
     Result cancelWorkout(_CancelWorkout value),
+    Result finishWorkout(_FinishWorkout value),
     Result createWorkout(_CreateWorkout value),
     Result changeTitle(_ChangeTitle value),
     Result updateWorkout(_UpdateWorkout value),
