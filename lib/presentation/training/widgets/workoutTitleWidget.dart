@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 
 class WorkoutTitleWidget extends StatelessWidget {
-  WorkoutTitleWidget();
+  final fn;
+
+  WorkoutTitleWidget(this.fn);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class WorkoutTitleWidget extends StatelessWidget {
           contentPadding: const EdgeInsets.only(bottom: 0),
         ),
         autofocus: false,
+        focusNode: fn,
         maxLines: 1,
         maxLength: 50,
         maxLengthEnforced: true,

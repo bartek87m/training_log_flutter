@@ -11,9 +11,13 @@ class EditHistoricalWorkoutPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     bool focusNodePermission = false;
-    List<List<FocusNode>> fnList;
+    FocusNode titleFocusNode;
+    List<List<FocusNode>> exerciseFnList;
     useEffect(() {
-      return () => fnList.forEach((list) => list.forEach((fn) => fn.dispose()));
+      return () {
+        exerciseFnList.forEach((list) => list.forEach((fn) => fn.dispose()));
+        titleFocusNode.dispose();
+      };
     });
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
@@ -21,7 +25,8 @@ class EditHistoricalWorkoutPage extends HookWidget {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
     }, builder: (context, state) {
-      fnList = List.generate(
+      titleFocusNode = FocusNode();
+      exerciseFnList = List.generate(
         context.watch<WorkoutBloc>().state.workout.exercieList.length,
         (index) => List.generate(
             context
@@ -35,11 +40,12 @@ class EditHistoricalWorkoutPage extends HookWidget {
             (_) => FocusNode(),
             growable: false),
       );
-
+      // fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
       if (focusNodePermission) {
-        fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
-        fnList.last.last.unfocus();
-        fnList.last.last.requestFocus();
+        titleFocusNode.unfocus();
+        exerciseFnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
+        exerciseFnList.last.last.unfocus();
+        exerciseFnList.last.last.requestFocus();
       }
 
       return Scaffold(
@@ -51,7 +57,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.only(
                   top: 10, left: 10, right: 10, bottom: 1),
-              child: WorkoutTitleWidget(),
+              child: WorkoutTitleWidget(titleFocusNode),
             ),
             Container(
               child: Column(
@@ -63,7 +69,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
                           Container(
                             child: ExerciseWidget(
                               exerciseNumber,
-                              fnList[exerciseNumber],
+                              exerciseFnList[exerciseNumber],
                               key: UniqueKey(),
                             ),
                           )

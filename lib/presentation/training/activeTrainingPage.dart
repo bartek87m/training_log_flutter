@@ -10,9 +10,13 @@ import 'package:training_log/presentation/training/widgets/workoutTitleWidget.da
 class ActiveTrainingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    FocusNode titleFocusNode;
     List<List<FocusNode>> fnList;
     useEffect(() {
-      return () => fnList.forEach((list) => list.forEach((fn) => fn.dispose()));
+      return () {
+        fnList.forEach((list) => list.forEach((fn) => fn.dispose()));
+        titleFocusNode.dispose();
+      };
     });
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
@@ -20,6 +24,7 @@ class ActiveTrainingPage extends HookWidget {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
     }, builder: (context, state) {
+      titleFocusNode = FocusNode();
       fnList = List.generate(
         context.watch<WorkoutBloc>().state.workout.exercieList.length,
         (index) => List.generate(
@@ -40,7 +45,6 @@ class ActiveTrainingPage extends HookWidget {
         fnList.last.last.unfocus();
         fnList.last.last.requestFocus();
       }
-      print(fnList);
 
       return Scaffold(
         resizeToAvoidBottomPadding: true,
@@ -51,7 +55,7 @@ class ActiveTrainingPage extends HookWidget {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.only(
                   top: 10, left: 10, right: 10, bottom: 1),
-              child: WorkoutTitleWidget(),
+              child: WorkoutTitleWidget(titleFocusNode),
             ),
             Container(
               child: Column(
