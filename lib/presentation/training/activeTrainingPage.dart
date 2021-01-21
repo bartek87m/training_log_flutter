@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -20,12 +19,6 @@ class ActiveTrainingPage extends HookWidget {
       if (state.isCanceled == true || state.isEditing == false) {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
-      if (state.isCreated == true) {
-        // FlushbarHelper.createSuccess(
-        //   message: "Workout saved",
-        //   duration: Duration(seconds: 2),
-        // ).show(context);
-      }
     }, builder: (context, state) {
       fnList = List.generate(
         context.watch<WorkoutBloc>().state.workout.exercieList.length,
@@ -43,10 +36,9 @@ class ActiveTrainingPage extends HookWidget {
       );
 
       if (fnList.length > 0) {
-        // fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
-        // fnList.last.last.unfocus();
-        // fnList.last.last.requestFocus();
-        print(fnList.last.last);
+        fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
+        fnList.last.last.unfocus();
+        fnList.last.last.requestFocus();
       }
       print(fnList);
 

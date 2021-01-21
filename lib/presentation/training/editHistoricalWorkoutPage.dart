@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -11,6 +10,7 @@ import 'package:training_log/presentation/training/widgets/workoutTitleWidget.da
 class EditHistoricalWorkoutPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    bool focusNodePermission = false;
     List<List<FocusNode>> fnList;
     useEffect(() {
       return () => fnList.forEach((list) => list.forEach((fn) => fn.dispose()));
@@ -19,12 +19,6 @@ class EditHistoricalWorkoutPage extends HookWidget {
         listener: (BuildContext context, state) {
       if (state.isCanceled == true || state.isEditing == false) {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
-      }
-      if (state.isCreated == true) {
-        // FlushbarHelper.createSuccess(
-        //   message: "Workout saved",
-        //   duration: Duration(seconds: 2),
-        // ).show(context);
       }
     }, builder: (context, state) {
       fnList = List.generate(
@@ -42,11 +36,10 @@ class EditHistoricalWorkoutPage extends HookWidget {
             growable: false),
       );
 
-      if (fnList.length > 0) {
-        // fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
-        // fnList.last.last.unfocus();
-        // fnList.last.last.requestFocus();
-        print(fnList.last.last);
+      if (focusNodePermission) {
+        fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
+        fnList.last.last.unfocus();
+        fnList.last.last.requestFocus();
       }
 
       return Scaffold(

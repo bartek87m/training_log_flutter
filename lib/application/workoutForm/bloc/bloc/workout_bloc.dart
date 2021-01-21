@@ -66,15 +66,21 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       addExerciseToWorkout: (_) async* {
-        List<bool> showErrorMessagesForExerciseName =
-            state.showErrorMessagesForExerciseName;
-        showErrorMessagesForExerciseName.add(false);
+        List<bool> showErrorMessagesForExerciseNameList = state
+            .workout.exercieList
+            .map((e) => !e.exerciseName.isValid())
+            .toList();
+        // List<bool> showErrorMessagesForExerciseName =
+        //     state.showErrorMessagesForExerciseName;
+        showErrorMessagesForExerciseNameList.add(false);
         List<Exercise> exercieList = state.workout.exercieList;
         exercieList.add(Exercise.newExercise());
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exercieList),
           refreshState: !state.refreshState,
+          showErrorMessagesForExerciseName:
+              showErrorMessagesForExerciseNameList,
         );
       },
       workoutCompleted: (_) async* {},
