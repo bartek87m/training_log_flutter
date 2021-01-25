@@ -10,13 +10,10 @@ import 'package:training_log/presentation/training/widgets/workoutTitleWidget.da
 class EditHistoricalWorkoutPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    bool focusNodePermission = false;
-    FocusNode titleFocusNode;
     List<List<FocusNode>> exerciseFnList;
     useEffect(() {
       return () {
         exerciseFnList.forEach((list) => list.forEach((fn) => fn.dispose()));
-        titleFocusNode.dispose();
       };
     });
     return BlocConsumer<WorkoutBloc, WorkoutState>(
@@ -25,7 +22,6 @@ class EditHistoricalWorkoutPage extends HookWidget {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
     }, builder: (context, state) {
-      titleFocusNode = FocusNode();
       exerciseFnList = List.generate(
         context.watch<WorkoutBloc>().state.workout.exercieList.length,
         (index) => List.generate(
@@ -40,13 +36,6 @@ class EditHistoricalWorkoutPage extends HookWidget {
             (_) => FocusNode(),
             growable: false),
       );
-      // fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
-      if (focusNodePermission) {
-        titleFocusNode.unfocus();
-        exerciseFnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
-        exerciseFnList.last.last.unfocus();
-        exerciseFnList.last.last.requestFocus();
-      }
 
       return Scaffold(
         resizeToAvoidBottomPadding: true,
@@ -57,7 +46,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.only(
                   top: 10, left: 10, right: 10, bottom: 1),
-              child: WorkoutTitleWidget(titleFocusNode),
+              // child: WorkoutTitleWidget(titleFocusNode),
             ),
             Container(
               child: Column(

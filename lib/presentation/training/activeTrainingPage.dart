@@ -40,12 +40,6 @@ class ActiveTrainingPage extends HookWidget {
             growable: false),
       );
 
-      if (fnList.length > 0) {
-        fnList.forEach((list) => list.forEach((fn) => fn.unfocus()));
-        fnList.last.last.unfocus();
-        fnList.last.last.requestFocus();
-      }
-
       return Scaffold(
         resizeToAvoidBottomPadding: true,
         body: SingleChildScrollView(
@@ -55,7 +49,7 @@ class ActiveTrainingPage extends HookWidget {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.only(
                   top: 10, left: 10, right: 10, bottom: 1),
-              child: WorkoutTitleWidget(titleFocusNode),
+              child: WorkoutTitleWidget(),
             ),
             Container(
               child: Column(
