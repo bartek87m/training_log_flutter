@@ -4,9 +4,8 @@ import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart
 
 class SeriesWidget extends StatelessWidget {
   final exerciseNumber;
-  final fnList;
 
-  SeriesWidget({this.exerciseNumber, this.fnList});
+  SeriesWidget({this.exerciseNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +67,6 @@ class SeriesWidget extends StatelessWidget {
                         width: textFieldWidth,
                         height: textFieldHeight * 1.2,
                         child: TextFormField(
-                          focusNode: fnList[seriesNumber + 1],
                           key: UniqueKey(),
                           maxLength: 8,
                           cursorColor: Colors.grey,

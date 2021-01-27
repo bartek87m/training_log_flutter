@@ -58,7 +58,6 @@ class EditHistoricalWorkoutPage extends HookWidget {
                           Container(
                             child: ExerciseWidget(
                               exerciseNumber,
-                              exerciseFnList[exerciseNumber],
                               key: UniqueKey(),
                             ),
                           )

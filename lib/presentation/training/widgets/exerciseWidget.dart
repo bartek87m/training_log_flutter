@@ -7,10 +7,8 @@ import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
 class ExerciseWidget extends HookWidget {
   final exerciseNumber;
-  final List<FocusNode> _fnList;
 
-  ExerciseWidget(this.exerciseNumber, this._fnList, {Key key})
-      : super(key: key);
+  ExerciseWidget(this.exerciseNumber, {Key key}) : super(key: key);
 
   @override
   Widget build(context) {
@@ -41,7 +39,6 @@ class ExerciseWidget extends HookWidget {
           child: Column(
             children: [
               TextFormField(
-                focusNode: _fnList[0],
                 autovalidateMode: context
                             .watch<WorkoutBloc>()
                             .state
@@ -100,7 +97,6 @@ class ExerciseWidget extends HookWidget {
               ),
               SeriesWidget(
                 exerciseNumber: exerciseNumber,
-                fnList: this._fnList,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,6 +104,12 @@ class ExerciseWidget extends HookWidget {
                   Container(
                     child: FlatButton(
                       onPressed: () {
+                        FocusScopeNode currentFocus = FocusScope.of(context);
+
+                        if (!currentFocus.hasPrimaryFocus) {
+                          currentFocus.focusedChild?.unfocus();
+                        }
+
                         context.read<WorkoutBloc>().add(
                             WorkoutEvent.addSeriesToExercise(exerciseNumber));
                       },
