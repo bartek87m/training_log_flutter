@@ -12,6 +12,8 @@ class WorkoutTitleWidget extends StatelessWidget {
         context.read<WorkoutBloc>().add(WorkoutEvent.updateWorkout());
       },
       // controller: myController,
+      initialValue:
+          context.watch<WorkoutBloc>().state.workout.title.getOrCrash(),
       decoration: InputDecoration(
         counter: Offstage(),
         border: InputBorder.none,
