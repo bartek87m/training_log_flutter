@@ -16,12 +16,6 @@ class ExerciseWidget extends HookWidget {
       child: Dismissible(
         key: Key(exerciseNumber.toString()),
         onDismissed: (_) {
-          FocusScopeNode currentFocus = FocusScope.of(context);
-
-          if (!currentFocus.hasPrimaryFocus) {
-            currentFocus.focusedChild?.unfocus();
-          }
-
           context
               .read<WorkoutBloc>()
               .add(WorkoutEvent.removeExerciseFromWorkout(exerciseNumber));
