@@ -69,13 +69,6 @@ class ActiveTrainingPage extends StatelessWidget {
                         ),
                         FlatButton(
                           onPressed: () {
-                            FocusScopeNode currentFocus =
-                                FocusScope.of(context);
-
-                            if (!currentFocus.hasPrimaryFocus) {
-                              currentFocus.focusedChild?.unfocus();
-                            }
-
                             context
                                 .read<WorkoutBloc>()
                                 .add(WorkoutEvent.addExerciseToWorkout());
