@@ -13,10 +13,10 @@ import '../../domain/workout/workout.dart';
 import '../auth/createAccount/create_account_page.dart';
 import '../auth/signIn/sign_in_page.dart';
 import '../splash/splash_page.dart';
-import '../training/activeTrainingPage.dart';
-import '../training/editHistoricalWorkoutPage.dart';
-import '../training/historicalWorkoutPage.dart';
-import '../training/trainings_page.dart';
+import '../training/pages/activeTrainingPage.dart';
+import '../training/pages/editHistoricalWorkoutPage.dart';
+import '../training/pages/historicalWorkoutPage.dart';
+import '../training/pages/trainings_page.dart';
 
 class Routes {
   static const String splashPage = '/';

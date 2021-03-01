@@ -1,11 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
-import 'package:training_log/presentation/training/editHistoricalWorkoutPage.dart';
 import 'package:training_log/presentation/training/widgets/historicalWorkoutViewTextFormField.dart';
 
 class HistoricalWorkoutPage extends StatelessWidget {

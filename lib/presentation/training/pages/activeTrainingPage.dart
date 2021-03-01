@@ -79,16 +79,18 @@ class ActiveTrainingPage extends StatelessWidget {
                         ),
                         FlatButton(
                           onPressed: () {
+                            var id = context
+                                .read<WorkoutBloc>()
+                                .state
+                                .workout
+                                .id
+                                .getOrCrash();
                             context
                                 .read<WorkoutBloc>()
                                 .add(WorkoutEvent.cancelWorkout());
-                            context.read<WorkoutBloc>().add(
-                                WorkoutEvent.deleteWorkout(context
-                                    .read<WorkoutBloc>()
-                                    .state
-                                    .workout
-                                    .id
-                                    .getOrCrash()));
+                            context
+                                .read<WorkoutBloc>()
+                                .add(WorkoutEvent.deleteWorkout(id));
                           },
                           splashColor: Colors.transparent,
                           highlightColor: Colors.transparent,

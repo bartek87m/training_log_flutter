@@ -10,33 +10,12 @@ import 'package:training_log/presentation/training/widgets/workoutTitleWidget.da
 class EditHistoricalWorkoutPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    List<List<FocusNode>> exerciseFnList;
-    useEffect(() {
-      return () {
-        exerciseFnList.forEach((list) => list.forEach((fn) => fn.dispose()));
-      };
-    });
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
       if (state.isCanceled == true || state.isEditing == false) {
         ExtendedNavigator.of(context).replace(Routes.trainingsPage);
       }
     }, builder: (context, state) {
-      exerciseFnList = List.generate(
-        context.watch<WorkoutBloc>().state.workout.exercieList.length,
-        (index) => List.generate(
-            context
-                    .watch<WorkoutBloc>()
-                    .state
-                    .workout
-                    .exercieList[index]
-                    .setsList
-                    .length +
-                1,
-            (_) => FocusNode(),
-            growable: false),
-      );
-
       return Scaffold(
         resizeToAvoidBottomPadding: true,
         body: SingleChildScrollView(
@@ -46,7 +25,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.only(
                   top: 10, left: 10, right: 10, bottom: 1),
-              // child: WorkoutTitleWidget(titleFocusNode),
+              child: WorkoutTitleWidget(),
             ),
             Container(
               child: Column(
@@ -99,13 +78,6 @@ class EditHistoricalWorkoutPage extends HookWidget {
                     context
                         .read<WorkoutBloc>()
                         .add(WorkoutEvent.cancelWorkout());
-                    context.read<WorkoutBloc>().add(WorkoutEvent.deleteWorkout(
-                        context
-                            .read<WorkoutBloc>()
-                            .state
-                            .workout
-                            .id
-                            .getOrCrash()));
                   },
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,

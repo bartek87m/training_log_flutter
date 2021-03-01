@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route_annotations.dart';
 import 'package:training_log/presentation/auth/createAccount/create_account_page.dart';
 import 'package:training_log/presentation/auth/signIn/sign_in_page.dart';
 import 'package:training_log/presentation/splash/splash_page.dart';
-import 'package:training_log/presentation/training/activeTrainingPage.dart';
-import 'package:training_log/presentation/training/editHistoricalWorkoutPage.dart';
-import 'package:training_log/presentation/training/historicalWorkoutPage.dart';
-import 'package:training_log/presentation/training/trainings_page.dart';
+import 'package:training_log/presentation/training/pages/activeTrainingPage.dart';
+import 'package:training_log/presentation/training/pages/editHistoricalWorkoutPage.dart';
+import 'package:training_log/presentation/training/pages/historicalWorkoutPage.dart';
+import 'package:training_log/presentation/training/pages/trainings_page.dart';
 
 @MaterialAutoRouter(
   generateNavigationHelperExtension: true,

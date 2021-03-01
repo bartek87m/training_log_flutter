@@ -1,15 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
-import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/createNewWorkout.dart';
 import 'package:training_log/presentation/training/widgets/workoutsViewsWidget.dart';
 
-import '../../injection.dart';
+import '../../../injection.dart';
 
 class TrainingsPage extends StatelessWidget {
   @override
@@ -33,19 +31,6 @@ class TrainingsPage extends StatelessWidget {
                   });
             },
           ),
-          // BlocListener<WorkoutBloc, WorkoutState>(
-          //   listener: (context, state) {
-          //     print(state);
-          //     if (state.isEditing == true) {
-          //       print("isEditing");
-          //       ExtendedNavigator.of(context)
-          //           .replace(Routes.activeTrainingPage);
-          //     }
-          //     if (state.isCanceled == true) {
-          //       ExtendedNavigator.of(context).replace(Routes.trainingsPage);
-          //     }
-          //   },
-          // ),
         ],
         child: Scaffold(
           appBar: AppBar(
