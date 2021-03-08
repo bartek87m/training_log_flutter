@@ -4,13 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
-import 'package:training_log/presentation/training/widgets/historicalWorkoutViewTextFormField.dart';
+import 'package:training_log/presentation/training/widgets/historicalExerciseWidget.dart';
 
-class HistoricalWorkoutPage extends StatelessWidget {
+class HistoricalWorkoutPage extends StatefulWidget {
   final Workout workout;
 
   HistoricalWorkoutPage(this.workout);
 
+  @override
+  _HistoricalWorkoutPageState createState() => _HistoricalWorkoutPageState();
+}
+
+class _HistoricalWorkoutPageState extends State<HistoricalWorkoutPage> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -20,7 +25,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "${workout.title.getOrCrash()}",
+          "${widget.workout.title.getOrCrash()}",
           style: TextStyle(fontSize: 16),
         ),
         actions: [
@@ -35,7 +40,8 @@ class HistoricalWorkoutPage extends StatelessWidget {
             ),
             onTap: () {
               context.read<WorkoutBloc>().add(
-                  WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
+                  WorkoutEvent.createNewWorkoutFromExistingOne(
+                      this.widget.workout));
               context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
               ExtendedNavigator.of(context)
                   .push(Routes.editHistoricalWorkoutPage);
@@ -49,7 +55,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
             onTap: () {
               context
                   .read<WorkoutBloc>()
-                  .add(WorkoutEvent.editWorkout(this.workout));
+                  .add(WorkoutEvent.editWorkout(this.widget.workout));
               ExtendedNavigator.of(context)
                   .push(Routes.editHistoricalWorkoutPage);
             },
@@ -60,8 +66,8 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Icon(Icons.delete),
             ),
             onTap: () => {
-              context.read<WorkoutBloc>().add(
-                  WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
+              context.read<WorkoutBloc>().add(WorkoutEvent.deleteWorkout(
+                  this.widget.workout.id.getOrCrash())),
             },
           ),
         ],
@@ -73,110 +79,23 @@ class HistoricalWorkoutPage extends StatelessWidget {
         },
         child: Container(
           alignment: Alignment.center,
-          child: ListView.builder(
-            itemCount: workout.exercieList.length,
-            itemBuilder: (context, index) {
-              return Container(
-                color: Colors.white10,
-                margin:
-                    const EdgeInsets.only(bottom: 5, top: 5, left: 5, right: 5),
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.topLeft,
-                      margin:
-                          const EdgeInsets.only(left: leftPadding, bottom: 5),
-                      child: Text(
-                        "${workout.exercieList[index].exerciseName.getOrCrash()}",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                    workout.exercieList[index].setsList.length > 0
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  for (var seriesNumber = 0;
-                                      seriesNumber <
-                                          workout.exercieList[index].setsList
-                                              .length;
-                                      seriesNumber++)
-                                    Container(
-                                      // color: Colors.white,
-                                      margin: EdgeInsets.only(bottom: 5),
-                                      alignment: Alignment.center,
-                                      width: textFieldWidth * 0.5,
-                                      height: textFieldHeight,
-                                      child: Text('${seriesNumber + 1}'),
-                                    ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(bottom: 5),
-                                    child: Text(
-                                      "Reps",
-                                    ),
-                                  ),
-                                  for (var seriesNumber = 0;
-                                      seriesNumber <
-                                          workout.exercieList[index].setsList
-                                              .length;
-                                      seriesNumber++)
-                                    Container(
-                                      margin: EdgeInsets.only(top: 5),
-                                      width: textFieldWidth,
-                                      height: textFieldHeight,
-                                      child: HistoricalWorkoutViewTextFormField(
-                                          workout.exercieList[index]
-                                              .setsList[seriesNumber].reps,
-                                          textFieldHeight * 0.7),
-                                    ),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    margin:
-                                        EdgeInsets.only(bottom: 5, right: 30),
-                                    child: Text(
-                                      "Result",
-                                    ),
-                                  ),
-                                  for (var seriesNumber = 0;
-                                      seriesNumber <
-                                          workout.exercieList[index].setsList
-                                              .length;
-                                      seriesNumber++)
-                                    Container(
-                                      margin:
-                                          EdgeInsets.only(top: 5, right: 30),
-                                      width: textFieldWidth,
-                                      height: textFieldHeight,
-                                      child: HistoricalWorkoutViewTextFormField(
-                                          workout.exercieList[index]
-                                              .setsList[seriesNumber].result,
-                                          textFieldHeight * 0.7),
-                                    ),
-                                ],
-                              ),
-                            ],
-                          )
-                        : Container(),
-                  ],
-                ),
-              );
-            },
-          ),
+          child: ReorderableListView(
+              children: widget.workout.exercieList.map((exercise) {
+                return Container(
+                  height: (exercise.setsList.length + 1) * 60.0,
+                  key: UniqueKey(),
+                  child: HistoricalExerciseWidget(
+                    leftPadding: leftPadding,
+                    textFieldHeight: textFieldHeight,
+                    textFieldWidth: textFieldWidth,
+                    exercise: exercise,
+                  ),
+                );
+              }).toList(),
+              onReorder: (newIndex, oldIndex) => context
+                  .read<WorkoutBloc>()
+                  .add(WorkoutEvent.reorderExerciseInWorkout(
+                      newIndex, oldIndex))),
         ),
       ),
     );

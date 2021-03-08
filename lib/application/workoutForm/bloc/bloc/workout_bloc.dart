@@ -216,6 +216,9 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           // refreshState: !state.refreshState,
         );
       },
+      reorderExerciseInWorkout: (e) async* {
+        print('${e.oldIndex} => ${e.newIndex}');
+      },
     );
   }
 }
