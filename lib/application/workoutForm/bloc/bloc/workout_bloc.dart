@@ -217,7 +217,27 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       reorderExerciseInWorkout: (e) async* {
-        print('${e.oldIndex} => ${e.newIndex}');
+        List<Exercise> exerciseList = state.workout.exercieList;
+        final bufferExercise = exerciseList[e.oldIndex];
+        exerciseList.removeAt(e.oldIndex);
+        if (e.newIndex > exerciseList.length) {
+          exerciseList.insert(e.newIndex - 1, bufferExercise);
+        } else {
+          exerciseList.insert(e.newIndex, bufferExercise);
+        }
+
+        yield state.copyWith(
+          workout: state.workout.copyWith(exercieList: exerciseList),
+          refreshState: !state.refreshState,
+        );
+
+        await iWorkoutFacade.update(workout: state.workout);
+      },
+      loadHistoricalWorkoutToState: (e) async* {
+        yield state.copyWith(
+          workout: e.workout,
+          refreshState: !state.refreshState,
+        );
       },
     );
   }

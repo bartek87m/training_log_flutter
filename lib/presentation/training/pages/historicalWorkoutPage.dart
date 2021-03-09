@@ -6,27 +6,27 @@ import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/historicalExerciseWidget.dart';
 
-class HistoricalWorkoutPage extends StatefulWidget {
+class HistoricalWorkoutPage extends StatelessWidget {
   final Workout workout;
 
   HistoricalWorkoutPage(this.workout);
 
-  @override
-  _HistoricalWorkoutPageState createState() => _HistoricalWorkoutPageState();
-}
-
-class _HistoricalWorkoutPageState extends State<HistoricalWorkoutPage> {
-  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     final textFieldHeight = (mediaQuery.height * 0.035);
     final textFieldWidth = (mediaQuery.width * 0.25);
     const leftPadding = 10.0;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "${widget.workout.title.getOrCrash()}",
-          style: TextStyle(fontSize: 16),
+        title: Row(
+          children: [
+            GestureDetector(
+              child: Icon(Icons.arrow_back),
+              onTap: () => ExtendedNavigator.of(context)
+                  .popAndPush(Routes.trainingsPage),
+            ),
+          ],
         ),
         actions: [
           GestureDetector(
@@ -40,8 +40,7 @@ class _HistoricalWorkoutPageState extends State<HistoricalWorkoutPage> {
             ),
             onTap: () {
               context.read<WorkoutBloc>().add(
-                  WorkoutEvent.createNewWorkoutFromExistingOne(
-                      this.widget.workout));
+                  WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
               context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
               ExtendedNavigator.of(context)
                   .push(Routes.editHistoricalWorkoutPage);
@@ -55,7 +54,7 @@ class _HistoricalWorkoutPageState extends State<HistoricalWorkoutPage> {
             onTap: () {
               context
                   .read<WorkoutBloc>()
-                  .add(WorkoutEvent.editWorkout(this.widget.workout));
+                  .add(WorkoutEvent.editWorkout(this.workout));
               ExtendedNavigator.of(context)
                   .push(Routes.editHistoricalWorkoutPage);
             },
@@ -66,38 +65,55 @@ class _HistoricalWorkoutPageState extends State<HistoricalWorkoutPage> {
               child: Icon(Icons.delete),
             ),
             onTap: () => {
-              context.read<WorkoutBloc>().add(WorkoutEvent.deleteWorkout(
-                  this.widget.workout.id.getOrCrash())),
+              context.read<WorkoutBloc>().add(
+                  WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
             },
           ),
         ],
       ),
-      body: BlocListener<WorkoutBloc, WorkoutState>(
-        listener: (context, state) {
-          if (state.isDeleted == true)
-            ExtendedNavigator.of(context).replace(Routes.trainingsPage);
-        },
-        child: Container(
-          alignment: Alignment.center,
-          child: ReorderableListView(
-              children: widget.workout.exercieList.map((exercise) {
-                return Container(
-                  height: (exercise.setsList.length + 1) * 60.0,
-                  key: UniqueKey(),
-                  child: HistoricalExerciseWidget(
-                    leftPadding: leftPadding,
-                    textFieldHeight: textFieldHeight,
-                    textFieldWidth: textFieldWidth,
-                    exercise: exercise,
-                  ),
-                );
-              }).toList(),
-              onReorder: (newIndex, oldIndex) => context
-                  .read<WorkoutBloc>()
-                  .add(WorkoutEvent.reorderExerciseInWorkout(
-                      newIndex, oldIndex))),
-        ),
-      ),
+      body: BlocConsumer<WorkoutBloc, WorkoutState>(listener: (context, state) {
+        if (state.isDeleted == true)
+          ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+      }, builder: (context, state) {
+        return Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                margin: EdgeInsets.only(left: leftPadding),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "${this.workout.title.getOrCrash()}",
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 18,
+              child: Container(
+                alignment: Alignment.center,
+                child: ReorderableListView(
+                    children: state.workout.exercieList.map((exercise) {
+                      return Container(
+                        height: 60.0 + (exercise.setsList.length + 1) * 32,
+                        key: UniqueKey(),
+                        child: HistoricalExerciseWidget(
+                          leftPadding: leftPadding,
+                          textFieldHeight: textFieldHeight,
+                          textFieldWidth: textFieldWidth,
+                          exercise: exercise,
+                        ),
+                      );
+                    }).toList(),
+                    onReorder: (newIndex, oldIndex) => context
+                        .read<WorkoutBloc>()
+                        .add(WorkoutEvent.reorderExerciseInWorkout(
+                            newIndex, oldIndex))),
+              ),
+            ),
+          ],
+        );
+      }),
     );
   }
 }

@@ -22,7 +22,10 @@ class WorkoutsViewsWidget extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          ExtendedNavigator.of(context).push(
+                          context.read<WorkoutBloc>().add(
+                              WorkoutEvent.loadHistoricalWorkoutToState(
+                                  state.workouts[index]));
+                          ExtendedNavigator.of(context).popAndPush(
                             Routes.historicalWorkoutPage,
                             arguments: HistoricalWorkoutPageArguments(
                                 workout: state.workouts[index]),

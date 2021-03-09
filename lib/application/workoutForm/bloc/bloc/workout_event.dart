@@ -28,6 +28,8 @@ abstract class WorkoutEvent with _$WorkoutEvent {
   const factory WorkoutEvent.editWorkout(Workout workout) = _EditWorkout;
   const factory WorkoutEvent.createNewWorkoutFromExistingOne(Workout workout) =
       _CreateNewWorkoutFromExistingOne;
+  const factory WorkoutEvent.loadHistoricalWorkoutToState(Workout workout) =
+      _LoadHistoricalWorkoutToState;
   const factory WorkoutEvent.reorderExerciseInWorkout(
       int oldIndex, int newIndex) = _ReorderExerciseInWorkout;
 }

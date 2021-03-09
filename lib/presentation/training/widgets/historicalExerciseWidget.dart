@@ -18,7 +18,11 @@ class HistoricalExerciseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white10,
+          border: Border.all(width: 1, color: Colors.white24)),
+      // color: Colors.white30,
       margin: const EdgeInsets.only(bottom: 5, top: 5, left: 5, right: 5),
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Column(
@@ -67,7 +71,7 @@ class HistoricalExerciseWidget extends StatelessWidget {
                             seriesNumber < exercise.setsList.length;
                             seriesNumber++)
                           Container(
-                            margin: EdgeInsets.only(top: 5),
+                            margin: EdgeInsets.only(top: 10),
                             width: textFieldWidth,
                             height: textFieldHeight,
                             child: HistoricalWorkoutViewTextFormField(
@@ -88,7 +92,7 @@ class HistoricalExerciseWidget extends StatelessWidget {
                             seriesNumber < exercise.setsList.length;
                             seriesNumber++)
                           Container(
-                            margin: EdgeInsets.only(top: 5, right: 30),
+                            margin: EdgeInsets.only(top: 10, right: 30),
                             width: textFieldWidth,
                             height: textFieldHeight,
                             child: HistoricalWorkoutViewTextFormField(
