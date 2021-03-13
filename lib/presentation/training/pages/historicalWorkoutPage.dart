@@ -5,6 +5,7 @@ import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/historicalExerciseWidget.dart';
+import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 
 class HistoricalWorkoutPage extends StatelessWidget {
   final Workout workout;
@@ -55,8 +56,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
               context
                   .read<WorkoutBloc>()
                   .add(WorkoutEvent.editWorkout(this.workout));
-              ExtendedNavigator.of(context)
-                  .push(Routes.editHistoricalWorkoutPage);
+            
             },
           ),
           GestureDetector(
@@ -72,8 +72,12 @@ class HistoricalWorkoutPage extends StatelessWidget {
         ],
       ),
       body: BlocConsumer<WorkoutBloc, WorkoutState>(listener: (context, state) {
-        if (state.isDeleted == true)
+        if (state.isDeleted == true){
           ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+        }
+        else if (state.isEditing){
+          ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
+        }
       }, builder: (context, state) {
         return Column(
           children: [
@@ -93,9 +97,10 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 child: ReorderableListView(
+                  
                     children: state.workout.exercieList.map((exercise) {
                       return Container(
-                        height: 60.0 + (exercise.setsList.length + 1) * 32,
+                        height: 60.0 + (exercise.setsList.length + 1) * 35,
                         key: UniqueKey(),
                         child: HistoricalExerciseWidget(
                           leftPadding: leftPadding,

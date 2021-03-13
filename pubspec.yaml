@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -43,8 +43,7 @@ dependencies:
   rxdart: ^0.25.0
   timeago: ^2.0.29
   motion_tab_bar: ^0.1.5
-
-  
+  implicitly_animated_reorderable_list: ^0.3.2
 
 dev_dependencies:
   flutter_test:
@@ -62,13 +61,11 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

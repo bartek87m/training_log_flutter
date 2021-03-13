@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/training/widgets/historicalWorkoutViewTextFormField.dart';
 
 class HistoricalExerciseWidget extends StatelessWidget {
