@@ -40,11 +40,11 @@ class HistoricalWorkoutPage extends StatelessWidget {
               ),
             ),
             onTap: () {
+              ExtendedNavigator.of(context)
+                  .push(Routes.editHistoricalWorkoutPage);
               context.read<WorkoutBloc>().add(
                   WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
               context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
-              ExtendedNavigator.of(context)
-                  .push(Routes.editHistoricalWorkoutPage);
             },
           ),
           GestureDetector(
@@ -53,10 +53,11 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Icon(Icons.edit),
             ),
             onTap: () {
+              ExtendedNavigator.of(context)
+                  .push(Routes.editHistoricalWorkoutPage);
               context
                   .read<WorkoutBloc>()
                   .add(WorkoutEvent.editWorkout(this.workout));
-            
             },
           ),
           GestureDetector(
@@ -65,6 +66,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Icon(Icons.delete),
             ),
             onTap: () => {
+              ExtendedNavigator.of(context).replace(Routes.trainingsPage),
               context.read<WorkoutBloc>().add(
                   WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
             },
@@ -72,11 +74,10 @@ class HistoricalWorkoutPage extends StatelessWidget {
         ],
       ),
       body: BlocConsumer<WorkoutBloc, WorkoutState>(listener: (context, state) {
-        if (state.isDeleted == true){
-          ExtendedNavigator.of(context).replace(Routes.trainingsPage);
-        }
-        else if (state.isEditing){
-          ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
+        if (state.isDeleted == true) {
+          // ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+        } else if (state.isEditing) {
+          // ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
         }
       }, builder: (context, state) {
         return Column(
@@ -97,7 +98,6 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 child: ReorderableListView(
-                  
                     children: state.workout.exercieList.map((exercise) {
                       return Container(
                         height: 60.0 + (exercise.setsList.length + 1) * 35,

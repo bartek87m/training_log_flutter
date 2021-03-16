@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
+import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/exerciseWidget.dart';
 import 'package:training_log/presentation/training/widgets/workoutTitleWidget.dart';
 
@@ -12,7 +13,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
     return BlocConsumer<WorkoutBloc, WorkoutState>(
         listener: (BuildContext context, state) {
       if (state.isCanceled == true || state.isEditing == false) {
-        ExtendedNavigator.of(context).pop();
+        // ExtendedNavigator.of(context).pop();
       }
     }, builder: (context, state) {
       return Scaffold(
@@ -74,6 +75,8 @@ class EditHistoricalWorkoutPage extends HookWidget {
                 ),
                 FlatButton(
                   onPressed: () {
+                    ExtendedNavigator.of(context)
+                        .popAndPush(Routes.trainingsPage);
                     context
                         .read<WorkoutBloc>()
                         .add(WorkoutEvent.cancelWorkout());

@@ -82,6 +82,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           showErrorMessagesForExerciseName:
               showErrorMessagesForExerciseNameList,
         );
+        print('exercise added');
       },
       workoutCompleted: (_) async* {},
       cancelWorkout: (_) async* {
@@ -127,6 +128,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           workout: state.workout.copyWith(exercieList: exerciseList),
           refreshState: !state.refreshState,
         );
+        print('series added');
       },
       removeExerciseFromWorkout: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
