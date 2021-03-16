@@ -40,8 +40,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
               ),
             ),
             onTap: () {
-              ExtendedNavigator.of(context)
-                  .push(Routes.editHistoricalWorkoutPage);
+        
               context.read<WorkoutBloc>().add(
                   WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
               context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
@@ -53,8 +52,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Icon(Icons.edit),
             ),
             onTap: () {
-              ExtendedNavigator.of(context)
-                  .push(Routes.editHistoricalWorkoutPage);
+            
               context
                   .read<WorkoutBloc>()
                   .add(WorkoutEvent.editWorkout(this.workout));
@@ -66,7 +64,6 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Icon(Icons.delete),
             ),
             onTap: () => {
-              ExtendedNavigator.of(context).replace(Routes.trainingsPage),
               context.read<WorkoutBloc>().add(
                   WorkoutEvent.deleteWorkout(this.workout.id.getOrCrash())),
             },
@@ -75,9 +72,9 @@ class HistoricalWorkoutPage extends StatelessWidget {
       ),
       body: BlocConsumer<WorkoutBloc, WorkoutState>(listener: (context, state) {
         if (state.isDeleted == true) {
-          // ExtendedNavigator.of(context).replace(Routes.trainingsPage);
+          ExtendedNavigator.of(context).replace(Routes.trainingsPage);
         } else if (state.isEditing) {
-          // ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
+          ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
         }
       }, builder: (context, state) {
         return Column(
@@ -88,7 +85,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
                 margin: EdgeInsets.only(left: leftPadding),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${this.workout.title.getOrCrash()}",
+                  "${state.workout.title.getOrCrash()}",
                   style: TextStyle(fontSize: 16),
                 ),
               ),
