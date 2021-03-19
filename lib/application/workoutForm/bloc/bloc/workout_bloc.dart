@@ -78,11 +78,11 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exercieList),
-          refreshState: !state.refreshState,
           showErrorMessagesForExerciseName:
               showErrorMessagesForExerciseNameList,
         );
         print('exercise added');
+        print(state.workout);
       },
       workoutCompleted: (_) async* {},
       cancelWorkout: (_) async* {
@@ -126,7 +126,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          refreshState: !state.refreshState,
         );
         print('series added');
       },
@@ -135,7 +134,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseList.removeAt(e.numberOfExercsie);
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          refreshState: !state.refreshState,
         );
       },
       addExerciseName: (e) async* {
@@ -153,7 +151,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          refreshState: !state.refreshState,
         );
       },
       addRepsToSeries: (e) async* {
@@ -205,7 +202,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           isCanceled: false,
           isDeleted: false,
           isUpdated: false,
-          refreshState: false,
         );
       },
       finishWorkout: (_) async* {
@@ -230,7 +226,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
-          refreshState: !state.refreshState,
         );
 
         await iWorkoutFacade.update(workout: state.workout);
@@ -238,7 +233,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       loadHistoricalWorkoutToState: (e) async* {
         yield state.copyWith(
           workout: e.workout,
-          refreshState: !state.refreshState,
         );
       },
     );
