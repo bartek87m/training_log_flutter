@@ -15,9 +15,9 @@ class ActiveTraining extends StatelessWidget {
           WorkoutTitleWidget(),
           BlocConsumer<WorkoutBloc, WorkoutState>(
             listener: (context, state) {},
-            buildWhen: (prevState, state) {
+            buildWhen: (prevState, currentState) {
               return prevState.workout.exercieList.length !=
-                  state.workout.exercieList.length;
+                  currentState.workout.exercieList.length;
             },
             builder: (context, state) {
               print(state.showErrorMessagesForExerciseName);

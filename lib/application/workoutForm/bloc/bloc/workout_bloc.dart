@@ -82,6 +82,20 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
               showErrorMessagesForExerciseNameList,
         );
       },
+      addSeriesToExercise: (e) async* {
+        List<Exercise> exList = state.workout.exercieList.map((e) {
+          return e;
+        }).toList();
+
+        exList[e.exerciseNumber].setsList.add(Series.newSeries());
+       
+
+        yield state.copyWith(
+          workout: state.workout.copyWith(exercieList:[...exList]),
+          refreshState: !state.refreshState,
+        );
+      
+      },
       workoutCompleted: (_) async* {},
       cancelWorkout: (_) async* {
         yield state.copyWith(
@@ -117,15 +131,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           );
           await iWorkoutFacade.createWorkout(workout: state.workout);
         }
-      },
-      addSeriesToExercise: (e) async* {
-        List<Exercise> exerciseList = state.workout.exercieList;
-        exerciseList[e.exerciseNumber].setsList.add(Series.newSeries());
-
-        yield state.copyWith(
-          workout: state.workout.copyWith(exercieList: exerciseList),
-        );
-        print('series added');
       },
       removeExerciseFromWorkout: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
