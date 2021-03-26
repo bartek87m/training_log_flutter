@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +14,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
     final workout = useState(context.watch<WorkoutBloc>().state.workout);
 
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       body: Column(
         children: [
           Container(
@@ -25,9 +27,7 @@ class EditHistoricalWorkoutPage extends HookWidget {
             child: ListView.builder(
               itemCount: workout.value.exercieList.length,
               itemBuilder: (context, int index) {
-                return Container(
-            
-                );
+                return Container();
               },
             ),
           ),

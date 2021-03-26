@@ -5,16 +5,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
-class ExerciseWidget extends HookWidget {
+class ExerciseWidget extends StatelessWidget {
   final exerciseNumber;
-
+  final _formKey = GlobalKey<FormState>();
   ExerciseWidget(this.exerciseNumber, {Key key}) : super(key: key);
 
   @override
   Widget build(context) {
     return Form(
       child: Dismissible(
-        key: Key(exerciseNumber.toString()),
+        key: _formKey,
         onDismissed: (_) {
           context
               .read<WorkoutBloc>()
@@ -96,7 +96,6 @@ class ExerciseWidget extends HookWidget {
                 ),
               ),
               SeriesWidget(
-          
                 exerciseNumber: exerciseNumber,
               ),
               Row(

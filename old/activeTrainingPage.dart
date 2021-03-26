@@ -10,7 +10,7 @@ class ActiveTrainingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -31,21 +31,21 @@ class ActiveTrainingPage extends StatelessWidget {
                   children: [
                     Container(
                       child: Column(
-                        // children: state.workout.exercieList != null
-                        //     ? <Widget>[
-                        //         for (var exerciseNumber = 0;
-                        //             exerciseNumber <
-                        //                 state.workout.exercieList.length;
-                        //             exerciseNumber++)
-                        //           Container(
-                        //             child: ExerciseWidget(
-                        //               exerciseNumber,
-                        //               key: UniqueKey(),
-                        //             ),
-                        //           )
-                        //       ]
-                        //     : <Widget>[Container()],
-                      ),
+                          // children: state.workout.exercieList != null
+                          //     ? <Widget>[
+                          //         for (var exerciseNumber = 0;
+                          //             exerciseNumber <
+                          //                 state.workout.exercieList.length;
+                          //             exerciseNumber++)
+                          //           Container(
+                          //             child: ExerciseWidget(
+                          //               exerciseNumber,
+                          //               key: UniqueKey(),
+                          //             ),
+                          //           )
+                          //       ]
+                          //     : <Widget>[Container()],
+                          ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

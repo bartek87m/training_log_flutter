@@ -18,7 +18,7 @@ class ActiveTrainingPage extends StatelessWidget {
           ],
         ),
       ),
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       body: ActiveTraining(),
     );
   }

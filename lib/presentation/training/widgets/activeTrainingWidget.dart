@@ -20,6 +20,7 @@ class ActiveTraining extends StatelessWidget {
                   currentState.workout.exercieList.length;
             },
             builder: (context, state) {
+              print('rebuild exercise widget');
               print(state.showErrorMessagesForExerciseName);
               return ListView.builder(
                 shrinkWrap: true,

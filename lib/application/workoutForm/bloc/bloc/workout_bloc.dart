@@ -83,18 +83,14 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       addSeriesToExercise: (e) async* {
-        List<Exercise> exList = state.workout.exercieList.map((e) {
-          return e;
-        }).toList();
+        List<Exercise> exList = state.workout.exercieList;
 
         exList[e.exerciseNumber].setsList.add(Series.newSeries());
-       
 
         yield state.copyWith(
-          workout: state.workout.copyWith(exercieList:[...exList]),
+          workout: state.workout.copyWith(exercieList: [...exList]),
           refreshState: !state.refreshState,
         );
-      
       },
       workoutCompleted: (_) async* {},
       cancelWorkout: (_) async* {
