@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
+import 'package:training_log/presentation/training/widgets/seriesTextFormField.dart';
 
 class SeriesWidget extends StatelessWidget {
   final exerciseNumber;
@@ -24,27 +25,97 @@ class SeriesWidgetContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final mediaQuery = MediaQuery.of(context).size;
-    // final textFieldHeight = (mediaQuery.height * 0.035);
-    // final textFieldWidth = (mediaQuery.width * 0.25);
+    final mediaQuery = MediaQuery.of(context).size;
+    final textFieldHeight = (mediaQuery.height * 0.035);
+    final textFieldWidth = (mediaQuery.width * 0.25);
 
     return BlocBuilder<WorkoutBloc, WorkoutState>(
-        //   buildWhen: (prevState, currentState) {
-        // print(prevState.workout.exercieList);
-        // print(currentState.workout.exercieList);
-
-        // return true;
-        // return prevState
-        //         .workout.exercieList[this.exerciseNumber].setsList.length !=
-        //     currentState.workout.exercieList[this.exerciseNumber].setsList.length;
-        // },
-        builder: (context, state) {
+        buildWhen: (prevState, currentState) {
+      return prevState.refreshState != currentState.refreshState;
+    }, builder: (context, state) {
       print("rebuil series widget");
       return ListView.builder(
           shrinkWrap: true,
           itemCount: state.workout.exercieList[exerciseNumber].setsList.length,
-          itemBuilder: (context, state) {
-            return TextFormField();
+          itemBuilder: (context, index) {
+            return Container(
+              color: Colors.blue,
+              // key: UniqueKey(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    // alignment: Alignment.topCenter,
+                    color: Colors.red,
+                    alignment: Alignment.center,
+                    // margin: const EdgeInsets.only(top: 10),
+                    // padding: const EdgeInsets.only(top: 15),
+                    height: textFieldHeight * 1.2,
+                    child: Text(
+                      '${index + 1}',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.red,
+                    // margin: EdgeInsets.only(top: 5),
+                    // margin: const EdgeInsets.only(top: 10),
+                    width: textFieldWidth,
+                    height: textFieldHeight * 1.2,
+                    // alignment: Alignment.bottomCenter,
+                    child: SereisTextFormField(
+                      initValue: state.workout.exercieList[this.exerciseNumber]
+                          .setsList[index].reps,
+                      textFieldHeight: textFieldHeight * 1.2,
+                      onChange: (value) {
+                        print(value);
+                        BlocProvider.of<WorkoutBloc>(context).add(
+                          WorkoutEvent.addRepsToSeries(
+                              exerciseNumber, index, value.trim()),
+                        );
+                        context
+                            .read<WorkoutBloc>()
+                            .add(WorkoutEvent.updateWorkout());
+                      },
+                    ),
+                  ),
+                  // Container(
+                  //   color: Colors.red,
+                  //   // margin: const EdgeInsets.only(top: 10),
+                  //   width: textFieldWidth,
+                  //   height: textFieldHeight,
+                  //   child: SereisTextFormField(
+                  //     initValue: state.workout.exercieList[this.exerciseNumber]
+                  //         .setsList[index].reps,
+                  //     textFieldHeight: textFieldHeight,
+                  //     onChange: (value) {
+                  //       print(value);
+                  //       BlocProvider.of<WorkoutBloc>(context).add(
+                  //         WorkoutEvent.addWeightToSeries(
+                  //             exerciseNumber, index, value.trim()),
+                  //       );
+                  //       context
+                  //           .read<WorkoutBloc>()
+                  //           .add(WorkoutEvent.updateWorkout());
+                  //     },
+                  //   ),
+                  // ),
+                  Container(
+                    color: Colors.red,
+                    // padding: const EdgeInsets.only(top: 8),
+                    height: textFieldHeight * 1.2,
+                    // margin: const EdgeInsets.only(top: 10),
+                    child: GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<WorkoutBloc>(context).add(
+                              WorkoutEvent.removeSeriesFromExercise(
+                                  exerciseNumber, index));
+                        },
+                        child: Icon(Icons.delete)),
+                  ),
+                ],
+              ),
+            );
           });
     });
   }

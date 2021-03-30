@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart';
 import 'package:training_log/presentation/training/widgets/seriesWidget.dart';
 
