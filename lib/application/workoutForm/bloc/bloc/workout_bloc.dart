@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -83,7 +84,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       addSeriesToExercise: (e) async* {
-        List<Exercise> exList = state.workout.exercieList;
+        List<Exercise> exList =  state.workout.exercieList;
+        
 
         exList[e.exerciseNumber].setsList.add(Series.newSeries());
 
