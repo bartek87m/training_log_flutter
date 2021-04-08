@@ -40,7 +40,7 @@ class SeriesWidgetContainer extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               // key: UniqueKey(),
-              margin: EdgeInsets.only(top: textFieldHeight /2),
+              margin: EdgeInsets.only(top: textFieldHeight / 2),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -54,7 +54,6 @@ class SeriesWidgetContainer extends StatelessWidget {
                     ),
                   ),
                   Container(
-                 
                     width: textFieldWidth,
                     height: textFieldHeight,
                     child: SereisTextFormField(
@@ -77,8 +76,7 @@ class SeriesWidgetContainer extends StatelessWidget {
                     height: textFieldHeight,
                     child: SereisTextFormField(
                       initValue: state.workout.exercieList[this.exerciseNumber]
-                          .setsList[index].reps,
-                      textFieldHeight: textFieldHeight,
+                          .setsList[index].result,
                       onChange: (value) {
                         print(value);
                         BlocProvider.of<WorkoutBloc>(context).add(

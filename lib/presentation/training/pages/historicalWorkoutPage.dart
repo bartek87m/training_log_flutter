@@ -5,7 +5,6 @@ import 'package:training_log/application/workoutForm/bloc/bloc/workout_bloc.dart
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/historicalExerciseWidget.dart';
-import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 
 class HistoricalWorkoutPage extends StatelessWidget {
   final Workout workout;
@@ -40,7 +39,6 @@ class HistoricalWorkoutPage extends StatelessWidget {
               ),
             ),
             onTap: () {
-        
               context.read<WorkoutBloc>().add(
                   WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
               context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
@@ -52,10 +50,11 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Icon(Icons.edit),
             ),
             onTap: () {
-            
+              print("edit");
               context
                   .read<WorkoutBloc>()
                   .add(WorkoutEvent.editWorkout(this.workout));
+              // ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
             },
           ),
           GestureDetector(
@@ -74,7 +73,8 @@ class HistoricalWorkoutPage extends StatelessWidget {
         if (state.isDeleted == true) {
           ExtendedNavigator.of(context).replace(Routes.trainingsPage);
         } else if (state.isEditing) {
-          ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
+          ExtendedNavigator.of(context)
+              .popAndPush(Routes.editHistoricalWorkoutPage);
         }
       }, builder: (context, state) {
         return Column(
