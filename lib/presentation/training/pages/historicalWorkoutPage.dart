@@ -39,8 +39,10 @@ class HistoricalWorkoutPage extends StatelessWidget {
               ),
             ),
             onTap: () {
-              context.read<WorkoutBloc>().add(
-                  WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
+              final workout = context.watch<WorkoutBloc>().state.workout;
+              context
+                  .read<WorkoutBloc>()
+                  .add(WorkoutEvent.createNewWorkoutFromExistingOne(workout));
               context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
             },
           ),
@@ -107,10 +109,12 @@ class HistoricalWorkoutPage extends StatelessWidget {
                         ),
                       );
                     }).toList(),
-                    onReorder: (newIndex, oldIndex) => context
-                        .read<WorkoutBloc>()
-                        .add(WorkoutEvent.reorderExerciseInWorkout(
-                            newIndex, oldIndex))),
+                    onReorder: (newIndex, oldIndex) => {
+                          context.read<WorkoutBloc>().add(
+                                WorkoutEvent.reorderExerciseInWorkout(
+                                    newIndex, oldIndex),
+                              ),
+                        }),
               ),
             ),
           ],

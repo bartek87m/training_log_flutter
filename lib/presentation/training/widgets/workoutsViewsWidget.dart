@@ -6,7 +6,26 @@ import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/training/widgets/workoutShortViewWidget.dart';
 
-class WorkoutsViewsWidget extends StatelessWidget {
+class WorkoutsViewsWidget extends StatefulWidget {
+  @override
+  _WorkoutsViewsWidgetState createState() => _WorkoutsViewsWidgetState();
+}
+
+class _WorkoutsViewsWidgetState extends State<WorkoutsViewsWidget> {
+  ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() => {
+          if (_scrollController.position.pixels ==
+              _scrollController.position.maxScrollExtent)
+            {
+              print(" list at bottom"),
+            }
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -18,6 +37,7 @@ class WorkoutsViewsWidget extends StatelessWidget {
               loadFailure: (state) => Text('${state.workoutfailure}'),
               loadSuccess: (state) {
                 return ListView.builder(
+                    controller: _scrollController,
                     itemCount: state.workouts.length,
                     itemBuilder: (context, index) {
                       return InkWell(

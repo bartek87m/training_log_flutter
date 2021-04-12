@@ -84,8 +84,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       addSeriesToExercise: (e) async* {
-        List<Exercise> exList =  state.workout.exercieList;
-        
+        List<Exercise> exList = state.workout.exercieList;
 
         exList[e.exerciseNumber].setsList.add(Series.newSeries());
 
@@ -187,8 +186,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         );
       },
       updateWorkout: (e) async* {
-        print('update workout');
-        print(state.workout);
         await iWorkoutFacade.update(workout: state.workout);
       },
       changeTitle: (e) async* {
@@ -226,7 +223,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         }
 
         yield state.copyWith(
-          workout: state.workout.copyWith(exercieList: exerciseList),
+          workout: state.workout.copyWith(exercieList: [...exerciseList]),
+          refreshState: !state.refreshState,
         );
 
         await iWorkoutFacade.update(workout: state.workout);
