@@ -19,6 +19,7 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
     final userDoc = await _firestore.userDocument();
     yield* userDoc.workoutCollection
         .orderBy('serverTimeStamp', descending: true)
+        // .limit(6)
         .snapshots()
         .map(
           (snapshot) => right<WorkoutFailure, List<Workout>>(
@@ -31,7 +32,31 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
       if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
         return left(const WorkoutFailure.permissionDenied());
       } else {
-        print("!!!!");
+        print(e);
+        return left(const WorkoutFailure.unexpected());
+      }
+    });
+  }
+
+  @override
+  Stream<Either<WorkoutFailure, List<Workout>>> watchForCertainAmount(
+      int amount) async* {
+    final userDoc = await _firestore.userDocument();
+    yield* userDoc.workoutCollection
+        .orderBy('serverTimeStamp', descending: true)
+        .limit(amount)
+        .snapshots()
+        .map(
+          (snapshot) => right<WorkoutFailure, List<Workout>>(
+            snapshot.docs
+                .map((doc) => WorkoutDto.fromJson(doc.data()).toDomain())
+                .toList(),
+          ),
+        )
+        .onErrorReturnWith((e) {
+      if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
+        return left(const WorkoutFailure.permissionDenied());
+      } else {
         print(e);
         return left(const WorkoutFailure.unexpected());
       }

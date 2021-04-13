@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
+import 'package:training_log/presentation/training/pages/personalrecordsPage.dart';
 import 'package:training_log/presentation/training/widgets/createNewWorkout.dart';
 import 'package:training_log/presentation/training/widgets/workoutsViewsWidget.dart';
 
@@ -15,6 +16,28 @@ class TrainingsPage extends StatefulWidget {
 }
 
 class _TrainingsPageState extends State<TrainingsPage> {
+  var _currentViewIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    // this._currentViewIndex = 0;
+  }
+
+  Widget DestinationWidget() {
+    return IndexedStack(
+      index: _currentViewIndex,
+      children: [
+        Column(
+          children: [
+            CreateNewWorkout(),
+            WorkoutsViewsWidget(),
+          ],
+        ),
+        PersonalRecordsView()
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -49,25 +72,22 @@ class _TrainingsPageState extends State<TrainingsPage> {
               )
             ],
           ),
-          body: Column(
-            children: [
-              CreateNewWorkout(),
-              WorkoutsViewsWidget(),
-            ],
-          ),
+          body: DestinationWidget(),
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: 0, // this will be set when a new tab is tapped
+            currentIndex:
+                _currentViewIndex, // this will be set when a new tab is tapped
+            onTap: (int index) => print(index),
             items: [
               BottomNavigationBarItem(
                 icon: new Icon(Icons.home),
-                title: new Text('Home'),
+                label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: new Icon(Icons.mail),
-                title: new Text('Messages'),
+                label: 'Personal Records',
               ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person), title: Text('Profile'))
+                  icon: Icon(Icons.person), label: 'Profile')
             ],
           ),
         ),

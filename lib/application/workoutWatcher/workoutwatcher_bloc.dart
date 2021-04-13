@@ -16,7 +16,7 @@ part 'workoutwatcher_bloc.freezed.dart';
 class WorkoutwatcherBloc
     extends Bloc<WorkoutwatcherEvent, WorkoutwatcherState> {
   final IWorkoutFacade _iWorkoutFacade;
-
+  // int _numberOfTrainingTtDownload = 4;
   WorkoutwatcherBloc(this._iWorkoutFacade)
       : super(WorkoutwatcherState.initial());
 
