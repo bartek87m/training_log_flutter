@@ -6,7 +6,7 @@ import 'package:training_log/presentation/training/pages/activeTrainingPage.dart
 import 'package:training_log/presentation/training/pages/editHistoricalWorkoutPage.dart';
 
 import 'package:training_log/presentation/training/pages/historicalWorkoutPage.dart';
-import 'package:training_log/presentation/training/pages/trainings_page.dart';
+import 'package:training_log/presentation/training/pages/trainingsPage.dart';
 
 @MaterialAutoRouter(
   generateNavigationHelperExtension: true,

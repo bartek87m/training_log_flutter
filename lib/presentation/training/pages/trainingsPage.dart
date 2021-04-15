@@ -1,45 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
-import 'package:training_log/presentation/training/pages/personalrecordsPage.dart';
-import 'package:training_log/presentation/training/widgets/createNewWorkout.dart';
-import 'package:training_log/presentation/training/widgets/workoutsViewsWidget.dart';
+import 'package:training_log/presentation/training/widgets/destinationWidget.dart';
 
 import '../../../injection.dart';
 
-class TrainingsPage extends StatefulWidget {
-  @override
-  _TrainingsPageState createState() => _TrainingsPageState();
-}
-
-class _TrainingsPageState extends State<TrainingsPage> {
-  var _currentViewIndex = 0;
-  @override
-  void initState() {
-    super.initState();
-    // this._currentViewIndex = 0;
-  }
-
-  Widget DestinationWidget() {
-    return IndexedStack(
-      index: _currentViewIndex,
-      children: [
-        Column(
-          children: [
-            CreateNewWorkout(),
-            WorkoutsViewsWidget(),
-          ],
-        ),
-        PersonalRecordsView()
-      ],
-    );
-  }
-
+class TrainingsPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final _currentViewIndex = useState(0);
     return MultiBlocProvider(
       providers: [
         BlocProvider<WorkoutwatcherBloc>(
@@ -72,11 +45,13 @@ class _TrainingsPageState extends State<TrainingsPage> {
               )
             ],
           ),
-          body: DestinationWidget(),
+          body: DestinationWidget(
+            index: _currentViewIndex.value,
+          ),
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex:
-                _currentViewIndex, // this will be set when a new tab is tapped
-            onTap: (int index) => print(index),
+            currentIndex: _currentViewIndex
+                .value, // this will be set when a new tab is tapped
+            onTap: (int index) => _currentViewIndex.value = index,
             items: [
               BottomNavigationBarItem(
                 icon: new Icon(Icons.home),

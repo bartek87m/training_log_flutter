@@ -16,7 +16,7 @@ import '../splash/splash_page.dart';
 import '../training/pages/activeTrainingPage.dart';
 import '../training/pages/editHistoricalWorkoutPage.dart';
 import '../training/pages/historicalWorkoutPage.dart';
-import '../training/pages/trainings_page.dart';
+import '../training/pages/trainingsPage.dart';
 
 class Routes {
   static const String splashPage = '/';
