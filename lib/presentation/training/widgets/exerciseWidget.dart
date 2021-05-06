@@ -34,7 +34,7 @@ class ExerciseWidget extends StatelessWidget {
         ),
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          padding: const EdgeInsets.only(top: 5, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 5),
           child: Column(
             children: [
               TextFormField(

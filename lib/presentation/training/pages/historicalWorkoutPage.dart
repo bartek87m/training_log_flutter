@@ -39,10 +39,9 @@ class HistoricalWorkoutPage extends StatelessWidget {
               ),
             ),
             onTap: () {
-              final workout = context.watch<WorkoutBloc>().state.workout;
-              context
-                  .read<WorkoutBloc>()
-                  .add(WorkoutEvent.createNewWorkoutFromExistingOne(workout));
+              // final workout = context.watch<WorkoutBloc>().state.workout;
+              context.read<WorkoutBloc>().add(
+                  WorkoutEvent.createNewWorkoutFromExistingOne(this.workout));
               context.read<WorkoutBloc>().add(WorkoutEvent.createWorkout());
             },
           ),
@@ -56,7 +55,6 @@ class HistoricalWorkoutPage extends StatelessWidget {
               context
                   .read<WorkoutBloc>()
                   .add(WorkoutEvent.editWorkout(this.workout));
-              // ExtendedNavigator.of(context).push(Routes.editHistoricalWorkoutPage);
             },
           ),
           GestureDetector(
@@ -76,7 +74,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
           ExtendedNavigator.of(context).replace(Routes.trainingsPage);
         } else if (state.isEditing) {
           ExtendedNavigator.of(context)
-              .popAndPush(Routes.editHistoricalWorkoutPage);
+              .replace(Routes.editHistoricalWorkoutPage);
         }
       }, builder: (context, state) {
         return Column(
@@ -99,7 +97,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
                 child: ReorderableListView(
                     children: state.workout.exercieList.map((exercise) {
                       return Container(
-                        height: 60.0 + (exercise.setsList.length + 1) * 35,
+                        // height: 60.0 + (exercise.setsList.length + 1) * 35,
                         key: UniqueKey(),
                         child: HistoricalExerciseWidget(
                           leftPadding: leftPadding,
