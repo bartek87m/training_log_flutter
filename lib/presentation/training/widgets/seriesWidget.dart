@@ -26,7 +26,7 @@ class SeriesWidgetContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    final textFieldHeight = (mediaQuery.height * 0.035);
+    final textFieldHeight = (mediaQuery.height * 0.025);
     final textFieldWidth = (mediaQuery.width * 0.25);
 
     return BlocBuilder<WorkoutBloc, WorkoutState>(

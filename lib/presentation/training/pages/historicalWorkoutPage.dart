@@ -13,7 +13,7 @@ class HistoricalWorkoutPage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    final textFieldHeight = (mediaQuery.height * 0.035);
+    final textFieldHeight = (mediaQuery.height * 0.025);
     final textFieldWidth = (mediaQuery.width * 0.25);
     const leftPadding = 10.0;
 
@@ -51,7 +51,6 @@ class HistoricalWorkoutPage extends StatelessWidget {
               child: Icon(Icons.edit),
             ),
             onTap: () {
-              print("edit");
               context
                   .read<WorkoutBloc>()
                   .add(WorkoutEvent.editWorkout(this.workout));

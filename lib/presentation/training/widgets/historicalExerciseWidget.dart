@@ -22,7 +22,7 @@ class HistoricalExerciseWidget extends StatelessWidget {
           color: Colors.white10,
           border: Border.all(width: 1, color: Colors.white24)),
       // color: Colors.white30,
-      margin: const EdgeInsets.only(bottom: 5, top: 5, left: 5, right: 5),
+      margin: const EdgeInsets.only(bottom: 5, top: 5, left: 20, right: 20),
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Column(
         children: [
@@ -61,7 +61,7 @@ class HistoricalExerciseWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: EdgeInsets.only(bottom: 5),
+                          // padding: EdgeInsets.only(bottom: 2),
                           child: Text(
                             "Reps",
                           ),
@@ -82,7 +82,7 @@ class HistoricalExerciseWidget extends StatelessWidget {
                     Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(bottom: 5, right: 30),
+                          margin: EdgeInsets.only(right: 30),
                           child: Text(
                             "Result",
                           ),

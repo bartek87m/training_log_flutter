@@ -147,10 +147,13 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       },
       removeSeriesFromExercise: (e) async* {
         List<Exercise> exerciseList = state.workout.exercieList;
+        print(exerciseList[e.exerciseNumber].setsList.length);
+
         exerciseList[e.exerciseNumber].setsList.removeAt(e.numberOfSeries);
 
         yield state.copyWith(
           workout: state.workout.copyWith(exercieList: exerciseList),
+          refreshState: !state.refreshState,
         );
       },
       addRepsToSeries: (e) async* {
