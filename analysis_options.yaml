@@ -1,0 +1,7 @@
+# include: package:lint/analysis_options.yaml
+
+# linter:
+#   rules:
+#     sized_box_for_whitespace: false
+#     avoid_unnecessary_containers: false
+#     lowercase_with_underscore: false
