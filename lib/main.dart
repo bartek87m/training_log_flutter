@@ -5,8 +5,8 @@ import 'package:training_log/presentation/core/app_widget.dart';
 import 'injection.dart';
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding
+      .ensureInitialized(); //You only need to call this method if you need the binding to be initialized before calling runApp.
   configureDependencies();
   await Firebase.initializeApp();
   runApp(AppWidget());

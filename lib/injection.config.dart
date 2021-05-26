@@ -26,7 +26,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => firebaseAuthInjection.firestore);
   gh.lazySingleton<_i5.IAuthFacade>(
       () => _i6.FirebaseAuthFacade(get<_i3.FirebaseAuth>()));
-  gh.factory<_i7.AuthCubit>(() => _i7.AuthCubit(get<_i5.IAuthFacade>()));
+  gh.singleton<_i7.AuthCubit>(_i7.AuthCubit(get<_i5.IAuthFacade>()));
   return get;
 }
 

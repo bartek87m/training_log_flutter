@@ -8,6 +8,7 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       bloc: BlocProvider.of<AuthCubit>(context),
       listener: (context, state) {
+        print(state);
         // state.map(
         //   initial: (_) {},
         //   authentificate: (_) {
