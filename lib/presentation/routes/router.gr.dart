@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../auth/signInPage.dart' as _i4;
 import '../splash/splash_page.dart' as _i3;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -19,16 +20,29 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return _i3.SplashPage();
+        }),
+    SignInPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i4.SignInPage();
         })
   };
 
   @override
-  List<_i1.RouteConfig> get routes =>
-      [_i1.RouteConfig(SplashPageRoute.name, path: '/')];
+  List<_i1.RouteConfig> get routes => [
+        _i1.RouteConfig(SplashPageRoute.name, path: '/'),
+        _i1.RouteConfig(SignInPageRoute.name, path: '/sign-in-page')
+      ];
 }
 
 class SplashPageRoute extends _i1.PageRouteInfo {
   const SplashPageRoute() : super(name, path: '/');
 
   static const String name = 'SplashPageRoute';
+}
+
+class SignInPageRoute extends _i1.PageRouteInfo {
+  const SignInPageRoute() : super(name, path: '/sign-in-page');
+
+  static const String name = 'SignInPageRoute';
 }

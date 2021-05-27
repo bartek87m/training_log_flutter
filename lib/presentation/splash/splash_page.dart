@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/cubit/auth_cubit.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:training_log/presentation/routes/router.gr.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -9,15 +11,15 @@ class SplashPage extends StatelessWidget {
       bloc: BlocProvider.of<AuthCubit>(context),
       listener: (context, state) {
         print(state);
-        // state.map(
-        //   initial: (_) {},
-        //   authentificate: (_) {
-        //     ExtendedNavigator.of(context).replace(Routes.trainingsPage);
-        //   },
-        //   unauthentificate: (_) {
-        //     ExtendedNavigator.of(context).replace(Routes.signInPage);
-        //   },
-        // );
+        state.map(
+          initial: (_) {},
+          authentificate: (_) {
+            context.router.replace(SignInPageRoute());
+          },
+          unauthentificate: (_) {
+            context.router.replace(SignInPageRoute());
+          },
+        );
       },
       child: Scaffold(
         body: Center(

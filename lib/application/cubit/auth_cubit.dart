@@ -6,7 +6,7 @@ import 'package:training_log/domain/auth/i_auth_facade.dart';
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
-@singleton
+@lazySingleton
 class AuthCubit extends Cubit<AuthState> {
   IAuthFacade _iAuthFacade;
 
