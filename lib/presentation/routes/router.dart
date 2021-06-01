@@ -1,5 +1,5 @@
 import 'package:auto_route/annotations.dart';
-import 'package:training_log/presentation/auth/signInPage.dart';
+import 'package:training_log/presentation/auth/sign_in_page.dart';
 import 'package:training_log/presentation/splash/splash_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
