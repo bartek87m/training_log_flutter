@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/cubit/signIn/sign_in_cubit.dart';
+import 'package:sizer/sizer.dart';
 
 class SignInFormWidget extends StatelessWidget {
   @override
@@ -32,51 +34,83 @@ class SignInFormWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextFormField(
-                onChanged: (value) =>
-                    BlocProvider.of<SignInCubit>(context).changeEmail(value),
-                validator: (_) =>
-                    context.watch()<SignInCubit>().state.emailAdress.value.fold(
-                        //beirzemy context bezpośrednio z Bloc a nie z builder
-                        (f) => f.maybeMap(
-                              invalidEmail: (_) => 'Invalid Email',
-                              orElse: () => null,
-                            ),
-                        (r) => null),
-                decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email), labelText: 'Email'),
-                autocorrect: false,
-              ),
-              TextFormField(
-                onChanged: (value) =>
-                    BlocProvider.of<SignInCubit>(context).changePassword(value),
-                validator: (_) =>
-                    context.watch()<SignInCubit>().state.password.value.fold(
-                        //beirzemy context bezpośrednio z Bloc a nie z builder
-                        (f) => f.maybeMap(
-                              shortPassword: (_) => 'Invalid Password',
-                              orElse: () => null,
-                            ),
-                        (r) => null),
-                decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.lock), labelText: 'Password'),
-                autocorrect: false,
-                obscureText: true,
+              SizedBox(
+                height: 6.h,
+                child: TextFormField(
+                  onChanged: (value) =>
+                      BlocProvider.of<SignInCubit>(context).changeEmail(value),
+                  validator: (_) => context
+                      .watch()<SignInCubit>()
+                      .state
+                      .emailAdress
+                      .value
+                      .fold(
+                          //beirzemy context bezpośrednio z Bloc a nie z builder
+                          (f) => f.maybeMap(
+                                invalidEmail: (_) => 'Invalid Email',
+                                orElse: () => null,
+                              ),
+                          (r) => null),
+                  decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.email), labelText: 'Email'),
+                  autocorrect: false,
+                ),
               ),
               SizedBox(
+                height: 6.h,
+                child: TextFormField(
+                  onChanged: (value) => BlocProvider.of<SignInCubit>(context)
+                      .changePassword(value),
+                  validator: (_) =>
+                      context.watch()<SignInCubit>().state.password.value.fold(
+                          //beirzemy context bezpośrednio z Bloc a nie z builder
+                          (f) => f.maybeMap(
+                                shortPassword: (_) => 'Invalid Password',
+                                orElse: () => null,
+                              ),
+                          (r) => null),
+                  decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.lock), labelText: 'Password'),
+                  autocorrect: false,
+                  obscureText: true,
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
                     BlocProvider.of<SignInCubit>(context)
                         .signInWithEmailAndPassword();
                   },
-                  child: const Text('SIGN IN'),
+                  child: Text(
+                    'Sign in',
+                    style: TextStyle(fontSize: 12.sp),
+                  ),
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16),
                       ),
                     ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+                width: double.infinity,
+                child: TextButton(
+                  style: ButtonStyle(
+                    overlayColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        return Colors.transparent;
+                      },
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'No account? Register',
+                    style: TextStyle(fontSize: 12.sp),
                   ),
                 ),
               )
