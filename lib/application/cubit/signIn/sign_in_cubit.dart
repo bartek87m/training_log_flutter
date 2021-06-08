@@ -15,7 +15,6 @@ class SignInCubit extends Cubit<SignInFromState> {
   SignInCubit(this._authFacade) : super(SignInFromState.initial());
 
   void changeEmail(String input) {
-    print(input);
     emit(
       state.copyWith(
         emailAdress: EmailAdress(input),

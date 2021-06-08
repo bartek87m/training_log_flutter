@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,35 +35,45 @@ class SignInFormWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                height: 6.h,
-                child: TextFormField(
-                  onChanged: (value) =>
-                      BlocProvider.of<SignInCubit>(context).changeEmail(value),
-                  validator: (_) => context
-                      .watch()<SignInCubit>()
-                      .state
-                      .emailAdress
-                      .value
-                      .fold(
-                          //beirzemy context bezpośrednio z Bloc a nie z builder
-                          (f) => f.maybeMap(
-                                invalidEmail: (_) => 'Invalid Email',
-                                orElse: () => null,
-                              ),
-                          (r) => null),
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.email), labelText: 'Email'),
-                  autocorrect: false,
+              Container(
+                // color: Colors.green[100],
+                child: SizedBox(
+                  height: 10.h,
+                  child: TextFormField(
+                    // cursorHeight: 3.h,
+                    onChanged: (value) => BlocProvider.of<SignInCubit>(context)
+                        .changeEmail(value),
+                    validator: (_) => context
+                        .watch<SignInCubit>()
+                        .state
+                        .emailAdress
+                        ?.value
+                        .fold(
+                          (failure) => failure.maybeMap(
+                              invalidEmail: (_) => 'Invalid email',
+                              orElse: () => null),
+                          (r) => null,
+                        ),
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(0.0),
+                      prefixIcon: Icon(Icons.email),
+                      labelText: 'Email',
+                    ),
+                    autocorrect: false,
+                  ),
                 ),
               ),
               SizedBox(
-                height: 6.h,
+                height: 10.h,
                 child: TextFormField(
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                  ),
+                  cursorHeight: 3.h,
                   onChanged: (value) => BlocProvider.of<SignInCubit>(context)
                       .changePassword(value),
                   validator: (_) =>
-                      context.watch()<SignInCubit>().state.password.value.fold(
+                      context.watch<SignInCubit>().state.password?.value.fold(
                           //beirzemy context bezpośrednio z Bloc a nie z builder
                           (f) => f.maybeMap(
                                 shortPassword: (_) => 'Invalid Password',
@@ -75,6 +86,9 @@ class SignInFormWidget extends StatelessWidget {
                   obscureText: true,
                 ),
               ),
+              // SizedBox(
+              //   height: 1.h,
+              // ),
               SizedBox(
                 height: 5.h,
                 width: double.infinity,
