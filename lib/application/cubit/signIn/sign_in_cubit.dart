@@ -50,14 +50,14 @@ class SignInCubit extends Cubit<SignInFromState> {
     Either<AuthFailure, Unit>? failureOrSuccess;
 
     if (isEmailValid && isPasswordValid) {
+      failureOrSuccess = await _authFacade.signInWithEmailAndPassword(
+          emailAdress: state.emailAdress, password: state.password);
       emit(
         state.copyWith(
           isSubmitting: true,
           authFailureOrSuccess: none(),
         ),
       );
-      failureOrSuccess = await _authFacade.signInWithEmailAndPassword(
-          emailAdress: state.emailAdress, password: state.password);
     }
 
     emit(

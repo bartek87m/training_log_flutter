@@ -17,7 +17,7 @@ class SplashPage extends StatelessWidget {
             context.router.replace(SignInPageRoute());
           },
           unauthentificate: (_) {
-            context.router.replace(SignInPageRoute());
+            context.router.replace(WorkoutViewPageRoute());
           },
         );
       },

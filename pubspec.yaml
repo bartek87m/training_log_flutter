@@ -41,6 +41,7 @@ dependencies:
   rxdart: ^0.27.0
   timeago: ^3.0.2
   sizer: ^2.0.13
+  top_snackbar_flutter: ^1.0.0
 
 dev_dependencies:
   flutter_test:
