@@ -1,9 +1,9 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/cubit/signIn/sign_in_cubit.dart';
 import 'package:sizer/sizer.dart';
+import 'package:training_log/presentation/auth/widgets/custom_text_form_field.dart';
 
 class SignInFormWidget extends StatelessWidget {
   @override
@@ -35,60 +35,37 @@ class SignInFormWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                // color: Colors.green[100],
-                child: SizedBox(
-                  height: 10.h,
-                  child: TextFormField(
-                    // cursorHeight: 3.h,
-                    onChanged: (value) => BlocProvider.of<SignInCubit>(context)
-                        .changeEmail(value),
-                    validator: (_) => context
-                        .watch<SignInCubit>()
-                        .state
-                        .emailAdress
-                        ?.value
-                        .fold(
-                          (failure) => failure.maybeMap(
-                              invalidEmail: (_) => 'Invalid email',
-                              orElse: () => null),
-                          (r) => null,
-                        ),
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.all(0.0),
-                      prefixIcon: Icon(Icons.email),
-                      labelText: 'Email',
-                    ),
-                    autocorrect: false,
-                  ),
-                ),
+              CustomTextFormField(
+                labelText: 'Email',
+                callback: (value) =>
+                    BlocProvider.of<SignInCubit>(context).changeEmail(value),
+                validatorCallback: (_) => context
+                    .watch<SignInCubit>()
+                    .state
+                    .emailAdress
+                    ?.value
+                    .fold(
+                        (failure) => failure.maybeMap(
+                            orElse: () => null,
+                            invalidEmail: (_) => 'invalid email'),
+                        (r) => null),
               ),
-              SizedBox(
-                height: 10.h,
-                child: TextFormField(
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                  ),
-                  cursorHeight: 3.h,
-                  onChanged: (value) => BlocProvider.of<SignInCubit>(context)
-                      .changePassword(value),
-                  validator: (_) =>
-                      context.watch<SignInCubit>().state.password?.value.fold(
-                          //beirzemy context bezpośrednio z Bloc a nie z builder
-                          (f) => f.maybeMap(
-                                shortPassword: (_) => 'Invalid Password',
-                                orElse: () => null,
-                              ),
-                          (r) => null),
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.lock), labelText: 'Password'),
-                  autocorrect: false,
-                  obscureText: true,
-                ),
+              CustomTextFormField(
+                labelText: 'Password',
+                callback: (value) =>
+                    BlocProvider.of<SignInCubit>(context).changePassword(value),
+                validatorCallback: (_) => context
+                    .watch<SignInCubit>()
+                    .state
+                    .password
+                    ?.value
+                    .fold(
+                        (failure) => failure.maybeMap(
+                            orElse: () => null,
+                            shortPassword: (_) =>
+                                'invalid password'), //TODO - add more password combination
+                        (r) => null),
               ),
-              // SizedBox(
-              //   height: 1.h,
-              // ),
               SizedBox(
                 height: 5.h,
                 width: double.infinity,
@@ -127,7 +104,7 @@ class SignInFormWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 12.sp),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         );
