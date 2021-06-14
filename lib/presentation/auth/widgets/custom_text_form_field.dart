@@ -6,6 +6,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validatorCallback;
   final String labelText;
   final Icon? icon;
+  final bool obscureText;
 
   const CustomTextFormField({
     Key? key,
@@ -13,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     this.callback,
     this.icon,
     this.validatorCallback,
+    this.obscureText: false,
   }) : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
     return SizedBox(
       height: 8.h,
       child: TextFormField(
+        obscureText: obscureText,
         onChanged: (value) => callback!(value),
         validator: (_) => validatorCallback!(_),
         decoration: InputDecoration(

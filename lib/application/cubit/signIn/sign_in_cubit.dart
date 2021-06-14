@@ -85,12 +85,12 @@ class SignInCubit extends Cubit<SignInFromState> {
     final isPasswordsIdentical = state.passwordConfirmed!.isValid();
     Either<AuthFailure, Unit>? failureOrSuccess;
 
-    emit(
-      state.copyWith(
-        passwordConfirmed:
-            PasswordConfirmed([state.password!, state.passwordToCompare!]),
-      ),
-    );
+    // emit(
+    //   state.copyWith(
+    //     passwordConfirmed:
+    //         PasswordConfirmed([state.password!, state.passwordToCompare!]),
+    //   ),
+    // );
 
     if (isEmailValid && isPasswordValid && isPasswordsIdentical) {
       emit(state.copyWith(
