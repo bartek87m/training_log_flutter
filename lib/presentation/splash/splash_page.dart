@@ -10,14 +10,13 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       bloc: BlocProvider.of<AuthCubit>(context),
       listener: (context, state) {
-        print(state);
         state.map(
           initial: (_) {},
           authentificate: (_) {
-            context.router.replace(SignInPageRoute());
+            context.router.replace(WorkoutViewPageRoute());
           },
           unauthentificate: (_) {
-            context.router.replace(WorkoutViewPageRoute());
+            context.router.replace(SignInPageRoute());
           },
         );
       },

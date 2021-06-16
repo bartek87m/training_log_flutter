@@ -82,10 +82,14 @@ class RegisterNewUserForm extends StatelessWidget {
               CustomTextFormField(
                 labelText: 'Confirm Password',
                 obscureText: true,
-                callback: (value) =>
-                    BlocProvider.of<SignInCubit>(context).changePassword(value),
-                validatorCallback: (_) =>
-                    context.watch<SignInCubit>().state.password?.value.fold(
+                callback: (value) => BlocProvider.of<SignInCubit>(context)
+                    .changePasswordToCompare(value),
+                validatorCallback: (_) => context
+                    .watch<SignInCubit>()
+                    .state
+                    .passwordConfirmed
+                    ?.value
+                    .fold(
                         (failure) => failure.maybeMap(
                               orElse: () => null,
                               passwordsNotIdentical: (_) =>

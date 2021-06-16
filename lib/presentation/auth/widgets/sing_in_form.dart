@@ -7,7 +7,6 @@ import 'package:training_log/application/cubit/signIn/sign_in_cubit.dart';
 import 'package:sizer/sizer.dart';
 import 'package:training_log/presentation/auth/widgets/custom_text_form_field.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import 'package:training_log/presentation/auth/widgets/register_new_user_form.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -32,14 +31,15 @@ class SignInFormWidget extends StatelessWidget {
                 ),
               ),
             },
-            (_) => {
-              context.read<AuthCubit>().checkAuthentification(),
+            (_) async {
+              await context.read<AuthCubit>().checkAuthentification();
               context.read<AuthCubit>().state.maybeMap(
                     authentificate: (_) {
+                      context.read<SignInCubit>().resetSignInCubitState();
                       context.router.replace(WorkoutViewPageRoute());
                     },
                     orElse: () => null,
-                  )
+                  );
             },
           ),
         );

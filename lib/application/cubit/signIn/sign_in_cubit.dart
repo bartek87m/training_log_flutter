@@ -14,6 +14,20 @@ class SignInCubit extends Cubit<SignInFromState> {
   final IAuthFacade _authFacade;
   SignInCubit(this._authFacade) : super(SignInFromState.initial());
 
+  void resetSignInCubitState() {
+    emit(
+      state.copyWith(
+        emailAdress: EmailAdress(''),
+        password: Password(''),
+        passwordToCompare: Password(''),
+        passwordConfirmed: PasswordConfirmed([Password(''), Password('')]),
+        isSubmitting: false,
+        showErrorMessage: false,
+        authFailureOrSuccess: none(),
+      ),
+    );
+  }
+
   void changeEmail(String input) {
     emit(
       state.copyWith(
@@ -75,6 +89,7 @@ class SignInCubit extends Cubit<SignInFromState> {
   Future<void> registerWithEmailAndPassword() async {
     final isEmailValid = state.emailAdress!.isValid();
     final isPasswordValid = state.password!.isValid();
+    // final isPasswordToCompareValid = state.passwordToCompare!.isValid();
     emit(
       state.copyWith(
         passwordConfirmed:
@@ -85,27 +100,21 @@ class SignInCubit extends Cubit<SignInFromState> {
     final isPasswordsIdentical = state.passwordConfirmed!.isValid();
     Either<AuthFailure, Unit>? failureOrSuccess;
 
-    // emit(
-    //   state.copyWith(
-    //     passwordConfirmed:
-    //         PasswordConfirmed([state.password!, state.passwordToCompare!]),
-    //   ),
-    // );
-
     if (isEmailValid && isPasswordValid && isPasswordsIdentical) {
       emit(state.copyWith(
         isSubmitting: true,
+        showErrorMessage: false,
         authFailureOrSuccess: none(),
       ));
       failureOrSuccess = await _authFacade.regiseterWithEmailAndPassword(
           emailAdress: state.emailAdress, password: state.password);
+    } else {
+      emit(
+        state.copyWith(
+          showErrorMessage: true,
+          authFailureOrSuccess: optionOf(failureOrSuccess),
+        ),
+      );
     }
-
-    emit(
-      state.copyWith(
-        showErrorMessage: true,
-        authFailureOrSuccess: optionOf(failureOrSuccess),
-      ),
-    );
   }
 }
