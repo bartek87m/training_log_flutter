@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:training_log/application/cubit/auth_cubit.dart';
-import 'package:training_log/application/cubit/signIn/sign_in_cubit.dart';
+
 import 'package:sizer/sizer.dart';
+import 'package:training_log/application/auth/auth_cubit.dart';
+import 'package:training_log/application/auth/signIn/sign_in_cubit.dart';
 import 'package:training_log/presentation/auth/widgets/custom_text_form_field.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
