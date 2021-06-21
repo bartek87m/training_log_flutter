@@ -29,7 +29,8 @@ class WorkoutwatcherBloc
   ) async* {
     yield* event.map(downloadWorkouts: (e) async* {
       yield const WorkoutwatcherState.loading();
-      await _workoutStreamSubscribtion.cancel();
+      //TODO dodać anulowanie subskrybcji
+      // await _workoutStreamSubscribtion.cancel();
       _workoutStreamSubscribtion = _iWorkoutFacade.watchAll().listen(
             (failureOrWorkout) => add(
               WorkoutwatcherEvent.workoutsReceived(failureOrWorkout),

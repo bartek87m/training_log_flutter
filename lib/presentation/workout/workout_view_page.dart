@@ -1,49 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:training_log/domain/workout/workout.dart';
 import 'package:sizer/sizer.dart';
-import 'package:training_log/application/auth/auth_cubit.dart';
-import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
-import 'package:training_log/presentation/routes/router.gr.dart';
-import 'package:auto_route/auto_route.dart';
-
-import '../../injection.dart';
 
 class WorkoutViewPage extends StatelessWidget {
-  const WorkoutViewPage({Key? key}) : super(key: key);
+  final Workout workout;
+
+  const WorkoutViewPage({Key? key, required this.workout}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<WorkoutwatcherBloc>(
-      create: (context) => getIt<WorkoutwatcherBloc>()
-        ..add(WorkoutwatcherEvent.downloadWorkouts()),
-      child: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
-          state.maybeMap(
-            orElse: () => null,
-            unauthentificate: (_) {
-              context.router.replace(SignInPageRoute());
-            },
-          );
-        },
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Workout view'),
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(right: 5.w),
-                child: GestureDetector(
-                  child: Icon(Icons.logout),
-                  onTap: () async {
-                    await context.read<AuthCubit>().signOut();
-                  },
-                ),
-              )
-            ],
+    final workoutExercises = workout.exercieList!
+        .forEach((element) => print(element.exerciseName!.getOrCrash()));
+
+    // final workoutSets = workout.exercieList!
+    //     .forEach((element) => print(element.exerciseName!.getOrCrash()));
+
+    // final workoutExercises = workout.exercieList!
+    //     .forEach((element) => print(element.exerciseName!.getOrCrash()));
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.w),
+            child: TextFormField(
+              initialValue: workout.title!.getOrCrash(),
+            ),
           ),
-          body: Container(
-            child: Text('Workout view'),
-          ),
-        ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.w),
+            child: TextFormField(
+              initialValue: 'Add wotkout here',
+              maxLines: null,
+            ),
+          )
+        ],
       ),
     );
   }

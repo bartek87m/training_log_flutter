@@ -37,7 +37,7 @@ class SignInFormWidget extends StatelessWidget {
               context.read<AuthCubit>().state.maybeMap(
                     authentificate: (_) {
                       context.read<SignInCubit>().resetSignInCubitState();
-                      context.router.replace(WorkoutViewPageRoute());
+                      context.router.replace(WorkoutsViewPageRoute());
                     },
                     orElse: () => null,
                   );

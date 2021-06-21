@@ -7,10 +7,12 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../../domain/workout/workout.dart' as _i8;
 import '../auth/refister_new_user_page.dart' as _i5;
 import '../auth/sign_in_page.dart' as _i4;
 import '../splash/splash_page.dart' as _i3;
-import '../workout/workout_view_page.dart' as _i6;
+import '../workout/workout_view_page.dart' as _i7;
+import '../workout/workouts_view_page.dart' as _i6;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -33,10 +35,16 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i5.RegisterNewUserPage();
         }),
-    WorkoutViewPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+    WorkoutsViewPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i6.WorkoutViewPage();
+          return const _i6.WorkoutsViewPage();
+        }),
+    WorkoutViewPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<WorkoutViewPageRouteArgs>();
+          return _i7.WorkoutViewPage(key: args.key, workout: args.workout);
         })
   };
 
@@ -46,6 +54,7 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SignInPageRoute.name, path: '/signInPage'),
         _i1.RouteConfig(RegisterNewUserPageRoute.name,
             path: '/registerNewUser'),
+        _i1.RouteConfig(WorkoutsViewPageRoute.name, path: '/workoutsView'),
         _i1.RouteConfig(WorkoutViewPageRoute.name, path: '/workoutView')
       ];
 }
@@ -68,8 +77,25 @@ class RegisterNewUserPageRoute extends _i1.PageRouteInfo {
   static const String name = 'RegisterNewUserPageRoute';
 }
 
-class WorkoutViewPageRoute extends _i1.PageRouteInfo {
-  const WorkoutViewPageRoute() : super(name, path: '/workoutView');
+class WorkoutsViewPageRoute extends _i1.PageRouteInfo {
+  const WorkoutsViewPageRoute() : super(name, path: '/workoutsView');
+
+  static const String name = 'WorkoutsViewPageRoute';
+}
+
+class WorkoutViewPageRoute extends _i1.PageRouteInfo<WorkoutViewPageRouteArgs> {
+  WorkoutViewPageRoute({_i2.Key? key, required _i8.Workout workout})
+      : super(name,
+            path: '/workoutView',
+            args: WorkoutViewPageRouteArgs(key: key, workout: workout));
 
   static const String name = 'WorkoutViewPageRoute';
+}
+
+class WorkoutViewPageRouteArgs {
+  const WorkoutViewPageRouteArgs({this.key, required this.workout});
+
+  final _i2.Key? key;
+
+  final _i8.Workout workout;
 }

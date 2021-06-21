@@ -36,7 +36,7 @@ class RegisterNewUserForm extends StatelessWidget {
               context.read<AuthCubit>().checkAuthentification(),
               context.read<AuthCubit>().state.maybeMap(
                     authentificate: (_) {
-                      context.router.replace(WorkoutViewPageRoute());
+                      context.router.replace(WorkoutsViewPageRoute());
                     },
                     orElse: () => null,
                   )
