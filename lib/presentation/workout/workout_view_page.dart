@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training_log/domain/workout/exercise/exercise.dart';
 import 'package:training_log/domain/workout/series/series.dart';
-import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -33,17 +31,19 @@ class WorkoutViewPage extends HookWidget {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.only(top: 2.h),
+        padding: EdgeInsets.only(top: 3.h),
         child: ListView.builder(
             itemCount: workout.value.exercieList!.length,
             itemBuilder: (context, int index) {
               return Column(
                 children: [
-                  SizedBox(
-                    height: 3.h,
+                  Container(
+                    height: 2.5.h,
                     width: 90.w,
                     child: TextFormField(
-                      initialValue: workout.value.title!.getOrCrash(),
+                      initialValue: workout
+                          .value.exercieList![index].exerciseName!
+                          .getOrCrash(),
                     ),
                   ),
                   Row(
@@ -51,28 +51,38 @@ class WorkoutViewPage extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                          child: Text('Reps'),
+                        ),
                         for (int i = 0;
                             i <
                                 workout
                                     .value.exercieList![index].setsList!.length;
                             i++)
-                          Row(children: [
-                            Text((i + 1).toString()),
-                            Container(
-                              margin: EdgeInsets.only(left: 1.w, right: 1.w),
-                              height: 3.h,
-                              width: 35.w,
-                              child: TextFormField(
-                                key: Key(i.toString()),
-                                textAlign: TextAlign.center,
-                                initialValue: workout.value.exercieList![index]
-                                    .setsList![i].reps,
+                          Container(
+                            child: Row(children: [
+                              Text((i + 1).toString()),
+                              Container(
+                                margin: EdgeInsets.only(left: 1.w, right: 1.w),
+                                height: 3.h,
+                                width: 35.w,
+                                child: TextFormField(
+                                  key: Key(i.toString()),
+                                  textAlign: TextAlign.center,
+                                  initialValue: workout.value
+                                      .exercieList![index].setsList![i].reps,
+                                ),
                               ),
-                            ),
-                          ]),
+                            ]),
+                          ),
                       ]),
                       Column(
                         children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                            child: Text('Result'),
+                          ),
                           for (int i = 0;
                               i <
                                   workout.value.exercieList![index].setsList!
