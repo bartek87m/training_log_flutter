@@ -121,17 +121,35 @@ class WorkoutViewPage extends HookWidget {
                       ),
                     ],
                   ),
-                  Container(
-                    // height: 4.h,
-                    // width: 80.w,
-                    child: TextButton(
-                      onPressed: () => {
-                        workout.value.exercieList![index].setsList!
-                            .add(Series.newSeries()),
-                        toggleRebuild.value = !toggleRebuild.value,
-                      },
-                      child: Text('Add series'),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        // height: 4.h,
+                        // width: 80.w,
+                        child: TextButton(
+                          onPressed: () => {
+                            workout.value.exercieList![index].setsList!
+                                .add(Series.newSeries()),
+                            toggleRebuild.value = !toggleRebuild.value,
+                          },
+                          child: Text('Add series'),
+                        ),
+                      ),
+                      Container(
+                        // height: 4.h,
+                        // width: 80.w,
+                        child: TextButton(
+                          onPressed: () => {
+                            toggleRebuild.value = !toggleRebuild.value,
+                          },
+                          child: Text(
+                            'Remove Exercise',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               );
