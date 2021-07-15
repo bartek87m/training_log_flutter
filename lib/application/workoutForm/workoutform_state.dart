@@ -9,7 +9,14 @@ abstract class WorkoutformState with _$WorkoutformState {
     @required List<Exercise>? exercieList,
     // @required List<Wod> wodList,
     DateTime? updateDate,
+    bool? toogleRebuild,
   }) = _WorkoutformState;
 
-  const factory WorkoutformState.initial() = _Initial;
+  factory WorkoutformState.initial() => WorkoutformState(
+        id: UniqueId(),
+        title: Title(''),
+        workoutDate: DateTime.now(),
+        exercieList: [],
+        toogleRebuild: false,
+      );
 }

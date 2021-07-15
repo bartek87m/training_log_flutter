@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 import 'package:training_log/domain/workout/series/series.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:sizer/sizer.dart';
@@ -17,6 +19,7 @@ class WorkoutViewPage extends HookWidget {
     useMemoized(
       () {
         workout.value = this.workout;
+        context.read<WorkoutformCubit>().loadWorkoutToState(this.workout);
       },
     );
 
@@ -30,130 +33,142 @@ class WorkoutViewPage extends HookWidget {
           cursorColor: Colors.white,
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.only(top: 3.h),
-        child: ListView.builder(
-            itemCount: workout.value.exercieList!.length,
-            itemBuilder: (context, int index) {
-              return Column(
-                children: [
-                  Container(
-                    height: 2.5.h,
-                    width: 90.w,
-                    child: TextFormField(
-                      initialValue: workout
-                          .value.exercieList![index].exerciseName!
-                          .getOrCrash(),
-                    ),
-                  ),
-                  Row(
-                    key: UniqueKey(),
-                    mainAxisAlignment: MainAxisAlignment.center,
+      body: BlocBuilder<WorkoutformCubit, WorkoutformState>(
+        builder: (context, state) {
+          return Container(
+            padding: EdgeInsets.only(top: 3.h),
+            child: ListView.builder(
+                itemCount: state.exercieList!.length,
+                itemBuilder: (context, int exerciseIndex) {
+                  return Column(
                     children: [
-                      Column(children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
-                          child: Text('Reps'),
+                      Container(
+                        height: 2.5.h,
+                        width: 90.w,
+                        child: TextFormField(
+                          initialValue: state
+                              .exercieList![exerciseIndex].exerciseName!
+                              .getOrCrash(),
                         ),
-                        for (int i = 0;
-                            i <
-                                workout
-                                    .value.exercieList![index].setsList!.length;
-                            i++)
-                          Container(
-                            child: Row(children: [
-                              Text((i + 1).toString()),
-                              Container(
-                                margin: EdgeInsets.only(left: 1.w, right: 1.w),
-                                height: 3.h,
-                                width: 35.w,
-                                child: TextFormField(
-                                  key: Key(i.toString()),
-                                  textAlign: TextAlign.center,
-                                  initialValue: workout.value
-                                      .exercieList![index].setsList![i].reps,
-                                ),
-                              ),
-                            ]),
-                          ),
-                      ]),
-                      Column(
+                      ),
+                      Row(
+                        key: UniqueKey(),
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
-                            child: Text('Result'),
-                          ),
-                          for (int i = 0;
-                              i <
-                                  workout.value.exercieList![index].setsList!
-                                      .length;
-                              i++)
-                            Row(
-                              children: [
-                                Container(
-                                  margin:
-                                      EdgeInsets.only(left: 1.w, right: 1.w),
-                                  height: 3.h,
-                                  width: 35.w,
-                                  child: TextFormField(
-                                    key: Key(i.toString()),
-                                    textAlign: TextAlign.center,
-                                    initialValue: workout
-                                        .value
-                                        .exercieList![index]
-                                        .setsList![i]
-                                        .result,
-                                  ),
-                                ),
-                                GestureDetector(
-                                  child: Icon(Icons.delete),
-                                  onTap: () {
-                                    workout.value.exercieList![index].setsList!
-                                        .removeAt(i);
-                                    toggleRebuild.value = !toggleRebuild.value;
-                                    print(workout
-                                        .value.exercieList![index].setsList!);
-                                  },
-                                ),
-                              ],
+                          Column(children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                              child: Text('Reps'),
                             ),
+                            for (int i = 0;
+                                i <
+                                    state.exercieList![exerciseIndex].setsList!
+                                        .length;
+                                i++)
+                              Container(
+                                child: Row(children: [
+                                  Text((i + 1).toString()),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.only(left: 1.w, right: 1.w),
+                                    height: 3.h,
+                                    width: 35.w,
+                                    child: TextFormField(
+                                      key: Key(i.toString()),
+                                      textAlign: TextAlign.center,
+                                      initialValue: state
+                                          .exercieList![exerciseIndex]
+                                          .setsList![i]
+                                          .reps,
+                                    ),
+                                  ),
+                                ]),
+                              ),
+                          ]),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                                child: Text('Result'),
+                              ),
+                              for (int i = 0;
+                                  i <
+                                      state.exercieList![exerciseIndex]
+                                          .setsList!.length;
+                                  i++)
+                                Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          left: 1.w, right: 1.w),
+                                      height: 3.h,
+                                      width: 35.w,
+                                      child: TextFormField(
+                                        key: Key(i.toString()),
+                                        textAlign: TextAlign.center,
+                                        initialValue: state
+                                            .exercieList![exerciseIndex]
+                                            .setsList![i]
+                                            .result,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      child: Icon(Icons.delete),
+                                      onTap: () {
+                                        context
+                                            .read<WorkoutformCubit>()
+                                            .removeSeriesFromExercise(
+                                                exerciseNumber: exerciseIndex,
+                                                seriesNumber: i);
+                                        // toggleRebuild.value =
+                                        //     !toggleRebuild.value;
+                                        print(state.exercieList![exerciseIndex]
+                                            .setsList!);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            // height: 4.h,
+                            // width: 80.w,
+                            child: TextButton(
+                              onPressed: () => {
+                                state.exercieList![exerciseIndex].setsList!
+                                    .add(Series.newSeries()),
+                                // toggleRebuild.value = !toggleRebuild.value,
+                              },
+                              child: Text('Add series'),
+                            ),
+                          ),
+                          Container(
+                            // height: 4.h,
+                            // width: 80.w,
+                            child: TextButton(
+                              onPressed: () => {
+                                context
+                                    .read<WorkoutformCubit>()
+                                    .loadWorkoutToState(this.workout),
+                              },
+                              child: Text(
+                                'Remove Exercise',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        // height: 4.h,
-                        // width: 80.w,
-                        child: TextButton(
-                          onPressed: () => {
-                            workout.value.exercieList![index].setsList!
-                                .add(Series.newSeries()),
-                            toggleRebuild.value = !toggleRebuild.value,
-                          },
-                          child: Text('Add series'),
-                        ),
-                      ),
-                      Container(
-                        // height: 4.h,
-                        // width: 80.w,
-                        child: TextButton(
-                          onPressed: () => {
-                            toggleRebuild.value = !toggleRebuild.value,
-                          },
-                          child: Text(
-                            'Remove Exercise',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            }),
+                  );
+                }),
+          );
+        },
       ),
     );
   }

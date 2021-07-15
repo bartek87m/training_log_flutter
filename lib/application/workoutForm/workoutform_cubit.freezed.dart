@@ -21,18 +21,16 @@ class _$WorkoutformStateTearOff {
       Title? title,
       DateTime? workoutDate,
       List<Exercise>? exercieList,
-      DateTime? updateDate}) {
+      DateTime? updateDate,
+      bool? toogleRebuild}) {
     return _WorkoutformState(
       id: id,
       title: title,
       workoutDate: workoutDate,
       exercieList: exercieList,
       updateDate: updateDate,
+      toogleRebuild: toogleRebuild,
     );
-  }
-
-  _Initial initial() {
-    return const _Initial();
   }
 }
 
@@ -41,35 +39,16 @@ const $WorkoutformState = _$WorkoutformStateTearOff();
 
 /// @nodoc
 mixin _$WorkoutformState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(UniqueId? id, Title? title, DateTime? workoutDate,
-            List<Exercise>? exercieList, DateTime? updateDate)
-        $default, {
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(UniqueId? id, Title? title, DateTime? workoutDate,
-            List<Exercise>? exercieList, DateTime? updateDate)?
-        $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_WorkoutformState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_WorkoutformState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  UniqueId? get id => throw _privateConstructorUsedError;
+  Title? get title => throw _privateConstructorUsedError;
+  DateTime? get workoutDate => throw _privateConstructorUsedError;
+  List<Exercise>? get exercieList =>
+      throw _privateConstructorUsedError; // @required List<Wod> wodList,
+  DateTime? get updateDate => throw _privateConstructorUsedError;
+  bool? get toogleRebuild => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $WorkoutformStateCopyWith<WorkoutformState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -78,6 +57,13 @@ abstract class $WorkoutformStateCopyWith<$Res> {
   factory $WorkoutformStateCopyWith(
           WorkoutformState value, $Res Function(WorkoutformState) then) =
       _$WorkoutformStateCopyWithImpl<$Res>;
+  $Res call(
+      {UniqueId? id,
+      Title? title,
+      DateTime? workoutDate,
+      List<Exercise>? exercieList,
+      DateTime? updateDate,
+      bool? toogleRebuild});
 }
 
 /// @nodoc
@@ -88,19 +74,59 @@ class _$WorkoutformStateCopyWithImpl<$Res>
   final WorkoutformState _value;
   // ignore: unused_field
   final $Res Function(WorkoutformState) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? workoutDate = freezed,
+    Object? exercieList = freezed,
+    Object? updateDate = freezed,
+    Object? toogleRebuild = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as Title?,
+      workoutDate: workoutDate == freezed
+          ? _value.workoutDate
+          : workoutDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      exercieList: exercieList == freezed
+          ? _value.exercieList
+          : exercieList // ignore: cast_nullable_to_non_nullable
+              as List<Exercise>?,
+      updateDate: updateDate == freezed
+          ? _value.updateDate
+          : updateDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      toogleRebuild: toogleRebuild == freezed
+          ? _value.toogleRebuild
+          : toogleRebuild // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$WorkoutformStateCopyWith<$Res> {
+abstract class _$WorkoutformStateCopyWith<$Res>
+    implements $WorkoutformStateCopyWith<$Res> {
   factory _$WorkoutformStateCopyWith(
           _WorkoutformState value, $Res Function(_WorkoutformState) then) =
       __$WorkoutformStateCopyWithImpl<$Res>;
+  @override
   $Res call(
       {UniqueId? id,
       Title? title,
       DateTime? workoutDate,
       List<Exercise>? exercieList,
-      DateTime? updateDate});
+      DateTime? updateDate,
+      bool? toogleRebuild});
 }
 
 /// @nodoc
@@ -121,6 +147,7 @@ class __$WorkoutformStateCopyWithImpl<$Res>
     Object? workoutDate = freezed,
     Object? exercieList = freezed,
     Object? updateDate = freezed,
+    Object? toogleRebuild = freezed,
   }) {
     return _then(_WorkoutformState(
       id: id == freezed
@@ -143,6 +170,10 @@ class __$WorkoutformStateCopyWithImpl<$Res>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      toogleRebuild: toogleRebuild == freezed
+          ? _value.toogleRebuild
+          : toogleRebuild // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -155,7 +186,8 @@ class _$_WorkoutformState implements _WorkoutformState {
       this.title,
       this.workoutDate,
       this.exercieList,
-      this.updateDate});
+      this.updateDate,
+      this.toogleRebuild});
 
   @override
   final UniqueId? id;
@@ -167,10 +199,12 @@ class _$_WorkoutformState implements _WorkoutformState {
   final List<Exercise>? exercieList;
   @override // @required List<Wod> wodList,
   final DateTime? updateDate;
+  @override
+  final bool? toogleRebuild;
 
   @override
   String toString() {
-    return 'WorkoutformState(id: $id, title: $title, workoutDate: $workoutDate, exercieList: $exercieList, updateDate: $updateDate)';
+    return 'WorkoutformState(id: $id, title: $title, workoutDate: $workoutDate, exercieList: $exercieList, updateDate: $updateDate, toogleRebuild: $toogleRebuild)';
   }
 
   @override
@@ -189,7 +223,10 @@ class _$_WorkoutformState implements _WorkoutformState {
                     .equals(other.exercieList, exercieList)) &&
             (identical(other.updateDate, updateDate) ||
                 const DeepCollectionEquality()
-                    .equals(other.updateDate, updateDate)));
+                    .equals(other.updateDate, updateDate)) &&
+            (identical(other.toogleRebuild, toogleRebuild) ||
+                const DeepCollectionEquality()
+                    .equals(other.toogleRebuild, toogleRebuild)));
   }
 
   @override
@@ -199,60 +236,13 @@ class _$_WorkoutformState implements _WorkoutformState {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(workoutDate) ^
       const DeepCollectionEquality().hash(exercieList) ^
-      const DeepCollectionEquality().hash(updateDate);
+      const DeepCollectionEquality().hash(updateDate) ^
+      const DeepCollectionEquality().hash(toogleRebuild);
 
   @JsonKey(ignore: true)
   @override
   _$WorkoutformStateCopyWith<_WorkoutformState> get copyWith =>
       __$WorkoutformStateCopyWithImpl<_WorkoutformState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(UniqueId? id, Title? title, DateTime? workoutDate,
-            List<Exercise>? exercieList, DateTime? updateDate)
-        $default, {
-    required TResult Function() initial,
-  }) {
-    return $default(id, title, workoutDate, exercieList, updateDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(UniqueId? id, Title? title, DateTime? workoutDate,
-            List<Exercise>? exercieList, DateTime? updateDate)?
-        $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(id, title, workoutDate, exercieList, updateDate);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_WorkoutformState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_WorkoutformState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _WorkoutformState implements WorkoutformState {
@@ -261,102 +251,23 @@ abstract class _WorkoutformState implements WorkoutformState {
       Title? title,
       DateTime? workoutDate,
       List<Exercise>? exercieList,
-      DateTime? updateDate}) = _$_WorkoutformState;
+      DateTime? updateDate,
+      bool? toogleRebuild}) = _$_WorkoutformState;
 
+  @override
   UniqueId? get id => throw _privateConstructorUsedError;
+  @override
   Title? get title => throw _privateConstructorUsedError;
+  @override
   DateTime? get workoutDate => throw _privateConstructorUsedError;
-  List<Exercise>? get exercieList =>
-      throw _privateConstructorUsedError; // @required List<Wod> wodList,
+  @override
+  List<Exercise>? get exercieList => throw _privateConstructorUsedError;
+  @override // @required List<Wod> wodList,
   DateTime? get updateDate => throw _privateConstructorUsedError;
+  @override
+  bool? get toogleRebuild => throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
   _$WorkoutformStateCopyWith<_WorkoutformState> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$WorkoutformStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
-
-  @override
-  _Initial get _value => super._value as _Initial;
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'WorkoutformState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(UniqueId? id, Title? title, DateTime? workoutDate,
-            List<Exercise>? exercieList, DateTime? updateDate)
-        $default, {
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(UniqueId? id, Title? title, DateTime? workoutDate,
-            List<Exercise>? exercieList, DateTime? updateDate)?
-        $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_WorkoutformState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_WorkoutformState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements WorkoutformState {
-  const factory _Initial() = _$_Initial;
 }
