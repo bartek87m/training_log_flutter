@@ -64,4 +64,24 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
       ),
     );
   }
+
+  void markSeriesAsComplete({int? exerciseNumber, int? seriesNumber}) {
+    List<Exercise>? newExerciseList = state.exercieList;
+    List<Series>? newSeriesList = state.exercieList?[exerciseNumber!].setsList;
+
+    Series? aaaa = newSeriesList?[exerciseNumber!].copyWith(completed: true);
+
+    newExerciseList?[exerciseNumber!].setsList?.removeAt(seriesNumber!);
+    newExerciseList?[exerciseNumber!].setsList?.insert(seriesNumber!, aaaa!);
+
+    emit(
+      state.copyWith(
+        exercieList: state.exercieList,
+        toogleRebuild: !state.toogleRebuild!,
+      ),
+    );
+
+    // print(aaaa);
+    print(state.exercieList?[exerciseNumber!].setsList);
+  }
 }

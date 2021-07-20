@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
-import 'package:training_log/domain/workout/series/series.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_bottom_buttons.dart';
-import 'package:training_log/presentation/workout/widgets/workout_view_reps_widget.dart';
-import 'package:training_log/presentation/workout/widgets/workout_view_result_widget.dart';
+import 'package:training_log/presentation/workout/widgets/workout_view_reps_sets_widget.dart';
 
 class WorkoutViewPage extends HookWidget {
   final Workout workout;
@@ -54,16 +52,12 @@ class WorkoutViewPage extends HookWidget {
                         key: UniqueKey(),
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          WorkoutViewRepsWidget(
+                          WorkoutViewRepsSetsWidget(
                             state: state,
                             exerciseIndex: exerciseIndex,
                             setsLength: state
                                 .exercieList![exerciseIndex].setsList!.length,
                           ),
-                          WorkoutViewResultWidget(
-                            exerciseIndex: exerciseIndex,
-                            state: state,
-                          )
                         ],
                       ),
                       WorkoutViewBottomButtons(
