@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 
 class WorkoutViewRepsSetsWidget extends StatelessWidget {
@@ -80,10 +79,10 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    // color:
-                    //     state.exercieList![exerciseIndex].setsList![i].completed
-                    //         ? Colors.lightGreen[100]
-                    //         : Colors.transparent,
+                    color:
+                        state.exercieList![exerciseIndex].setsList![i].completed
+                            ? Colors.lightGreen[100]
+                            : Colors.transparent,
                     margin: EdgeInsets.only(left: 1.w, right: 1.w),
                     height: 3.h,
                     width: 35.w,

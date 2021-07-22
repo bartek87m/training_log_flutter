@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:training_log/domain/core/value_object.dart';
 import 'package:training_log/domain/workout/exercise/exercise.dart';
-import 'package:training_log/domain/workout/i_workout_facade.dart';
 import 'package:training_log/domain/workout/series/series.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
@@ -18,15 +17,31 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
   WorkoutformCubit() : super(WorkoutformState.initial());
 
   void loadWorkoutToState(Workout workout) {
+    List<Exercise>? newWorkoutList = workout.exercieList;
+
+    List<Exercise>? finalList = newWorkoutList!.map(
+      (e) {
+        return Exercise(
+            exerciseName: e.exerciseName,
+            setsList: e.setsList
+                ?.map((element) => Series(
+                    reps: element.reps,
+                    result: element.result,
+                    resultFromlastTraining: element.resultFromlastTraining,
+                    completed:
+                        element.completed == null ? false : element.completed))
+                .toList());
+      },
+    ).toList();
+
     emit(
       state.copyWith(
         id: workout.id,
         title: workout.title,
-        exercieList: workout.exercieList,
+        exercieList: finalList,
         workoutDate: workout.workoutDate,
       ),
     );
-    print(state.exercieList?.length);
   }
 
   void removeSeriesFromExercise({int? exerciseNumber, int? seriesNumber}) {
