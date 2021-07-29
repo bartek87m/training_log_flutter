@@ -22,8 +22,8 @@ class WorkoutsViewsWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    context.router.popAndPush(
-                        WorkoutViewPageRoute(workout: state.workouts[index]));
+                    context.router.popAndPush(WorkoutViewPageRoute(
+                        workout: state.workouts[index], exerciseNumber: index));
                   },
                   child: WorkoutShortViewWidget(state.workouts[index]),
                 );

@@ -44,7 +44,8 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<WorkoutViewPageRouteArgs>();
-          return _i7.WorkoutViewPage(key: args.key, workout: args.workout);
+          return _i7.WorkoutViewPage(args.exerciseNumber,
+              key: args.key, workout: args.workout);
         })
   };
 
@@ -84,16 +85,23 @@ class WorkoutsViewPageRoute extends _i1.PageRouteInfo {
 }
 
 class WorkoutViewPageRoute extends _i1.PageRouteInfo<WorkoutViewPageRouteArgs> {
-  WorkoutViewPageRoute({_i2.Key? key, required _i8.Workout workout})
+  WorkoutViewPageRoute(
+      {required dynamic exerciseNumber,
+      _i2.Key? key,
+      required _i8.Workout workout})
       : super(name,
             path: '/workoutView',
-            args: WorkoutViewPageRouteArgs(key: key, workout: workout));
+            args: WorkoutViewPageRouteArgs(
+                exerciseNumber: exerciseNumber, key: key, workout: workout));
 
   static const String name = 'WorkoutViewPageRoute';
 }
 
 class WorkoutViewPageRouteArgs {
-  const WorkoutViewPageRouteArgs({this.key, required this.workout});
+  const WorkoutViewPageRouteArgs(
+      {required this.exerciseNumber, this.key, required this.workout});
+
+  final dynamic exerciseNumber;
 
   final _i2.Key? key;
 

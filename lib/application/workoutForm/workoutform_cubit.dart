@@ -17,6 +17,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
   WorkoutformCubit() : super(WorkoutformState.initial());
 
   void loadWorkoutToState(Workout workout) {
+    print(workout);
     List<Exercise>? newWorkoutList = workout.exercieList;
 
     List<Exercise>? finalList = newWorkoutList!.map(
@@ -40,6 +41,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         title: workout.title,
         exercieList: finalList,
         workoutDate: workout.workoutDate,
+        toogleRebuild: !state.toogleRebuild!,
       ),
     );
   }
@@ -66,6 +68,10 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
+  }
+
+  void removeWorkout() {
+    //TODO add remove exercise
   }
 
   void removeExercise({int? exerciseNumber}) {

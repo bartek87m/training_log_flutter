@@ -47,6 +47,7 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
                         exerciseNumber: exerciseIndex, seriesNumber: i);
                 }
               },
+              resizeDuration: Duration(microseconds: 1),
               background: Container(
                 alignment: Alignment.centerLeft,
                 color: Colors.green,
