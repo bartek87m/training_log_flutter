@@ -93,7 +93,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     Series? aaaa = newSeriesList?[exerciseNumber!].copyWith(completed: true);
 
     newExerciseList?[exerciseNumber!].setsList?.removeAt(seriesNumber!);
-    newExerciseList?[exerciseNumber!].setsList?.insert(seriesNumber!, aaaa!);
+    newExerciseList?[exerciseNumber!].setsList?.insert(seriesNumber!, aaaa);
 
     emit(
       state.copyWith(
