@@ -49,7 +49,10 @@ class WorkoutsViewPage extends StatelessWidget {
             child: FloatingActionButton(
               backgroundColor: Colors.grey,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(40))),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(40),
+                ),
+              ),
               onPressed: () {},
               child: Text('Create workout'),
             ),

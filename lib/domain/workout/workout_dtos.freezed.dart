@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'workout_dtos.dart';
 
@@ -33,7 +34,7 @@ class _$WorkoutDtoTearOff {
     );
   }
 
-  WorkoutDto fromJson(Map<String, Object> json) {
+  WorkoutDto fromJson(Map<String, Object?> json) {
     return WorkoutDto.fromJson(json);
   }
 }
@@ -160,7 +161,7 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
       : super._();
 
   factory _$_WorkoutDto.fromJson(Map<String, dynamic> json) =>
-      _$_$_WorkoutDtoFromJson(json);
+      _$$_WorkoutDtoFromJson(json);
 
   @override
   final String? id;
@@ -190,26 +191,23 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WorkoutDto &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.workoutDate, workoutDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.workoutDate, workoutDate)) &&
-            (identical(other.exercieList, exercieList) ||
-                const DeepCollectionEquality()
-                    .equals(other.exercieList, exercieList)));
+        (other.runtimeType == runtimeType &&
+            other is _WorkoutDto &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.workoutDate, workoutDate) &&
+            const DeepCollectionEquality()
+                .equals(other.exercieList, exercieList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(workoutDate) ^
-      const DeepCollectionEquality().hash(exercieList);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(workoutDate),
+      const DeepCollectionEquality().hash(exercieList));
 
   @JsonKey(ignore: true)
   @override
@@ -218,7 +216,7 @@ class _$_WorkoutDto extends _WorkoutDto with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_WorkoutDtoToJson(this);
+    return _$$_WorkoutDtoToJson(this);
   }
 }
 
@@ -234,13 +232,13 @@ abstract class _WorkoutDto extends WorkoutDto {
       _$_WorkoutDto.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get title => throw _privateConstructorUsedError;
+  String? get title;
   @override
-  DateTime? get workoutDate => throw _privateConstructorUsedError;
+  DateTime? get workoutDate;
   @override
-  List<ExerciseDto>? get exercieList => throw _privateConstructorUsedError;
+  List<ExerciseDto>? get exercieList;
   @override
   @JsonKey(ignore: true)
   _$WorkoutDtoCopyWith<_WorkoutDto> get copyWith =>
@@ -262,7 +260,7 @@ class _$ExerciseDtoTearOff {
     );
   }
 
-  ExerciseDto fromJson(Map<String, Object> json) {
+  ExerciseDto fromJson(Map<String, Object?> json) {
     return ExerciseDto.fromJson(json);
   }
 }
@@ -360,7 +358,7 @@ class _$_ExerciseDto extends _ExerciseDto with DiagnosticableTreeMixin {
   const _$_ExerciseDto({this.exerciseName, this.setsList}) : super._();
 
   factory _$_ExerciseDto.fromJson(Map<String, dynamic> json) =>
-      _$_$_ExerciseDtoFromJson(json);
+      _$$_ExerciseDtoFromJson(json);
 
   @override // @required String exerciseNumber,
   final String? exerciseName;
@@ -384,20 +382,18 @@ class _$_ExerciseDto extends _ExerciseDto with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ExerciseDto &&
-            (identical(other.exerciseName, exerciseName) ||
-                const DeepCollectionEquality()
-                    .equals(other.exerciseName, exerciseName)) &&
-            (identical(other.setsList, setsList) ||
-                const DeepCollectionEquality()
-                    .equals(other.setsList, setsList)));
+        (other.runtimeType == runtimeType &&
+            other is _ExerciseDto &&
+            const DeepCollectionEquality()
+                .equals(other.exerciseName, exerciseName) &&
+            const DeepCollectionEquality().equals(other.setsList, setsList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(exerciseName) ^
-      const DeepCollectionEquality().hash(setsList);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(exerciseName),
+      const DeepCollectionEquality().hash(setsList));
 
   @JsonKey(ignore: true)
   @override
@@ -406,7 +402,7 @@ class _$_ExerciseDto extends _ExerciseDto with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ExerciseDtoToJson(this);
+    return _$$_ExerciseDtoToJson(this);
   }
 }
 
@@ -419,9 +415,9 @@ abstract class _ExerciseDto extends ExerciseDto {
       _$_ExerciseDto.fromJson;
 
   @override // @required String exerciseNumber,
-  String? get exerciseName => throw _privateConstructorUsedError;
+  String? get exerciseName;
   @override
-  List<SeriesDto>? get setsList => throw _privateConstructorUsedError;
+  List<SeriesDto>? get setsList;
   @override
   @JsonKey(ignore: true)
   _$ExerciseDtoCopyWith<_ExerciseDto> get copyWith =>
@@ -449,7 +445,7 @@ class _$SeriesDtoTearOff {
     );
   }
 
-  SeriesDto fromJson(Map<String, Object> json) {
+  SeriesDto fromJson(Map<String, Object?> json) {
     return SeriesDto.fromJson(json);
   }
 }
@@ -576,7 +572,7 @@ class _$_SeriesDto extends _SeriesDto with DiagnosticableTreeMixin {
       : super._();
 
   factory _$_SeriesDto.fromJson(Map<String, dynamic> json) =>
-      _$_$_SeriesDtoFromJson(json);
+      _$$_SeriesDtoFromJson(json);
 
   @override // @required String seriesNumber,
   final String? reps;
@@ -607,26 +603,22 @@ class _$_SeriesDto extends _SeriesDto with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SeriesDto &&
-            (identical(other.reps, reps) ||
-                const DeepCollectionEquality().equals(other.reps, reps)) &&
-            (identical(other.result, result) ||
-                const DeepCollectionEquality().equals(other.result, result)) &&
-            (identical(other.resultFromLastTraining, resultFromLastTraining) ||
-                const DeepCollectionEquality().equals(
-                    other.resultFromLastTraining, resultFromLastTraining)) &&
-            (identical(other.completed, completed) ||
-                const DeepCollectionEquality()
-                    .equals(other.completed, completed)));
+        (other.runtimeType == runtimeType &&
+            other is _SeriesDto &&
+            const DeepCollectionEquality().equals(other.reps, reps) &&
+            const DeepCollectionEquality().equals(other.result, result) &&
+            const DeepCollectionEquality()
+                .equals(other.resultFromLastTraining, resultFromLastTraining) &&
+            const DeepCollectionEquality().equals(other.completed, completed));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(reps) ^
-      const DeepCollectionEquality().hash(result) ^
-      const DeepCollectionEquality().hash(resultFromLastTraining) ^
-      const DeepCollectionEquality().hash(completed);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(reps),
+      const DeepCollectionEquality().hash(result),
+      const DeepCollectionEquality().hash(resultFromLastTraining),
+      const DeepCollectionEquality().hash(completed));
 
   @JsonKey(ignore: true)
   @override
@@ -635,7 +627,7 @@ class _$_SeriesDto extends _SeriesDto with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_SeriesDtoToJson(this);
+    return _$$_SeriesDtoToJson(this);
   }
 }
 
@@ -651,13 +643,13 @@ abstract class _SeriesDto extends SeriesDto {
       _$_SeriesDto.fromJson;
 
   @override // @required String seriesNumber,
-  String? get reps => throw _privateConstructorUsedError;
+  String? get reps;
   @override
-  String? get result => throw _privateConstructorUsedError;
+  String? get result;
   @override //reps or time,
-  String? get resultFromLastTraining => throw _privateConstructorUsedError;
+  String? get resultFromLastTraining;
   @override
-  bool? get completed => throw _privateConstructorUsedError;
+  bool? get completed;
   @override
   @JsonKey(ignore: true)
   _$SeriesDtoCopyWith<_SeriesDto> get copyWith =>

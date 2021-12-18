@@ -16,8 +16,7 @@ class SignInFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInCubit, SignInFromState>(
       listener: (context, state) {
-        state.authFailureOrSuccess!.fold(
-          () => null,
+        state.authFailureOrSuccess!.match(
           (a) => a.fold(
             (failure) => {
               showTopSnackBar(
@@ -43,6 +42,7 @@ class SignInFormWidget extends StatelessWidget {
                   );
             },
           ),
+          () => null,
         );
       },
       builder: (context, state) {

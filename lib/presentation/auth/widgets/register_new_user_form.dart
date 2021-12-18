@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
 import 'package:sizer/sizer.dart';
@@ -16,33 +17,32 @@ class RegisterNewUserForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInCubit, SignInFromState>(
       listener: (context, state) {
-        state.authFailureOrSuccess!.fold(
-          () => null,
-          (a) => a.fold(
-            (failure) => {
-              showTopSnackBar(
-                context,
-                CustomSnackBar.error(
-                  message: failure.map(
-                      cancelledByUser: (_) => 'Cancel',
-                      serverError: (_) => 'Server Error',
-                      invalidEmailAndPasswordCombinaion: (_) =>
-                          'Invalid email and pasword combination',
-                      emailAlreadiInUse: (_) => 'Email already in use'),
+        state.authFailureOrSuccess!.match(
+            (a) => a.fold(
+                  (failure) => {
+                    showTopSnackBar(
+                      context,
+                      CustomSnackBar.error(
+                        message: failure.map(
+                            cancelledByUser: (_) => 'Cancel',
+                            serverError: (_) => 'Server Error',
+                            invalidEmailAndPasswordCombinaion: (_) =>
+                                'Invalid email and pasword combination',
+                            emailAlreadiInUse: (_) => 'Email already in use'),
+                      ),
+                    ),
+                  },
+                  (_) => {
+                    context.read<AuthCubit>().checkAuthentification(),
+                    context.read<AuthCubit>().state.maybeMap(
+                          authentificate: (_) {
+                            context.router.replace(WorkoutsViewPageRoute());
+                          },
+                          orElse: () => null,
+                        )
+                  },
                 ),
-              ),
-            },
-            (_) => {
-              context.read<AuthCubit>().checkAuthentification(),
-              context.read<AuthCubit>().state.maybeMap(
-                    authentificate: (_) {
-                      context.router.replace(WorkoutsViewPageRoute());
-                    },
-                    orElse: () => null,
-                  )
-            },
-          ),
-        );
+            () => none());
       },
       builder: (context, state) {
         return Form(

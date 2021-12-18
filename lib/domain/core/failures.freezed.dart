@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'failures.dart';
 
@@ -71,6 +72,16 @@ mixin _$ValueFailure<T> {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? failedValue)? invalidEmail,
+    TResult Function(String? failedValue)? shortPassword,
+    TResult Function(List<Password>? failedValue)? passwordsNotIdentical,
+    TResult Function(String? failedValue)? workoutTitleTolong,
+    TResult Function(String? failedValue)? workoutStringEmpty,
+    TResult Function(String? failedValue)? exerciseNameEmpty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? failedValue)? invalidEmail,
     TResult Function(String? failedValue)? shortPassword,
@@ -90,6 +101,16 @@ mixin _$ValueFailure<T> {
     required TResult Function(WorkoutTItleToLong<T> value) workoutTitleTolong,
     required TResult Function(WorkoutTItleEmpty<T> value) workoutStringEmpty,
     required TResult Function(ExerciseNameEmpty<T> value) exerciseNameEmpty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordsNotIdentical<T> value)? passwordsNotIdentical,
+    TResult Function(WorkoutTItleToLong<T> value)? workoutTitleTolong,
+    TResult Function(WorkoutTItleEmpty<T> value)? workoutStringEmpty,
+    TResult Function(ExerciseNameEmpty<T> value)? exerciseNameEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -170,15 +191,15 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is InvalidEmail<T> &&
-            (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedValue, failedValue)));
+        (other.runtimeType == runtimeType &&
+            other is InvalidEmail<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
 
   @JsonKey(ignore: true)
   @override
@@ -197,6 +218,19 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(String? failedValue) exerciseNameEmpty,
   }) {
     return invalidEmail(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? failedValue)? invalidEmail,
+    TResult Function(String? failedValue)? shortPassword,
+    TResult Function(List<Password>? failedValue)? passwordsNotIdentical,
+    TResult Function(String? failedValue)? workoutTitleTolong,
+    TResult Function(String? failedValue)? workoutStringEmpty,
+    TResult Function(String? failedValue)? exerciseNameEmpty,
+  }) {
+    return invalidEmail?.call(failedValue);
   }
 
   @override
@@ -232,6 +266,19 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordsNotIdentical<T> value)? passwordsNotIdentical,
+    TResult Function(WorkoutTItleToLong<T> value)? workoutTitleTolong,
+    TResult Function(WorkoutTItleEmpty<T> value)? workoutStringEmpty,
+    TResult Function(ExerciseNameEmpty<T> value)? exerciseNameEmpty,
+  }) {
+    return invalidEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
@@ -251,7 +298,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
 abstract class InvalidEmail<T> implements ValueFailure<T> {
   const factory InvalidEmail({String? failedValue}) = _$InvalidEmail<T>;
 
-  String? get failedValue => throw _privateConstructorUsedError;
+  String? get failedValue;
   @JsonKey(ignore: true)
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -305,15 +352,15 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ShortPassword<T> &&
-            (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedValue, failedValue)));
+        (other.runtimeType == runtimeType &&
+            other is ShortPassword<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
 
   @JsonKey(ignore: true)
   @override
@@ -332,6 +379,19 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(String? failedValue) exerciseNameEmpty,
   }) {
     return shortPassword(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? failedValue)? invalidEmail,
+    TResult Function(String? failedValue)? shortPassword,
+    TResult Function(List<Password>? failedValue)? passwordsNotIdentical,
+    TResult Function(String? failedValue)? workoutTitleTolong,
+    TResult Function(String? failedValue)? workoutStringEmpty,
+    TResult Function(String? failedValue)? exerciseNameEmpty,
+  }) {
+    return shortPassword?.call(failedValue);
   }
 
   @override
@@ -367,6 +427,19 @@ class _$ShortPassword<T> implements ShortPassword<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordsNotIdentical<T> value)? passwordsNotIdentical,
+    TResult Function(WorkoutTItleToLong<T> value)? workoutTitleTolong,
+    TResult Function(WorkoutTItleEmpty<T> value)? workoutStringEmpty,
+    TResult Function(ExerciseNameEmpty<T> value)? exerciseNameEmpty,
+  }) {
+    return shortPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
@@ -386,7 +459,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
 abstract class ShortPassword<T> implements ValueFailure<T> {
   const factory ShortPassword({String? failedValue}) = _$ShortPassword<T>;
 
-  String? get failedValue => throw _privateConstructorUsedError;
+  String? get failedValue;
   @JsonKey(ignore: true)
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -441,15 +514,15 @@ class _$PasswordsNotIdentical<T> implements PasswordsNotIdentical<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is PasswordsNotIdentical<T> &&
-            (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedValue, failedValue)));
+        (other.runtimeType == runtimeType &&
+            other is PasswordsNotIdentical<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
 
   @JsonKey(ignore: true)
   @override
@@ -469,6 +542,19 @@ class _$PasswordsNotIdentical<T> implements PasswordsNotIdentical<T> {
     required TResult Function(String? failedValue) exerciseNameEmpty,
   }) {
     return passwordsNotIdentical(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? failedValue)? invalidEmail,
+    TResult Function(String? failedValue)? shortPassword,
+    TResult Function(List<Password>? failedValue)? passwordsNotIdentical,
+    TResult Function(String? failedValue)? workoutTitleTolong,
+    TResult Function(String? failedValue)? workoutStringEmpty,
+    TResult Function(String? failedValue)? exerciseNameEmpty,
+  }) {
+    return passwordsNotIdentical?.call(failedValue);
   }
 
   @override
@@ -504,6 +590,19 @@ class _$PasswordsNotIdentical<T> implements PasswordsNotIdentical<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordsNotIdentical<T> value)? passwordsNotIdentical,
+    TResult Function(WorkoutTItleToLong<T> value)? workoutTitleTolong,
+    TResult Function(WorkoutTItleEmpty<T> value)? workoutStringEmpty,
+    TResult Function(ExerciseNameEmpty<T> value)? exerciseNameEmpty,
+  }) {
+    return passwordsNotIdentical?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
@@ -524,7 +623,7 @@ abstract class PasswordsNotIdentical<T> implements ValueFailure<T> {
   const factory PasswordsNotIdentical({List<Password>? failedValue}) =
       _$PasswordsNotIdentical<T>;
 
-  List<Password>? get failedValue => throw _privateConstructorUsedError;
+  List<Password>? get failedValue;
   @JsonKey(ignore: true)
   $PasswordsNotIdenticalCopyWith<T, PasswordsNotIdentical<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -578,15 +677,15 @@ class _$WorkoutTItleToLong<T> implements WorkoutTItleToLong<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is WorkoutTItleToLong<T> &&
-            (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedValue, failedValue)));
+        (other.runtimeType == runtimeType &&
+            other is WorkoutTItleToLong<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
 
   @JsonKey(ignore: true)
   @override
@@ -606,6 +705,19 @@ class _$WorkoutTItleToLong<T> implements WorkoutTItleToLong<T> {
     required TResult Function(String? failedValue) exerciseNameEmpty,
   }) {
     return workoutTitleTolong(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? failedValue)? invalidEmail,
+    TResult Function(String? failedValue)? shortPassword,
+    TResult Function(List<Password>? failedValue)? passwordsNotIdentical,
+    TResult Function(String? failedValue)? workoutTitleTolong,
+    TResult Function(String? failedValue)? workoutStringEmpty,
+    TResult Function(String? failedValue)? exerciseNameEmpty,
+  }) {
+    return workoutTitleTolong?.call(failedValue);
   }
 
   @override
@@ -641,6 +753,19 @@ class _$WorkoutTItleToLong<T> implements WorkoutTItleToLong<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordsNotIdentical<T> value)? passwordsNotIdentical,
+    TResult Function(WorkoutTItleToLong<T> value)? workoutTitleTolong,
+    TResult Function(WorkoutTItleEmpty<T> value)? workoutStringEmpty,
+    TResult Function(ExerciseNameEmpty<T> value)? exerciseNameEmpty,
+  }) {
+    return workoutTitleTolong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
@@ -661,7 +786,7 @@ abstract class WorkoutTItleToLong<T> implements ValueFailure<T> {
   const factory WorkoutTItleToLong({String? failedValue}) =
       _$WorkoutTItleToLong<T>;
 
-  String? get failedValue => throw _privateConstructorUsedError;
+  String? get failedValue;
   @JsonKey(ignore: true)
   $WorkoutTItleToLongCopyWith<T, WorkoutTItleToLong<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -715,15 +840,15 @@ class _$WorkoutTItleEmpty<T> implements WorkoutTItleEmpty<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is WorkoutTItleEmpty<T> &&
-            (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedValue, failedValue)));
+        (other.runtimeType == runtimeType &&
+            other is WorkoutTItleEmpty<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
 
   @JsonKey(ignore: true)
   @override
@@ -743,6 +868,19 @@ class _$WorkoutTItleEmpty<T> implements WorkoutTItleEmpty<T> {
     required TResult Function(String? failedValue) exerciseNameEmpty,
   }) {
     return workoutStringEmpty(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? failedValue)? invalidEmail,
+    TResult Function(String? failedValue)? shortPassword,
+    TResult Function(List<Password>? failedValue)? passwordsNotIdentical,
+    TResult Function(String? failedValue)? workoutTitleTolong,
+    TResult Function(String? failedValue)? workoutStringEmpty,
+    TResult Function(String? failedValue)? exerciseNameEmpty,
+  }) {
+    return workoutStringEmpty?.call(failedValue);
   }
 
   @override
@@ -778,6 +916,19 @@ class _$WorkoutTItleEmpty<T> implements WorkoutTItleEmpty<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordsNotIdentical<T> value)? passwordsNotIdentical,
+    TResult Function(WorkoutTItleToLong<T> value)? workoutTitleTolong,
+    TResult Function(WorkoutTItleEmpty<T> value)? workoutStringEmpty,
+    TResult Function(ExerciseNameEmpty<T> value)? exerciseNameEmpty,
+  }) {
+    return workoutStringEmpty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
@@ -798,7 +949,7 @@ abstract class WorkoutTItleEmpty<T> implements ValueFailure<T> {
   const factory WorkoutTItleEmpty({String? failedValue}) =
       _$WorkoutTItleEmpty<T>;
 
-  String? get failedValue => throw _privateConstructorUsedError;
+  String? get failedValue;
   @JsonKey(ignore: true)
   $WorkoutTItleEmptyCopyWith<T, WorkoutTItleEmpty<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -852,15 +1003,15 @@ class _$ExerciseNameEmpty<T> implements ExerciseNameEmpty<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ExerciseNameEmpty<T> &&
-            (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedValue, failedValue)));
+        (other.runtimeType == runtimeType &&
+            other is ExerciseNameEmpty<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
 
   @JsonKey(ignore: true)
   @override
@@ -880,6 +1031,19 @@ class _$ExerciseNameEmpty<T> implements ExerciseNameEmpty<T> {
     required TResult Function(String? failedValue) exerciseNameEmpty,
   }) {
     return exerciseNameEmpty(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? failedValue)? invalidEmail,
+    TResult Function(String? failedValue)? shortPassword,
+    TResult Function(List<Password>? failedValue)? passwordsNotIdentical,
+    TResult Function(String? failedValue)? workoutTitleTolong,
+    TResult Function(String? failedValue)? workoutStringEmpty,
+    TResult Function(String? failedValue)? exerciseNameEmpty,
+  }) {
+    return exerciseNameEmpty?.call(failedValue);
   }
 
   @override
@@ -915,6 +1079,19 @@ class _$ExerciseNameEmpty<T> implements ExerciseNameEmpty<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(PasswordsNotIdentical<T> value)? passwordsNotIdentical,
+    TResult Function(WorkoutTItleToLong<T> value)? workoutTitleTolong,
+    TResult Function(WorkoutTItleEmpty<T> value)? workoutStringEmpty,
+    TResult Function(ExerciseNameEmpty<T> value)? exerciseNameEmpty,
+  }) {
+    return exerciseNameEmpty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
@@ -935,7 +1112,7 @@ abstract class ExerciseNameEmpty<T> implements ValueFailure<T> {
   const factory ExerciseNameEmpty({String? failedValue}) =
       _$ExerciseNameEmpty<T>;
 
-  String? get failedValue => throw _privateConstructorUsedError;
+  String? get failedValue;
   @JsonKey(ignore: true)
   $ExerciseNameEmptyCopyWith<T, ExerciseNameEmpty<T>> get copyWith =>
       throw _privateConstructorUsedError;

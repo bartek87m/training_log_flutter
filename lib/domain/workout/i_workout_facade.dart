@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
 

@@ -1,95 +1,107 @@
+// **************************************************************************
+// AutoRouteGenerator
+// **************************************************************************
+
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/material.dart' as _i2;
+import 'package:auto_route/auto_route.dart' as _i6;
+import 'package:flutter/material.dart' as _i7;
 
 import '../../domain/workout/workout.dart' as _i8;
-import '../auth/refister_new_user_page.dart' as _i5;
-import '../auth/sign_in_page.dart' as _i4;
-import '../splash/splash_page.dart' as _i3;
-import '../workout/workout_view_page.dart' as _i7;
-import '../workout/workouts_view_page.dart' as _i6;
+import '../auth/refister_new_user_page.dart' as _i3;
+import '../auth/sign_in_page.dart' as _i2;
+import '../splash/splash_page.dart' as _i1;
+import '../workout/workout_view_page.dart' as _i5;
+import '../workout/workouts_view_page.dart' as _i4;
 
-class AppRouter extends _i1.RootStackRouter {
-  AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
+class AppRouter extends _i6.RootStackRouter {
+  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i1.PageFactory> pagesMap = {
-    SplashPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i3.SplashPage();
-        }),
-    SignInPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i4.SignInPage();
-        }),
-    RegisterNewUserPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i5.RegisterNewUserPage();
-        }),
-    WorkoutsViewPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i6.WorkoutsViewPage();
-        }),
-    WorkoutViewPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<WorkoutViewPageRouteArgs>();
-          return _i7.WorkoutViewPage(args.exerciseNumber,
-              key: args.key, workout: args.workout);
-        })
+  final Map<String, _i6.PageFactory> pagesMap = {
+    SplashPageRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i1.SplashPage());
+    },
+    SignInPageRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i2.SignInPage());
+    },
+    RegisterNewUserPageRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i3.RegisterNewUserPage());
+    },
+    WorkoutsViewPageRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i4.WorkoutsViewPage());
+    },
+    WorkoutViewPageRoute.name: (routeData) {
+      final args = routeData.argsAs<WorkoutViewPageRouteArgs>();
+      return _i6.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i5.WorkoutViewPage(args.exerciseNumber,
+              key: args.key, workout: args.workout));
+    }
   };
 
   @override
-  List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(SplashPageRoute.name, path: '/'),
-        _i1.RouteConfig(SignInPageRoute.name, path: '/signInPage'),
-        _i1.RouteConfig(RegisterNewUserPageRoute.name,
+  List<_i6.RouteConfig> get routes => [
+        _i6.RouteConfig(SplashPageRoute.name, path: '/'),
+        _i6.RouteConfig(SignInPageRoute.name, path: '/signInPage'),
+        _i6.RouteConfig(RegisterNewUserPageRoute.name,
             path: '/registerNewUser'),
-        _i1.RouteConfig(WorkoutsViewPageRoute.name, path: '/workoutsView'),
-        _i1.RouteConfig(WorkoutViewPageRoute.name, path: '/workoutView')
+        _i6.RouteConfig(WorkoutsViewPageRoute.name, path: '/workoutsView'),
+        _i6.RouteConfig(WorkoutViewPageRoute.name, path: '/workoutView')
       ];
 }
 
-class SplashPageRoute extends _i1.PageRouteInfo {
-  const SplashPageRoute() : super(name, path: '/');
+/// generated route for
+/// [_i1.SplashPage]
+class SplashPageRoute extends _i6.PageRouteInfo<void> {
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
 
   static const String name = 'SplashPageRoute';
 }
 
-class SignInPageRoute extends _i1.PageRouteInfo {
-  const SignInPageRoute() : super(name, path: '/signInPage');
+/// generated route for
+/// [_i2.SignInPage]
+class SignInPageRoute extends _i6.PageRouteInfo<void> {
+  const SignInPageRoute() : super(SignInPageRoute.name, path: '/signInPage');
 
   static const String name = 'SignInPageRoute';
 }
 
-class RegisterNewUserPageRoute extends _i1.PageRouteInfo {
-  const RegisterNewUserPageRoute() : super(name, path: '/registerNewUser');
+/// generated route for
+/// [_i3.RegisterNewUserPage]
+class RegisterNewUserPageRoute extends _i6.PageRouteInfo<void> {
+  const RegisterNewUserPageRoute()
+      : super(RegisterNewUserPageRoute.name, path: '/registerNewUser');
 
   static const String name = 'RegisterNewUserPageRoute';
 }
 
-class WorkoutsViewPageRoute extends _i1.PageRouteInfo {
-  const WorkoutsViewPageRoute() : super(name, path: '/workoutsView');
+/// generated route for
+/// [_i4.WorkoutsViewPage]
+class WorkoutsViewPageRoute extends _i6.PageRouteInfo<void> {
+  const WorkoutsViewPageRoute()
+      : super(WorkoutsViewPageRoute.name, path: '/workoutsView');
 
   static const String name = 'WorkoutsViewPageRoute';
 }
 
-class WorkoutViewPageRoute extends _i1.PageRouteInfo<WorkoutViewPageRouteArgs> {
+/// generated route for
+/// [_i5.WorkoutViewPage]
+class WorkoutViewPageRoute extends _i6.PageRouteInfo<WorkoutViewPageRouteArgs> {
   WorkoutViewPageRoute(
       {required dynamic exerciseNumber,
-      _i2.Key? key,
+      _i7.Key? key,
       required _i8.Workout workout})
-      : super(name,
+      : super(WorkoutViewPageRoute.name,
             path: '/workoutView',
             args: WorkoutViewPageRouteArgs(
                 exerciseNumber: exerciseNumber, key: key, workout: workout));
@@ -103,7 +115,12 @@ class WorkoutViewPageRouteArgs {
 
   final dynamic exerciseNumber;
 
-  final _i2.Key? key;
+  final _i7.Key? key;
 
   final _i8.Workout workout;
+
+  @override
+  String toString() {
+    return 'WorkoutViewPageRouteArgs{exerciseNumber: $exerciseNumber, key: $key, workout: $workout}';
+  }
 }

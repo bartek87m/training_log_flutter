@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'workoutwatcher_bloc.dart';
 
@@ -16,13 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$WorkoutwatcherEventTearOff {
   const _$WorkoutwatcherEventTearOff();
 
-  _DownloadWorkouts downloadWorkouts() {
-    return const _DownloadWorkouts();
+  DownloadWorkouts downloadWorkouts() {
+    return const DownloadWorkouts();
   }
 
-  _WorkoutsReceived workoutsReceived(
+  WorkoutsReceived workoutsReceived(
       Either<WorkoutFailure, List<Workout>> failureOrWorkouts) {
-    return _WorkoutsReceived(
+    return WorkoutsReceived(
       failureOrWorkouts,
     );
   }
@@ -42,6 +43,13 @@ mixin _$WorkoutwatcherEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? downloadWorkouts,
+    TResult Function(Either<WorkoutFailure, List<Workout>> failureOrWorkouts)?
+        workoutsReceived,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadWorkouts,
     TResult Function(Either<WorkoutFailure, List<Workout>> failureOrWorkouts)?
@@ -51,14 +59,20 @@ mixin _$WorkoutwatcherEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadWorkouts value) downloadWorkouts,
-    required TResult Function(_WorkoutsReceived value) workoutsReceived,
+    required TResult Function(DownloadWorkouts value) downloadWorkouts,
+    required TResult Function(WorkoutsReceived value) workoutsReceived,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DownloadWorkouts value)? downloadWorkouts,
+    TResult Function(WorkoutsReceived value)? workoutsReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadWorkouts value)? downloadWorkouts,
-    TResult Function(_WorkoutsReceived value)? workoutsReceived,
+    TResult Function(DownloadWorkouts value)? downloadWorkouts,
+    TResult Function(WorkoutsReceived value)? workoutsReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,28 +96,28 @@ class _$WorkoutwatcherEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DownloadWorkoutsCopyWith<$Res> {
-  factory _$DownloadWorkoutsCopyWith(
-          _DownloadWorkouts value, $Res Function(_DownloadWorkouts) then) =
-      __$DownloadWorkoutsCopyWithImpl<$Res>;
+abstract class $DownloadWorkoutsCopyWith<$Res> {
+  factory $DownloadWorkoutsCopyWith(
+          DownloadWorkouts value, $Res Function(DownloadWorkouts) then) =
+      _$DownloadWorkoutsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$DownloadWorkoutsCopyWithImpl<$Res>
+class _$DownloadWorkoutsCopyWithImpl<$Res>
     extends _$WorkoutwatcherEventCopyWithImpl<$Res>
-    implements _$DownloadWorkoutsCopyWith<$Res> {
-  __$DownloadWorkoutsCopyWithImpl(
-      _DownloadWorkouts _value, $Res Function(_DownloadWorkouts) _then)
-      : super(_value, (v) => _then(v as _DownloadWorkouts));
+    implements $DownloadWorkoutsCopyWith<$Res> {
+  _$DownloadWorkoutsCopyWithImpl(
+      DownloadWorkouts _value, $Res Function(DownloadWorkouts) _then)
+      : super(_value, (v) => _then(v as DownloadWorkouts));
 
   @override
-  _DownloadWorkouts get _value => super._value as _DownloadWorkouts;
+  DownloadWorkouts get _value => super._value as DownloadWorkouts;
 }
 
 /// @nodoc
 
-class _$_DownloadWorkouts implements _DownloadWorkouts {
-  const _$_DownloadWorkouts();
+class _$DownloadWorkouts implements DownloadWorkouts {
+  const _$DownloadWorkouts();
 
   @override
   String toString() {
@@ -112,7 +126,8 @@ class _$_DownloadWorkouts implements _DownloadWorkouts {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _DownloadWorkouts);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is DownloadWorkouts);
   }
 
   @override
@@ -127,6 +142,16 @@ class _$_DownloadWorkouts implements _DownloadWorkouts {
         workoutsReceived,
   }) {
     return downloadWorkouts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? downloadWorkouts,
+    TResult Function(Either<WorkoutFailure, List<Workout>> failureOrWorkouts)?
+        workoutsReceived,
+  }) {
+    return downloadWorkouts?.call();
   }
 
   @override
@@ -146,17 +171,26 @@ class _$_DownloadWorkouts implements _DownloadWorkouts {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadWorkouts value) downloadWorkouts,
-    required TResult Function(_WorkoutsReceived value) workoutsReceived,
+    required TResult Function(DownloadWorkouts value) downloadWorkouts,
+    required TResult Function(WorkoutsReceived value) workoutsReceived,
   }) {
     return downloadWorkouts(this);
   }
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DownloadWorkouts value)? downloadWorkouts,
+    TResult Function(WorkoutsReceived value)? workoutsReceived,
+  }) {
+    return downloadWorkouts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadWorkouts value)? downloadWorkouts,
-    TResult Function(_WorkoutsReceived value)? workoutsReceived,
+    TResult Function(DownloadWorkouts value)? downloadWorkouts,
+    TResult Function(WorkoutsReceived value)? workoutsReceived,
     required TResult orElse(),
   }) {
     if (downloadWorkouts != null) {
@@ -166,34 +200,34 @@ class _$_DownloadWorkouts implements _DownloadWorkouts {
   }
 }
 
-abstract class _DownloadWorkouts implements WorkoutwatcherEvent {
-  const factory _DownloadWorkouts() = _$_DownloadWorkouts;
+abstract class DownloadWorkouts implements WorkoutwatcherEvent {
+  const factory DownloadWorkouts() = _$DownloadWorkouts;
 }
 
 /// @nodoc
-abstract class _$WorkoutsReceivedCopyWith<$Res> {
-  factory _$WorkoutsReceivedCopyWith(
-          _WorkoutsReceived value, $Res Function(_WorkoutsReceived) then) =
-      __$WorkoutsReceivedCopyWithImpl<$Res>;
+abstract class $WorkoutsReceivedCopyWith<$Res> {
+  factory $WorkoutsReceivedCopyWith(
+          WorkoutsReceived value, $Res Function(WorkoutsReceived) then) =
+      _$WorkoutsReceivedCopyWithImpl<$Res>;
   $Res call({Either<WorkoutFailure, List<Workout>> failureOrWorkouts});
 }
 
 /// @nodoc
-class __$WorkoutsReceivedCopyWithImpl<$Res>
+class _$WorkoutsReceivedCopyWithImpl<$Res>
     extends _$WorkoutwatcherEventCopyWithImpl<$Res>
-    implements _$WorkoutsReceivedCopyWith<$Res> {
-  __$WorkoutsReceivedCopyWithImpl(
-      _WorkoutsReceived _value, $Res Function(_WorkoutsReceived) _then)
-      : super(_value, (v) => _then(v as _WorkoutsReceived));
+    implements $WorkoutsReceivedCopyWith<$Res> {
+  _$WorkoutsReceivedCopyWithImpl(
+      WorkoutsReceived _value, $Res Function(WorkoutsReceived) _then)
+      : super(_value, (v) => _then(v as WorkoutsReceived));
 
   @override
-  _WorkoutsReceived get _value => super._value as _WorkoutsReceived;
+  WorkoutsReceived get _value => super._value as WorkoutsReceived;
 
   @override
   $Res call({
     Object? failureOrWorkouts = freezed,
   }) {
-    return _then(_WorkoutsReceived(
+    return _then(WorkoutsReceived(
       failureOrWorkouts == freezed
           ? _value.failureOrWorkouts
           : failureOrWorkouts // ignore: cast_nullable_to_non_nullable
@@ -204,8 +238,8 @@ class __$WorkoutsReceivedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutsReceived implements _WorkoutsReceived {
-  const _$_WorkoutsReceived(this.failureOrWorkouts);
+class _$WorkoutsReceived implements WorkoutsReceived {
+  const _$WorkoutsReceived(this.failureOrWorkouts);
 
   @override
   final Either<WorkoutFailure, List<Workout>> failureOrWorkouts;
@@ -218,21 +252,20 @@ class _$_WorkoutsReceived implements _WorkoutsReceived {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WorkoutsReceived &&
-            (identical(other.failureOrWorkouts, failureOrWorkouts) ||
-                const DeepCollectionEquality()
-                    .equals(other.failureOrWorkouts, failureOrWorkouts)));
+        (other.runtimeType == runtimeType &&
+            other is WorkoutsReceived &&
+            const DeepCollectionEquality()
+                .equals(other.failureOrWorkouts, failureOrWorkouts));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(failureOrWorkouts);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureOrWorkouts));
 
   @JsonKey(ignore: true)
   @override
-  _$WorkoutsReceivedCopyWith<_WorkoutsReceived> get copyWith =>
-      __$WorkoutsReceivedCopyWithImpl<_WorkoutsReceived>(this, _$identity);
+  $WorkoutsReceivedCopyWith<WorkoutsReceived> get copyWith =>
+      _$WorkoutsReceivedCopyWithImpl<WorkoutsReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -243,6 +276,16 @@ class _$_WorkoutsReceived implements _WorkoutsReceived {
         workoutsReceived,
   }) {
     return workoutsReceived(failureOrWorkouts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? downloadWorkouts,
+    TResult Function(Either<WorkoutFailure, List<Workout>> failureOrWorkouts)?
+        workoutsReceived,
+  }) {
+    return workoutsReceived?.call(failureOrWorkouts);
   }
 
   @override
@@ -262,17 +305,26 @@ class _$_WorkoutsReceived implements _WorkoutsReceived {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadWorkouts value) downloadWorkouts,
-    required TResult Function(_WorkoutsReceived value) workoutsReceived,
+    required TResult Function(DownloadWorkouts value) downloadWorkouts,
+    required TResult Function(WorkoutsReceived value) workoutsReceived,
   }) {
     return workoutsReceived(this);
   }
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DownloadWorkouts value)? downloadWorkouts,
+    TResult Function(WorkoutsReceived value)? workoutsReceived,
+  }) {
+    return workoutsReceived?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadWorkouts value)? downloadWorkouts,
-    TResult Function(_WorkoutsReceived value)? workoutsReceived,
+    TResult Function(DownloadWorkouts value)? downloadWorkouts,
+    TResult Function(WorkoutsReceived value)? workoutsReceived,
     required TResult orElse(),
   }) {
     if (workoutsReceived != null) {
@@ -282,15 +334,14 @@ class _$_WorkoutsReceived implements _WorkoutsReceived {
   }
 }
 
-abstract class _WorkoutsReceived implements WorkoutwatcherEvent {
-  const factory _WorkoutsReceived(
+abstract class WorkoutsReceived implements WorkoutwatcherEvent {
+  const factory WorkoutsReceived(
           Either<WorkoutFailure, List<Workout>> failureOrWorkouts) =
-      _$_WorkoutsReceived;
+      _$WorkoutsReceived;
 
-  Either<WorkoutFailure, List<Workout>> get failureOrWorkouts =>
-      throw _privateConstructorUsedError;
+  Either<WorkoutFailure, List<Workout>> get failureOrWorkouts;
   @JsonKey(ignore: true)
-  _$WorkoutsReceivedCopyWith<_WorkoutsReceived> get copyWith =>
+  $WorkoutsReceivedCopyWith<WorkoutsReceived> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -333,6 +384,14 @@ mixin _$WorkoutwatcherState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(WorkoutFailure workoutfailure)? loadFailure,
+    TResult Function(List<Workout> workouts)? loadSuccess,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -347,6 +406,14 @@ mixin _$WorkoutwatcherState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_LoadFailure value) loadFailure,
     required TResult Function(_LoadSuccess value) loadSuccess,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -406,7 +473,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -421,6 +489,17 @@ class _$_Initial implements _Initial {
     required TResult Function(List<Workout> workouts) loadSuccess,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(WorkoutFailure workoutfailure)? loadFailure,
+    TResult Function(List<Workout> workouts)? loadSuccess,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -447,6 +526,17 @@ class _$_Initial implements _Initial {
     required TResult Function(_LoadSuccess value) loadSuccess,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -498,7 +588,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -513,6 +604,17 @@ class _$_Loading implements _Loading {
     required TResult Function(List<Workout> workouts) loadSuccess,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(WorkoutFailure workoutfailure)? loadFailure,
+    TResult Function(List<Workout> workouts)? loadSuccess,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -539,6 +641,17 @@ class _$_Loading implements _Loading {
     required TResult Function(_LoadSuccess value) loadSuccess,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -618,16 +731,15 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoadFailure &&
-            (identical(other.workoutfailure, workoutfailure) ||
-                const DeepCollectionEquality()
-                    .equals(other.workoutfailure, workoutfailure)));
+        (other.runtimeType == runtimeType &&
+            other is _LoadFailure &&
+            const DeepCollectionEquality()
+                .equals(other.workoutfailure, workoutfailure));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(workoutfailure);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(workoutfailure));
 
   @JsonKey(ignore: true)
   @override
@@ -643,6 +755,17 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function(List<Workout> workouts) loadSuccess,
   }) {
     return loadFailure(workoutfailure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(WorkoutFailure workoutfailure)? loadFailure,
+    TResult Function(List<Workout> workouts)? loadSuccess,
+  }) {
+    return loadFailure?.call(workoutfailure);
   }
 
   @override
@@ -673,6 +796,17 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+  }) {
+    return loadFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
@@ -690,7 +824,7 @@ class _$_LoadFailure implements _LoadFailure {
 abstract class _LoadFailure implements WorkoutwatcherState {
   const factory _LoadFailure(WorkoutFailure workoutfailure) = _$_LoadFailure;
 
-  WorkoutFailure get workoutfailure => throw _privateConstructorUsedError;
+  WorkoutFailure get workoutfailure;
   @JsonKey(ignore: true)
   _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;
@@ -744,15 +878,14 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoadSuccess &&
-            (identical(other.workouts, workouts) ||
-                const DeepCollectionEquality()
-                    .equals(other.workouts, workouts)));
+        (other.runtimeType == runtimeType &&
+            other is _LoadSuccess &&
+            const DeepCollectionEquality().equals(other.workouts, workouts));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(workouts);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(workouts));
 
   @JsonKey(ignore: true)
   @override
@@ -768,6 +901,17 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function(List<Workout> workouts) loadSuccess,
   }) {
     return loadSuccess(workouts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(WorkoutFailure workoutfailure)? loadFailure,
+    TResult Function(List<Workout> workouts)? loadSuccess,
+  }) {
+    return loadSuccess?.call(workouts);
   }
 
   @override
@@ -798,6 +942,17 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+  }) {
+    return loadSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
@@ -815,7 +970,7 @@ class _$_LoadSuccess implements _LoadSuccess {
 abstract class _LoadSuccess implements WorkoutwatcherState {
   const factory _LoadSuccess(List<Workout> workouts) = _$_LoadSuccess;
 
-  List<Workout> get workouts => throw _privateConstructorUsedError;
+  List<Workout> get workouts;
   @JsonKey(ignore: true)
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;

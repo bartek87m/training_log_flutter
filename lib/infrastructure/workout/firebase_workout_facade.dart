@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:training_log/domain/workout/i_workout_facade.dart';
 import 'package:training_log/domain/workout/workout_dtos.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/infrastructure/core/firestore_helpers.dart';
-import 'package:rxdart/rxdart.dart';
 
 @LazySingleton(as: IWorkoutFacade)
 class FirebaseWorkoutFacade implements IWorkoutFacade {

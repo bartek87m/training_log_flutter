@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'series.dart';
 
@@ -164,26 +165,22 @@ class _$_Series implements _Series {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Series &&
-            (identical(other.reps, reps) ||
-                const DeepCollectionEquality().equals(other.reps, reps)) &&
-            (identical(other.result, result) ||
-                const DeepCollectionEquality().equals(other.result, result)) &&
-            (identical(other.resultFromlastTraining, resultFromlastTraining) ||
-                const DeepCollectionEquality().equals(
-                    other.resultFromlastTraining, resultFromlastTraining)) &&
-            (identical(other.completed, completed) ||
-                const DeepCollectionEquality()
-                    .equals(other.completed, completed)));
+        (other.runtimeType == runtimeType &&
+            other is _Series &&
+            const DeepCollectionEquality().equals(other.reps, reps) &&
+            const DeepCollectionEquality().equals(other.result, result) &&
+            const DeepCollectionEquality()
+                .equals(other.resultFromlastTraining, resultFromlastTraining) &&
+            const DeepCollectionEquality().equals(other.completed, completed));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(reps) ^
-      const DeepCollectionEquality().hash(result) ^
-      const DeepCollectionEquality().hash(resultFromlastTraining) ^
-      const DeepCollectionEquality().hash(completed);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(reps),
+      const DeepCollectionEquality().hash(result),
+      const DeepCollectionEquality().hash(resultFromlastTraining),
+      const DeepCollectionEquality().hash(completed));
 
   @JsonKey(ignore: true)
   @override
@@ -199,13 +196,13 @@ abstract class _Series implements Series {
       bool? completed}) = _$_Series;
 
   @override
-  String? get reps => throw _privateConstructorUsedError;
+  String? get reps;
   @override
-  String? get result => throw _privateConstructorUsedError;
+  String? get result;
   @override
-  String? get resultFromlastTraining => throw _privateConstructorUsedError;
+  String? get resultFromlastTraining;
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem
-  bool? get completed => throw _privateConstructorUsedError;
+  bool? get completed;
   @override
   @JsonKey(ignore: true)
   _$SeriesCopyWith<_Series> get copyWith => throw _privateConstructorUsedError;

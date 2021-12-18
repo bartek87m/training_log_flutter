@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'sign_in_cubit.dart';
 
@@ -229,40 +230,33 @@ class _$_SignInFromState implements _SignInFromState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SignInFromState &&
-            (identical(other.emailAdress, emailAdress) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailAdress, emailAdress)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
-            (identical(other.passwordConfirmed, passwordConfirmed) ||
-                const DeepCollectionEquality()
-                    .equals(other.passwordConfirmed, passwordConfirmed)) &&
-            (identical(other.isSubmitting, isSubmitting) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSubmitting, isSubmitting)) &&
-            (identical(other.showErrorMessage, showErrorMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.showErrorMessage, showErrorMessage)) &&
-            (identical(other.authFailureOrSuccess, authFailureOrSuccess) ||
-                const DeepCollectionEquality().equals(
-                    other.authFailureOrSuccess, authFailureOrSuccess)) &&
-            (identical(other.passwordToCompare, passwordToCompare) ||
-                const DeepCollectionEquality()
-                    .equals(other.passwordToCompare, passwordToCompare)));
+        (other.runtimeType == runtimeType &&
+            other is _SignInFromState &&
+            const DeepCollectionEquality()
+                .equals(other.emailAdress, emailAdress) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality()
+                .equals(other.passwordConfirmed, passwordConfirmed) &&
+            const DeepCollectionEquality()
+                .equals(other.isSubmitting, isSubmitting) &&
+            const DeepCollectionEquality()
+                .equals(other.showErrorMessage, showErrorMessage) &&
+            const DeepCollectionEquality()
+                .equals(other.authFailureOrSuccess, authFailureOrSuccess) &&
+            const DeepCollectionEquality()
+                .equals(other.passwordToCompare, passwordToCompare));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(emailAdress) ^
-      const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(passwordConfirmed) ^
-      const DeepCollectionEquality().hash(isSubmitting) ^
-      const DeepCollectionEquality().hash(showErrorMessage) ^
-      const DeepCollectionEquality().hash(authFailureOrSuccess) ^
-      const DeepCollectionEquality().hash(passwordToCompare);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(emailAdress),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(passwordConfirmed),
+      const DeepCollectionEquality().hash(isSubmitting),
+      const DeepCollectionEquality().hash(showErrorMessage),
+      const DeepCollectionEquality().hash(authFailureOrSuccess),
+      const DeepCollectionEquality().hash(passwordToCompare));
 
   @JsonKey(ignore: true)
   @override
@@ -281,21 +275,19 @@ abstract class _SignInFromState implements SignInFromState {
       Password? passwordToCompare}) = _$_SignInFromState;
 
   @override
-  EmailAdress? get emailAdress => throw _privateConstructorUsedError;
+  EmailAdress? get emailAdress;
   @override
-  Password? get password => throw _privateConstructorUsedError;
+  Password? get password;
   @override
-  PasswordConfirmed? get passwordConfirmed =>
-      throw _privateConstructorUsedError;
+  PasswordConfirmed? get passwordConfirmed;
   @override
-  bool? get isSubmitting => throw _privateConstructorUsedError;
+  bool? get isSubmitting;
   @override
-  bool? get showErrorMessage => throw _privateConstructorUsedError;
+  bool? get showErrorMessage;
   @override
-  Option<Either<AuthFailure, Unit>>? get authFailureOrSuccess =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>>? get authFailureOrSuccess;
   @override
-  Password? get passwordToCompare => throw _privateConstructorUsedError;
+  Password? get passwordToCompare;
   @override
   @JsonKey(ignore: true)
   _$SignInFromStateCopyWith<_SignInFromState> get copyWith =>

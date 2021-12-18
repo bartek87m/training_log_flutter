@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_failure.dart';
 
@@ -47,6 +48,14 @@ mixin _$AuthFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? invalidEmailAndPasswordCombinaion,
+    TResult Function()? emailAlreadiInUse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -62,6 +71,15 @@ mixin _$AuthFailure {
     required TResult Function(InvalidEmailAndPasswordCombinaion value)
         invalidEmailAndPasswordCombinaion,
     required TResult Function(EmailAlreadiInUse value) emailAlreadiInUse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidEmailAndPasswordCombinaion value)?
+        invalidEmailAndPasswordCombinaion,
+    TResult Function(EmailAlreadiInUse value)? emailAlreadiInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -123,7 +141,8 @@ class _$CancelledByUser implements CancelledByUser {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CancelledByUser);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CancelledByUser);
   }
 
   @override
@@ -138,6 +157,17 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function() emailAlreadiInUse,
   }) {
     return cancelledByUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? invalidEmailAndPasswordCombinaion,
+    TResult Function()? emailAlreadiInUse,
+  }) {
+    return cancelledByUser?.call();
   }
 
   @override
@@ -165,6 +195,18 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function(EmailAlreadiInUse value) emailAlreadiInUse,
   }) {
     return cancelledByUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidEmailAndPasswordCombinaion value)?
+        invalidEmailAndPasswordCombinaion,
+    TResult Function(EmailAlreadiInUse value)? emailAlreadiInUse,
+  }) {
+    return cancelledByUser?.call(this);
   }
 
   @override
@@ -218,7 +260,8 @@ class _$ServerError implements ServerError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ServerError);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ServerError);
   }
 
   @override
@@ -233,6 +276,17 @@ class _$ServerError implements ServerError {
     required TResult Function() emailAlreadiInUse,
   }) {
     return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? invalidEmailAndPasswordCombinaion,
+    TResult Function()? emailAlreadiInUse,
+  }) {
+    return serverError?.call();
   }
 
   @override
@@ -260,6 +314,18 @@ class _$ServerError implements ServerError {
     required TResult Function(EmailAlreadiInUse value) emailAlreadiInUse,
   }) {
     return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidEmailAndPasswordCombinaion value)?
+        invalidEmailAndPasswordCombinaion,
+    TResult Function(EmailAlreadiInUse value)? emailAlreadiInUse,
+  }) {
+    return serverError?.call(this);
   }
 
   @override
@@ -319,7 +385,8 @@ class _$InvalidEmailAndPasswordCombinaion
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is InvalidEmailAndPasswordCombinaion);
+        (other.runtimeType == runtimeType &&
+            other is InvalidEmailAndPasswordCombinaion);
   }
 
   @override
@@ -334,6 +401,17 @@ class _$InvalidEmailAndPasswordCombinaion
     required TResult Function() emailAlreadiInUse,
   }) {
     return invalidEmailAndPasswordCombinaion();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? invalidEmailAndPasswordCombinaion,
+    TResult Function()? emailAlreadiInUse,
+  }) {
+    return invalidEmailAndPasswordCombinaion?.call();
   }
 
   @override
@@ -361,6 +439,18 @@ class _$InvalidEmailAndPasswordCombinaion
     required TResult Function(EmailAlreadiInUse value) emailAlreadiInUse,
   }) {
     return invalidEmailAndPasswordCombinaion(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidEmailAndPasswordCombinaion value)?
+        invalidEmailAndPasswordCombinaion,
+    TResult Function(EmailAlreadiInUse value)? emailAlreadiInUse,
+  }) {
+    return invalidEmailAndPasswordCombinaion?.call(this);
   }
 
   @override
@@ -416,7 +506,8 @@ class _$EmailAlreadiInUse implements EmailAlreadiInUse {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is EmailAlreadiInUse);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is EmailAlreadiInUse);
   }
 
   @override
@@ -431,6 +522,17 @@ class _$EmailAlreadiInUse implements EmailAlreadiInUse {
     required TResult Function() emailAlreadiInUse,
   }) {
     return emailAlreadiInUse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? invalidEmailAndPasswordCombinaion,
+    TResult Function()? emailAlreadiInUse,
+  }) {
+    return emailAlreadiInUse?.call();
   }
 
   @override
@@ -458,6 +560,18 @@ class _$EmailAlreadiInUse implements EmailAlreadiInUse {
     required TResult Function(EmailAlreadiInUse value) emailAlreadiInUse,
   }) {
     return emailAlreadiInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidEmailAndPasswordCombinaion value)?
+        invalidEmailAndPasswordCombinaion,
+    TResult Function(EmailAlreadiInUse value)? emailAlreadiInUse,
+  }) {
+    return emailAlreadiInUse?.call(this);
   }
 
   @override

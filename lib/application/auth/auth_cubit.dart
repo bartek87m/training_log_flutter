@@ -14,8 +14,13 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> checkAuthentification() async {
     final auth = await _iAuthFacade.getSignedInUser();
-    auth.fold(() => emit(AuthState.unauthentificate()),
-        (a) => emit(AuthState.authentificate()));
+    auth.match(
+        (a) => emit(
+              AuthState.authentificate(),
+            ),
+        () => emit(
+              AuthState.unauthentificate(),
+            ));
 
     print(state);
   }

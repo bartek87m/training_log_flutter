@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'workout_failure.dart';
 
@@ -42,6 +43,13 @@ mixin _$WorkoutFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? permissionDenied,
+    TResult Function()? unexpected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? permissionDenied,
@@ -54,6 +62,13 @@ mixin _$WorkoutFailure {
     required TResult Function(ServerError value) serverError,
     required TResult Function(PermissionDenied value) permissionDenied,
     required TResult Function(Unexpected value) unexpected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(Unexpected value)? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,7 +128,8 @@ class _$ServerError implements ServerError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ServerError);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ServerError);
   }
 
   @override
@@ -127,6 +143,16 @@ class _$ServerError implements ServerError {
     required TResult Function() unexpected,
   }) {
     return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? permissionDenied,
+    TResult Function()? unexpected,
+  }) {
+    return serverError?.call();
   }
 
   @override
@@ -151,6 +177,16 @@ class _$ServerError implements ServerError {
     required TResult Function(Unexpected value) unexpected,
   }) {
     return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(Unexpected value)? unexpected,
+  }) {
+    return serverError?.call(this);
   }
 
   @override
@@ -203,7 +239,8 @@ class _$PermissionDenied implements PermissionDenied {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is PermissionDenied);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is PermissionDenied);
   }
 
   @override
@@ -217,6 +254,16 @@ class _$PermissionDenied implements PermissionDenied {
     required TResult Function() unexpected,
   }) {
     return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? permissionDenied,
+    TResult Function()? unexpected,
+  }) {
+    return permissionDenied?.call();
   }
 
   @override
@@ -241,6 +288,16 @@ class _$PermissionDenied implements PermissionDenied {
     required TResult Function(Unexpected value) unexpected,
   }) {
     return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(Unexpected value)? unexpected,
+  }) {
+    return permissionDenied?.call(this);
   }
 
   @override
@@ -291,7 +348,8 @@ class _$Unexpected implements Unexpected {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Unexpected);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Unexpected);
   }
 
   @override
@@ -305,6 +363,16 @@ class _$Unexpected implements Unexpected {
     required TResult Function() unexpected,
   }) {
     return unexpected();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? permissionDenied,
+    TResult Function()? unexpected,
+  }) {
+    return unexpected?.call();
   }
 
   @override
@@ -329,6 +397,16 @@ class _$Unexpected implements Unexpected {
     required TResult Function(Unexpected value) unexpected,
   }) {
     return unexpected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(Unexpected value)? unexpected,
+  }) {
+    return unexpected?.call(this);
   }
 
   @override

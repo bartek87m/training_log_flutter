@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'workoutform_cubit.dart';
 
@@ -210,34 +211,29 @@ class _$_WorkoutformState implements _WorkoutformState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WorkoutformState &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.workoutDate, workoutDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.workoutDate, workoutDate)) &&
-            (identical(other.exercieList, exercieList) ||
-                const DeepCollectionEquality()
-                    .equals(other.exercieList, exercieList)) &&
-            (identical(other.updateDate, updateDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.updateDate, updateDate)) &&
-            (identical(other.toogleRebuild, toogleRebuild) ||
-                const DeepCollectionEquality()
-                    .equals(other.toogleRebuild, toogleRebuild)));
+        (other.runtimeType == runtimeType &&
+            other is _WorkoutformState &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.workoutDate, workoutDate) &&
+            const DeepCollectionEquality()
+                .equals(other.exercieList, exercieList) &&
+            const DeepCollectionEquality()
+                .equals(other.updateDate, updateDate) &&
+            const DeepCollectionEquality()
+                .equals(other.toogleRebuild, toogleRebuild));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(workoutDate) ^
-      const DeepCollectionEquality().hash(exercieList) ^
-      const DeepCollectionEquality().hash(updateDate) ^
-      const DeepCollectionEquality().hash(toogleRebuild);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(workoutDate),
+      const DeepCollectionEquality().hash(exercieList),
+      const DeepCollectionEquality().hash(updateDate),
+      const DeepCollectionEquality().hash(toogleRebuild));
 
   @JsonKey(ignore: true)
   @override
@@ -255,17 +251,17 @@ abstract class _WorkoutformState implements WorkoutformState {
       bool? toogleRebuild}) = _$_WorkoutformState;
 
   @override
-  UniqueId? get id => throw _privateConstructorUsedError;
+  UniqueId? get id;
   @override
-  Title? get title => throw _privateConstructorUsedError;
+  Title? get title;
   @override
-  DateTime? get workoutDate => throw _privateConstructorUsedError;
+  DateTime? get workoutDate;
   @override
-  List<Exercise>? get exercieList => throw _privateConstructorUsedError;
+  List<Exercise>? get exercieList;
   @override // @required List<Wod> wodList,
-  DateTime? get updateDate => throw _privateConstructorUsedError;
+  DateTime? get updateDate;
   @override
-  bool? get toogleRebuild => throw _privateConstructorUsedError;
+  bool? get toogleRebuild;
   @override
   @JsonKey(ignore: true)
   _$WorkoutformStateCopyWith<_WorkoutformState> get copyWith =>

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:training_log/domain/workout/i_workout_facade.dart';
@@ -17,28 +17,48 @@ class WorkoutwatcherBloc
     extends Bloc<WorkoutwatcherEvent, WorkoutwatcherState> {
   late IWorkoutFacade _iWorkoutFacade;
 
-  WorkoutwatcherBloc(this._iWorkoutFacade)
-      : super(WorkoutwatcherState.initial());
-
   late StreamSubscription<Either<WorkoutFailure, List<Workout>>>
       _workoutStreamSubscribtion;
 
-  @override
-  Stream<WorkoutwatcherState> mapEventToState(
-    WorkoutwatcherEvent event,
-  ) async* {
-    yield* event.map(downloadWorkouts: (e) async* {
-      yield const WorkoutwatcherState.loading();
-      //TODO dodać anulowanie subskrybcji
-      // await _workoutStreamSubscribtion.cancel();
-      _workoutStreamSubscribtion = _iWorkoutFacade.watchAll().listen(
-            (failureOrWorkout) => add(
-              WorkoutwatcherEvent.workoutsReceived(failureOrWorkout),
-            ),
-          );
-    }, workoutsReceived: (e) async* {
-      yield e.failureOrWorkouts.fold((f) => WorkoutwatcherState.loadFailure(f),
-          (workout) => WorkoutwatcherState.loadSuccess(workout));
-    });
+  WorkoutwatcherBloc(this._iWorkoutFacade)
+      : super(WorkoutwatcherState.initial()) {
+    on<DownloadWorkouts>((event, emit) => ({
+          emit(WorkoutwatcherState.loading()),
+          _workoutStreamSubscribtion = _iWorkoutFacade.watchAll().listen(
+                (failureOrWorkout) => {
+                  print(failureOrWorkout),
+                  add(
+                    WorkoutwatcherEvent.workoutsReceived(failureOrWorkout),
+                  ),
+                },
+              )
+        }));
+    on<WorkoutsReceived>((event, emit) => (emit(event.failureOrWorkouts.fold(
+        (f) => WorkoutwatcherState.loadFailure(f),
+        (workout) => WorkoutwatcherState.loadSuccess(workout)))));
   }
+
+  // @override
+  // Stream<WorkoutwatcherState> mapEventToState(
+  //   WorkoutwatcherEvent event,
+  // ) async* {
+  //   yield* event.map(downloadWorkouts: (e) async* {
+  //     yield const WorkoutwatcherState.loading();
+  //     //TODO dodać anulowanie subskrybcji
+  //     // await _workoutStreamSubscribtion.cancel();
+
+  //     _workoutStreamSubscribtion = _iWorkoutFacade.watchAll().listen(
+  //           (failureOrWorkout) => {
+  //             print(failureOrWorkout),
+  //             add(
+  //               WorkoutwatcherEvent.workoutsReceived(failureOrWorkout),
+  //             ),
+  //           },
+  //         );
+  //   }, workoutsReceived: (e) async* {
+  //     print('data received');
+  //     yield e.failureOrWorkouts.fold((f) => WorkoutwatcherState.loadFailure(f),
+  //         (workout) => WorkoutwatcherState.loadSuccess(workout));
+  //   });
+  // }
 }

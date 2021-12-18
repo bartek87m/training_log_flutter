@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:training_log/domain/auth/value_objects.dart';
 import 'package:training_log/domain/core/failures.dart';
 
