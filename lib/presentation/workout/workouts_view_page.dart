@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
+import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:training_log/presentation/workout/widgets/workouts_views_widget.dart';
@@ -28,7 +29,7 @@ class WorkoutsViewPage extends StatelessWidget {
         },
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Workout view'),
+            title: Text('Workouts view'),
             actions: [
               Padding(
                 padding: EdgeInsets.only(right: 5.w),
@@ -47,13 +48,14 @@ class WorkoutsViewPage extends StatelessWidget {
           floatingActionButton: SizedBox(
             width: 35.w,
             child: FloatingActionButton(
-              backgroundColor: Colors.grey,
+              backgroundColor: Theme.of(context).primaryColorDark,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(40),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () => context.router.popAndPush(
+                  WorkoutViewPageRoute(workout: Workout.newWorkout())),
               child: Text('Create workout'),
             ),
           ),

@@ -21,7 +21,9 @@ abstract class Workout with _$Workout {
         id: UniqueId(),
         title: Title('Workout title'),
         workoutDate: DateTime.now(),
-        exercieList: [],
+        exercieList: [
+          Exercise(exerciseName: ExerciseName('Exercise name'), setsList: [])
+        ],
         // wodList: List<Wod>(),
       );
 

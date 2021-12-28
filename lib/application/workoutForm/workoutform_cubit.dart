@@ -17,7 +17,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
   WorkoutformCubit() : super(WorkoutformState.initial());
 
   void loadWorkoutToState(Workout workout) {
-    print(workout);
+    // print(workout);
     List<Exercise>? newWorkoutList = workout.exercieList;
 
     List<Exercise>? finalList = newWorkoutList!.map(
@@ -75,8 +75,10 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
   }
 
   void removeExercise({int? exerciseNumber}) {
+    print(state.exercieList![exerciseNumber!]);
+
     List<Exercise>? newExerciseList = state.exercieList;
-    newExerciseList?.removeAt(exerciseNumber!);
+    newExerciseList?.removeAt(exerciseNumber);
 
     emit(
       state.copyWith(
@@ -88,12 +90,17 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
 
   void markSeriesAsComplete({int? exerciseNumber, int? seriesNumber}) {
     List<Exercise>? newExerciseList = state.exercieList;
-    List<Series>? newSeriesList = state.exercieList?[exerciseNumber!].setsList;
 
-    Series? aaaa = newSeriesList?[exerciseNumber!].copyWith(completed: true);
+    print(state.exercieList?[exerciseNumber!].setsList);
+
+    Series? newMarkedSeries = (state
+        .exercieList?[exerciseNumber!].setsList?[seriesNumber!]
+        .copyWith(completed: true));
 
     newExerciseList?[exerciseNumber!].setsList?.removeAt(seriesNumber!);
-    // newExerciseList?[exerciseNumber!].setsList?.insert(seriesNumber!, aaaa);
+    newExerciseList?[exerciseNumber!]
+        .setsList
+        ?.insert(seriesNumber!, newMarkedSeries!);
 
     emit(
       state.copyWith(
@@ -101,8 +108,5 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
-
-    // print(aaaa);
-    print(state.exercieList?[exerciseNumber!].setsList);
   }
 }

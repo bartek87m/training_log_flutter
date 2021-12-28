@@ -11,7 +11,7 @@ class WorkoutShortViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.black26,
+          color: Theme.of(context).backgroundColor,
           borderRadius: BorderRadius.circular(4),
           border: Border.all(color: Colors.white12)),
       padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
