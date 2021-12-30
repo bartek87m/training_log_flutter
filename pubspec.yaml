@@ -28,7 +28,7 @@ dependencies:
   fpdart: ^0.0.12
   firebase_auth: ^3.3.4
   firebase_core: ^1.10.6
-  flutter_bloc: ^8.0.0
+  flutter_bloc: ^8.0.1
   freezed_annotation: ^1.1.0
   injectable: ^1.5.0
   get_it: ^7.2.0

@@ -74,11 +74,20 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     //TODO add remove exercise
   }
 
-  void removeExercise({int? exerciseNumber}) {
-    print(state.exercieList![exerciseNumber!]);
-
+  void addExercise({int? exerciseNumber}) {
     List<Exercise>? newExerciseList = state.exercieList;
-    newExerciseList?.removeAt(exerciseNumber);
+
+    newExerciseList?.insert(exerciseNumber! + 1, Exercise.newExercise());
+
+    emit(state.copyWith(
+      exercieList: newExerciseList,
+      toogleRebuild: !state.toogleRebuild!,
+    ));
+  }
+
+  void removeExercise({int? exerciseNumber}) {
+    List<Exercise>? newExerciseList = state.exercieList;
+    newExerciseList?.removeAt(exerciseNumber!);
 
     emit(
       state.copyWith(
@@ -90,8 +99,6 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
 
   void markSeriesAsComplete({int? exerciseNumber, int? seriesNumber}) {
     List<Exercise>? newExerciseList = state.exercieList;
-
-    print(state.exercieList?[exerciseNumber!].setsList);
 
     Series? newMarkedSeries = (state
         .exercieList?[exerciseNumber!].setsList?[seriesNumber!]

@@ -96,6 +96,9 @@ class WorkoutViewPage extends HookWidget {
                         removeExerciseCallback: () => context
                             .read<WorkoutformCubit>()
                             .removeExercise(exerciseNumber: exerciseIndex),
+                        addExerciseCallback: () => context
+                            .read<WorkoutformCubit>()
+                            .addExercise(exerciseNumber: exerciseIndex),
                       )
                     ],
                   );

@@ -13,7 +13,7 @@ abstract class Exercise with _$Exercise {
   }) = _Exercise;
 
   factory Exercise.newExercise() => Exercise(
-        exerciseName: ExerciseName(''),
+        exerciseName: ExerciseName('Exercise name'),
         setsList: [],
       );
 }

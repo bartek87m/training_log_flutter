@@ -1,36 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class WorkoutViewBottomButtons extends StatelessWidget {
-  const WorkoutViewBottomButtons(
-      {Key? key,
-      required this.addNewSeriesCallback,
-      required this.removeExerciseCallback})
-      : super(key: key);
+  const WorkoutViewBottomButtons({
+    Key? key,
+    required this.addNewSeriesCallback,
+    required this.removeExerciseCallback,
+    required this.addExerciseCallback,
+  }) : super(key: key);
 
   final Function() addNewSeriesCallback;
   final Function() removeExerciseCallback;
+  final Function() addExerciseCallback;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Column(
       children: [
-        Container(
-          // height: 4.h,
-          // width: 80.w,
-          child: TextButton(
-            onPressed: addNewSeriesCallback,
-            child: Text('Add series'),
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+              child: InkWell(
+                onTap: addNewSeriesCallback,
+                child: Text('Add series'),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(1.h),
+              child: InkWell(
+                onTap: removeExerciseCallback,
+                child: Text(
+                  'Remove Exercise',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ),
+          ],
         ),
         Container(
-          // height: 4.h,
-          // width: 80.w,
-          child: TextButton(
-            onPressed: removeExerciseCallback,
+          padding: EdgeInsets.only(bottom: 2.h),
+          child: InkWell(
+            onTap: addExerciseCallback,
+            // onPressed: addExerciseCallback,
             child: Text(
-              'Remove Exercise',
-              style: TextStyle(color: Colors.red),
+              'Add Exercise',
+              style: TextStyle(color: Colors.green),
             ),
           ),
         ),
