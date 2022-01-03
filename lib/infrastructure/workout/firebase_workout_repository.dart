@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:training_log/domain/workout/i_workout_facade.dart';
+import 'package:training_log/domain/workout/i_workout_repositry.dart';
 import 'package:training_log/domain/workout/workout_dtos.dart';
 import 'package:training_log/domain/workout/workout_failure.dart';
 import 'package:training_log/domain/workout/workout.dart';
@@ -14,9 +14,17 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   FirebaseWorkoutFacade(this._firestore);
 
   @override
-  Future<Either<WorkoutFailure, Unit>> createWorkout({Workout? workout}) {
-    // TODO: implement createWorkout
-    throw UnimplementedError();
+  Future<Either<WorkoutFailure, Unit>> createWorkout({Workout? workout}) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final workoutDto = WorkoutDto.fromDomain(workout!);
+      await userDoc.workoutCollection
+          .doc(workoutDto.id)
+          .set(workoutDto.toJson());
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(WorkoutFailure.unexpected());
+    }
   }
 
   @override
@@ -36,7 +44,7 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
     final userDoc = await _firestore.userDocument();
     yield* userDoc
         .collection('workouts')
-        .orderBy('serverTimeStamp', descending: true)
+        // .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map(
           (snapshot) => right<WorkoutFailure, List<Workout>>(

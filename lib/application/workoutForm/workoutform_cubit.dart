@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:training_log/domain/core/value_object.dart';
 import 'package:training_log/domain/workout/exercise/exercise.dart';
+import 'package:training_log/domain/workout/i_workout_repositry.dart';
 import 'package:training_log/domain/workout/series/series.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
 import 'package:training_log/domain/workout/workout.dart';
@@ -12,9 +13,9 @@ part 'workoutform_cubit.freezed.dart';
 
 @lazySingleton
 class WorkoutformCubit extends Cubit<WorkoutformState> {
-  // final IWorkoutFacade _iWorkoutFacade;
+  final IWorkoutFacade _iWorkoutFacade;
 
-  WorkoutformCubit() : super(WorkoutformState.initial());
+  WorkoutformCubit(this._iWorkoutFacade) : super(WorkoutformState.initial());
 
   void loadWorkoutToState(Workout workout) {
     // print(workout);
@@ -44,6 +45,18 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
+  }
+
+  Future createNewWorkout() async {
+    final createdWorkout = await _iWorkoutFacade.createWorkout(
+        workout: Workout(
+      id: state.id,
+      title: state.title,
+      workoutDate: state.workoutDate,
+      exercieList: state.exercieList,
+    ));
+    print(createdWorkout);
+    // emit(state);
   }
 
   void removeSeriesFromExercise({int? exerciseNumber, int? seriesNumber}) {

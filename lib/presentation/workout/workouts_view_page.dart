@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
+import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
@@ -35,8 +36,8 @@ class WorkoutsViewPage extends StatelessWidget {
                 padding: EdgeInsets.only(right: 5.w),
                 child: GestureDetector(
                   child: Icon(Icons.logout),
-                  onTap: () async {
-                    await context.read<AuthCubit>().signOut();
+                  onTap: () {
+                    context.read<AuthCubit>().signOut();
                   },
                 ),
               )
@@ -54,8 +55,11 @@ class WorkoutsViewPage extends StatelessWidget {
                   Radius.circular(40),
                 ),
               ),
-              onPressed: () => context.router.popAndPush(
-                  WorkoutViewPageRoute(workout: Workout.newWorkout())),
+              onPressed: () {
+                context.read<WorkoutformCubit>().createNewWorkout();
+                context.router.popAndPush(
+                    WorkoutViewPageRoute(workout: Workout.newWorkout()));
+              },
               child: Text('Create workout'),
             ),
           ),
