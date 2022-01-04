@@ -28,15 +28,30 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
   }
 
   @override
-  Future<Either<WorkoutFailure, Unit>> removeWorkout({String? workoutId}) {
-    // TODO: implement removeWorkout
-    throw UnimplementedError();
+  Future<Either<WorkoutFailure, Unit>> removeWorkout(
+      {String? workoutId}) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      print(workoutId);
+      await userDoc.workoutCollection.doc(workoutId).delete();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(WorkoutFailure.unexpected());
+    }
   }
 
   @override
-  Future<Either<WorkoutFailure, Unit>> update({Workout? workout}) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Either<WorkoutFailure, Unit>> update({Workout? workout}) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final workoutDto = WorkoutDto.fromDomain(workout!);
+      await userDoc.workoutCollection
+          .doc(workoutDto.id)
+          .update(workoutDto.toJson());
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(WorkoutFailure.unexpected());
+    }
   }
 
   @override

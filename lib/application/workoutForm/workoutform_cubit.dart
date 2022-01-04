@@ -17,6 +17,18 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
 
   WorkoutformCubit(this._iWorkoutFacade) : super(WorkoutformState.initial());
 
+  Future<void> updateWorkout(List<Exercise> newExerciseList) async {
+    await _iWorkoutFacade.update(
+      workout: Workout(
+        exercieList: newExerciseList,
+        id: state.id,
+        title: state.title,
+        workoutDate: state.workoutDate,
+        updateDate: DateTime.now(),
+      ),
+    );
+  }
+
   void loadWorkoutToState(Workout workout) {
     // print(workout);
     List<Exercise>? newWorkoutList = workout.exercieList;
@@ -47,50 +59,59 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     );
   }
 
-  Future createNewWorkout() async {
-    final createdWorkout = await _iWorkoutFacade.createWorkout(
+  Future createNewWorkout({required Workout workout}) async {
+    await _iWorkoutFacade.createWorkout(
         workout: Workout(
       id: state.id,
       title: state.title,
       workoutDate: state.workoutDate,
       exercieList: state.exercieList,
     ));
-    print(createdWorkout);
-    // emit(state);
+    print('createdWorkout');
   }
 
-  void removeSeriesFromExercise({int? exerciseNumber, int? seriesNumber}) {
+  void removeSeriesFromExercise(
+      {int? exerciseNumber, int? seriesNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
     newExerciseList?[exerciseNumber!].setsList?.removeAt(seriesNumber!);
 
+    await updateWorkout(newExerciseList!);
+
     emit(
       state.copyWith(
         exercieList: newExerciseList,
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
+    print('Workout updated');
   }
 
-  void addSeriesToExercise({int? exerciseNumber}) {
+  void addSeriesToExercise({int? exerciseNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
     newExerciseList?[exerciseNumber!].setsList?.add(Series.newSeries());
 
+    await updateWorkout(newExerciseList!);
+
     emit(
       state.copyWith(
         exercieList: newExerciseList,
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
+    print('Workout updated');
   }
 
-  void removeWorkout() {
-    //TODO add remove exercise
+  void removeWorkout() async {
+    await _iWorkoutFacade.removeWorkout(workoutId: state.id!.getOrCrash());
+    print('Workout removed');
   }
 
-  void addExercise({int? exerciseNumber}) {
+  void addExercise({int? exerciseNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
 
     newExerciseList?.insert(exerciseNumber! + 1, Exercise.newExercise());
+
+    await updateWorkout(newExerciseList!);
 
     emit(state.copyWith(
       exercieList: newExerciseList,
@@ -98,9 +119,11 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     ));
   }
 
-  void removeExercise({int? exerciseNumber}) {
+  void removeExercise({int? exerciseNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
     newExerciseList?.removeAt(exerciseNumber!);
+
+    await updateWorkout(newExerciseList!);
 
     emit(
       state.copyWith(

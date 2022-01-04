@@ -56,7 +56,7 @@ class WorkoutsViewPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                context.read<WorkoutformCubit>().createNewWorkout();
+                // context.read<WorkoutformCubit>().createNewWorkout();
                 context.router.popAndPush(
                     WorkoutViewPageRoute(workout: Workout.newWorkout()));
               },
