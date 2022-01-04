@@ -17,9 +17,9 @@ class WorkoutViewPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    useMemoized(
-      () => context.read<WorkoutformCubit>().loadWorkoutToState(this.workout),
-    );
+    useMemoized(() async {
+      context.read<WorkoutformCubit>().loadWorkoutToState(this.workout);
+    });
 
     return Scaffold(
       appBar: AppBar(
