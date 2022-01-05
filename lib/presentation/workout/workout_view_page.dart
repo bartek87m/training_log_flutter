@@ -18,7 +18,10 @@ class WorkoutViewPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useMemoized(() async {
-      context.read<WorkoutformCubit>().loadWorkoutToState(this.workout);
+      context
+          .read<WorkoutformCubit>()
+          .loadWorkoutToState(workout: this.workout);
+      context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
     });
 
     return Scaffold(
@@ -57,7 +60,9 @@ class WorkoutViewPage extends HookWidget {
               updateDate: this.workout.updateDate,
             );
 
-            context.read<WorkoutformCubit>().loadWorkoutToState(emptyWorkout);
+            context
+                .read<WorkoutformCubit>()
+                .loadWorkoutToState(workout: emptyWorkout);
           }
 
           return Container(

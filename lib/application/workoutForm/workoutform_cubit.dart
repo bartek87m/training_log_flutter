@@ -29,7 +29,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     );
   }
 
-  void loadWorkoutToState(Workout workout) {
+  void loadWorkoutToState({required Workout workout}) {
     // print(workout);
     List<Exercise>? newWorkoutList = workout.exercieList;
 
