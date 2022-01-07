@@ -17,7 +17,8 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
 
   WorkoutformCubit(this._iWorkoutFacade) : super(WorkoutformState.initial());
 
-  Future<void> updateWorkout(List<Exercise> newExerciseList) async {
+  Future<void> updateExerciseListToFirebase(
+      List<Exercise> newExerciseList) async {
     await _iWorkoutFacade.update(
       workout: Workout(
         exercieList: newExerciseList,
@@ -27,13 +28,107 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         updateDate: DateTime.now(),
       ),
     );
+    emit(state.copyWith(exercieList: newExerciseList));
+  }
+
+  Future<void> updateExerciseListToFirebaseAfterChangeRep(
+      int seriesNumber, int exerciseNumber, String repValue) async {
+    List<Exercise>? newExerciseList = state.exercieList;
+
+    Series? newMarkedSeries = newExerciseList![exerciseNumber]
+        .setsList![seriesNumber]
+        .copyWith(reps: repValue);
+
+    newExerciseList[exerciseNumber].setsList?.removeAt(seriesNumber);
+    newExerciseList[exerciseNumber]
+        .setsList
+        ?.insert(seriesNumber, newMarkedSeries);
+
+    await _iWorkoutFacade.update(
+      workout: Workout(
+        exercieList: newExerciseList,
+        id: state.id,
+        title: state.title,
+        workoutDate: state.workoutDate,
+        updateDate: DateTime.now(),
+      ),
+    );
+    emit(state.copyWith(exercieList: newExerciseList));
+  }
+
+  Future<void> updateExerciseListToFirebaseAfterChangeResult(
+      int seriesNumber, int exerciseNumber, String resultValue) async {
+    List<Exercise>? newExerciseList = state.exercieList;
+
+    Series? newMarkedSeries = newExerciseList![exerciseNumber]
+        .setsList![seriesNumber]
+        .copyWith(result: resultValue);
+
+    newExerciseList[exerciseNumber].setsList?.removeAt(seriesNumber);
+    newExerciseList[exerciseNumber]
+        .setsList
+        ?.insert(seriesNumber, newMarkedSeries);
+
+    await _iWorkoutFacade.update(
+      workout: Workout(
+        exercieList: newExerciseList,
+        id: state.id,
+        title: state.title,
+        workoutDate: state.workoutDate,
+        updateDate: DateTime.now(),
+      ),
+    );
+    emit(state.copyWith(exercieList: newExerciseList));
+  }
+
+  Future<void> updateExerciseListToFirebaseAfterChangeName(
+      int exerciseNumber, String exerciseNameValue) async {
+    List<Exercise>? newExerciseList = state.exercieList;
+
+    Exercise? newExerciseName = newExerciseList![exerciseNumber]
+        .copyWith(exerciseName: ExerciseName(exerciseNameValue));
+
+    newExerciseList.removeAt(exerciseNumber);
+    newExerciseList.insert(exerciseNumber, newExerciseName);
+
+    await _iWorkoutFacade.update(
+      workout: Workout(
+        exercieList: newExerciseList,
+        id: state.id,
+        title: state.title,
+        workoutDate: state.workoutDate,
+        updateDate: DateTime.now(),
+      ),
+    );
+    emit(state.copyWith(exercieList: newExerciseList));
+  }
+
+  Future<void> updateTitleToFirebase(String title) async {
+    await _iWorkoutFacade.update(
+      workout: Workout(
+        exercieList: state.exercieList,
+        id: state.id,
+        title: Title(title),
+        workoutDate: state.workoutDate,
+        updateDate: DateTime.now(),
+      ),
+    );
+
+    emit(state.copyWith(title: Title(title)));
+  }
+
+  void updateExerciseListToState(List<Exercise> newExerciseList) {
+    emit(state.copyWith(exercieList: newExerciseList));
+  }
+
+  void updateTitleToState(String title) {
+    emit(state.copyWith(title: Title(title)));
   }
 
   void loadWorkoutToState({required Workout workout}) {
-    // print(workout);
-    List<Exercise>? newWorkoutList = workout.exercieList;
+    List<Exercise>? newExerciseList = workout.exercieList;
 
-    List<Exercise>? finalList = newWorkoutList!.map(
+    List<Exercise>? finalList = newExerciseList!.map(
       (e) {
         return Exercise(
             exerciseName: e.exerciseName,
@@ -67,7 +162,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
       workoutDate: state.workoutDate,
       exercieList: state.exercieList,
     ));
-    print('createdWorkout');
+    // print('createdWorkout');
   }
 
   void removeSeriesFromExercise(
@@ -75,7 +170,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     List<Exercise>? newExerciseList = state.exercieList;
     newExerciseList?[exerciseNumber!].setsList?.removeAt(seriesNumber!);
 
-    await updateWorkout(newExerciseList!);
+    await updateExerciseListToFirebase(newExerciseList!);
 
     emit(
       state.copyWith(
@@ -83,14 +178,14 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
-    print('Workout updated');
+    // print('Workout updated');
   }
 
   void addSeriesToExercise({int? exerciseNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
     newExerciseList?[exerciseNumber!].setsList?.add(Series.newSeries());
 
-    await updateWorkout(newExerciseList!);
+    await updateExerciseListToFirebase(newExerciseList!);
 
     emit(
       state.copyWith(
@@ -98,12 +193,12 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
-    print('Workout updated');
+    // print('Workout updated');
   }
 
   void removeWorkout() async {
     await _iWorkoutFacade.removeWorkout(workoutId: state.id!.getOrCrash());
-    print('Workout removed');
+    // print('Workout removed');
   }
 
   void addExercise({int? exerciseNumber}) async {
@@ -111,7 +206,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
 
     newExerciseList?.insert(exerciseNumber! + 1, Exercise.newExercise());
 
-    await updateWorkout(newExerciseList!);
+    await updateExerciseListToFirebase(newExerciseList!);
 
     emit(state.copyWith(
       exercieList: newExerciseList,
@@ -123,7 +218,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     List<Exercise>? newExerciseList = state.exercieList;
     newExerciseList?.removeAt(exerciseNumber!);
 
-    await updateWorkout(newExerciseList!);
+    await updateExerciseListToFirebase(newExerciseList!);
 
     emit(
       state.copyWith(

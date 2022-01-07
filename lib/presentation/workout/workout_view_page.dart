@@ -17,6 +17,9 @@ class WorkoutViewPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final wokroutSeved = useState(true);
+    final characterToNextSave = useState(0);
+
     useMemoized(() async {
       context
           .read<WorkoutformCubit>()
@@ -24,11 +27,22 @@ class WorkoutViewPage extends HookWidget {
       context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
     });
 
+    void UpdateWorkoutTItleToFirebaseAfterAmountOFCharts(
+        int characterAmount, title) {
+      characterToNextSave.value++;
+      if (characterToNextSave.value >= 5) {
+        context.read<WorkoutformCubit>().updateTitleToFirebase(title);
+        characterToNextSave.value = 0;
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: TextFormField(
           initialValue: this.workout.title!.getOrCrash(),
-          onChanged: (_) {}, //TODO add onChange save title
+          onChanged: (title) {
+            context.read<WorkoutformCubit>().updateTitleToFirebase(title);
+          },
           style: TextStyle(color: Colors.white),
           decoration: InputDecoration(border: InputBorder.none),
           cursorColor: Colors.white,
@@ -47,7 +61,6 @@ class WorkoutViewPage extends HookWidget {
       ),
       body: BlocBuilder<WorkoutformCubit, WorkoutformState>(
         builder: (context, state) {
-          print(state);
           if (state.exercieList!.length == 0) {
             final emptyWorkout = Workout(
               id: this.workout.id,
@@ -77,10 +90,16 @@ class WorkoutViewPage extends HookWidget {
                         height: 2.5.h,
                         width: 90.w,
                         child: TextFormField(
-                          initialValue: state
-                              .exercieList![exerciseIndex].exerciseName!
-                              .getOrCrash(),
-                        ),
+                            initialValue: state
+                                .exercieList![exerciseIndex].exerciseName!
+                                .getOrCrash(),
+                            onChanged: (exerciseName) {
+                              //TODO Zprubować znależć lepszy sposób zapisywania
+                              context
+                                  .read<WorkoutformCubit>()
+                                  .updateExerciseListToFirebaseAfterChangeName(
+                                      exerciseIndex, exerciseName);
+                            }),
                       ),
                       Row(
                         key: UniqueKey(),

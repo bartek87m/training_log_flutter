@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 
 class WorkoutViewRepsSetsWidget extends StatelessWidget {
-  const WorkoutViewRepsSetsWidget(
+  WorkoutViewRepsSetsWidget(
       {Key? key, this.exerciseIndex, this.setsLength, this.state})
       : super(key: key);
 
@@ -14,6 +14,7 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // FocusScope.of(context).requestFocus(inputFieldNode);
     return Column(
       children: [
         Row(
@@ -73,11 +74,16 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
                     height: 3.h,
                     width: 35.w,
                     child: TextFormField(
-                      key: Key(i.toString()),
-                      textAlign: TextAlign.center,
-                      initialValue:
-                          state.exercieList![exerciseIndex].setsList![i].reps,
-                    ),
+                        key: Key(i.toString()),
+                        textAlign: TextAlign.center,
+                        initialValue:
+                            state.exercieList![exerciseIndex].setsList![i].reps,
+                        onChanged: (repValue) {
+                          context
+                              .read<WorkoutformCubit>()
+                              .updateExerciseListToFirebaseAfterChangeRep(
+                                  i, exerciseIndex, repValue);
+                        }),
                   ),
                   Container(
                     color:
@@ -92,6 +98,10 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       initialValue:
                           state.exercieList![exerciseIndex].setsList![i].result,
+                      onChanged: (resultValue) => context
+                          .read<WorkoutformCubit>()
+                          .updateExerciseListToFirebaseAfterChangeResult(
+                              i, exerciseIndex, resultValue),
                     ),
                   ),
                 ]),
