@@ -51,8 +51,12 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
               resizeDuration: Duration(microseconds: 1),
               background: Container(
                 alignment: Alignment.centerLeft,
-                color: Colors.green,
-                child: Icon(Icons.check),
+                color: state.exercieList![exerciseIndex].setsList![i].completed
+                    ? Colors.grey
+                    : Colors.green,
+                child: state.exercieList![exerciseIndex].setsList![i].completed
+                    ? Icon(Icons.backspace_rounded)
+                    : Icon(Icons.check),
                 padding: EdgeInsets.only(left: 5.w),
               ),
               secondaryBackground: Container(

@@ -105,7 +105,11 @@ abstract class SeriesDto implements _$SeriesDto {
   }) = _SeriesDto;
 
   factory SeriesDto.fromDomain(Series series) {
-    return SeriesDto(reps: series.reps!, result: series.result!);
+    return SeriesDto(
+      reps: series.reps!,
+      result: series.result!,
+      completed: series.completed!,
+    );
   }
 
   Series toDomain() {

@@ -228,12 +228,17 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
     );
   }
 
-  void markSeriesAsComplete({int? exerciseNumber, int? seriesNumber}) {
+  void markSeriesAsComplete({int? exerciseNumber, int? seriesNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
 
-    Series? newMarkedSeries = (state
-        .exercieList?[exerciseNumber!].setsList?[seriesNumber!]
-        .copyWith(completed: true));
+    final seriesToModify =
+        state.exercieList?[exerciseNumber!].setsList?[seriesNumber!];
+    Series? newMarkedSeries;
+
+    if (seriesToModify?.completed == false)
+      newMarkedSeries = (seriesToModify?.copyWith(completed: true));
+    else
+      newMarkedSeries = (seriesToModify?.copyWith(completed: false));
 
     newExerciseList?[exerciseNumber!].setsList?.removeAt(seriesNumber!);
     newExerciseList?[exerciseNumber!]
@@ -242,8 +247,18 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
 
     emit(
       state.copyWith(
-        exercieList: state.exercieList,
+        exercieList: newExerciseList,
         toogleRebuild: !state.toogleRebuild!,
+      ),
+    );
+
+    await _iWorkoutFacade.update(
+      workout: Workout(
+        exercieList: newExerciseList,
+        id: state.id,
+        title: state.title,
+        workoutDate: state.workoutDate,
+        updateDate: DateTime.now(),
       ),
     );
   }
