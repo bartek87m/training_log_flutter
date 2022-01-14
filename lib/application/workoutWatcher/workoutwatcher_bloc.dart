@@ -27,9 +27,12 @@ class WorkoutwatcherBloc
           _workoutStreamSubscribtion = _iWorkoutFacade.watchAll().listen(
                 (failureOrWorkout) => {
                   print('Failure or Workout $failureOrWorkout'),
-                  add(
-                    WorkoutwatcherEvent.workoutsReceived(failureOrWorkout),
-                  ),
+                  if (!isClosed)
+                    {
+                      add(
+                        WorkoutwatcherEvent.workoutsReceived(failureOrWorkout),
+                      ),
+                    }
                 },
               )
         }));

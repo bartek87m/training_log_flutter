@@ -27,14 +27,14 @@ class WorkoutViewPage extends HookWidget {
       context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
     });
 
-    void UpdateWorkoutTItleToFirebaseAfterAmountOFCharts(
-        int characterAmount, title) {
-      characterToNextSave.value++;
-      if (characterToNextSave.value >= 5) {
-        context.read<WorkoutformCubit>().updateTitleToFirebase(title);
-        characterToNextSave.value = 0;
-      }
-    }
+    // void UpdateWorkoutTItleToFirebaseAfterAmountOFCharts(
+    //     int characterAmount, title) {
+    //   characterToNextSave.value++;
+    //   if (characterToNextSave.value >= 5) {
+    //     context.read<WorkoutformCubit>().updateTitleToFirebase(title);
+    //     characterToNextSave.value = 0;
+    //   }
+    // }
 
     return Scaffold(
       appBar: AppBar(

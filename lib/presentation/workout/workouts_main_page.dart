@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_flip_builder/page_flip_builder.dart';
 import 'package:sizer/sizer.dart';
-import 'package:training_log/presentation/workout/timers_page.dart';
+import 'package:training_log/presentation/timer/timers_page.dart';
 import 'package:training_log/presentation/workout/workouts_view_page.dart';
 
 class WorkoutsMainPage extends StatelessWidget {
