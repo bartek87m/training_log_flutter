@@ -6,10 +6,7 @@ class TimersPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Timers"),
-      ),
-      body: Container(
+      body: SafeArea(
         child: StopwatchWidget(),
       ),
     );

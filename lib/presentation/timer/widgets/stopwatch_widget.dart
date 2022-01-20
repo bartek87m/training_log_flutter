@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:training_log/presentation/timer/widgets/button_timer_widget.dart';
 import 'package:training_log/presentation/timer/widgets/clock_hand_widget.dart';
 import 'package:training_log/presentation/timer/widgets/clock_marker_widget.dart';
 import 'package:training_log/presentation/timer/widgets/clock_text_marker_widget.dart';
 import 'package:sizer/sizer.dart';
+import 'package:training_log/presentation/timer/widgets/stopwatch_rendered.dart';
 
 class StopwatchWidget extends StatefulWidget {
   StopwatchWidget({Key? key}) : super(key: key);
@@ -22,8 +24,8 @@ class _StopwatchWidgetState extends State<StopwatchWidget>
   late final Ticker _ticker;
   double angle = 0.0;
   bool _isTimerRunning = false;
-  String _runningMinutes = '00';
-  String _runningSecounds = '00';
+  String _runningTimerInMinutes = '00';
+  String _runningTimerInSecounds = '00';
 
   @override
   void initState() {
@@ -31,16 +33,15 @@ class _StopwatchWidgetState extends State<StopwatchWidget>
 
     _ticker = this.createTicker((elapsed) {
       setState(() {
-        // if (_runningSecounds > 60) _runningSecounds = 0;
-        _runningMinutes = elapsed.inMinutes > 9
-            ? elapsed.inMinutes.toString()
-            : '0${elapsed.inMinutes}';
-        _runningSecounds = elapsed.inSeconds - (elapsed.inMinutes * 60) > 9
-            ? (elapsed.inSeconds - (elapsed.inMinutes * 60)).toString()
-            : '0${(elapsed.inSeconds - (elapsed.inMinutes * 60))}';
+        _runningTimerInMinutes = _elapsed.inMinutes > 9
+            ? _elapsed.inMinutes.toString()
+            : '0${_elapsed.inMinutes}';
+        _runningTimerInSecounds =
+            _elapsed.inSeconds - (_elapsed.inMinutes * 60) > 9
+                ? (_elapsed.inSeconds - (_elapsed.inMinutes * 60)).toString()
+                : '0${(_elapsed.inSeconds - (_elapsed.inMinutes * 60))}';
         _currentlyElapsed = elapsed;
       });
-      print(_runningSecounds);
     });
   }
 
@@ -50,11 +51,14 @@ class _StopwatchWidgetState extends State<StopwatchWidget>
     super.dispose();
   }
 
-  void startStopTimer() {
+  void _startStopTimer() {
     if (!_isTimerRunning) {
       _ticker.start();
       _isTimerRunning = true;
     } else {
+      setState(() {
+        _isTimerRunning = false;
+      });
       _ticker.stop();
       _isTimerRunning = false;
       _previousElapsed += _currentlyElapsed;
@@ -64,6 +68,8 @@ class _StopwatchWidgetState extends State<StopwatchWidget>
 
   void _resetStopwatch() {
     _ticker.stop();
+    _runningTimerInMinutes = '00';
+    _runningTimerInSecounds = '00';
 
     setState(() {
       _isTimerRunning = false;
@@ -81,81 +87,25 @@ class _StopwatchWidgetState extends State<StopwatchWidget>
           children: [
             Container(
               height: 50.h,
-              child: Stack(
-                children: [
-                  for (var i = 0; i < 60; i++)
-                    Positioned(
-                      left: radius * 1.0,
-                      top: radius,
-                      child: ClockMarkers(seconds: i, radius: radius),
-                    ),
-                  for (var i = 0; i < 60; i += 5)
-                    Positioned(
-                      left: radius * 1.0,
-                      top: radius,
-                      child: ClockTextMarkers(
-                        value: i,
-                        radius: radius,
-                        maxValue: 60,
-                      ),
-                    ),
-                  Positioned(
-                    left: radius * 1.0,
-                    top: radius,
-                    child: ClockHandWidget(
-                      radius: radius,
-                      rotationAngle:
-                          pi + (2 * pi / 60000) * _elapsed.inMilliseconds,
-                    ),
-                  ),
-                ],
+              child: StopwatchRendererWidget(
+                elapsed: _elapsed,
+                radius: radius,
               ),
             ),
             Text(
-              '${_runningMinutes}:${_runningSecounds}',
+              '${_runningTimerInMinutes}:${_runningTimerInSecounds}',
               style: TextStyle(fontSize: 8.h),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                TextButton(
-                  onPressed: startStopTimer,
-                  child: Text(
-                    'START',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  style: ButtonStyle(
-                      splashFactory: NoSplash.splashFactory,
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                              side: BorderSide(color: Colors.red)))),
+                ButtonTimerWidget(
+                  buttonText: !_isTimerRunning ? "START" : "STOP",
+                  buttonFunction: _startStopTimer,
                 ),
-                TextButton(
-                  onPressed: _resetStopwatch,
-                  child: Text(
-                    'RESET',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  style: ButtonStyle(
-                      splashFactory: NoSplash.splashFactory,
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                              side: BorderSide(color: Colors.red)))),
-                ),
-                TextButton(
-                  onPressed: startStopTimer,
-                  child: Text(
-                    'STOP',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  style: ButtonStyle(
-                      splashFactory: NoSplash.splashFactory,
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                              side: BorderSide(color: Colors.red)))),
+                ButtonTimerWidget(
+                  buttonText: 'RESET',
+                  buttonFunction: _resetStopwatch,
                 ),
               ],
             ),
