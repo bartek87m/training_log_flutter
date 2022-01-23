@@ -11,11 +11,31 @@ class WorkoutShortViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
-          borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: Colors.white12)),
+        color: Theme.of(context).backgroundColor,
+        borderRadius: BorderRadius.circular(10),
+        // border: Border.all(color: Colors.white12),
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).primaryColor.withOpacity(1),
+            spreadRadius: 0.5.w,
+            blurRadius: 4,
+            offset: Offset(0, 0),
+          )
+        ],
+        gradient: LinearGradient(
+          colors: [
+            Theme.of(context).backgroundColor,
+            Theme.of(context).backgroundColor.withGreen(190)
+          ],
+          begin: Alignment.centerLeft,
+        ),
+      ),
       padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
-      margin: EdgeInsets.only(top: 1.h, left: 2.w, right: 2.w),
+      margin: EdgeInsets.only(
+        top: 1.5.h,
+        left: 3.w,
+        right: 3.w,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
