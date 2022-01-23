@@ -1,11 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:training_log/presentation/timer/widgets/button_timer_widget.dart';
-import 'package:training_log/presentation/timer/widgets/clock_hand_widget.dart';
-import 'package:training_log/presentation/timer/widgets/clock_marker_widget.dart';
-import 'package:training_log/presentation/timer/widgets/clock_text_marker_widget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:training_log/presentation/timer/widgets/stopwatch_rendered.dart';
 

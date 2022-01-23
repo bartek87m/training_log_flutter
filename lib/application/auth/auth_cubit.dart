@@ -22,7 +22,7 @@ class AuthCubit extends Cubit<AuthState> {
               AuthState.unauthentificate(),
             ));
 
-    print(state);
+    // print(state);
   }
 
   Future<void> signOut() async {

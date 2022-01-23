@@ -32,7 +32,7 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
       {String? workoutId}) async {
     try {
       final userDoc = await _firestore.userDocument();
-      print(workoutId);
+
       await userDoc.workoutCollection.doc(workoutId).delete();
       return right(unit);
     } on FirebaseException catch (e) {

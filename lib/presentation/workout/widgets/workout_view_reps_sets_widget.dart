@@ -29,7 +29,7 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
               padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
               alignment: Alignment.center,
               width: 35.w,
-              child: Text("Reps"),
+              child: Text("Result"),
             ),
           ],
         ),

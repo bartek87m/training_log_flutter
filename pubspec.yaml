@@ -43,6 +43,7 @@ dependencies:
   sizer: ^2.0.15
   top_snackbar_flutter: ^1.0.2
   page_flip_builder: ^0.1.3
+  speech_to_text: ^5.4.2
 
 dev_dependencies:
   flutter_test:

@@ -17,8 +17,7 @@ class WorkoutViewPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final wokroutSeved = useState(true);
-    final characterToNextSave = useState(0);
+    List<TextEditingController> _coontrollersList = [];
 
     useMemoized(() async {
       context
@@ -27,14 +26,11 @@ class WorkoutViewPage extends HookWidget {
       context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
     });
 
-    // void UpdateWorkoutTItleToFirebaseAfterAmountOFCharts(
-    //     int characterAmount, title) {
-    //   characterToNextSave.value++;
-    //   if (characterToNextSave.value >= 5) {
-    //     context.read<WorkoutformCubit>().updateTitleToFirebase(title);
-    //     characterToNextSave.value = 0;
-    //   }
-    // }
+    useEffect(() {
+      return () {
+        _coontrollersList.forEach((controller) => controller.clear());
+      };
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -61,6 +57,19 @@ class WorkoutViewPage extends HookWidget {
       ),
       body: BlocBuilder<WorkoutformCubit, WorkoutformState>(
         builder: (context, state) {
+          _coontrollersList.forEach((element) {
+            element.clear();
+          });
+          _coontrollersList.clear();
+
+          for (int i = 0; i < state.exercieList!.length; i++) {
+            _coontrollersList.add(
+              TextEditingController(
+                text: state.exercieList![i].exerciseName!.getOrCrash(),
+              ),
+            );
+          }
+
           if (state.exercieList!.length == 0) {
             final emptyWorkout = Workout(
               id: this.workout.id,
@@ -87,19 +96,22 @@ class WorkoutViewPage extends HookWidget {
                     key: ObjectKey(state.exercieList![exerciseIndex]),
                     children: [
                       Container(
-                        height: 2.5.h,
+                        height: 3.5.h,
                         width: 90.w,
                         child: TextFormField(
-                            initialValue: state
-                                .exercieList![exerciseIndex].exerciseName!
-                                .getOrCrash(),
-                            onChanged: (exerciseName) {
-                              //TODO Zprubować znależć lepszy sposób zapisywania
-                              context
-                                  .read<WorkoutformCubit>()
-                                  .updateExerciseListToFirebaseAfterChangeName(
-                                      exerciseIndex, exerciseName);
-                            }),
+                          controller: _coontrollersList[exerciseIndex],
+                          decoration: InputDecoration(
+                              hintText: 'Exercise name',
+                              contentPadding: EdgeInsets.only(bottom: 1.5.h)),
+                          onChanged: (exerciseName) {
+                            context
+                                .read<WorkoutformCubit>()
+                                .updateExerciseListToFirebaseAfterChangeName(
+                                    exerciseIndex, exerciseName);
+                          },
+                          onTap: () =>
+                              {_coontrollersList[exerciseIndex].clear()},
+                        ),
                       ),
                       Row(
                         key: UniqueKey(),
@@ -114,16 +126,19 @@ class WorkoutViewPage extends HookWidget {
                         ],
                       ),
                       WorkoutViewBottomButtons(
-                        addNewSeriesCallback: () => context
-                            .read<WorkoutformCubit>()
-                            .addSeriesToExercise(exerciseNumber: exerciseIndex),
-                        removeExerciseCallback: () => context
-                            .read<WorkoutformCubit>()
-                            .removeExercise(exerciseNumber: exerciseIndex),
-                        addExerciseCallback: () => context
-                            .read<WorkoutformCubit>()
-                            .addExercise(exerciseNumber: exerciseIndex),
-                      )
+                          addNewSeriesCallback: () => context
+                              .read<WorkoutformCubit>()
+                              .addSeriesToExercise(
+                                  exerciseNumber: exerciseIndex),
+                          removeExerciseCallback: () => {
+                                context.read<WorkoutformCubit>().removeExercise(
+                                    exerciseNumber: exerciseIndex),
+                              },
+                          addExerciseCallback: () => {
+                                context
+                                    .read<WorkoutformCubit>()
+                                    .addExercise(exerciseNumber: exerciseIndex),
+                              })
                     ],
                   );
                 }),

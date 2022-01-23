@@ -162,7 +162,6 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
       workoutDate: state.workoutDate,
       exercieList: state.exercieList,
     ));
-    // print('createdWorkout');
   }
 
   void removeSeriesFromExercise(
@@ -178,12 +177,20 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
-    // print('Workout updated');
   }
 
   void addSeriesToExercise({int? exerciseNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
-    newExerciseList?[exerciseNumber!].setsList?.add(Series.newSeries());
+    Series? newSeries;
+
+    if (newExerciseList?[exerciseNumber!].setsList?.length != 0)
+      newSeries = newExerciseList?[exerciseNumber!].setsList?.last;
+    else
+      newSeries = Series.newSeries();
+
+    newExerciseList?[exerciseNumber!]
+        .setsList
+        ?.add(newSeries!.copyWith(completed: false));
 
     await updateExerciseListToFirebase(newExerciseList!);
 
@@ -193,12 +200,10 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
-    // print('Workout updated');
   }
 
   void removeWorkout() async {
     await _iWorkoutFacade.removeWorkout(workoutId: state.id!.getOrCrash());
-    // print('Workout removed');
   }
 
   void addExercise({int? exerciseNumber}) async {
