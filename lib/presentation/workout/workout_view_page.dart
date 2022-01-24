@@ -7,8 +7,10 @@ import 'package:training_log/domain/workout/workout.dart';
 import 'package:sizer/sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:training_log/presentation/routes/router.gr.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_bottom_buttons.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_reps_sets_widget.dart';
+import 'package:training_log/presentation/workout/workouts_main_page.dart';
 
 class WorkoutViewPage extends HookWidget {
   final Workout workout;
@@ -49,8 +51,9 @@ class WorkoutViewPage extends HookWidget {
             child: GestureDetector(
                 child: Icon(Icons.delete),
                 onTap: () {
-                  context.read<WorkoutformCubit>().removeWorkout();
-                  context.router.pop();
+                  showDeleteConfirmDialog(context);
+                  // context.read<WorkoutformCubit>().removeWorkout();
+                  // context.router.pop();
                 }),
           ),
         ],
@@ -147,4 +150,29 @@ class WorkoutViewPage extends HookWidget {
       ),
     );
   }
+}
+
+Future showDeleteConfirmDialog(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text("Are you shure?"),
+      actions: [
+        TextButton(
+          onPressed: () => {
+            context.read<WorkoutformCubit>().removeWorkout(),
+            context.router.pop(),
+            context.router.popAndPush(WorkoutsMainPageRoute())
+          },
+          child: Text('Yes'),
+        ),
+        TextButton(
+          onPressed: () => {
+            context.router.pop(),
+          },
+          child: Text('No'),
+        ),
+      ],
+    ),
+  );
 }
