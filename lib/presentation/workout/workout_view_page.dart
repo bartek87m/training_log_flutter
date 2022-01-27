@@ -8,18 +8,21 @@ import 'package:sizer/sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
+import 'package:training_log/presentation/workout/widgets/timer_in_workout_widget.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_bottom_buttons.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_reps_sets_widget.dart';
-import 'package:training_log/presentation/workout/workouts_main_page.dart';
 
 class WorkoutViewPage extends HookWidget {
   final Workout workout;
 
-  const WorkoutViewPage({Key? key, required this.workout}) : super(key: key);
+  WorkoutViewPage({Key? key, required this.workout}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     List<TextEditingController> _coontrollersList = [];
+
+    final keyAnimation = GlobalKey<TimerInWorkoutWidgetState>();
+    final showTimer = useState(-1);
 
     useMemoized(() async {
       context
@@ -129,19 +132,35 @@ class WorkoutViewPage extends HookWidget {
                         ],
                       ),
                       WorkoutViewBottomButtons(
-                          addNewSeriesCallback: () => context
+                        addNewSeriesCallback: () => context
+                            .read<WorkoutformCubit>()
+                            .addSeriesToExercise(exerciseNumber: exerciseIndex),
+                        removeExerciseCallback: () => {
+                          context
                               .read<WorkoutformCubit>()
-                              .addSeriesToExercise(
-                                  exerciseNumber: exerciseIndex),
-                          removeExerciseCallback: () => {
-                                context.read<WorkoutformCubit>().removeExercise(
-                                    exerciseNumber: exerciseIndex),
-                              },
-                          addExerciseCallback: () => {
-                                context
-                                    .read<WorkoutformCubit>()
-                                    .addExercise(exerciseNumber: exerciseIndex),
-                              })
+                              .removeExercise(exerciseNumber: exerciseIndex),
+                        },
+                        addExerciseCallback: () => {
+                          context
+                              .read<WorkoutformCubit>()
+                              .addExercise(exerciseNumber: exerciseIndex),
+                        },
+                        showHideTimerForExerciseCallback: () {
+                          keyAnimation.currentState?.showElement();
+
+                          if (showTimer.value != exerciseIndex) {
+                            showTimer.value = exerciseIndex;
+                          }
+                        },
+                        showTimerButtonText: showTimer.value == exerciseIndex
+                            ? 'Hide Timer'
+                            : 'Show Timer',
+                      ),
+                      exerciseIndex == showTimer.value
+                          ? TimerInWorkoutWidget(
+                              key: keyAnimation,
+                            )
+                          : Container()
                     ],
                   );
                 }),

@@ -192,14 +192,14 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         .setsList
         ?.add(newSeries!.copyWith(completed: false));
 
-    await updateExerciseListToFirebase(newExerciseList!);
-
     emit(
       state.copyWith(
         exercieList: newExerciseList,
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
+
+    await updateExerciseListToFirebase(newExerciseList!);
   }
 
   void removeWorkout() async {
@@ -211,19 +211,18 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
 
     newExerciseList?.insert(exerciseNumber! + 1, Exercise.newExercise());
 
+    emit(
+      state.copyWith(
+        exercieList: newExerciseList,
+        toogleRebuild: !state.toogleRebuild!,
+      ),
+    );
     await updateExerciseListToFirebase(newExerciseList!);
-
-    emit(state.copyWith(
-      exercieList: newExerciseList,
-      toogleRebuild: !state.toogleRebuild!,
-    ));
   }
 
   void removeExercise({int? exerciseNumber}) async {
     List<Exercise>? newExerciseList = state.exercieList;
     newExerciseList?.removeAt(exerciseNumber!);
-
-    await updateExerciseListToFirebase(newExerciseList!);
 
     emit(
       state.copyWith(
@@ -231,6 +230,7 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         toogleRebuild: !state.toogleRebuild!,
       ),
     );
+    await updateExerciseListToFirebase(newExerciseList!);
   }
 
   void markSeriesAsComplete({int? exerciseNumber, int? seriesNumber}) async {
