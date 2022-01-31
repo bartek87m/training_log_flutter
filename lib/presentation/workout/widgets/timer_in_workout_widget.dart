@@ -52,6 +52,7 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
         _height = 40.h;
         _width = 95.w;
       } else {
+        _animationControllerTimer.reset();
         _height = 0;
         _width = 0;
       }
@@ -59,24 +60,24 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
   }
 
   void _handleStartTimer() {
+    if (_pretimeStatus == AnimationPretimeStatus.Not_Started &&
+        _animationControllerTimer.status == AnimationStatus.completed) {
+      _animationControllerTimer.reset();
+    }
+
     if (_pretimeStatus == AnimationPretimeStatus.Not_Started)
       _pretimeStatus = AnimationPretimeStatus.Forward;
 
     if (_animationControllerTimer.status == AnimationStatus.completed &&
         _pretimeStatus == AnimationPretimeStatus.Done) {
-      print("w1");
       _animationControllerTimer.reset();
       _animationControllerTimer.forward();
       _pretimeStatus = AnimationPretimeStatus.Not_Started;
     } else {
       if (_animationControllerTimer.status != AnimationStatus.completed) {
-        print("w2");
         _animationControllerTimer.forward();
       }
     }
-
-    print(_animationControllerTimer.status);
-    print(_pretimeStatus);
   }
 
   @override

@@ -63,6 +63,7 @@ class WorkoutViewPage extends HookWidget {
         title: TextFormField(
           initialValue: this.workout.title!.getOrCrash(),
           onChanged: (title) {
+            //TODO deabuncer input i zrefaktoryzować
             context.read<WorkoutformCubit>().updateTitleToFirebase(title);
           },
           style: TextStyle(color: Colors.white),
