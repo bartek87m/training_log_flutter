@@ -1,20 +1,70 @@
+import 'package:async/async.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 
-class WorkoutViewRepsSetsWidget extends StatelessWidget {
+class WorkoutViewRepsSetsWidget extends HookWidget {
   WorkoutViewRepsSetsWidget(
-      {Key? key, this.exerciseIndex, this.setsLength, this.state})
+      {Key? key, this.exerciseIndex, required this.setsLength, this.state})
       : super(key: key);
 
   final exerciseIndex;
   final setsLength;
   final state;
+  late List<TextEditingController> _coontrollersRepsList;
+  late List<TextEditingController> _coontrollersResultList;
+  late RestartableTimer inputRepsTimer;
+  late RestartableTimer inputResultTimer;
+  bool isRepsTimerInitialized = false;
+  bool isResultTimerInitialized = false;
 
   @override
   Widget build(BuildContext context) {
+    void setInputRepsTimer(i) {
+      inputRepsTimer = RestartableTimer(
+        Duration(seconds: 2),
+        () {
+          context
+              .read<WorkoutformCubit>()
+              .updateExerciseListToFirebaseAfterChangeRep(
+                  i, exerciseIndex, _coontrollersRepsList[exerciseIndex].text);
+        },
+      );
+    }
+
+    void setinputResultTimer(i) {
+      inputResultTimer = RestartableTimer(
+        Duration(seconds: 2),
+        () {
+          context
+              .read<WorkoutformCubit>()
+              .updateExerciseListToFirebaseAfterChangeResult(i, exerciseIndex,
+                  _coontrollersResultList[exerciseIndex].text);
+        },
+      );
+    }
+
+    useEffect(() {
+      return () {
+        if (isRepsTimerInitialized) inputRepsTimer.cancel();
+        if (isResultTimerInitialized) inputResultTimer.cancel();
+      };
+    });
+
     // FocusScope.of(context).requestFocus(inputFieldNode);
+    _coontrollersRepsList = List.generate(
+        setsLength,
+        (index) => TextEditingController(
+              text: state.exercieList![exerciseIndex].setsList![index].reps,
+            ));
+    _coontrollersResultList = List.generate(
+        setsLength,
+        (index) => TextEditingController(
+              text: state.exercieList![exerciseIndex].setsList![index].result,
+            ));
     return Column(
       children: [
         Row(
@@ -78,16 +128,20 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
                     height: 3.h,
                     width: 35.w,
                     child: TextFormField(
-                        key: Key(i.toString()),
-                        textAlign: TextAlign.center,
-                        initialValue:
-                            state.exercieList![exerciseIndex].setsList![i].reps,
-                        onChanged: (repValue) {
-                          context
-                              .read<WorkoutformCubit>()
-                              .updateExerciseListToFirebaseAfterChangeRep(
-                                  i, exerciseIndex, repValue);
-                        }),
+                      key: Key(i.toString()),
+                      textAlign: TextAlign.center,
+                      controller: _coontrollersRepsList[i],
+                      onChanged: (repValue) {
+                        if (inputRepsTimer.isActive)
+                          inputRepsTimer.reset();
+                        else
+                          setInputRepsTimer(i);
+                      },
+                      onTap: () {
+                        isRepsTimerInitialized = true;
+                        setInputRepsTimer(i);
+                      },
+                    ),
                   ),
                   Container(
                     color:
@@ -100,12 +154,17 @@ class WorkoutViewRepsSetsWidget extends StatelessWidget {
                     child: TextFormField(
                       key: Key(i.toString()),
                       textAlign: TextAlign.center,
-                      initialValue:
-                          state.exercieList![exerciseIndex].setsList![i].result,
-                      onChanged: (resultValue) => context
-                          .read<WorkoutformCubit>()
-                          .updateExerciseListToFirebaseAfterChangeResult(
-                              i, exerciseIndex, resultValue),
+                      controller: _coontrollersResultList[i],
+                      onChanged: (resultValue) {
+                        if (inputResultTimer.isActive)
+                          inputResultTimer.reset();
+                        else
+                          setinputResultTimer(i);
+                      },
+                      onTap: () {
+                        isResultTimerInitialized = true;
+                        setinputResultTimer(i);
+                      },
                     ),
                   ),
                 ]),

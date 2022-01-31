@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'package:async/async.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
@@ -23,6 +26,23 @@ class WorkoutViewPage extends HookWidget {
 
     final keyAnimation = GlobalKey<TimerInWorkoutWidgetState>();
     final showTimer = useState(-1);
+    late RestartableTimer inputExerciseNameTimer;
+    bool isTimerInitialized = false;
+
+    void exerciseNameTimerService({required int exerciseIndex}) {
+      inputExerciseNameTimer = RestartableTimer(
+        Duration(seconds: 2),
+        () {
+          if (_coontrollersList[exerciseIndex].text == '') {
+            _coontrollersList[exerciseIndex].text = 'Exercise name';
+          }
+          context
+              .read<WorkoutformCubit>()
+              .updateExerciseListToFirebaseAfterChangeName(
+                  exerciseIndex, _coontrollersList[exerciseIndex].text);
+        },
+      );
+    }
 
     useMemoized(() async {
       context
@@ -34,6 +54,7 @@ class WorkoutViewPage extends HookWidget {
     useEffect(() {
       return () {
         _coontrollersList.forEach((controller) => controller.clear());
+        if (isTimerInitialized) inputExerciseNameTimer.cancel();
       };
     });
 
@@ -55,18 +76,22 @@ class WorkoutViewPage extends HookWidget {
                 child: Icon(Icons.delete),
                 onTap: () {
                   showDeleteConfirmDialog(context);
-                  // context.read<WorkoutformCubit>().removeWorkout();
-                  // context.router.pop();
                 }),
           ),
         ],
       ),
       body: BlocBuilder<WorkoutformCubit, WorkoutformState>(
         builder: (context, state) {
-          _coontrollersList.forEach((element) {
-            element.clear();
-          });
+          _coontrollersList.forEach(
+            (element) {
+              element.clear();
+            },
+          );
           _coontrollersList.clear();
+          if (isTimerInitialized) {
+            inputExerciseNameTimer.cancel();
+            isTimerInitialized = false;
+          }
 
           for (int i = 0; i < state.exercieList!.length; i++) {
             _coontrollersList.add(
@@ -110,13 +135,20 @@ class WorkoutViewPage extends HookWidget {
                               hintText: 'Exercise name',
                               contentPadding: EdgeInsets.only(bottom: 1.5.h)),
                           onChanged: (exerciseName) {
-                            context
-                                .read<WorkoutformCubit>()
-                                .updateExerciseListToFirebaseAfterChangeName(
-                                    exerciseIndex, exerciseName);
+                            if (inputExerciseNameTimer.isActive)
+                              inputExerciseNameTimer.reset();
+                            else
+                              exerciseNameTimerService(
+                                  exerciseIndex: exerciseIndex);
                           },
-                          onTap: () =>
-                              {_coontrollersList[exerciseIndex].clear()},
+                          onTap: () => {
+                            isTimerInitialized = true,
+                            if (_coontrollersList[exerciseIndex].text ==
+                                'Exercise name')
+                              _coontrollersList[exerciseIndex].clear(),
+                            exerciseNameTimerService(
+                                exerciseIndex: exerciseIndex),
+                          },
                         ),
                       ),
                       Row(

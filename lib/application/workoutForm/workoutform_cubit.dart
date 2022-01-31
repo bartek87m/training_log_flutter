@@ -78,7 +78,9 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         updateDate: DateTime.now(),
       ),
     );
-    emit(state.copyWith(exercieList: newExerciseList));
+    emit(state.copyWith(
+      exercieList: newExerciseList,
+    ));
   }
 
   Future<void> updateExerciseListToFirebaseAfterChangeName(
@@ -100,7 +102,9 @@ class WorkoutformCubit extends Cubit<WorkoutformState> {
         updateDate: DateTime.now(),
       ),
     );
-    emit(state.copyWith(exercieList: newExerciseList));
+    emit(state.copyWith(
+      exercieList: newExerciseList,
+    ));
   }
 
   Future<void> updateTitleToFirebase(String title) async {
