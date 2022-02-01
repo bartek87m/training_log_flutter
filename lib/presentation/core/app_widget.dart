@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/auth/signIn/sign_in_cubit.dart';
+import 'package:training_log/application/cubit/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 
 import 'package:training_log/injection.dart';
@@ -22,6 +23,9 @@ class AppWidget extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<WorkoutformCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<ActiveseriesCubit>(),
         )
       ],
       child: Sizer(

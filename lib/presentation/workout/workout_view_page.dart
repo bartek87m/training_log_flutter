@@ -3,6 +3,7 @@ import 'package:async/async.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:training_log/application/cubit/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 import 'package:training_log/domain/workout/exercise/exercise.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
@@ -66,6 +67,8 @@ class WorkoutViewPage extends HookWidget {
           .read<WorkoutformCubit>()
           .loadWorkoutToState(workout: this.workout);
       context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
+      context.read<ActiveseriesCubit>().setActiveExerciseAndSeries(
+          workout.exercieList![0], 0, workout.exercieList![0].setsList![0]);
     });
 
     useEffect(() {

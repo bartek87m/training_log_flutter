@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:training_log/application/cubit/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 
 class WorkoutViewRepsSetsWidget extends HookWidget {
@@ -95,7 +96,16 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
                     break;
                   case 3:
                     context.read<WorkoutformCubit>().markSeriesAsComplete(
-                        exerciseNumber: exerciseIndex, seriesNumber: i);
+                          exerciseNumber: exerciseIndex,
+                          seriesNumber: i,
+                        );
+                    context
+                        .read<ActiveseriesCubit>()
+                        .setActiveExerciseAndSeries(
+                          state.exercieList![exerciseIndex],
+                          i,
+                          state.exercieList![exerciseIndex].setsList![i],
+                        );
                 }
               },
               resizeDuration: Duration(microseconds: 1),
