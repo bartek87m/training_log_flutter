@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:training_log/presentation/workout/CustomPainter/ring_painter.dart';
@@ -53,6 +51,7 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
         _width = 95.w;
       } else {
         _animationControllerTimer.reset();
+        _pretimeStatus = AnimationPretimeStatus.Not_Started;
         _height = 0;
         _width = 0;
       }

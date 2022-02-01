@@ -59,7 +59,7 @@ class FirebaseWorkoutFacade implements IWorkoutFacade {
     final userDoc = await _firestore.userDocument();
     yield* userDoc
         .collection('workouts')
-        // .orderBy('serverTimeStamp', descending: true)
+        .orderBy('workoutDate', descending: true)
         .snapshots()
         .map(
           (snapshot) => right<WorkoutFailure, List<Workout>>(

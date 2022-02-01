@@ -23,15 +23,19 @@ class WorkoutViewPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     List<TextEditingController> _coontrollersList = [];
+    TextEditingController _titleController =
+        TextEditingController(text: workout.title!.getOrCrash());
 
     final keyAnimation = GlobalKey<TimerInWorkoutWidgetState>();
     final showTimer = useState(-1);
     late RestartableTimer inputExerciseNameTimer;
-    bool isTimerInitialized = false;
+    late RestartableTimer inputTitleTimer;
+    bool isExerciseNameTimer = false;
+    bool isTitleTimer = false;
 
-    void exerciseNameTimerService({required int exerciseIndex}) {
+    void _exerciseNameTimerService({required int exerciseIndex}) {
       inputExerciseNameTimer = RestartableTimer(
-        Duration(seconds: 2),
+        Duration(seconds: 1),
         () {
           if (_coontrollersList[exerciseIndex].text == '') {
             _coontrollersList[exerciseIndex].text = 'Exercise name';
@@ -44,6 +48,19 @@ class WorkoutViewPage extends HookWidget {
       );
     }
 
+    void _titleTimerService() {
+      inputTitleTimer = RestartableTimer(
+        Duration(seconds: 1),
+        () {
+          context
+              .read<WorkoutformCubit>()
+              .updateTitleToFirebase(_titleController.text);
+        },
+      );
+    }
+
+    ;
+
     useMemoized(() async {
       context
           .read<WorkoutformCubit>()
@@ -54,20 +71,31 @@ class WorkoutViewPage extends HookWidget {
     useEffect(() {
       return () {
         _coontrollersList.forEach((controller) => controller.clear());
-        if (isTimerInitialized) inputExerciseNameTimer.cancel();
+        if (isExerciseNameTimer) inputExerciseNameTimer.cancel();
+        if (isTitleTimer) inputTitleTimer.cancel();
       };
     });
 
     return Scaffold(
       appBar: AppBar(
         title: TextFormField(
-          initialValue: this.workout.title!.getOrCrash(),
+          controller: _titleController,
           onChanged: (title) {
-            //TODO deabuncer input i zrefaktoryzować
-            context.read<WorkoutformCubit>().updateTitleToFirebase(title);
+            if (inputTitleTimer.isActive)
+              inputTitleTimer.reset();
+            else
+              _titleTimerService();
           },
+          onTap: () => {isTitleTimer = true, _titleTimerService()},
           style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(border: InputBorder.none),
+          decoration: InputDecoration(
+              hoverColor: Colors.amber,
+              border: InputBorder.none,
+              suffixIcon: IconButton(
+                icon: Icon(Icons.clear),
+                onPressed: () => _titleController.clear(),
+                color: Colors.white,
+              )),
           cursorColor: Colors.white,
         ),
         actions: [
@@ -89,9 +117,9 @@ class WorkoutViewPage extends HookWidget {
             },
           );
           _coontrollersList.clear();
-          if (isTimerInitialized) {
+          if (isExerciseNameTimer) {
             inputExerciseNameTimer.cancel();
-            isTimerInitialized = false;
+            isExerciseNameTimer = false;
           }
 
           for (int i = 0; i < state.exercieList!.length; i++) {
@@ -139,15 +167,15 @@ class WorkoutViewPage extends HookWidget {
                             if (inputExerciseNameTimer.isActive)
                               inputExerciseNameTimer.reset();
                             else
-                              exerciseNameTimerService(
+                              _exerciseNameTimerService(
                                   exerciseIndex: exerciseIndex);
                           },
                           onTap: () => {
-                            isTimerInitialized = true,
+                            isExerciseNameTimer = true,
                             if (_coontrollersList[exerciseIndex].text ==
                                 'Exercise name')
                               _coontrollersList[exerciseIndex].clear(),
-                            exerciseNameTimerService(
+                            _exerciseNameTimerService(
                                 exerciseIndex: exerciseIndex),
                           },
                         ),
