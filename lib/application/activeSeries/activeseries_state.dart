@@ -6,11 +6,13 @@ class ActiveseriesState with _$ActiveseriesState {
     @required Exercise? exercise,
     @required Series? activeSeries,
     @required int? activeSeriesNumber,
+    @required Duration? timeForTimer,
   }) = _ActiveseriesState;
 
   factory ActiveseriesState.initial() => ActiveseriesState(
         exercise: Exercise(exerciseName: ExerciseName(''), setsList: []),
         activeSeries: Series.newSeries(),
         activeSeriesNumber: 0,
+        timeForTimer: Duration(seconds: 0),
       );
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import 'package:training_log/application/activeSeries/activeseries_cubit.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
 import 'package:training_log/application/auth/signIn/sign_in_cubit.dart';
-import 'package:training_log/application/cubit/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 
 import 'package:training_log/injection.dart';

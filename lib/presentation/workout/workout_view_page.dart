@@ -3,7 +3,7 @@ import 'package:async/async.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:training_log/application/cubit/activeseries_cubit.dart';
+import 'package:training_log/application/activeSeries/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 import 'package:training_log/domain/workout/exercise/exercise.dart';
 import 'package:training_log/domain/workout/value_objects.dart';
@@ -38,9 +38,9 @@ class WorkoutViewPage extends HookWidget {
       inputExerciseNameTimer = RestartableTimer(
         Duration(seconds: 1),
         () {
-          if (_coontrollersList[exerciseIndex].text == '') {
-            _coontrollersList[exerciseIndex].text = 'Exercise name';
-          }
+          // if (_coontrollersList[exerciseIndex].text == '') {
+          //   _coontrollersList[exerciseIndex].text = 'Exercise name';
+          // }
           context
               .read<WorkoutformCubit>()
               .updateExerciseListToFirebaseAfterChangeName(
@@ -66,7 +66,7 @@ class WorkoutViewPage extends HookWidget {
       context
           .read<WorkoutformCubit>()
           .loadWorkoutToState(workout: this.workout);
-      context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
+      // context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
       context.read<ActiveseriesCubit>().setActiveExerciseAndSeries(
           workout.exercieList![0], 0, workout.exercieList![0].setsList![0]);
     });
@@ -223,6 +223,10 @@ class WorkoutViewPage extends HookWidget {
                       exerciseIndex == showTimer.value
                           ? TimerInWorkoutWidget(
                               key: keyAnimation,
+                              timeForTimer: context
+                                  .read<ActiveseriesCubit>()
+                                  .state
+                                  .timeForTimer!,
                             )
                           : Container()
                     ],

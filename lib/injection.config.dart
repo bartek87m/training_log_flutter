@@ -9,9 +9,9 @@ import 'package:firebase_auth/firebase_auth.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import 'application/activeSeries/activeseries_cubit.dart' as _i3;
 import 'application/auth/auth_cubit.dart' as _i13;
 import 'application/auth/signIn/sign_in_cubit.dart' as _i10;
-import 'application/cubit/activeseries_cubit.dart' as _i3;
 import 'application/workoutForm/workoutform_cubit.dart' as _i11;
 import 'application/workoutWatcher/workoutwatcher_bloc.dart' as _i12;
 import 'domain/auth/i_auth_facade.dart' as _i6;

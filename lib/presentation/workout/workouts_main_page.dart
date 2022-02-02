@@ -17,9 +17,10 @@ class WorkoutsMainPage extends StatelessWidget {
           Container(
             color: Theme.of(context).splashColor,
             child: PageFlipBuilder(
-                key: pageFlipKey,
-                frontBuilder: (_) => WorkoutsViewPage(),
-                backBuilder: (_) => TimersPage()),
+              key: pageFlipKey,
+              frontBuilder: (_) => WorkoutsViewPage(),
+              backBuilder: (_) => TimersPage(),
+            ),
           ),
           Positioned(
             bottom: 3.h,

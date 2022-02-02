@@ -62,7 +62,8 @@ class WorkoutsViewPage extends HookWidget {
               ),
               onPressed: () {
                 context.router.popAndPush(
-                    WorkoutViewPageRoute(workout: Workout.newWorkout()));
+                  WorkoutViewPageRoute(workout: Workout.newWorkout()),
+                );
               },
               child: Text('Create workout'),
             ),

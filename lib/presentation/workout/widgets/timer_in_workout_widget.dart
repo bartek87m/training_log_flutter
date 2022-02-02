@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:training_log/application/activeSeries/activeseries_cubit.dart';
 import 'package:training_log/presentation/workout/CustomPainter/ring_painter.dart';
 
 enum AnimationPretimeStatus { Not_Started, Forward, Done }
 
 class TimerInWorkoutWidget extends StatefulWidget {
-  TimerInWorkoutWidget({Key? key}) : super(key: key);
+  @required
+  Duration timeForTimer;
+  TimerInWorkoutWidget({required this.timeForTimer, Key? key})
+      : super(key: key);
 
   @override
   State<TimerInWorkoutWidget> createState() => TimerInWorkoutWidgetState();
@@ -15,6 +20,7 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
     with SingleTickerProviderStateMixin {
   double _width = 0;
   double _height = 0;
+  late Duration timerForTimer;
   Color _color = Colors.transparent;
   AnimationPretimeStatus _pretimeStatus = AnimationPretimeStatus.Not_Started;
   bool isAnimationDone = false;
@@ -24,10 +30,12 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
 
   @override
   void initState() {
+    timerForTimer = widget.timeForTimer;
     _animationControllerTimer = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 5),
+      duration: timerForTimer,
     );
+
     _curveAnimation = _animationControllerTimer.drive(
       CurveTween(curve: Curves.easeIn),
     );
@@ -113,7 +121,7 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
                         child: _animationControllerTimer.status ==
                                 AnimationStatus.forward
                             ? TimerText(
-                                timeInSecounds: 5,
+                                timeInSecounds: timerForTimer.inSeconds,
                                 progress: _animationControllerTimer.value,
                               )
                             : FloatingActionButton(
@@ -129,12 +137,10 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
               } else if (_pretimeStatus == AnimationPretimeStatus.Forward) {
                 return Center(
                   child: TimerText(
-                    timeInSecounds: 5,
+                    timeInSecounds: timerForTimer.inSeconds,
                     progress: _animationControllerTimer.value,
                   ),
                 );
-              } else if (_pretimeStatus == AnimationPretimeStatus.Done) {
-                return Text("sadasd");
               }
               return Container();
             },

@@ -36,9 +36,12 @@ class WorkoutwatcherBloc
                 },
               )
         }));
-    on<WorkoutsReceived>((event, emit) => (emit(event.failureOrWorkouts.fold(
-        (f) => WorkoutwatcherState.loadFailure(f),
-        (workout) => WorkoutwatcherState.loadSuccess(workout)))));
+    on<WorkoutsReceived>(
+      (event, emit) => (emit(
+        event.failureOrWorkouts.fold((f) => WorkoutwatcherState.loadFailure(f),
+            (workout) => WorkoutwatcherState.loadSuccess(workout)),
+      )),
+    );
   }
 
 //   @override

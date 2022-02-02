@@ -18,11 +18,15 @@ class _$ActiveseriesStateTearOff {
   const _$ActiveseriesStateTearOff();
 
   _ActiveseriesState call(
-      {Exercise? exercise, Series? activeSeries, int? activeSeriesNumber}) {
+      {Exercise? exercise,
+      Series? activeSeries,
+      int? activeSeriesNumber,
+      Duration? timeForTimer}) {
     return _ActiveseriesState(
       exercise: exercise,
       activeSeries: activeSeries,
       activeSeriesNumber: activeSeriesNumber,
+      timeForTimer: timeForTimer,
     );
   }
 }
@@ -35,6 +39,7 @@ mixin _$ActiveseriesState {
   Exercise? get exercise => throw _privateConstructorUsedError;
   Series? get activeSeries => throw _privateConstructorUsedError;
   int? get activeSeriesNumber => throw _privateConstructorUsedError;
+  Duration? get timeForTimer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ActiveseriesStateCopyWith<ActiveseriesState> get copyWith =>
@@ -47,7 +52,10 @@ abstract class $ActiveseriesStateCopyWith<$Res> {
           ActiveseriesState value, $Res Function(ActiveseriesState) then) =
       _$ActiveseriesStateCopyWithImpl<$Res>;
   $Res call(
-      {Exercise? exercise, Series? activeSeries, int? activeSeriesNumber});
+      {Exercise? exercise,
+      Series? activeSeries,
+      int? activeSeriesNumber,
+      Duration? timeForTimer});
 
   $ExerciseCopyWith<$Res>? get exercise;
   $SeriesCopyWith<$Res>? get activeSeries;
@@ -67,6 +75,7 @@ class _$ActiveseriesStateCopyWithImpl<$Res>
     Object? exercise = freezed,
     Object? activeSeries = freezed,
     Object? activeSeriesNumber = freezed,
+    Object? timeForTimer = freezed,
   }) {
     return _then(_value.copyWith(
       exercise: exercise == freezed
@@ -81,6 +90,10 @@ class _$ActiveseriesStateCopyWithImpl<$Res>
           ? _value.activeSeriesNumber
           : activeSeriesNumber // ignore: cast_nullable_to_non_nullable
               as int?,
+      timeForTimer: timeForTimer == freezed
+          ? _value.timeForTimer
+          : timeForTimer // ignore: cast_nullable_to_non_nullable
+              as Duration?,
     ));
   }
 
@@ -115,7 +128,10 @@ abstract class _$ActiveseriesStateCopyWith<$Res>
       __$ActiveseriesStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Exercise? exercise, Series? activeSeries, int? activeSeriesNumber});
+      {Exercise? exercise,
+      Series? activeSeries,
+      int? activeSeriesNumber,
+      Duration? timeForTimer});
 
   @override
   $ExerciseCopyWith<$Res>? get exercise;
@@ -139,6 +155,7 @@ class __$ActiveseriesStateCopyWithImpl<$Res>
     Object? exercise = freezed,
     Object? activeSeries = freezed,
     Object? activeSeriesNumber = freezed,
+    Object? timeForTimer = freezed,
   }) {
     return _then(_ActiveseriesState(
       exercise: exercise == freezed
@@ -153,6 +170,10 @@ class __$ActiveseriesStateCopyWithImpl<$Res>
           ? _value.activeSeriesNumber
           : activeSeriesNumber // ignore: cast_nullable_to_non_nullable
               as int?,
+      timeForTimer: timeForTimer == freezed
+          ? _value.timeForTimer
+          : timeForTimer // ignore: cast_nullable_to_non_nullable
+              as Duration?,
     ));
   }
 }
@@ -161,7 +182,10 @@ class __$ActiveseriesStateCopyWithImpl<$Res>
 
 class _$_ActiveseriesState implements _ActiveseriesState {
   const _$_ActiveseriesState(
-      {this.exercise, this.activeSeries, this.activeSeriesNumber});
+      {this.exercise,
+      this.activeSeries,
+      this.activeSeriesNumber,
+      this.timeForTimer});
 
   @override
   final Exercise? exercise;
@@ -169,10 +193,12 @@ class _$_ActiveseriesState implements _ActiveseriesState {
   final Series? activeSeries;
   @override
   final int? activeSeriesNumber;
+  @override
+  final Duration? timeForTimer;
 
   @override
   String toString() {
-    return 'ActiveseriesState(exercise: $exercise, activeSeries: $activeSeries, activeSeriesNumber: $activeSeriesNumber)';
+    return 'ActiveseriesState(exercise: $exercise, activeSeries: $activeSeries, activeSeriesNumber: $activeSeriesNumber, timeForTimer: $timeForTimer)';
   }
 
   @override
@@ -184,7 +210,9 @@ class _$_ActiveseriesState implements _ActiveseriesState {
             const DeepCollectionEquality()
                 .equals(other.activeSeries, activeSeries) &&
             const DeepCollectionEquality()
-                .equals(other.activeSeriesNumber, activeSeriesNumber));
+                .equals(other.activeSeriesNumber, activeSeriesNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.timeForTimer, timeForTimer));
   }
 
   @override
@@ -192,7 +220,8 @@ class _$_ActiveseriesState implements _ActiveseriesState {
       runtimeType,
       const DeepCollectionEquality().hash(exercise),
       const DeepCollectionEquality().hash(activeSeries),
-      const DeepCollectionEquality().hash(activeSeriesNumber));
+      const DeepCollectionEquality().hash(activeSeriesNumber),
+      const DeepCollectionEquality().hash(timeForTimer));
 
   @JsonKey(ignore: true)
   @override
@@ -204,7 +233,8 @@ abstract class _ActiveseriesState implements ActiveseriesState {
   const factory _ActiveseriesState(
       {Exercise? exercise,
       Series? activeSeries,
-      int? activeSeriesNumber}) = _$_ActiveseriesState;
+      int? activeSeriesNumber,
+      Duration? timeForTimer}) = _$_ActiveseriesState;
 
   @override
   Exercise? get exercise;
@@ -212,6 +242,8 @@ abstract class _ActiveseriesState implements ActiveseriesState {
   Series? get activeSeries;
   @override
   int? get activeSeriesNumber;
+  @override
+  Duration? get timeForTimer;
   @override
   @JsonKey(ignore: true)
   _$ActiveseriesStateCopyWith<_ActiveseriesState> get copyWith =>

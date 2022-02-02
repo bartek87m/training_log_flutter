@@ -14,12 +14,22 @@ class ActiveseriesCubit extends Cubit<ActiveseriesState> {
 
   void setActiveExerciseAndSeries(
       Exercise exercise, int numberOfActiveSeries, Series activeSeries) {
-    print(numberOfActiveSeries);
+    int? timeInSecounds;
+    final String? resultFromActiveSeries = activeSeries.result;
+    bool isResultTime =
+        resultFromActiveSeries!.contains(new RegExp(r'(["sec"])\w+'));
+    if (isResultTime) {
+      timeInSecounds = int.parse(
+          resultFromActiveSeries.replaceAll(new RegExp(r'[^0-9]'), ''));
+    } else {
+      timeInSecounds = 0;
+    }
     emit(
       state.copyWith(
         activeSeriesNumber: numberOfActiveSeries,
         exercise: exercise,
         activeSeries: activeSeries,
+        timeForTimer: Duration(seconds: timeInSecounds),
       ),
     );
     print(state);

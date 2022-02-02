@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:training_log/application/cubit/activeseries_cubit.dart';
+import 'package:training_log/application/activeSeries/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 
 class WorkoutViewRepsSetsWidget extends HookWidget {
@@ -24,26 +24,26 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    void setInputRepsTimer(i) {
+    void setInputRepsTimer(int setIndex) {
       inputRepsTimer = RestartableTimer(
-        Duration(seconds: 2),
+        Duration(milliseconds: 500),
         () {
           context
               .read<WorkoutformCubit>()
-              .updateExerciseListToFirebaseAfterChangeRep(
-                  i, exerciseIndex, _coontrollersRepsList[exerciseIndex].text);
+              .updateExerciseListToFirebaseAfterChangeRep(setIndex,
+                  exerciseIndex, _coontrollersRepsList[setIndex].text);
         },
       );
     }
 
-    void setinputResultTimer(i) {
+    void setinputResultTimer(int setIndex) {
       inputResultTimer = RestartableTimer(
-        Duration(seconds: 2),
+        Duration(milliseconds: 500),
         () {
           context
               .read<WorkoutformCubit>()
-              .updateExerciseListToFirebaseAfterChangeResult(i, exerciseIndex,
-                  _coontrollersResultList[exerciseIndex].text);
+              .updateExerciseListToFirebaseAfterChangeResult(setIndex,
+                  exerciseIndex, _coontrollersResultList[setIndex].text);
         },
       );
     }
@@ -57,7 +57,7 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
 
     // FocusScope.of(context).requestFocus(inputFieldNode);
     _coontrollersRepsList = List.generate(
-        setsLength,
+        state.exercieList![exerciseIndex].setsList!.length,
         (index) => TextEditingController(
               text: state.exercieList![exerciseIndex].setsList![index].reps,
             ));
@@ -84,7 +84,7 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
             ),
           ],
         ),
-        for (int i = 0; i < setsLength; i++)
+        for (int setIndex = 0; setIndex < setsLength; setIndex++)
           Container(
             padding: EdgeInsets.symmetric(vertical: 0.2.h),
             child: Dismissible(
@@ -92,29 +92,31 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
                 switch (direction.index) {
                   case 2:
                     context.read<WorkoutformCubit>().removeSeriesFromExercise(
-                        exerciseNumber: exerciseIndex, seriesNumber: i);
+                        exerciseNumber: exerciseIndex, seriesNumber: setIndex);
                     break;
                   case 3:
                     context.read<WorkoutformCubit>().markSeriesAsComplete(
                           exerciseNumber: exerciseIndex,
-                          seriesNumber: i,
+                          seriesNumber: setIndex,
                         );
                     context
                         .read<ActiveseriesCubit>()
                         .setActiveExerciseAndSeries(
                           state.exercieList![exerciseIndex],
-                          i,
-                          state.exercieList![exerciseIndex].setsList![i],
+                          setIndex,
+                          state.exercieList![exerciseIndex].setsList![setIndex],
                         );
                 }
               },
               resizeDuration: Duration(microseconds: 1),
               background: Container(
                 alignment: Alignment.centerLeft,
-                color: state.exercieList![exerciseIndex].setsList![i].completed
+                color: state.exercieList![exerciseIndex].setsList![setIndex]
+                        .completed
                     ? Colors.grey
                     : Colors.green,
-                child: state.exercieList![exerciseIndex].setsList![i].completed
+                child: state.exercieList![exerciseIndex].setsList![setIndex]
+                        .completed
                     ? Icon(Icons.backspace_rounded)
                     : Icon(Icons.check),
                 padding: EdgeInsets.only(left: 5.w),
@@ -128,52 +130,52 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
               key: UniqueKey(),
               child: Container(
                 child: Row(children: [
-                  Text((i + 1).toString()),
+                  Text((setIndex + 1).toString()),
                   Container(
-                    color:
-                        state.exercieList![exerciseIndex].setsList![i].completed
-                            ? Colors.lightGreen[100]
-                            : Colors.transparent,
+                    color: state.exercieList![exerciseIndex].setsList![setIndex]
+                            .completed
+                        ? Colors.lightGreen[100]
+                        : Colors.transparent,
                     margin: EdgeInsets.only(left: 1.w, right: 1.w),
                     height: 3.h,
                     width: 35.w,
                     child: TextFormField(
-                      key: Key(i.toString()),
+                      key: Key(setIndex.toString()),
                       textAlign: TextAlign.center,
-                      controller: _coontrollersRepsList[i],
+                      controller: _coontrollersRepsList[setIndex],
                       onChanged: (repValue) {
                         if (inputRepsTimer.isActive)
                           inputRepsTimer.reset();
                         else
-                          setInputRepsTimer(i);
+                          setInputRepsTimer(setIndex);
                       },
                       onTap: () {
                         isRepsTimerInitialized = true;
-                        setInputRepsTimer(i);
+                        setInputRepsTimer(setIndex);
                       },
                     ),
                   ),
                   Container(
-                    color:
-                        state.exercieList![exerciseIndex].setsList![i].completed
-                            ? Colors.lightGreen[100]
-                            : Colors.transparent,
+                    color: state.exercieList![exerciseIndex].setsList![setIndex]
+                            .completed
+                        ? Colors.lightGreen[100]
+                        : Colors.transparent,
                     margin: EdgeInsets.only(left: 1.w, right: 1.w),
                     height: 3.h,
                     width: 35.w,
                     child: TextFormField(
-                      key: Key(i.toString()),
+                      key: Key(setIndex.toString()),
                       textAlign: TextAlign.center,
-                      controller: _coontrollersResultList[i],
+                      controller: _coontrollersResultList[setIndex],
                       onChanged: (resultValue) {
                         if (inputResultTimer.isActive)
                           inputResultTimer.reset();
                         else
-                          setinputResultTimer(i);
+                          setinputResultTimer(setIndex);
                       },
                       onTap: () {
                         isResultTimerInitialized = true;
-                        setinputResultTimer(i);
+                        setinputResultTimer(setIndex);
                       },
                     ),
                   ),
