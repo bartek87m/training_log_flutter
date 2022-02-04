@@ -12,6 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
+import 'package:training_log/presentation/workout/widgets/timer_in_workout_hook_widget.dart';
 import 'package:training_log/presentation/workout/widgets/timer_in_workout_widget.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_bottom_buttons.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_reps_sets_widget.dart';
@@ -210,17 +211,22 @@ class WorkoutViewPage extends HookWidget {
                               .addExercise(exerciseNumber: exerciseIndex),
                         },
                         showHideTimerForExerciseCallback: () {
-                          keyAnimation.currentState?.showElement();
-
                           if (showTimer.value != exerciseIndex) {
                             showTimer.value = exerciseIndex;
                           }
+                          // } else if (showTimer.value == exerciseIndex)
+                          //   showTimer.value = -1;
+
+                          keyAnimation.currentState?.showElement();
                         },
                         showTimerButtonText: showTimer.value == exerciseIndex
                             ? 'Hide Timer'
                             : 'Show Timer',
                       ),
                       exerciseIndex == showTimer.value
+                          // ? TimerInWorkoutHookWidget(
+                          //     isWidgetVisible: showTimer.value != -1,
+                          //   )
                           ? TimerInWorkoutWidget(
                               key: keyAnimation,
                               timeForTimer: context
