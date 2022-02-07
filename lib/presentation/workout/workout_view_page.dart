@@ -12,7 +12,6 @@ import 'package:sizer/sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
-import 'package:training_log/presentation/workout/widgets/timer_in_workout_hook_widget.dart';
 import 'package:training_log/presentation/workout/widgets/timer_in_workout_widget.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_bottom_buttons.dart';
 import 'package:training_log/presentation/workout/widgets/workout_view_reps_sets_widget.dart';

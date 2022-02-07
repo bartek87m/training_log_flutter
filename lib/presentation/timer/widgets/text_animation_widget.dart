@@ -56,22 +56,16 @@ class _TextAnimationWidgetState extends State<TextAnimationWidget>
                 ],
               ),
             ),
-            // Use the properties stored in the State class.
             width: _width,
             height: _height,
-
             decoration: BoxDecoration(
                 color: _color, borderRadius: BorderRadius.circular(5)),
-
-            // Define how long the animation should take.
             duration: Duration(milliseconds: 500),
-            // Provide an optional curve to make the animation feel smoother.
             curve: Curves.fastOutSlowIn, // fastOutSlowIn
           ),
         ),
         FloatingActionButton(
           child: Icon(Icons.play_arrow),
-          // When the user taps the button
           onPressed: _showElement,
         ),
       ],

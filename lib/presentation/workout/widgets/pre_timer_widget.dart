@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:training_log/presentation/workout/widgets/timer_text.dart';
 
 class PreTimeWidget extends StatefulWidget {
+  final ValueChanged<bool> isPretimeDone;
   Duration timeForTimer;
-  PreTimeWidget({required this.timeForTimer, Key? key}) : super(key: key);
+  PreTimeWidget(
+      {required this.timeForTimer, Key? key, required this.isPretimeDone})
+      : super(key: key);
 
   @override
   State<PreTimeWidget> createState() => _PreTimeWidgetState();
@@ -20,6 +24,7 @@ class _PreTimeWidgetState extends State<PreTimeWidget>
       vsync: this,
       duration: widget.timeForTimer,
     );
+    _animationControllerTimer.addStatusListener(_checkStatusUpdates);
 
     _curveAnimation = _animationControllerTimer.drive(
       CurveTween(curve: Curves.easeIn),
@@ -30,51 +35,44 @@ class _PreTimeWidgetState extends State<PreTimeWidget>
   @override
   void dispose() {
     _animationControllerTimer.dispose();
+
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: SizedBox(
-            height: 20.h,
-            width: 20.h,
-            child: _animationControllerTimer.status == AnimationStatus.forward
-                ? TimerText(
-                    timeInSecounds: widget.timeForTimer.inSeconds,
-                    progress: _animationControllerTimer.value,
-                  )
-                : FloatingActionButton(
-                    onPressed: () => setState(() {
-                      _animationControllerTimer.forward();
-                    }),
-                    child: FittedBox(
-                        child: Text("Start", style: TextStyle(fontSize: 6.h))),
-                  ),
-          ),
-        ),
-      ],
-    );
+  void _checkStatusUpdates(AnimationStatus status) {
+    if (status == AnimationStatus.completed) widget.isPretimeDone.call(true);
   }
-}
-
-class TimerText extends StatelessWidget {
-  final progress;
-  final int timeInSecounds;
-  TimerText({Key? key, this.progress, required this.timeInSecounds})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final animationValue = timeInSecounds + 1 - timeInSecounds * progress;
-    final secoundsText = animationValue.toInt().toString();
-    return Center(
-      child: Text(
-        secoundsText,
-        style: TextStyle(fontSize: 10.h),
-      ),
+    return AnimatedBuilder(
+      builder: (BuildContext context, Widget? child) {
+        return Stack(
+          children: [
+            Center(
+              child: SizedBox(
+                height: 20.h,
+                width: 20.h,
+                child: _animationControllerTimer.status ==
+                        AnimationStatus.forward
+                    ? TimerText(
+                        timeInSecounds: widget.timeForTimer.inSeconds,
+                        progress: _animationControllerTimer.value,
+                      )
+                    : FloatingActionButton(
+                        onPressed: () => setState(() {
+                          _animationControllerTimer.forward();
+                        }),
+                        child: FittedBox(
+                            child:
+                                Text("Start", style: TextStyle(fontSize: 6.h))),
+                      ),
+              ),
+            ),
+          ],
+        );
+      },
+      animation: _curveAnimation,
     );
   }
 }
