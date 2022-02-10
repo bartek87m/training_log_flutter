@@ -51,7 +51,10 @@ class AppRouter extends _i7.RootStackRouter {
       final args = routeData.argsAs<WorkoutViewPageRouteArgs>();
       return _i7.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i6.WorkoutViewPage(key: args.key, workout: args.workout));
+          child: _i6.WorkoutViewPage(
+              key: args.key,
+              workout: args.workout,
+              isNewWorkout: args.isNewWorkout));
     }
   };
 
@@ -127,23 +130,28 @@ class WorkoutsViewPageRoute extends _i7.PageRouteInfo<void> {
 /// generated route for
 /// [_i6.WorkoutViewPage]
 class WorkoutViewPageRoute extends _i7.PageRouteInfo<WorkoutViewPageRouteArgs> {
-  WorkoutViewPageRoute({_i8.Key? key, required _i9.Workout workout})
+  WorkoutViewPageRoute(
+      {_i8.Key? key, required _i9.Workout workout, bool isNewWorkout = false})
       : super(WorkoutViewPageRoute.name,
             path: '/workoutView',
-            args: WorkoutViewPageRouteArgs(key: key, workout: workout));
+            args: WorkoutViewPageRouteArgs(
+                key: key, workout: workout, isNewWorkout: isNewWorkout));
 
   static const String name = 'WorkoutViewPageRoute';
 }
 
 class WorkoutViewPageRouteArgs {
-  const WorkoutViewPageRouteArgs({this.key, required this.workout});
+  const WorkoutViewPageRouteArgs(
+      {this.key, required this.workout, this.isNewWorkout = false});
 
   final _i8.Key? key;
 
   final _i9.Workout workout;
 
+  final bool isNewWorkout;
+
   @override
   String toString() {
-    return 'WorkoutViewPageRouteArgs{key: $key, workout: $workout}';
+    return 'WorkoutViewPageRouteArgs{key: $key, workout: $workout, isNewWorkout: $isNewWorkout}';
   }
 }

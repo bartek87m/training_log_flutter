@@ -18,12 +18,14 @@ class WorkoutsViewsWidget extends StatelessWidget {
           loadFailure: (_) => Text('Load Failure'),
           loadSuccess: (state) {
             return ListView.builder(
+              padding: EdgeInsets.only(bottom: 10),
               itemCount: state.workouts.length,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    context.router.popAndPush(
-                        WorkoutViewPageRoute(workout: state.workouts[index]));
+                    context.router.push(
+                      WorkoutViewPageRoute(workout: state.workouts[index]),
+                    );
                   },
                   child: WorkoutShortViewWidget(state.workouts[index]),
                 );

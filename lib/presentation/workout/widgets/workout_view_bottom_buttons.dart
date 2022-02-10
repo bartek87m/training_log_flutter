@@ -6,7 +6,7 @@ class WorkoutViewBottomButtons extends StatelessWidget {
   final Function() addNewSeriesCallback;
   final Function() removeExerciseCallback;
   final Function() addExerciseCallback;
-  final Function() showHideTimerForExerciseCallback;
+  // final Function() showHideTimerForExerciseCallback;
 
   final showTimerButtonText;
 
@@ -15,7 +15,7 @@ class WorkoutViewBottomButtons extends StatelessWidget {
     required this.addNewSeriesCallback,
     required this.removeExerciseCallback,
     required this.addExerciseCallback,
-    required this.showHideTimerForExerciseCallback,
+    // required this.showHideTimerForExerciseCallback,
     this.showTimerButtonText,
   }) : super(key: key);
 
@@ -59,17 +59,17 @@ class WorkoutViewBottomButtons extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 0),
-              child: GestureDetector(
-                onTap: showHideTimerForExerciseCallback,
-                // onPressed: addExerciseCallback,
-                child: Text(
-                  showTimerButtonText,
-                  style: TextStyle(color: Colors.green),
-                ),
-              ),
-            ),
+            // Container(
+            //   padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 0),
+            //   child: GestureDetector(
+            //     onTap: showHideTimerForExerciseCallback,
+            //     // onPressed: addExerciseCallback,
+            //     child: Text(
+            //       showTimerButtonText,
+            //       style: TextStyle(color: Colors.green),
+            //     ),
+            //   ),
+            // ),
           ],
         )
       ],

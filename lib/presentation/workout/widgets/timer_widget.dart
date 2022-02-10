@@ -46,28 +46,25 @@ class _TimerWidgetState extends State<TimerWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AnimatedBuilder(
-        builder: (BuildContext context, Widget? child) {
-          return Stack(
-            children: [
-              Center(
-                child: CustomPaint(
-                  painter:
-                      RingPainter(progress: _animationControllerTimer.value),
-                ),
+    return AnimatedBuilder(
+      builder: (BuildContext context, Widget? child) {
+        return Stack(
+          children: [
+            Center(
+              child: CustomPaint(
+                painter: RingPainter(progress: _animationControllerTimer.value),
               ),
-              Center(
-                child: TimerText(
-                  timeInSecounds: widget.timeForTimer.inSeconds,
-                  progress: _animationControllerTimer.value,
-                ),
-              )
-            ],
-          );
-        },
-        animation: _curveAnimation,
-      ),
+            ),
+            Center(
+              child: TimerText(
+                timeInSecounds: widget.timeForTimer.inSeconds,
+                progress: _animationControllerTimer.value,
+              ),
+            )
+          ],
+        );
+      },
+      animation: _curveAnimation,
     );
   }
 }

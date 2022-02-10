@@ -21,12 +21,14 @@ class _$SeriesTearOff {
       {String? reps,
       String? result,
       String? resultFromlastTraining,
-      bool? completed}) {
+      bool? completed,
+      bool? isPossibleWithTimer}) {
     return _Series(
       reps: reps,
       result: result,
       resultFromlastTraining: resultFromlastTraining,
       completed: completed,
+      isPossibleWithTimer: isPossibleWithTimer,
     );
   }
 }
@@ -41,6 +43,7 @@ mixin _$Series {
   String? get resultFromlastTraining =>
       throw _privateConstructorUsedError; //rezultat z poprzedniego treningu z tym ćwiczeniem
   bool? get completed => throw _privateConstructorUsedError;
+  bool? get isPossibleWithTimer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SeriesCopyWith<Series> get copyWith => throw _privateConstructorUsedError;
@@ -54,7 +57,8 @@ abstract class $SeriesCopyWith<$Res> {
       {String? reps,
       String? result,
       String? resultFromlastTraining,
-      bool? completed});
+      bool? completed,
+      bool? isPossibleWithTimer});
 }
 
 /// @nodoc
@@ -71,6 +75,7 @@ class _$SeriesCopyWithImpl<$Res> implements $SeriesCopyWith<$Res> {
     Object? result = freezed,
     Object? resultFromlastTraining = freezed,
     Object? completed = freezed,
+    Object? isPossibleWithTimer = freezed,
   }) {
     return _then(_value.copyWith(
       reps: reps == freezed
@@ -89,6 +94,10 @@ class _$SeriesCopyWithImpl<$Res> implements $SeriesCopyWith<$Res> {
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isPossibleWithTimer: isPossibleWithTimer == freezed
+          ? _value.isPossibleWithTimer
+          : isPossibleWithTimer // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -102,7 +111,8 @@ abstract class _$SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
       {String? reps,
       String? result,
       String? resultFromlastTraining,
-      bool? completed});
+      bool? completed,
+      bool? isPossibleWithTimer});
 }
 
 /// @nodoc
@@ -120,6 +130,7 @@ class __$SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
     Object? result = freezed,
     Object? resultFromlastTraining = freezed,
     Object? completed = freezed,
+    Object? isPossibleWithTimer = freezed,
   }) {
     return _then(_Series(
       reps: reps == freezed
@@ -138,6 +149,10 @@ class __$SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isPossibleWithTimer: isPossibleWithTimer == freezed
+          ? _value.isPossibleWithTimer
+          : isPossibleWithTimer // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -146,7 +161,11 @@ class __$SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
 
 class _$_Series implements _Series {
   const _$_Series(
-      {this.reps, this.result, this.resultFromlastTraining, this.completed});
+      {this.reps,
+      this.result,
+      this.resultFromlastTraining,
+      this.completed,
+      this.isPossibleWithTimer});
 
   @override
   final String? reps;
@@ -156,10 +175,12 @@ class _$_Series implements _Series {
   final String? resultFromlastTraining;
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem
   final bool? completed;
+  @override
+  final bool? isPossibleWithTimer;
 
   @override
   String toString() {
-    return 'Series(reps: $reps, result: $result, resultFromlastTraining: $resultFromlastTraining, completed: $completed)';
+    return 'Series(reps: $reps, result: $result, resultFromlastTraining: $resultFromlastTraining, completed: $completed, isPossibleWithTimer: $isPossibleWithTimer)';
   }
 
   @override
@@ -171,7 +192,9 @@ class _$_Series implements _Series {
             const DeepCollectionEquality().equals(other.result, result) &&
             const DeepCollectionEquality()
                 .equals(other.resultFromlastTraining, resultFromlastTraining) &&
-            const DeepCollectionEquality().equals(other.completed, completed));
+            const DeepCollectionEquality().equals(other.completed, completed) &&
+            const DeepCollectionEquality()
+                .equals(other.isPossibleWithTimer, isPossibleWithTimer));
   }
 
   @override
@@ -180,7 +203,8 @@ class _$_Series implements _Series {
       const DeepCollectionEquality().hash(reps),
       const DeepCollectionEquality().hash(result),
       const DeepCollectionEquality().hash(resultFromlastTraining),
-      const DeepCollectionEquality().hash(completed));
+      const DeepCollectionEquality().hash(completed),
+      const DeepCollectionEquality().hash(isPossibleWithTimer));
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +217,8 @@ abstract class _Series implements Series {
       {String? reps,
       String? result,
       String? resultFromlastTraining,
-      bool? completed}) = _$_Series;
+      bool? completed,
+      bool? isPossibleWithTimer}) = _$_Series;
 
   @override
   String? get reps;
@@ -203,6 +228,8 @@ abstract class _Series implements Series {
   String? get resultFromlastTraining;
   @override //rezultat z poprzedniego treningu z tym ćwiczeniem
   bool? get completed;
+  @override
+  bool? get isPossibleWithTimer;
   @override
   @JsonKey(ignore: true)
   _$SeriesCopyWith<_Series> get copyWith => throw _privateConstructorUsedError;

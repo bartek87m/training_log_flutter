@@ -21,12 +21,14 @@ class _$ActiveseriesStateTearOff {
       {Exercise? exercise,
       Series? activeSeries,
       int? activeSeriesNumber,
-      Duration? timeForTimer}) {
+      Duration? timeForTimer,
+      List<bool>? finalListForTimerPossibility}) {
     return _ActiveseriesState(
       exercise: exercise,
       activeSeries: activeSeries,
       activeSeriesNumber: activeSeriesNumber,
       timeForTimer: timeForTimer,
+      finalListForTimerPossibility: finalListForTimerPossibility,
     );
   }
 }
@@ -40,6 +42,8 @@ mixin _$ActiveseriesState {
   Series? get activeSeries => throw _privateConstructorUsedError;
   int? get activeSeriesNumber => throw _privateConstructorUsedError;
   Duration? get timeForTimer => throw _privateConstructorUsedError;
+  List<bool>? get finalListForTimerPossibility =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ActiveseriesStateCopyWith<ActiveseriesState> get copyWith =>
@@ -55,7 +59,8 @@ abstract class $ActiveseriesStateCopyWith<$Res> {
       {Exercise? exercise,
       Series? activeSeries,
       int? activeSeriesNumber,
-      Duration? timeForTimer});
+      Duration? timeForTimer,
+      List<bool>? finalListForTimerPossibility});
 
   $ExerciseCopyWith<$Res>? get exercise;
   $SeriesCopyWith<$Res>? get activeSeries;
@@ -76,6 +81,7 @@ class _$ActiveseriesStateCopyWithImpl<$Res>
     Object? activeSeries = freezed,
     Object? activeSeriesNumber = freezed,
     Object? timeForTimer = freezed,
+    Object? finalListForTimerPossibility = freezed,
   }) {
     return _then(_value.copyWith(
       exercise: exercise == freezed
@@ -94,6 +100,10 @@ class _$ActiveseriesStateCopyWithImpl<$Res>
           ? _value.timeForTimer
           : timeForTimer // ignore: cast_nullable_to_non_nullable
               as Duration?,
+      finalListForTimerPossibility: finalListForTimerPossibility == freezed
+          ? _value.finalListForTimerPossibility
+          : finalListForTimerPossibility // ignore: cast_nullable_to_non_nullable
+              as List<bool>?,
     ));
   }
 
@@ -131,7 +141,8 @@ abstract class _$ActiveseriesStateCopyWith<$Res>
       {Exercise? exercise,
       Series? activeSeries,
       int? activeSeriesNumber,
-      Duration? timeForTimer});
+      Duration? timeForTimer,
+      List<bool>? finalListForTimerPossibility});
 
   @override
   $ExerciseCopyWith<$Res>? get exercise;
@@ -156,6 +167,7 @@ class __$ActiveseriesStateCopyWithImpl<$Res>
     Object? activeSeries = freezed,
     Object? activeSeriesNumber = freezed,
     Object? timeForTimer = freezed,
+    Object? finalListForTimerPossibility = freezed,
   }) {
     return _then(_ActiveseriesState(
       exercise: exercise == freezed
@@ -174,6 +186,10 @@ class __$ActiveseriesStateCopyWithImpl<$Res>
           ? _value.timeForTimer
           : timeForTimer // ignore: cast_nullable_to_non_nullable
               as Duration?,
+      finalListForTimerPossibility: finalListForTimerPossibility == freezed
+          ? _value.finalListForTimerPossibility
+          : finalListForTimerPossibility // ignore: cast_nullable_to_non_nullable
+              as List<bool>?,
     ));
   }
 }
@@ -185,7 +201,8 @@ class _$_ActiveseriesState implements _ActiveseriesState {
       {this.exercise,
       this.activeSeries,
       this.activeSeriesNumber,
-      this.timeForTimer});
+      this.timeForTimer,
+      this.finalListForTimerPossibility});
 
   @override
   final Exercise? exercise;
@@ -195,10 +212,12 @@ class _$_ActiveseriesState implements _ActiveseriesState {
   final int? activeSeriesNumber;
   @override
   final Duration? timeForTimer;
+  @override
+  final List<bool>? finalListForTimerPossibility;
 
   @override
   String toString() {
-    return 'ActiveseriesState(exercise: $exercise, activeSeries: $activeSeries, activeSeriesNumber: $activeSeriesNumber, timeForTimer: $timeForTimer)';
+    return 'ActiveseriesState(exercise: $exercise, activeSeries: $activeSeries, activeSeriesNumber: $activeSeriesNumber, timeForTimer: $timeForTimer, finalListForTimerPossibility: $finalListForTimerPossibility)';
   }
 
   @override
@@ -212,7 +231,10 @@ class _$_ActiveseriesState implements _ActiveseriesState {
             const DeepCollectionEquality()
                 .equals(other.activeSeriesNumber, activeSeriesNumber) &&
             const DeepCollectionEquality()
-                .equals(other.timeForTimer, timeForTimer));
+                .equals(other.timeForTimer, timeForTimer) &&
+            const DeepCollectionEquality().equals(
+                other.finalListForTimerPossibility,
+                finalListForTimerPossibility));
   }
 
   @override
@@ -221,7 +243,8 @@ class _$_ActiveseriesState implements _ActiveseriesState {
       const DeepCollectionEquality().hash(exercise),
       const DeepCollectionEquality().hash(activeSeries),
       const DeepCollectionEquality().hash(activeSeriesNumber),
-      const DeepCollectionEquality().hash(timeForTimer));
+      const DeepCollectionEquality().hash(timeForTimer),
+      const DeepCollectionEquality().hash(finalListForTimerPossibility));
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +257,8 @@ abstract class _ActiveseriesState implements ActiveseriesState {
       {Exercise? exercise,
       Series? activeSeries,
       int? activeSeriesNumber,
-      Duration? timeForTimer}) = _$_ActiveseriesState;
+      Duration? timeForTimer,
+      List<bool>? finalListForTimerPossibility}) = _$_ActiveseriesState;
 
   @override
   Exercise? get exercise;
@@ -244,6 +268,8 @@ abstract class _ActiveseriesState implements ActiveseriesState {
   int? get activeSeriesNumber;
   @override
   Duration? get timeForTimer;
+  @override
+  List<bool>? get finalListForTimerPossibility;
   @override
   @JsonKey(ignore: true)
   _$ActiveseriesStateCopyWith<_ActiveseriesState> get copyWith =>

@@ -7,6 +7,7 @@ class ActiveseriesState with _$ActiveseriesState {
     @required Series? activeSeries,
     @required int? activeSeriesNumber,
     @required Duration? timeForTimer,
+    @required List<bool>? finalListForTimerPossibility,
   }) = _ActiveseriesState;
 
   factory ActiveseriesState.initial() => ActiveseriesState(
@@ -14,5 +15,6 @@ class ActiveseriesState with _$ActiveseriesState {
         activeSeries: Series.newSeries(),
         activeSeriesNumber: 0,
         timeForTimer: Duration(seconds: 0),
+        finalListForTimerPossibility: [],
       );
 }

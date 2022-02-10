@@ -53,6 +53,8 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
       } else {
         _height = 0;
         _width = 0;
+        isPreTimerDone = false;
+        isTimerDone = false;
       }
     });
   }
@@ -63,7 +65,8 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
       child: !isTimerDone
           ? isPreTimerDone
               ? TimerWidget(
-                  timeForTimer: Duration(seconds: 2),
+                  timeForTimer:
+                      context.read<ActiveseriesCubit>().state.timeForTimer!,
                   isTimerDone: (bool value) {
                     setState(() {
                       isTimerDone = value;
@@ -76,7 +79,7 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
                   },
                 )
               : PreTimeWidget(
-                  timeForTimer: Duration(seconds: 2),
+                  timeForTimer: pretimeDuration,
                   isPretimeDone: (bool value) {
                     setState(() {
                       isPreTimerDone = value;
@@ -87,7 +90,7 @@ class TimerInWorkoutWidgetState extends State<TimerInWorkoutWidget>
               child: AnimatedDefaultTextStyle(
                 child: Text('DONE'),
                 style: TextStyle(fontSize: _fontSize, color: Colors.amber),
-                duration: Duration(milliseconds: 600),
+                duration: Duration(milliseconds: 500),
                 curve: Curves.linear,
               ),
             ),

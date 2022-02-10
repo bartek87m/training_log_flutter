@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sizer/sizer.dart';
 import 'package:training_log/application/auth/auth_cubit.dart';
-import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 import 'package:training_log/application/workoutWatcher/workoutwatcher_bloc.dart';
 import 'package:training_log/domain/workout/workout.dart';
 import 'package:training_log/presentation/routes/router.gr.dart';
@@ -62,7 +61,10 @@ class WorkoutsViewPage extends HookWidget {
               ),
               onPressed: () {
                 context.router.popAndPush(
-                  WorkoutViewPageRoute(workout: Workout.newWorkout()),
+                  WorkoutViewPageRoute(
+                    workout: Workout.newWorkout(),
+                    isNewWorkout: true,
+                  ),
                 );
               },
               child: Text('Create workout'),

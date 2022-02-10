@@ -6,12 +6,18 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/activeSeries/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
+import 'package:training_log/presentation/workout/widgets/exercise_headers.dart';
 
 class WorkoutViewRepsSetsWidget extends HookWidget {
   WorkoutViewRepsSetsWidget(
-      {Key? key, this.exerciseIndex, required this.setsLength, this.state})
+      {Key? key,
+      required this.showTimer,
+      this.exerciseIndex,
+      required this.setsLength,
+      this.state})
       : super(key: key);
 
+  final VoidCallback showTimer;
   final exerciseIndex;
   final setsLength;
   final state;
@@ -68,21 +74,9 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
             ));
     return Column(
       children: [
-        Row(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
-              alignment: Alignment.center,
-              width: 35.w,
-              child: Text("Reps"),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
-              alignment: Alignment.center,
-              width: 35.w,
-              child: Text("Result"),
-            ),
-          ],
+        Padding(
+          padding: EdgeInsets.all(2.w),
+          child: ExerciseHeaders(width: 35.w),
         ),
         for (int setIndex = 0; setIndex < setsLength; setIndex++)
           Container(
@@ -179,6 +173,17 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
                       },
                     ),
                   ),
+                  context
+                          .read<ActiveseriesCubit>()
+                          .state
+                          .finalListForTimerPossibility![setIndex]
+                      ? GestureDetector(
+                          onTap: () {
+                            showTimer();
+                          },
+                          child: Icon(Icons.timer),
+                        )
+                      : Icon(Icons.timer_off),
                 ]),
               ),
             ),

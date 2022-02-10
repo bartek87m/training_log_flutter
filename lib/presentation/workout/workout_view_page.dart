@@ -18,8 +18,10 @@ import 'package:training_log/presentation/workout/widgets/workout_view_reps_sets
 
 class WorkoutViewPage extends HookWidget {
   final Workout workout;
+  final bool isNewWorkout;
 
-  WorkoutViewPage({Key? key, required this.workout}) : super(key: key);
+  WorkoutViewPage({Key? key, required this.workout, this.isNewWorkout = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +64,17 @@ class WorkoutViewPage extends HookWidget {
 
     ;
 
-    useMemoized(() async {
+    useMemoized(() {
+      print(this.isNewWorkout);
       context
           .read<WorkoutformCubit>()
           .loadWorkoutToState(workout: this.workout);
-      // context.read<WorkoutformCubit>().createNewWorkout(workout: this.workout);
-      context.read<ActiveseriesCubit>().setActiveExerciseAndSeries(
-          workout.exercieList![0], 0, workout.exercieList![0].setsList![0]);
+      context.read<ActiveseriesCubit>().findSeriesWithTimeInRes(this.workout);
+      if (this.isNewWorkout) {
+        context
+            .read<WorkoutformCubit>()
+            .createNewWorkout(workout: this.workout);
+      }
     });
 
     useEffect(() {
@@ -188,6 +194,13 @@ class WorkoutViewPage extends HookWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           WorkoutViewRepsSetsWidget(
+                            showTimer: () {
+                              if (showTimer.value != exerciseIndex) {
+                                showTimer.value = exerciseIndex;
+                              }
+
+                              keyAnimation.currentState?.showElement();
+                            },
                             state: state,
                             exerciseIndex: exerciseIndex,
                             setsLength: state
@@ -209,18 +222,16 @@ class WorkoutViewPage extends HookWidget {
                               .read<WorkoutformCubit>()
                               .addExercise(exerciseNumber: exerciseIndex),
                         },
-                        showHideTimerForExerciseCallback: () {
-                          if (showTimer.value != exerciseIndex) {
-                            showTimer.value = exerciseIndex;
-                          }
-                          // } else if (showTimer.value == exerciseIndex)
-                          //   showTimer.value = -1;
+                        // showHideTimerForExerciseCallback: () {
+                        //   if (showTimer.value != exerciseIndex) {
+                        //     showTimer.value = exerciseIndex;
+                        //   }
 
-                          keyAnimation.currentState?.showElement();
-                        },
-                        showTimerButtonText: showTimer.value == exerciseIndex
-                            ? 'Hide Timer'
-                            : 'Show Timer',
+                        //   keyAnimation.currentState?.showElement();
+                        // },
+                        // showTimerButtonText: showTimer.value == exerciseIndex
+                        //     ? 'Hide Timer'
+                        //     : 'Show Timer',
                       ),
                       exerciseIndex == showTimer.value
                           // ? TimerInWorkoutHookWidget(
@@ -251,10 +262,9 @@ Future showDeleteConfirmDialog(BuildContext context) {
       title: Text("Are you shure?"),
       actions: [
         TextButton(
-          onPressed: () => {
-            context.read<WorkoutformCubit>().removeWorkout(),
-            context.router.pop(),
-            context.router.popAndPush(WorkoutsMainPageRoute())
+          onPressed: () {
+            context.read<WorkoutformCubit>().removeWorkout();
+            context.router.popAndPush(WorkoutsMainPageRoute());
           },
           child: Text('Yes'),
         ),
