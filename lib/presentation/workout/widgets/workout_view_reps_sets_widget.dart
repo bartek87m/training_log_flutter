@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_log/application/activeSeries/activeseries_cubit.dart';
 import 'package:training_log/application/workoutForm/workoutform_cubit.dart';
 import 'package:training_log/presentation/workout/widgets/exercise_headers.dart';
+import 'package:training_log/presentation/workout/widgets/timer_series_icon.dart';
 
 class WorkoutViewRepsSetsWidget extends HookWidget {
   WorkoutViewRepsSetsWidget(
@@ -93,13 +94,6 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
                           exerciseNumber: exerciseIndex,
                           seriesNumber: setIndex,
                         );
-                    context
-                        .read<ActiveseriesCubit>()
-                        .setActiveExerciseAndSeries(
-                          state.exercieList![exerciseIndex],
-                          setIndex,
-                          state.exercieList![exerciseIndex].setsList![setIndex],
-                        );
                 }
               },
               resizeDuration: Duration(microseconds: 1),
@@ -173,17 +167,15 @@ class WorkoutViewRepsSetsWidget extends HookWidget {
                       },
                     ),
                   ),
-                  context
-                          .read<ActiveseriesCubit>()
-                          .state
-                          .finalListForTimerPossibility![setIndex]
-                      ? GestureDetector(
-                          onTap: () {
-                            showTimer();
-                          },
-                          child: Icon(Icons.timer),
-                        )
-                      : Icon(Icons.timer_off),
+                  TimerSeriesWidget(
+                    showTimer: () {
+                      showTimer();
+                      context.read<ActiveseriesCubit>().getTimeForSeries(
+                          state.exercieList![exerciseIndex], setIndex);
+                    },
+                    exerciseIndex: exerciseIndex,
+                    setIndex: setIndex,
+                  )
                 ]),
               ),
             ),

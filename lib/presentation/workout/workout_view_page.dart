@@ -40,9 +40,6 @@ class WorkoutViewPage extends HookWidget {
       inputExerciseNameTimer = RestartableTimer(
         Duration(seconds: 1),
         () {
-          // if (_coontrollersList[exerciseIndex].text == '') {
-          //   _coontrollersList[exerciseIndex].text = 'Exercise name';
-          // }
           context
               .read<WorkoutformCubit>()
               .updateExerciseListToFirebaseAfterChangeName(
@@ -222,21 +219,8 @@ class WorkoutViewPage extends HookWidget {
                               .read<WorkoutformCubit>()
                               .addExercise(exerciseNumber: exerciseIndex),
                         },
-                        // showHideTimerForExerciseCallback: () {
-                        //   if (showTimer.value != exerciseIndex) {
-                        //     showTimer.value = exerciseIndex;
-                        //   }
-
-                        //   keyAnimation.currentState?.showElement();
-                        // },
-                        // showTimerButtonText: showTimer.value == exerciseIndex
-                        //     ? 'Hide Timer'
-                        //     : 'Show Timer',
                       ),
                       exerciseIndex == showTimer.value
-                          // ? TimerInWorkoutHookWidget(
-                          //     isWidgetVisible: showTimer.value != -1,
-                          //   )
                           ? TimerInWorkoutWidget(
                               key: keyAnimation,
                               timeForTimer: context

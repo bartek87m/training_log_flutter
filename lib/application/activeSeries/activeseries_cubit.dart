@@ -13,28 +13,40 @@ part 'activeseries_cubit.freezed.dart';
 class ActiveseriesCubit extends Cubit<ActiveseriesState> {
   ActiveseriesCubit() : super(ActiveseriesState.initial());
 
-  void setActiveExerciseAndSeries(
-      Exercise exercise, int numberOfActiveSeries, Series activeSeries) {
-    int? timeInSecounds;
-    final String? resultFromActiveSeries = activeSeries.result;
-    bool isResultTime =
-        resultFromActiveSeries!.contains(new RegExp(r'(["sec"])\w+'));
-    if (isResultTime) {
-      timeInSecounds = int.parse(
-          resultFromActiveSeries.replaceAll(new RegExp(r'[^0-9]'), ''));
-    } else {
-      timeInSecounds = 0;
+  void getTimeForSeries(Exercise exercise, int serieNumber) {
+    String? result = exercise.setsList![serieNumber].result;
+    int secoundsToExecute = 0;
+
+    if (result!.contains(new RegExp(r'(["sec"])\w+'))) {
+      secoundsToExecute =
+          int.parse(result.replaceAll(new RegExp(r'[^0-9]'), ''));
     }
-    emit(
-      state.copyWith(
-        activeSeriesNumber: numberOfActiveSeries,
-        exercise: exercise,
-        activeSeries: activeSeries,
-        timeForTimer: Duration(seconds: timeInSecounds),
-      ),
-    );
-    print(state);
+
+    emit(state.copyWith(timeForTimer: Duration(seconds: secoundsToExecute)));
   }
+
+  // void setActiveExerciseAndSeries(
+  //     Exercise exercise, int numberOfActiveSeries, Series activeSeries) {
+  //   int? timeInSecounds;
+  //   final String? resultFromActiveSeries = activeSeries.result;
+  //   bool isResultTime =
+  //       resultFromActiveSeries!.contains(new RegExp(r'(["sec"])\w+'));
+  //   if (isResultTime) {
+  //     timeInSecounds = int.parse(
+  //         resultFromActiveSeries.replaceAll(new RegExp(r'[^0-9]'), ''));
+  //   } else {
+  //     timeInSecounds = 0;
+  //   }
+  //   emit(
+  //     state.copyWith(
+  //       activeSeriesNumber: numberOfActiveSeries,
+  //       exercise: exercise,
+  //       activeSeries: activeSeries,
+  //       timeForTimer: Duration(seconds: timeInSecounds),
+  //     ),
+  //   );
+  //   print(state);
+  // }
 
   void findSeriesWithTimeInRes(Workout exercise) {
     final newExercise = exercise.exercieList!
@@ -62,13 +74,6 @@ class ActiveseriesCubit extends Cubit<ActiveseriesState> {
             .toList();
 
     print(finalListForTimerPossibility);
-
-    // List<Series>? newSerieList;
-    // exercise.exercieList?.forEach((e) {
-    //   newSerieList!.add(e.setsList.join())
-    // });
-
-    // print(newSerieList);
 
     emit(state.copyWith(
         finalListForTimerPossibility: finalListForTimerPossibility));
